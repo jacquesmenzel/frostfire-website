@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" role="img" aria-labelledby="title">
+  <title id="title">Rheem logo</title>
+  <path d="M16 48 L58 16 L100 48 Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+  <text x="190" y="42" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="30" font-weight="800" letter-spacing="2" fill="currentColor">RHEEM</text>
+</svg>

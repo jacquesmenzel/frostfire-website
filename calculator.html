@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>HVAC Pricing Calculator | Frost Fire Heating & Cooling</title>
+  <meta name="description" content="Get an instant HVAC installation price estimate for your home. Free calculator for heat pumps, AC, and furnace systems in Raleigh, Clayton NC area.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0f2b4c;
+      --primary-light: #1a3d6e;
+      --accent: #e8531e;
+      --accent-hover: #ff6b35;
+      --ice: #00b4d8;
+      --ice-light: #90e0ef;
+      --ice-dark: #0077b6;
+      --dark: #0a1628;
+      --text: #2d3748;
+      --text-light: #718096;
+      --white: #ffffff;
+      --off-white: #f7fafc;
+      --gray-100: #edf2f7;
+      --gray-200: #e2e8f0;
+      --radius: 20px;
+      --radius-sm: 12px;
+      --transition: all .4s cubic-bezier(.4,0,.2,1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background: var(--dark);
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    /* ============ FIXED NAV ============ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: rgba(15,43,76,.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,180,216,.1);
+    }
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -.5px;
+    }
+    .nav-logo .ice { color: var(--ice); }
+    .nav-logo .fire { color: var(--accent); }
+    .nav-phone {
+      display: flex; align-items: center; gap: 6px;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .85rem;
+      background: var(--accent);
+      padding: 8px 18px;
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+    .nav-phone:active { transform: scale(.96); }
+
+    /* ============ PROGRESS BAR ============ */
+    .progress-track {
+      position: fixed;
+      top: 52px; left: 0; right: 0;
+      z-index: 999;
+      height: 4px;
+      background: rgba(255,255,255,.08);
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      transition: width .6s cubic-bezier(.4,0,.2,1);
+      border-radius: 0 4px 4px 0;
+      box-shadow: 0 0 12px rgba(232,83,30,.4);
+    }
+    .progress-info {
+      position: fixed;
+      top: 60px; right: 20px;
+      z-index: 999;
+      font-size: .75rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.4);
+      transition: var(--transition);
+    }
+
+    /* ============ FULL-SCREEN STEPS ============ */
+    .calculator {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+    .step {
+      position: absolute;
+      inset: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 80px 24px 40px;
+      opacity: 0;
+      transform: translateY(40px);
+      pointer-events: none;
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .step.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      position: relative;
+    }
+    .step.exit-up {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+
+    .step-inner {
+      width: 100%;
+      max-width: 560px;
+      text-align: center;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--ice);
+      margin-bottom: 16px;
+      opacity: .7;
+    }
+    .step-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .step-subtitle {
+      color: rgba(255,255,255,.45);
+      font-size: 1rem;
+      margin-bottom: 36px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ============ OPTION CARDS ============ */
+    .options {
+      display: grid;
+      gap: 14px;
+      width: 100%;
+    }
+    .options-2 { grid-template-columns: 1fr 1fr; }
+    .options-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+    .opt {
+      position: relative;
+      background: rgba(255,255,255,.04);
+      border: 2px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-sm);
+      padding: 24px 16px;
+      cursor: pointer;
+      transition: var(--transition);
+      -webkit-user-select: none;
+      user-select: none;
+      text-align: center;
+      min-height: 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .opt:hover {
+      border-color: rgba(0,180,216,.3);
+      background: rgba(0,180,216,.06);
+      transform: translateY(-2px);
+    }
+    .opt:active { transform: scale(.97); }
+    .opt.selected {
+      border-color: var(--ice);
+      background: rgba(0,180,216,.1);
+      box-shadow: 0 0 0 4px rgba(0,180,216,.12), 0 8px 32px rgba(0,180,216,.15);
+    }
+    .opt.selected::after {
+      content: '✓';
+      position: absolute;
+      top: 8px; right: 10px;
+      width: 22px; height: 22px;
+      background: var(--ice);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: .7rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .opt-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+      line-height: 1;
+    }
+    .opt-label {
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--white);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .opt-desc {
+      font-size: .78rem;
+      color: rgba(255,255,255,.4);
+      display: block;
+    }
+
+    /* ============ SLIDER STEP ============ */
+    .sqft-display {
+      margin-bottom: 32px;
+    }
+    .sqft-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(3.5rem, 12vw, 5rem);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--white) 30%, var(--ice));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .sqft-unit {
+      font-size: 1rem;
+      color: rgba(255,255,255,.4);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .slider-container { width: 100%; padding: 0 4px; }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255,255,255,.1);
+      outline: none;
+      margin: 20px 0;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 4px solid var(--ice);
+      box-shadow: 0 0 20px rgba(0,180,216,.4), 0 4px 12px rgba(0,0,0,.3);
+      cursor: pointer;
+      transition: transform .2s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.2); }
+    input[type="range"]::-moz-range-thumb {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 4px solid var(--ice);
+      box-shadow: 0 0 20px rgba(0,180,216,.4);
+      cursor: pointer;
+    }
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: .78rem;
+      color: rgba(255,255,255,.3);
+      font-weight: 500;
+    }
+    .sqft-manual {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .sqft-manual-label {
+      font-size: .85rem;
+      color: rgba(255,255,255,.35);
+    }
+    .sqft-input {
+      width: 100px;
+      padding: 8px 12px;
+      background: rgba(255,255,255,.06);
+      border: 2px solid rgba(255,255,255,.12);
+      border-radius: 8px;
+      color: var(--white);
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .sqft-input:focus {
+      outline: none;
+      border-color: var(--ice);
+      background: rgba(0,180,216,.06);
+    }
+
+    /* ============ NAV BUTTONS ============ */
+    .step-actions {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+    }
+    .btn-continue {
+      width: 100%;
+      max-width: 360px;
+      padding: 18px 32px;
+      border: none;
+      border-radius: 60px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-continue.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: var(--white);
+      box-shadow: 0 8px 32px rgba(232,83,30,.3);
+    }
+    .btn-continue.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(232,83,30,.4);
+    }
+    .btn-continue.primary:active { transform: scale(.98); }
+    .btn-continue.disabled {
+      opacity: .25;
+      pointer-events: none;
+    }
+    .btn-continue .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,.3);
+      transform: scale(0);
+      animation: ripple .6s ease-out;
+    }
+    @keyframes ripple {
+      to { transform: scale(4); opacity: 0; }
+    }
+    .btn-back {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,.35);
+      font-family: 'Inter', sans-serif;
+      font-size: .9rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 8px 16px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-back:hover { color: rgba(255,255,255,.6); }
+
+    /* ============ KEYBOARD HINT ============ */
+    .key-hint {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .75rem;
+      color: rgba(255,255,255,.2);
+      pointer-events: none;
+    }
+    .key-hint kbd {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+    }
+
+    /* ============ RESULTS PAGE ============ */
+    .results-step {
+      padding-top: 60px !important;
+      justify-content: flex-start !important;
+      overflow-y: auto;
+    }
+    .results-step .step-inner {
+      max-width: 640px;
+    }
+
+    .results-hero {
+      background: linear-gradient(160deg, var(--primary) 0%, var(--dark) 60%, rgba(0,180,216,.15) 100%);
+      border-radius: var(--radius);
+      padding: 40px 28px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,180,216,.1);
+    }
+    .results-hero::before {
+      content: '';
+      position: absolute;
+      top: -60%; right: -30%;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(0,180,216,.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .results-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40%; left: -20%;
+      width: 250px; height: 250px;
+      background: radial-gradient(circle, rgba(232,83,30,.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .results-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,180,216,.15);
+      color: var(--ice-light);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .results-system-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+      display: block;
+      opacity: .9;
+    }
+    .results-tons {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 8vw, 3.2rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      position: relative;
+    }
+    .results-tons .unit {
+      font-size: .35em;
+      color: var(--ice);
+      font-weight: 700;
+      vertical-align: super;
+      margin-left: 4px;
+    }
+    .results-system-label {
+      color: rgba(255,255,255,.5);
+      font-size: .95rem;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    .results-btu-badge {
+      display: inline-block;
+      margin-top: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.7);
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius-sm);
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .stat-icon {
+      font-size: 1.4rem;
+      color: var(--ice);
+      margin-bottom: 8px;
+    }
+    .stat-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .stat-label {
+      font-size: .75rem;
+      color: rgba(255,255,255,.4);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+
+    /* ============ TIER CARDS ============ */
+    .tiers-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    .tier-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .tier {
+      background: rgba(255,255,255,.03);
+      border: 2px solid rgba(255,255,255,.06);
+      border-radius: var(--radius-sm);
+      padding: 22px 20px;
+      text-align: left;
+      position: relative;
+      transition: var(--transition);
+    }
+    .tier.recommended {
+      border-color: var(--ice);
+      background: rgba(0,180,216,.06);
+      box-shadow: 0 0 0 4px rgba(0,180,216,.08);
+    }
+    .tier-badge {
+      position: absolute;
+      top: -10px; right: 16px;
+      background: var(--ice);
+      color: var(--white);
+      font-size: .65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 12px;
+      border-radius: 50px;
+    }
+    .tier-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .tier-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--white);
+    }
+    .tier-name .tier-icon { margin-right: 6px; }
+    .tier-price {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--ice);
+    }
+    .tier-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .tier-features li {
+      font-size: .82rem;
+      color: rgba(255,255,255,.5);
+      padding: 3px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tier-features li i {
+      color: var(--ice);
+      font-size: .7rem;
+      flex-shrink: 0;
+    }
+    .tier.recommended .tier-features li i { color: var(--ice-light); }
+
+    /* Financing hint */
+    .financing-hint {
+      background: linear-gradient(135deg, rgba(232,83,30,.08), rgba(255,107,53,.08));
+      border: 1px solid rgba(232,83,30,.15);
+      border-radius: var(--radius-sm);
+      padding: 18px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .financing-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    .financing-text {
+      text-align: left;
+    }
+    .financing-text strong {
+      display: block;
+      color: var(--white);
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+    .financing-text span {
+      font-size: .82rem;
+      color: rgba(255,255,255,.45);
+    }
+
+    /* Efficiency */
+    .efficiency-section {
+      background: rgba(0,180,216,.04);
+      border: 1px solid rgba(0,180,216,.1);
+      border-radius: var(--radius-sm);
+      padding: 22px 20px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    .efficiency-section h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .efficiency-section h3 i { color: var(--ice); }
+    .efficiency-section p {
+      font-size: .88rem;
+      color: rgba(255,255,255,.5);
+      line-height: 1.6;
+    }
+    .efficiency-section strong { color: var(--ice-light); }
+
+    /* Savings comparison */
+    .savings-bar {
+      margin: 16px 0 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .savings-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .savings-label {
+      font-size: .78rem;
+      color: rgba(255,255,255,.5);
+      width: 80px;
+      flex-shrink: 0;
+      text-align: right;
+      font-weight: 600;
+    }
+    .savings-track {
+      flex: 1;
+      height: 24px;
+      background: rgba(255,255,255,.05);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    .savings-fill {
+      height: 100%;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--white);
+      transition: width 1s ease;
+    }
+    .savings-fill.old {
+      background: linear-gradient(90deg, rgba(232,83,30,.6), rgba(232,83,30,.8));
+    }
+    .savings-fill.new {
+      background: linear-gradient(90deg, rgba(0,180,216,.6), rgba(0,180,216,.9));
+    }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      border-radius: var(--radius);
+      padding: 36px 24px;
+      text-align: center;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -30%;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .cta-section h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .cta-section p {
+      color: rgba(255,255,255,.85);
+      font-size: .95rem;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+    }
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 24px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: var(--transition);
+      font-family: 'Inter', sans-serif;
+      border: none;
+      cursor: pointer;
+    }
+    .cta-btn-phone {
+      background: var(--white);
+      color: var(--accent);
+    }
+    .cta-btn-phone:active { transform: scale(.97); }
+    .cta-btn-schedule {
+      background: rgba(255,255,255,.15);
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,.3);
+    }
+    .cta-btn-schedule:active { transform: scale(.97); }
+
+    .disclaimer {
+      text-align: center;
+      font-size: .72rem;
+      color: rgba(255,255,255,.25);
+      margin: 16px 0;
+      line-height: 1.5;
+    }
+    .restart-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin: 0 auto 40px;
+      background: none;
+      border: none;
+      color: var(--ice);
+      font-size: .88rem;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      padding: 10px 20px;
+      opacity: .6;
+      transition: var(--transition);
+    }
+    .restart-btn:hover { opacity: 1; }
+
+    /* ============ CONFETTI / CELEBRATION ============ */
+    .celebration {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    .confetti-piece {
+      position: absolute;
+      width: 8px; height: 8px;
+      border-radius: 2px;
+      animation: confetti-fall 2.5s ease-out forwards;
+    }
+    @keyframes confetti-fall {
+      0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* ============ LOADING CALC ============ */
+    .calc-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .calc-spinner {
+      width: 48px; height: 48px;
+      border: 4px solid rgba(0,180,216,.15);
+      border-top-color: var(--ice);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .calc-loading-text {
+      color: rgba(255,255,255,.5);
+      font-size: .95rem;
+      font-weight: 500;
+    }
+
+    /* ============ ANIMATE IN CHILDREN ============ */
+    .results-step .step-inner > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .results-step.active .step-inner > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .results-step.active .step-inner > *:nth-child(1) { transition-delay: .1s; }
+    .results-step.active .step-inner > *:nth-child(2) { transition-delay: .2s; }
+    .results-step.active .step-inner > *:nth-child(3) { transition-delay: .3s; }
+    .results-step.active .step-inner > *:nth-child(4) { transition-delay: .4s; }
+    .results-step.active .step-inner > *:nth-child(5) { transition-delay: .5s; }
+    .results-step.active .step-inner > *:nth-child(6) { transition-delay: .6s; }
+    .results-step.active .step-inner > *:nth-child(7) { transition-delay: .7s; }
+    .results-step.active .step-inner > *:nth-child(8) { transition-delay: .8s; }
+    .results-step.active .step-inner > *:nth-child(9) { transition-delay: .9s; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 600px) {
+      .options-2 { grid-template-columns: 1fr 1fr; }
+      .options-3 { grid-template-columns: 1fr 1fr 1fr; }
+      .opt { padding: 18px 10px; min-height: 100px; }
+      .opt-icon { font-size: 1.6rem; }
+      .opt-label { font-size: .85rem; }
+      .opt-desc { font-size: .7rem; }
+      .key-hint { display: none; }
+      .tier-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+    }
+    @media (max-width: 380px) {
+      .options-3 { grid-template-columns: 1fr 1fr; }
+      .step { padding: 70px 16px 30px; }
+    }
+  </style>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HVAC Pricing Calculator | Frost Fire Heating & Cooling">
+  <meta property="og:description" content="Get an instant HVAC installation price estimate for your home. Free calculator for heat pumps, AC, and furnace systems in Raleigh, Clayton NC area.">
+  <meta property="og:url" content="https://frostfirehvacr.com/calculator.html">
+  <meta property="og:site_name" content="Frost Fire Heating & Cooling">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1545259742-b4fd8fea67e4?w=1200&q=80">
+  <meta property="og:locale" content="en_US">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HVAC Pricing Calculator | Frost Fire Heating & Cooling">
+  <meta name="twitter:description" content="Get an instant HVAC installation price estimate for your home. Free calculator for heat pumps, AC, and furnace systems in Raleigh, Clayton NC area.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1545259742-b4fd8fea67e4?w=1200&q=80">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://frostfirehvacr.com/calculator.html">
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "HVAC Pricing Calculator",
+    "applicationCategory": "UtilityApplication",
+    "provider": {
+      "@type": "HVACBusiness",
+      "name": "Frost Fire Heating and Cooling",
+      "telephone": "+19192304439"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><span class="ice">Frost</span> <span class="fire">Fire</span></a>
+    <a href="tel:9192304439" class="nav-phone"><i class="fas fa-phone"></i> (919) 230-4439</a>
+  </nav>
+
+  <!-- PROGRESS -->
+  <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:11%"></div></div>
+  <div class="progress-info" id="progressInfo">1 of 9</div>
+
+  <!-- CALCULATOR -->
+  <div class="calculator" id="calculator">
+
+    <!-- STEP 1: Current System -->
+    <div class="step active" data-step="1">
+      <div class="step-inner">
+        <div class="step-number">Step 1 of 9</div>
+        <h1 class="step-title">What do you have<br>right now?</h2>
+        <p class="step-subtitle">Tell us about your current heating & cooling setup</p>
+        <div class="options options-2">
+          <div class="opt" data-field="currentSystem" data-value="heatpump" onclick="select(this)">
+            <span class="opt-icon">🔄</span>
+            <span class="opt-label">Heat Pump</span>
+            <span class="opt-desc">All-electric system</span>
+          </div>
+          <div class="opt" data-field="currentSystem" data-value="gasfurnace" onclick="select(this)">
+            <span class="opt-icon">🔥</span>
+            <span class="opt-label">AC + Gas Furnace</span>
+            <span class="opt-desc">Split gas/electric</span>
+          </div>
+          <div class="opt" data-field="currentSystem" data-value="windowac" onclick="select(this)">
+            <span class="opt-icon">🪟</span>
+            <span class="opt-label">Window Units</span>
+            <span class="opt-desc">No central system</span>
+          </div>
+          <div class="opt" data-field="currentSystem" data-value="none" onclick="select(this)">
+            <span class="opt-icon">🏗️</span>
+            <span class="opt-label">New Build</span>
+            <span class="opt-desc">No existing system</span>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn-continue primary disabled" id="next1" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Desired System Type -->
+    <div class="step" data-step="2">
+      <div class="step-inner">
+        <div class="step-number">Step 2 of 9</div>
+        <h2 class="step-title">What system<br>do you want?</h2>
+        <p class="step-subtitle">Choose the configuration that fits your needs</p>
+        <div class="options options-2">
+          <div class="opt" data-field="systemType" data-value="heatpump" onclick="select(this)">
+            <span class="opt-icon">🔄</span>
+            <span class="opt-label">Heat Pump</span>
+            <span class="opt-desc">Heats & cools — most efficient</span>
+          </div>
+          <div class="opt" data-field="systemType" data-value="straightcool" onclick="select(this)">
+            <span class="opt-icon">❄️🔥</span>
+            <span class="opt-label">AC + Furnace</span>
+            <span class="opt-desc">Straight cool with gas heat</span>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn-continue primary disabled" id="next2" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
+          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3: Square Footage -->
+    <div class="step" data-step="3">
+      <div class="step-inner">
+        <div class="step-number">Step 3 of 9</div>
+        <h2 class="step-title">How big is your home?</h2>
+        <p class="step-subtitle">Total conditioned living space</p>
+        <div class="sqft-display">
+          <div class="sqft-value" id="sqftValue">2,000</div>
+          <div class="sqft-unit">square feet</div>
+        </div>
+        <div class="slider-container">
+          <input type="range" id="sqftSlider" min="500" max="5000" step="50" value="2000" oninput="updateSqft(this.value)">
+          <div class="slider-labels"><span>500</span><span>2,500</span><span>5,000</span></div>
+        </div>
+        <div class="sqft-manual">
+          <span class="sqft-manual-label">Or type exact:</span>
+          <input type="number" class="sqft-input" id="sqftInput" value="2000" min="500" max="5000" oninput="updateSqftFromInput(this.value)">
+        </div>
+        <div class="step-actions">
+          <button class="btn-continue primary" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
+          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: Stories -->
+    <div class="step" data-step="4">
+      <div class="step-inner">
+        <div class="step-number">Step 4 of 9</div>
+        <h2 class="step-title">How many stories?</h2>
+        <p class="step-subtitle">Number of floors in your home</p>
+        <div class="options options-3">
+          <div class="opt" data-field="stories" data-value="1" onclick="select(this)">
+            <span class="opt-icon">🏠</span>
+            <span class="opt-label">1 Story</span>
+            <span class="opt-desc">Single level</span>
+          </div>
+          <div class="opt" data-field="stories" data-value="2" onclick="select(this)">
+            <span class="opt-icon">🏡</span>
+            <span class="opt-label">2 Stories</span>
+            <span class="opt-desc">Two levels</span>
+          </div>
+          <div class="opt" data-field="stories" data-value="3" onclick="select(this)">
+            <span class="opt-icon">🏢</span>
+            <span class="opt-label">3+</span>
+            <span class="opt-desc">Multi-level</span>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn-continue primary disabled" id="next4" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
+          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5: Home Age -->
+    <div class="step" data-step="5">
+      <div class="step-inner">
+        <div class="step-number">Step 5 of 9</div>
+        <h2 class="step-title">How old is your home?</h2>
+        <p class="step-subtitle">Older homes typically need more capacity</p>
+        <div class="options options-3">
+          <div class="opt" data-field="homeAge" data-value="new" onclick="select(this)">
+            <span class="opt-icon">✨</span>
+            <span class="opt-label">New Build</span>
+            <span class="opt-desc">0–10 years</span>
+          </div>
+          <div class="opt" data-field="homeAge" data-value="mid" onclick="select(this)">
+            <span class="opt-icon">🏠</span>
+            <span class="opt-label">Mid-Age</span>
+            <span class="opt-desc">10–30 years</span>
+          </div>
+          <div class="opt" data-field="homeAge" data-value="old" onclick="select(this)">
+            <span class="opt-icon">🏚️</span>
+            <span class="opt-label">Older</span>
+            <span class="opt-desc">30+ years</span>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn-continue primary disabled" id="next5" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
+          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 6: Insulation -->
+    <div class="step" data-step="6">
+      <div class="step-inner">
+        <div class="step-number">Step 6 of 9</div>
+        <h2 class="step-title">How's the insulation?</h2>
+        <p class="step-subtitle">Better insulation = smaller system needed</p>
+        <div class="options options-3">
+          <div class="opt" data-field="insulation" data-value="good" onclick="select(this)">
+            <span class="opt-icon">🛡️</span>
+            <span class="opt-label">Good</span>
+            <span class="opt-desc">Well sealed</span>
+          </div>
+          <div class="opt" data-field="insulation" data-value="average" onclick="select(this)">
+            <span class="opt-icon">👍</span>
+            <span class="opt-label">Average</span>
+            <span class="opt-desc">Typical home</span>
+          </div>
+          <div class="opt" data-field="insulation" data-value="poor" onclick="select(this)">
+            <span class="opt-icon">⚠️</span>
+            <span class="opt-label">Poor</span>
+            <span class="opt-desc">Drafty / old</span>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn-continue primary disabled" id="next6" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
+          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 7: Windows -->
+    <div class="step" data-step="7">
+      <div class="step-inner">
+        <div class="step-number">Step 7 of 9</div>
+        <h2 class="step-title">How many windows?</h2>
+        <p class="step-subtitle">More glass = more heat gain to handle</p>
+        <div class="options options-3">
+          <div class="opt" data-field="windows" data-value="few" onclick="select(this)">
+            <span class="opt-icon">🪟</span>
+            <span class="opt-label">Few</span>
+            <span class="opt-desc">Minimal</span>
+          </div>
+          <div class="opt" data-field="windows" data-value="average" onclick="select(this)">
+            <span class="opt-icon">🪟🪟</span>
+            <span class="opt-label">Average</span>
+            <span class="opt-desc">Normal</span>
+          </div>
+          <div class="opt" data-field="windows" data-value="many" onclick="select(this)">
+            <span class="opt-icon">🪟🪟🪟</span>
+            <span class="opt-label">Many</span>
+            <span class="opt-desc">Lots of glass</span>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn-continue primary disabled" id="next7" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
+          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 8: Sun Exposure -->
+    <div class="step" data-step="8">
+      <div class="step-inner">
+        <div class="step-number">Step 8 of 9</div>
+        <h2 class="step-title">Sun exposure?</h2>
+        <p class="step-subtitle">How much direct sunlight hits your home</p>
+        <div class="options options-3">
+          <div class="opt" data-field="sun" data-value="shade" onclick="select(this)">
+            <span class="opt-icon">🌳</span>
+            <span class="opt-label">Shaded</span>
+            <span class="opt-desc">Heavy trees</span>
+          </div>
+          <div class="opt" data-field="sun" data-value="mixed" onclick="select(this)">
+            <span class="opt-icon">⛅</span>
+            <span class="opt-label">Mixed</span>
+            <span class="opt-desc">Some of each</span>
+          </div>
+          <div class="opt" data-field="sun" data-value="full" onclick="select(this)">
+            <span class="opt-icon">☀️</span>
+            <span class="opt-label">Full Sun</span>
+            <span class="opt-desc">All day sun</span>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn-continue primary disabled" id="next8" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
+          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 9: Ceiling Height -->
+    <div class="step" data-step="9">
+      <div class="step-inner">
+        <div class="step-number">Step 9 of 9</div>
+        <h2 class="step-title">Ceiling height?</h2>
+        <p class="step-subtitle">Taller ceilings = more air to condition</p>
+        <div class="options options-3">
+          <div class="opt" data-field="ceiling" data-value="standard" onclick="select(this)">
+            <span class="opt-icon">📏</span>
+            <span class="opt-label">Standard</span>
+            <span class="opt-desc">8 ft</span>
+          </div>
+          <div class="opt" data-field="ceiling" data-value="high" onclick="select(this)">
+            <span class="opt-icon">📐</span>
+            <span class="opt-label">High</span>
+            <span class="opt-desc">9–10 ft</span>
+          </div>
+          <div class="opt" data-field="ceiling" data-value="vaulted" onclick="select(this)">
+            <span class="opt-icon">⛪</span>
+            <span class="opt-label">Vaulted</span>
+            <span class="opt-desc">10+ ft</span>
+          </div>
+        </div>
+        <div class="step-actions">
+          <button class="btn-continue primary disabled" id="next9" onclick="calculate()">See My Pricing <i class="fas fa-dollar-sign"></i></button>
+          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOADING -->
+    <div class="step" data-step="loading">
+      <div class="step-inner">
+        <div class="calc-loading">
+          <div class="calc-spinner"></div>
+          <div class="calc-loading-text">Calculating your perfect system...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="step results-step" data-step="results">
+      <div class="step-inner">
+
+        <div class="results-hero">
+          <div class="results-badge"><i class="fas fa-check-circle"></i> Your Custom Estimate</div>
+          <div style="display:flex;align-items:center;gap:24px;position:relative;">
+            <div style="flex:1;">
+              <div class="results-system-icon" id="resultIcon">🔄</div>
+              <div class="results-tons" id="resultMonthly" style="color:var(--ice-light);">$89<span style="font-size:.4em;color:var(--ice);font-weight:700;">/mo</span></div>
+              <div class="results-system-label" style="margin-top:4px;font-size:1.1rem;color:rgba(255,255,255,.7);">with approved financing</div>
+              <div style="margin-top:12px;font-size:.95rem;color:rgba(255,255,255,.35);" id="resultPrice">Total: Starting at $7,500</div>
+              <div class="results-system-label" id="resultSystem" style="margin-top:4px;">Heat Pump System</div>
+              <div class="results-btu-badge" id="resultSize"><i class="fas fa-bolt"></i>&nbsp; 3 Ton · 36,000 BTU/h cooling capacity</div>
+            </div>
+            <div style="flex-shrink:0;width:140px;height:140px;border-radius:16px;overflow:hidden;border:2px solid rgba(0,180,216,.15);">
+              <img src="images/ac-unit.jpg" alt="HVAC equipment installation" style="width:100%;height:100%;object-fit:cover;" id="resultEquipImg">
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-home"></i></div>
+            <div class="stat-value" id="resultSqft">2,000</div>
+            <div class="stat-label">Square Feet</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-temperature-half"></i></div>
+            <div class="stat-value" id="resultClimate">Zone 4</div>
+            <div class="stat-label">Raleigh, NC</div>
+          </div>
+        </div>
+
+        <div class="tiers-title">Choose Your Package</div>
+        <div class="tier-cards" id="tierCards"></div>
+
+        <div class="financing-hint">
+          <div class="financing-icon">💰</div>
+          <div class="financing-text">
+            <strong id="financingAmount">As low as $89/month</strong>
+            <span>With approved financing — 0% options available</span>
+          </div>
+        </div>
+
+        <div class="efficiency-section">
+          <h3><i class="fas fa-leaf"></i> Energy Savings</h3>
+          <p id="resultEfficiency"></p>
+          <div class="savings-bar">
+            <div class="savings-row">
+              <span class="savings-label">Old System</span>
+              <div class="savings-track"><div class="savings-fill old" id="savingsOld" style="width:0%"></div></div>
+            </div>
+            <div class="savings-row">
+              <span class="savings-label">New System</span>
+              <div class="savings-track"><div class="savings-fill new" id="savingsNew" style="width:0%"></div></div>
+            </div>
+          </div>
+          <p style="font-size:.75rem;margin-top:8px;opacity:.6" id="savingsNote"></p>
+        </div>
+
+        <div class="cta-section">
+          <h3>🔥 Get Your Free In-Home Estimate</h3>
+          <p>A licensed Frost Fire technician will confirm your sizing and give you an exact price — no obligation.</p>
+          <div class="cta-buttons">
+            <a href="tel:9192304439" class="cta-btn cta-btn-phone"><i class="fas fa-phone"></i> (919) 230-4439</a>
+            <a href="contact.html" class="cta-btn cta-btn-schedule"><i class="fas fa-calendar-check"></i> Schedule Online</a>
+          </div>
+        </div>
+
+        <p class="disclaimer">* Prices shown are estimates based on typical installations in the Raleigh/Clayton, NC area. Actual pricing requires a free on-site assessment by a licensed Frost Fire technician. Final cost depends on equipment brand, efficiency rating, ductwork condition, and installation complexity. System sizing is based on simplified Manual J principles.</p>
+        <button class="restart-btn" onclick="restart()"><i class="fas fa-redo"></i> Start Over</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- KEY HINT (desktop) -->
+  <div class="key-hint"><kbd>Enter</kbd> to continue &middot; <kbd>↑</kbd><kbd>↓</kbd> to navigate</div>
+
+<script>
+  // ===== STATE =====
+  const TOTAL = 9;
+  let cur = 1;
+  const D = { currentSystem:null, systemType:null, sqft:2000, stories:null, homeAge:null, insulation:null, windows:null, sun:null, ceiling:null };
+
+  // ===== HELPERS =====
+  const $ = s => document.querySelector(s);
+  const $$ = s => document.querySelectorAll(s);
+
+  function showStep(n) {
+    $$('.step').forEach(s => {
+      if (s.classList.contains('active')) {
+        s.classList.remove('active');
+        s.classList.add('exit-up');
+        setTimeout(() => s.classList.remove('exit-up'), 500);
+      }
+    });
+    const target = $(`[data-step="${n}"]`);
+    setTimeout(() => {
+      target.classList.add('active');
+      target.scrollTo?.({ top: 0 });
+      window.scrollTo({ top: 0 });
+    }, 80);
+    if (typeof n === 'number') {
+      $('#progressFill').style.width = ((n / TOTAL) * 100) + '%';
+      $('#progressInfo').textContent = n + ' of ' + TOTAL;
+    }
+  }
+
+  function select(el) {
+    const field = el.dataset.field;
+    D[field] = el.dataset.value;
+    el.closest('.options').querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    // Enable continue
+    const btn = el.closest('.step').querySelector('.btn-continue');
+    if (btn) btn.classList.remove('disabled');
+    // Auto-advance after brief delay
+    setTimeout(() => {
+      if (cur < TOTAL) next();
+      else if (cur === TOTAL) calculate();
+    }, 350);
+  }
+
+  function next() {
+    if (cur >= TOTAL) return;
+    cur++;
+    showStep(cur);
+  }
+  function prev() {
+    if (cur <= 1) return;
+    cur--;
+    showStep(cur);
+  }
+
+  function updateSqft(v) {
+    v = Math.max(500, Math.min(5000, +v));
+    D.sqft = v;
+    $('#sqftValue').textContent = v.toLocaleString();
+    $('#sqftInput').value = v;
+  }
+  function updateSqftFromInput(v) {
+    v = Math.max(500, Math.min(5000, +v));
+    D.sqft = v;
+    $('#sqftValue').textContent = v.toLocaleString();
+    $('#sqftSlider').value = v;
+  }
+
+  function restart() {
+    cur = 1;
+    Object.assign(D, { currentSystem:null, systemType:null, sqft:2000, stories:null, homeAge:null, insulation:null, windows:null, sun:null, ceiling:null });
+    $$('.opt').forEach(o => o.classList.remove('selected'));
+    ['next1','next2','next4','next5','next6','next7','next8','next9'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('disabled');
+    });
+    updateSqft(2000);
+    $$('.step').forEach(s => { s.classList.remove('active'); s.classList.remove('exit-up'); });
+    $('[data-step="1"]').classList.add('active');
+    $('#progressFill').style.width = '11%';
+    $('#progressInfo').textContent = '1 of 9';
+    window.scrollTo({ top: 0 });
+  }
+
+  // ===== KEYBOARD =====
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      const activeStep = $('.step.active');
+      const btn = activeStep?.querySelector('.btn-continue:not(.disabled)');
+      if (btn) btn.click();
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prev();
+  });
+
+  // ===== CALCULATION (same Manual J logic) =====
+  function calculate() {
+    // Show loading
+    showStep('loading');
+    $('#progressFill').style.width = '100%';
+    $('#progressInfo').textContent = '✓';
+
+    setTimeout(() => {
+      const sqft = D.sqft;
+      let btuPerSqft = 20; // Raleigh NC base
+
+      const insulationF = { good:.90, average:1.0, poor:1.15 };
+      const ageF = { new:.92, mid:1.0, old:1.10 };
+      const windowF = { few:.93, average:1.0, many:1.10 };
+      const sunF = { shade:.90, mixed:1.0, full:1.12 };
+      const ceilingF = { standard:1.0, high:1.10, vaulted:1.20 };
+      const storyF = { '1':1.0, '2':1.05, '3':1.10 };
+
+      btuPerSqft *= (insulationF[D.insulation]||1);
+      btuPerSqft *= (ageF[D.homeAge]||1);
+      btuPerSqft *= (windowF[D.windows]||1);
+      btuPerSqft *= (sunF[D.sun]||1);
+      btuPerSqft *= (ceilingF[D.ceiling]||1);
+      btuPerSqft *= (storyF[D.stories]||1);
+
+      const totalBTU = Math.round(sqft * btuPerSqft);
+      const rawTons = totalBTU / 12000;
+      const sizes = [1.5,2,2.5,3,3.5,4,5];
+      let tons = sizes[0];
+      for (let i = 0; i < sizes.length; i++) {
+        if (rawTons <= sizes[i] + 0.25) { tons = sizes[i]; break; }
+        if (i === sizes.length - 1) tons = sizes[i];
+      }
+      const nomBTU = tons * 12000;
+
+      const prices = {
+        heatpump: { 1.5:[5500,8500,11000], 2:[6000,9500,12500], 2.5:[6500,10500,14000], 3:[7500,12000,16000], 3.5:[8500,13500,18000], 4:[9500,15000,20000], 5:[11000,18000,24000] },
+        straightcool: { 1.5:[5000,8000,10500], 2:[5500,9000,12000], 2.5:[6000,10000,13500], 3:[7000,11500,15500], 3.5:[8000,13000,17500], 4:[9000,14500,19500], 5:[10500,17000,23000] }
+      };
+
+      const key = D.systemType === 'heatpump' ? 'heatpump' : 'straightcool';
+      const [pGood, pBetter, pBest] = prices[key][tons];
+      const isHP = D.systemType === 'heatpump';
+
+      // New install surcharge for no existing ductwork
+      const newInstallUp = (D.currentSystem === 'windowac' || D.currentSystem === 'none') ? 1.15 : 1.0;
+
+      // Populate results — MONTHLY is the hero number
+      $('#resultIcon').textContent = isHP ? '🔄' : '❄️🔥';
+      const startPrice = Math.round(pGood * newInstallUp / 100) * 100;
+      const monthlyEst = Math.round((pBetter * newInstallUp) / 120); // ~10yr estimate
+      $('#resultMonthly').innerHTML = '$' + monthlyEst + '<span style="font-size:.4em;color:var(--ice);font-weight:700;">/mo</span>';
+      $('#resultPrice').innerHTML = 'Total: Starting at $' + startPrice.toLocaleString();
+      $('#resultSystem').textContent = isHP ? 'Heat Pump System' : 'AC + Gas Furnace';
+      $('#resultSize').innerHTML = '<i class="fas fa-bolt"></i>&nbsp; ' + tons + ' Ton · ' + nomBTU.toLocaleString() + ' BTU/h cooling capacity';
+      $('#resultSqft').textContent = sqft.toLocaleString();
+      // Equipment image — use local Carrier unit photo
+      const eqImg = $('#resultEquipImg');
+      if (eqImg) eqImg.alt = isHP ? 'Carrier heat pump outdoor unit' : 'Carrier AC condenser unit';
+
+      // Financing
+      $('#financingAmount').textContent = 'As low as $' + monthlyEst + '/month';
+
+      // Tier cards
+      const tierData = [
+        {
+          name: 'Good', icon: '👍', price: pGood, badge: null,
+          features: isHP
+            ? [`${tons}-ton heat pump (15.2 SEER2)`, 'Standard air handler', 'Basic thermostat', '10-year parts warranty']
+            : [`${tons}-ton AC (15.2 SEER2)`, 'Gas furnace (80% AFUE)', 'Basic thermostat', '10-year parts warranty']
+        },
+        {
+          name: 'Better', icon: '⭐', price: pBetter, badge: 'Most Popular',
+          features: isHP
+            ? [`${tons}-ton heat pump (17+ SEER2)`, 'Variable-speed air handler', 'Smart WiFi thermostat', 'Enhanced warranty + maintenance']
+            : [`${tons}-ton AC (17+ SEER2)`, 'Gas furnace (96% AFUE)', 'Smart WiFi thermostat', 'Enhanced warranty + maintenance']
+        },
+        {
+          name: 'Best', icon: '🏆', price: pBest, badge: null,
+          features: isHP
+            ? [`${tons}-ton inverter heat pump (20+ SEER2)`, 'Variable-speed communicating AH', 'Premium smart thermostat + IAQ', 'Extended labor warranty + 2yr maint']
+            : [`${tons}-ton inverter AC (20+ SEER2)`, 'Modulating furnace (98% AFUE)', 'Premium smart thermostat + IAQ', 'Extended labor warranty + 2yr maint']
+        }
+      ];
+
+      const tierContainer = $('#tierCards');
+      tierContainer.innerHTML = '';
+      tierData.forEach((t, i) => {
+        const div = document.createElement('div');
+        div.className = 'tier' + (i === 1 ? ' recommended' : '');
+        const adjPrice = Math.round(t.price * newInstallUp / 100) * 100;
+        div.innerHTML = `
+          ${t.badge ? '<div class="tier-badge">' + t.badge + '</div>' : ''}
+          <div class="tier-header">
+            <div class="tier-name"><span class="tier-icon">${t.icon}</span> ${t.name}</div>
+            <div class="tier-price">Starting at $${adjPrice.toLocaleString()}</div>
+          </div>
+          <ul class="tier-features">${t.features.map(f => '<li><i class="fas fa-check"></i> ' + f + '</li>').join('')}</ul>
+        `;
+        tierContainer.appendChild(div);
+      });
+
+      // Efficiency
+      if (isHP) {
+        $('#resultEfficiency').innerHTML = `Upgrading to a modern ${tons}-ton heat pump can cut your energy bills by <strong>30–50%</strong> compared to a 10+ year old system. We recommend <strong>17+ SEER2</strong> for the best value in the Raleigh area.`;
+      } else {
+        $('#resultEfficiency').innerHTML = `A new ${tons}-ton high-efficiency system can reduce energy costs by <strong>25–40%</strong>. Pair a <strong>17+ SEER2</strong> AC with a <strong>96%+ AFUE</strong> furnace for optimal savings.`;
+      }
+
+      // Savings bars (animate after show)
+      setTimeout(() => {
+        $('#savingsOld').style.width = '100%';
+        $('#savingsOld').textContent = '$185/mo';
+        $('#savingsNew').style.width = '58%';
+        $('#savingsNew').textContent = '$108/mo';
+      }, 600);
+      $('#savingsNote').textContent = 'Estimated monthly energy cost comparison based on typical Raleigh, NC home';
+
+      // Show results
+      showStep('results');
+      launchConfetti();
+    }, 1500);
+  }
+
+  // ===== CONFETTI =====
+  function launchConfetti() {
+    const el = document.createElement('div');
+    el.className = 'celebration';
+    document.body.appendChild(el);
+    const colors = ['#00b4d8','#e8531e','#ff6b35','#90e0ef','#ffffff'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      c.style.left = Math.random() * 100 + '%';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.animationDelay = Math.random() * .8 + 's';
+      c.style.animationDuration = (1.5 + Math.random()) + 's';
+      c.style.width = (6 + Math.random() * 6) + 'px';
+      c.style.height = (6 + Math.random() * 6) + 'px';
+      el.appendChild(c);
+    }
+    setTimeout(() => el.remove(), 3500);
+  }
+</script>
+
+<script src="chat-widget.js"></script>
+</body>
+</html>

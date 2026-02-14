@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /seo-fix.py
+
+Sitemap: https://frostfirehvacr.com/sitemap.xml

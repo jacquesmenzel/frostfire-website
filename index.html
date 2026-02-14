@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frost Fire Heating & Cooling | HVAC Repair & Installation Clayton NC</title>
+  <meta name="description" content="Licensed HVAC contractor in Clayton, NC serving Raleigh, Durham & surrounding areas. AC repair, heating, heat pumps, commercial refrigeration. Same price on Sundays! Call (919) 230-4439.">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HVACBusiness",
+    "name": "Frost Fire Heating and Cooling",
+    "alternateName": "Frost Fire HVACR",
+    "url": "https://frostfirehvacr.com",
+    "telephone": "+19192304439",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Clayton",
+      "addressRegion": "NC",
+      "postalCode": "27520",
+      "addressCountry": "US"
+    },
+    "areaServed": ["Clayton, NC","Raleigh, NC","Durham, NC","Garner, NC","Fayetteville, NC"],
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "priceRange": "$$"
+  }
+  </script>
+  <style>
+    /* ============================================
+       FROST FIRE HVACR — PREMIUM WEBSITE
+       ============================================ */
+    
+    :root {
+      --primary: #0f2b4c;
+      --primary-light: #1a3d6e;
+      --accent: #e8531e;
+      --accent-hover: #ff6b35;
+      --ice: #00b4d8;
+      --ice-light: #90e0ef;
+      --ice-dark: #0077b6;
+      --dark: #0a1628;
+      --text: #2d3748;
+      --text-light: #718096;
+      --white: #ffffff;
+      --off-white: #f7fafc;
+      --gray-100: #edf2f7;
+      --gray-200: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06);
+      --shadow-lg: 0 20px 60px -15px rgba(0,0,0,.2);
+      --shadow-xl: 0 25px 80px -20px rgba(0,0,0,.25);
+      --radius: 16px;
+      --radius-sm: 8px;
+      --transition: all .3s cubic-bezier(.4,0,.2,1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; font-size: 16px; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      background: var(--white);
+    }
+
+    /* ---- UTILITY ---- */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .container-wide { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; }
+    .section-sm { padding: 60px 0; }
+    .text-center { text-align: center; }
+    .text-white { color: var(--white); }
+    
+    h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; line-height: 1.2; color: var(--primary); }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+    
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 640px;
+      margin: 0 auto 48px;
+    }
+    
+    .gradient-text {
+      color: var(--accent);
+    }
+
+    /* ---- BUTTONS ---- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(232,83,30,.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(232,83,30,.5);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,.15);
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,.3);
+      backdrop-filter: blur(10px);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,.25);
+      border-color: rgba(255,255,255,.6);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+    .btn-outline:hover {
+      background: var(--accent);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .btn-icon { font-size: 1.1rem; }
+
+    /* ---- TOP BAR ---- */
+    .top-bar {
+      background: var(--dark);
+      color: rgba(255,255,255,.8);
+      font-size: .85rem;
+      padding: 8px 0;
+      position: relative;
+      z-index: 1001;
+    }
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .top-bar-badges {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .top-bar-badges span { display: flex; align-items: center; gap: 6px; }
+    .top-bar-badges i { color: var(--ice); }
+    .top-bar-right a {
+      color: var(--ice-light);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* ---- HEADER ---- */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: var(--transition);
+      padding: 0;
+    }
+    .header.scrolled {
+      background: rgba(15,43,76,.97);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0,0,0,.15);
+    }
+    .header.scrolled .top-bar { display: none; }
+    
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--ice) 0%, var(--accent) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      font-weight: 900;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .logo-text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .logo-text small {
+      display: block;
+      font-weight: 400;
+      font-size: .7rem;
+      color: rgba(255,255,255,.6);
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: .95rem;
+      transition: var(--transition);
+      position: relative;
+    }
+    .nav-links a:hover { color: var(--ice-light); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--ice);
+      transition: var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+    
+    .nav-phone {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .nav-phone i {
+      width: 40px;
+      height: 40px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      animation: pulse-ring 2s infinite;
+    }
+    
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--dark);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('images/family-comfort.jpg') center/cover no-repeat;
+      opacity: .3;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10,22,40,.95) 0%, rgba(15,43,76,.8) 50%, rgba(0,180,216,.3) 100%);
+    }
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .hero-particles span {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--ice);
+      border-radius: 50%;
+      opacity: 0;
+      animation: float-particle 6s infinite;
+    }
+    .hero-particles span:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+    .hero-particles span:nth-child(2) { left: 30%; top: 60%; animation-delay: 1s; }
+    .hero-particles span:nth-child(3) { left: 50%; top: 30%; animation-delay: 2s; }
+    .hero-particles span:nth-child(4) { left: 70%; top: 70%; animation-delay: 3s; }
+    .hero-particles span:nth-child(5) { left: 85%; top: 40%; animation-delay: 4s; }
+    .hero-particles span:nth-child(6) { left: 20%; top: 80%; animation-delay: 1.5s; }
+    .hero-particles span:nth-child(7) { left: 60%; top: 15%; animation-delay: 2.5s; }
+    .hero-particles span:nth-child(8) { left: 90%; top: 85%; animation-delay: 3.5s; }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      padding: 140px 0 100px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,180,216,.15);
+      border: 1px solid rgba(0,180,216,.3);
+      color: var(--ice-light);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: .85rem;
+      font-weight: 500;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      color: var(--white);
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+    .hero h1 .highlight {
+      color: var(--accent);
+    }
+    .hero-desc {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,.75);
+      margin-bottom: 36px;
+      line-height: 1.8;
+      max-width: 560px;
+    }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+    
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      text-align: left;
+    }
+    .hero-stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: .85rem;
+      color: rgba(255,255,255,.5);
+      margin-top: 4px;
+    }
+
+    /* ---- TRUST BAR ---- */
+    .trust-bar {
+      background: var(--white);
+      padding: 0;
+      position: relative;
+      z-index: 10;
+      margin-top: -60px;
+    }
+    .trust-bar-inner {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-xl);
+      padding: 36px 48px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-item i {
+      font-size: 2rem;
+      color: var(--accent);
+    }
+    .trust-item strong {
+      font-size: .9rem;
+      color: var(--primary);
+    }
+    .trust-item span {
+      font-size: .8rem;
+      color: var(--text-light);
+    }
+
+    /* ---- SERVICES ---- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid rgba(255,255,255,0.08);
+      min-height: 300px;
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(15,34,52,0.93) 0%, rgba(27,58,92,0.88) 50%, rgba(232,83,30,0.15) 100%);
+      z-index: 1;
+      transition: var(--transition);
+    }
+    .service-card > * { position: relative; z-index: 2; }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+      border-color: var(--accent);
+    }
+    .service-card:hover::before {
+      background: linear-gradient(160deg, rgba(15,34,52,0.85) 0%, rgba(27,58,92,0.78) 50%, rgba(232,83,30,0.25) 100%);
+    }
+    
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: rgba(232,83,30,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      transition: var(--transition);
+      color: #E8531E;
+    }
+    .service-card:hover .service-icon {
+      background: var(--accent);
+      color: white;
+      transform: scale(1.1);
+    }
+    .service-card h3 { margin-bottom: 12px; color: #fff; font-size: 1.2rem; }
+    .service-card p { color: rgba(255,255,255,0.8); font-size: .95rem; line-height: 1.7; }
+    .service-card .learn-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #E8531E;
+      font-weight: 600;
+      margin-top: 16px;
+      text-decoration: none;
+      font-size: .95rem;
+      transition: var(--transition);
+    }
+    .service-card .learn-more:hover { gap: 12px; color: #ff7043; }
+
+    /* ---- WHY CHOOSE US ---- */
+    .why-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .why-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,180,216,.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .why-section::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(232,83,30,.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .why-content h2 { color: var(--white); }
+    .why-content .section-subtitle { color: rgba(255,255,255,.6); margin: 0 0 36px; }
+    
+    .why-list { display: flex; flex-direction: column; gap: 24px; }
+    .why-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .why-item-icon {
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      border-radius: 16px;
+      background: rgba(0,180,216,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--ice);
+    }
+    .why-item h4 { color: var(--white); margin-bottom: 4px; font-family: 'Inter', sans-serif; font-weight: 600; }
+    .why-item p { color: rgba(255,255,255,.6); font-size: .9rem; }
+    
+    .why-image {
+      position: relative;
+    }
+    .why-image img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-xl);
+    }
+    .why-image-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: white;
+      padding: 20px 28px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+    }
+    .why-image-badge .number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .why-image-badge .label {
+      font-size: .8rem;
+      opacity: .9;
+    }
+
+    /* ---- STATS / COUNTERS ---- */
+    .stats-section {
+      background: var(--off-white);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    .stat-card {
+      text-align: center;
+      padding: 40px 24px;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      margin-top: 8px;
+      color: var(--text-light);
+      font-size: .95rem;
+    }
+
+    /* ---- REVIEWS / TESTIMONIALS ---- */
+    .reviews-section { background: var(--white); }
+    .reviews-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .reviews-track {
+      display: flex;
+      transition: transform .5s cubic-bezier(.4,0,.2,1);
+    }
+    .review-card {
+      min-width: 100%;
+      padding: 0 12px;
+    }
+    @media(min-width:900px) { .review-card { min-width: 50%; } }
+    @media(min-width:1200px) { .review-card { min-width: 33.333%; } }
+    
+    .review-card-inner {
+      background: var(--off-white);
+      border-radius: var(--radius);
+      padding: 36px;
+      height: 100%;
+      border: 1px solid var(--gray-200);
+      transition: var(--transition);
+    }
+    .review-card-inner:hover {
+      border-color: var(--ice);
+      box-shadow: var(--shadow-lg);
+    }
+    .review-stars { color: #fbbf24; font-size: 1.1rem; margin-bottom: 16px; }
+    .review-text {
+      font-size: .95rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .review-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--ice), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .review-author-name { font-weight: 600; color: var(--primary); }
+    .review-author-loc { font-size: .8rem; color: var(--text-light); }
+    
+    .review-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .review-nav button {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--gray-200);
+      background: var(--white);
+      color: var(--primary);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 1rem;
+    }
+    .review-nav button:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    /* ---- SERVICE AREAS MAP ---- */
+    .map-section {
+      background: var(--off-white);
+    }
+    .map-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .map-areas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .area-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--gray-200);
+      font-weight: 500;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+    .area-tag:hover {
+      border-color: var(--ice);
+      background: rgba(0,180,216,.05);
+      transform: translateX(4px);
+    }
+    .area-tag i { color: var(--ice); }
+    
+    .map-embed {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      height: 400px;
+    }
+    .map-embed iframe { width: 100%; height: 100%; border: none; }
+
+    /* ---- CTA BANNER ---- */
+    .cta-section {
+      background: linear-gradient(135deg, var(--accent) 0%, #d4451a 50%, var(--accent-hover) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: rgba(255,255,255,.08);
+      border-radius: 50%;
+    }
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -50px;
+      width: 300px;
+      height: 300px;
+      background: rgba(255,255,255,.05);
+      border-radius: 50%;
+    }
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 80px 0;
+    }
+    .cta-content h2 {
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .cta-content p {
+      color: rgba(255,255,255,.85);
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: var(--white);
+      color: var(--accent);
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(0,0,0,.15);
+    }
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.2);
+    }
+
+    /* ---- FOOTER ---- */
+    .footer {
+      background: var(--dark);
+      color: rgba(255,255,255,.7);
+      padding: 80px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .footer-brand .logo { margin-bottom: 16px; }
+    .footer-brand p { font-size: .9rem; line-height: 1.8; max-width: 300px; }
+    .footer-social { display: flex; gap: 12px; margin-top: 20px; }
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.7);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .footer-social a:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+    
+    .footer h4 {
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+    .footer ul { list-style: none; }
+    .footer ul li { margin-bottom: 10px; }
+    .footer ul a {
+      color: rgba(255,255,255,.6);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: var(--transition);
+    }
+    .footer ul a:hover { color: var(--ice-light); padding-left: 4px; }
+    
+    .footer-contact li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-contact i { color: var(--ice); width: 16px; }
+    
+    .footer-bottom {
+      padding: 24px 0;
+      text-align: center;
+      font-size: .85rem;
+      color: rgba(255,255,255,.4);
+    }
+
+    /* ---- FLOATING CTA (MOBILE) ---- */
+    .floating-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: var(--accent);
+      padding: 12px 24px;
+      box-shadow: 0 -4px 20px rgba(0,0,0,.2);
+    }
+    .floating-cta a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* ---- ANIMATIONS ---- */
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(232,83,30,.4); }
+      70% { box-shadow: 0 0 0 12px rgba(232,83,30,0); }
+      100% { box-shadow: 0 0 0 0 rgba(232,83,30,0); }
+    }
+    @keyframes float-particle {
+      0% { opacity: 0; transform: translateY(0) scale(1); }
+      25% { opacity: .8; }
+      50% { opacity: .4; transform: translateY(-100px) scale(1.5); }
+      75% { opacity: .6; }
+      100% { opacity: 0; transform: translateY(-200px) scale(0.5); }
+    }
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slide-in-left {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .animate { opacity: 0; transform: translateY(30px); transition: all .7s cubic-bezier(.4,0,.2,1); }
+    .animate.visible { opacity: 1; transform: translateY(0); }
+    .animate-delay-1 { transition-delay: .1s; }
+    .animate-delay-2 { transition-delay: .2s; }
+    .animate-delay-3 { transition-delay: .3s; }
+    .animate-delay-4 { transition-delay: .4s; }
+
+    /* ---- SUNDAY SPECIAL BANNER ---- */
+    .sunday-banner {
+      background: linear-gradient(90deg, var(--ice-dark), var(--ice), var(--ice-dark));
+      padding: 48px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .sunday-banner::before {
+      content: '📅';
+      position: absolute;
+      font-size: 8rem;
+      opacity: .08;
+      top: 50%;
+      left: 5%;
+      transform: translateY(-50%);
+    }
+    .sunday-banner h2 { color: var(--white); }
+    .sunday-banner p { color: rgba(255,255,255,.9); font-size: 1.1rem; max-width: 600px; margin: 12px auto 0; }
+
+    /* ---- GALLERY ---- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15,43,76,.5) 0%, transparent 50%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .gallery-item:hover::after { opacity: 1; }
+
+    /* ---- TRUSTED BRANDS ---- */
+    .brands-section {
+      background: var(--white);
+      padding: 60px 0;
+    }
+    .brands-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .brands-tag {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: 2px;
+    }
+    .brands-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+    }
+    .brand-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 92px;
+      padding: 18px;
+      background: var(--off-white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+    .brand-card:hover {
+      border-color: rgba(15,43,76,.28);
+      box-shadow: 0 8px 20px rgba(15,43,76,.1);
+      transform: translateY(-2px);
+    }
+    .brand-logo {
+      height: 40px;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      filter: grayscale(1);
+      opacity: .86;
+      transition: var(--transition);
+    }
+    .brand-card:hover .brand-logo {
+      filter: grayscale(.3);
+      opacity: 1;
+    }
+    .brand-fallback {
+      display: none;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: .08em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+    .brand-card.is-fallback .brand-fallback {
+      display: inline-block;
+    }
+
+    /* ---- MOBILE MENU ---- */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,22,40,.98);
+      z-index: 9999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--ice); }
+    .mobile-menu-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1024px) {
+      .why-grid, .map-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .trust-bar-inner { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-phone { display: none; }
+      .mobile-toggle { display: block; }
+      .hero-content { padding: 160px 0 80px; }
+      .hero h1 { font-size: 2rem; }
+      .hero-stats { gap: 24px; }
+      .trust-bar { margin-top: -30px; }
+      .trust-bar-inner {
+        grid-template-columns: 1fr 1fr;
+        padding: 24px;
+        gap: 16px;
+      }
+      .services-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .map-areas { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .brands-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-grid { grid-template-columns: 1fr; }
+      .section { padding: 64px 0; }
+      .floating-cta { display: block; }
+      body { padding-bottom: 56px; }
+      .container { padding: 0 20px; }
+      .container-wide { padding: 0 20px; }
+      .top-bar .container { padding: 0 16px; }
+      .top-bar-badges { gap: 12px; font-size: .75rem; }
+      .nav { padding: 12px 20px; }
+    }
+    @media (max-width: 480px) {
+      .trust-bar-inner { grid-template-columns: 1fr; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn { width: 100%; justify-content: center; }
+      .hero-content { padding: 180px 0 60px; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero-desc { font-size: 1rem; }
+      .brands-grid { grid-template-columns: 1fr; }
+      .container { padding: 0 16px; }
+    }
+  </style>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Frost Fire Heating & Cooling | HVAC Repair & Installation Clayton NC">
+  <meta property="og:description" content="Licensed HVAC contractor in Clayton, NC serving Raleigh, Durham & surrounding areas. AC repair, heating, heat pumps, commercial refrigeration. Same price on Sundays! Call (919) 230-4439.">
+  <meta property="og:url" content="https://frostfirehvacr.com/">
+  <meta property="og:site_name" content="Frost Fire Heating & Cooling">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1642749776312-aa42ce20c9f5?w=1200&q=80">
+  <meta property="og:locale" content="en_US">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Frost Fire Heating & Cooling | HVAC Repair & Installation Clayton NC">
+  <meta name="twitter:description" content="Licensed HVAC contractor in Clayton, NC serving Raleigh, Durham & surrounding areas. AC repair, heating, heat pumps, commercial refrigeration. Same price on Sundays! Call (919) 230-4439.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1642749776312-aa42ce20c9f5?w=1200&q=80">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://frostfirehvacr.com/">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="top-bar">
+      <div class="container" style="max-width:1400px">
+        <div class="top-bar-badges">
+          <span><i class="fas fa-shield-halved"></i> Licensed & Insured</span>
+          <span><i class="fas fa-calendar-check"></i> Same Price on Sundays!</span>
+          <span><i class="fas fa-bolt"></i> 24/7 Emergency Service</span>
+        </div>
+        <div class="top-bar-right">
+          <a href="tel:9192304439"><i class="fas fa-phone"></i> (919) 230-4439</a>
+        </div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="/" class="logo">
+        <img src="images/logo.svg" alt="Frost Fire Heating & Cooling" style="height: 48px; width: auto;">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#areas">Service Areas</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="tel:9192304439" class="nav-phone">
+        <i class="fas fa-phone"></i>
+        <span>(919) 230-4439</span>
+      </a>
+      <button class="mobile-toggle" onclick="document.getElementById('mobileMenu').classList.add('active')">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="this.parentElement.classList.remove('active')">
+      <i class="fas fa-times"></i>
+    </button>
+    <a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
+    <a href="#why-us" onclick="this.parentElement.classList.remove('active')">Why Us</a>
+    <a href="#reviews" onclick="this.parentElement.classList.remove('active')">Reviews</a>
+    <a href="#areas" onclick="this.parentElement.classList.remove('active')">Service Areas</a>
+    <a href="contact.html" onclick="this.parentElement.classList.remove('active')">Contact</a>
+    <a href="tel:9192304439" class="btn btn-primary" style="margin-top:12px">
+      <i class="fas fa-phone"></i> Call Now
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-particles">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-snowflake"></i>
+        Clayton's Trusted HVAC & Refrigeration Experts
+      </div>
+      <h1>
+        Your Comfort.<br>
+        <span class="highlight">Our Mission.</span>
+      </h1>
+      <p class="hero-desc">
+        Residential & commercial heating, cooling, and refrigeration. Expert service 7 days a week — with <strong style="color:var(--ice-light)">no weekend upcharge.</strong>
+      </p>
+      <div class="hero-buttons">
+        <a href="tel:9192304439" class="btn btn-primary">
+          <i class="fas fa-phone btn-icon"></i> Call (919) 230-4439
+        </a>
+        <a href="#services" class="btn btn-secondary">
+          <i class="fas fa-wrench btn-icon"></i> Explore Services
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-number" data-target="24">0</div>
+          <div class="hero-stat-label">Hour Availability</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number" data-target="7">0</div>
+          <div class="hero-stat-label">Days a Week</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number">$0</div>
+          <div class="hero-stat-label">Sunday Surcharge</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-number" data-target="100">0<span style="font-size:1.5rem">%</span></div>
+          <div class="hero-stat-label">Satisfaction Goal</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-bar-inner animate">
+        <div class="trust-item">
+          <i class="fas fa-shield-halved"></i>
+          <strong>Licensed & Insured</strong>
+          <span>NC Licensed Contractor</span>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-calendar-check"></i>
+          <strong>Same Price Sundays</strong>
+          <span>No Weekend Surcharges</span>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-star"></i>
+          <strong>5-Star Rated</strong>
+          <span>Trusted by Our Community</span>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-clock"></i>
+          <strong>24/7 Emergency</strong>
+          <span>Always Here for You</span>
+        </div>
+        <div class="trust-item">
+          <i class="fas fa-building"></i>
+          <strong>Residential & Commercial</strong>
+          <span>Homes & Businesses</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="text-center animate">
+        <h2>Our <span class="gradient-text">Services</span></h2>
+        <p class="section-subtitle">From keeping your family comfortable to keeping your restaurant's walk-in cooler running — Frost Fire handles it all.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card animate animate-delay-1" style="background-image:url('https://images.unsplash.com/photo-1642749776312-aa42ce20c9f5?w=600&q=70')">
+          <div class="service-icon"><i class="fas fa-snowflake"></i></div>
+          <h3>AC Repair & Service</h3>
+          <p>Fast, reliable air conditioning repair for homes and businesses. All brands serviced with same-day availability.</p>
+          <a href="services/ac-repair.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card animate animate-delay-2" style="background-image:url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=70')">
+          <div class="service-icon"><i class="fas fa-plus-circle"></i></div>
+          <h3>AC Installation & Replacement</h3>
+          <p>New energy-efficient AC systems from top brands. Expert sizing, installation, and setup for lasting comfort.</p>
+          <a href="services/ac-installation.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card animate animate-delay-3" style="background-image:url('https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=600&q=70')">
+          <div class="service-icon"><i class="fas fa-fire"></i></div>
+          <h3>Heating Repair</h3>
+          <p>Furnace not working? We diagnose and repair all heating systems quickly to keep your family warm.</p>
+          <a href="services/heating-repair.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card animate animate-delay-1" style="background-image:url('https://images.unsplash.com/photo-1628744876497-eb30460be9f6?w=600&q=70')">
+          <div class="service-icon"><i class="fas fa-fire-flame-curved"></i></div>
+          <h3>Furnace Installation</h3>
+          <p>New furnace installation and replacement. High-efficiency gas and electric furnaces for NC winters.</p>
+          <a href="services/furnace-installation.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card animate animate-delay-2" style="background-image:url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=70')">
+          <div class="service-icon"><i class="fas fa-wind"></i></div>
+          <h3>Heat Pump Services</h3>
+          <p>Energy-efficient year-round comfort. Installation, repair, and maintenance for all heat pump systems.</p>
+          <a href="services/heat-pump.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card animate animate-delay-3" style="background-image:url('https://images.unsplash.com/photo-1698479603408-1a66a6d9e80f?w=600&q=70')">
+          <div class="service-icon"><i class="fas fa-temperature-arrow-down"></i></div>
+          <h3>Mini-Split Installation</h3>
+          <p>Ductless solutions for additions, garages, sunrooms, and older homes. Zone control for maximum comfort.</p>
+          <a href="services/mini-split.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card animate animate-delay-1" style="background-image:url('https://images.unsplash.com/photo-1614447413576-b346c641c128?w=600&q=70')">
+          <div class="service-icon"><i class="fas fa-building"></i></div>
+          <h3>Commercial HVAC & Refrigeration</h3>
+          <p>Rooftop units, walk-in coolers, freezers, restaurant ventilation. Protecting your business 24/7.</p>
+          <a href="services/commercial.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card animate animate-delay-2" style="background-image:url('https://images.unsplash.com/photo-1558358235-a0a93f68a52c?w=600&q=70')">
+          <div class="service-icon"><i class="fas fa-truck-medical"></i></div>
+          <h3>Emergency Repair</h3>
+          <p>HVAC emergency? We're here day and night. Same honest pricing any day of the week — including Sundays.</p>
+          <a href="services/emergency.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card animate animate-delay-3" style="background-image:url('https://images.unsplash.com/photo-1637971821576-f42fa65cd79c?w=600&q=70')">
+          <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+          <h3>Maintenance Plans</h3>
+          <p>Prevent breakdowns, lower energy bills, and extend your system's life with scheduled tune-ups.</p>
+          <a href="services/maintenance.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card animate animate-delay-1" style="background-image:url('https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=600&q=70')">
+          <div class="service-icon"><i class="fas fa-wind"></i></div>
+          <h3>Ductwork Services</h3>
+          <p>Duct sealing, repair, and installation. Fix leaky ducts to improve airflow, efficiency, and air quality.</p>
+          <a href="services/ductwork.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card animate animate-delay-2" style="background-image:url('https://images.unsplash.com/photo-1558358235-a0a93f68a52c?w=600&q=70')">
+          <div class="service-icon"><i class="fas fa-temperature-half"></i></div>
+          <h3>Smart Thermostats</h3>
+          <p>Nest, Ecobee, Honeywell installation and setup. WiFi thermostats and zoning controls for smarter comfort.</p>
+          <a href="services/thermostat.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="service-card animate animate-delay-3" style="background-image:url('https://images.unsplash.com/photo-1642749776312-aa42ce20c9f5?w=600&q=70')">
+          <div class="service-icon"><i class="fas fa-lungs"></i></div>
+          <h3>Indoor Air Quality</h3>
+          <p>UV lights, air purifiers, humidity control, and filtration. Breathe cleaner, healthier air every day.</p>
+          <a href="services/indoor-air-quality.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS WE SERVICE -->
+  <section class="section brands-section">
+    <div class="container">
+      <div class="brands-header">
+        <span class="brands-tag">Trusted Brands</span>
+        <h2 style="color:var(--primary);margin-top:8px">We Install & Service All Major Brands</h2>
+      </div>
+      <div class="brands-grid" aria-label="Brands we install and service">
+        <div class="brand-card">
+          <img class="brand-logo" src="images/lennox-logo.svg" alt="Lennox logo" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.add('is-fallback');">
+          <span class="brand-fallback">Lennox</span>
+        </div>
+        <div class="brand-card">
+          <img class="brand-logo" src="images/carrier-logo.svg" alt="Carrier logo" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.add('is-fallback');">
+          <span class="brand-fallback">Carrier</span>
+        </div>
+        <div class="brand-card">
+          <img class="brand-logo" src="images/goodman-logo.svg" alt="Goodman logo" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.add('is-fallback');">
+          <span class="brand-fallback">Goodman</span>
+        </div>
+        <div class="brand-card">
+          <img class="brand-logo" src="images/trane-logo.svg" alt="Trane logo" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.add('is-fallback');">
+          <span class="brand-fallback">Trane</span>
+        </div>
+        <div class="brand-card">
+          <img class="brand-logo" src="images/rheem-logo.svg" alt="Rheem logo" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.add('is-fallback');">
+          <span class="brand-fallback">Rheem</span>
+        </div>
+        <div class="brand-card">
+          <img class="brand-logo" src="images/york-logo.svg" alt="York logo" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.add('is-fallback');">
+          <span class="brand-fallback">York</span>
+        </div>
+        <div class="brand-card">
+          <img class="brand-logo" src="images/amana-logo.svg" alt="Amana logo" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.add('is-fallback');">
+          <span class="brand-fallback">Amana</span>
+        </div>
+        <div class="brand-card">
+          <img class="brand-logo" src="images/daikin-logo.svg" alt="Daikin logo" loading="lazy" onerror="this.hidden=true;this.parentElement.classList.add('is-fallback');">
+          <span class="brand-fallback">Daikin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUNDAY SPECIAL -->
+  <section class="sunday-banner animate">
+    <div class="container" style="position:relative;z-index:2">
+      <h2>🗓️ Same Great Price on Sundays</h2>
+      <p>Other companies charge extra for weekend service. We don't. Your HVAC emergency doesn't check the calendar — neither do our rates.</p>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="why-section section" id="why-us">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-content animate">
+          <h2>Why Clayton Chooses <span style="color:var(--ice)">Frost Fire</span></h2>
+          <p class="section-subtitle">We're not just another HVAC company. We're your neighbors — committed to honest work, fair pricing, and treating your home like our own.</p>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-item-icon"><i class="fas fa-dollar-sign"></i></div>
+              <div>
+                <h4>Transparent, Honest Pricing</h4>
+                <p>No hidden fees. No surprise charges. We explain the problem, present your options, and let you decide — no pressure.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-icon"><i class="fas fa-store"></i></div>
+              <div>
+                <h4>Residential & Commercial Experts</h4>
+                <p>From single-family homes to restaurant kitchens — heating, cooling, AND refrigeration. The "R" in HVACR sets us apart.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-icon"><i class="fas fa-certificate"></i></div>
+              <div>
+                <h4>Licensed, Insured & Experienced</h4>
+                <p>Our technicians are trained professionals who treat your property with respect. Quality workmanship guaranteed.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-icon"><i class="fas fa-heart"></i></div>
+              <div>
+                <h4>Locally Owned & Operated</h4>
+                <p>We live and work in Clayton. When you call Frost Fire, you're supporting a local family business — not a faceless corporation.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why-image animate">
+          <img src="images/modern-home.jpg" alt="Beautiful modern home with HVAC system" loading="lazy">
+          <div class="why-image-badge">
+            <div class="number">7</div>
+            <div class="label">Days a Week<br>Same Price</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section section-sm">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card animate">
+          <div class="stat-number" data-target="24">0</div>
+          <div class="stat-label">Hour Availability</div>
+        </div>
+        <div class="stat-card animate animate-delay-1">
+          <div class="stat-number" data-target="7">0</div>
+          <div class="stat-label">Days a Week Service</div>
+        </div>
+        <div class="stat-card animate animate-delay-2">
+          <div class="stat-number" data-target="100">0%</div>
+          <div class="stat-label">Satisfaction Commitment</div>
+        </div>
+        <div class="stat-card animate animate-delay-3">
+          <div class="stat-number">5 ★</div>
+          <div class="stat-label">Star-Rated Service</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="text-center animate" style="margin-bottom:36px">
+        <h2>Our <span class="gradient-text">Work</span></h2>
+        <p class="section-subtitle">Professional installations and repairs for homes and businesses across the Triangle.</p>
+      </div>
+      <div class="gallery-grid animate">
+        <div class="gallery-item"><img src="images/ac-unit.jpg" alt="Modern AC unit installation" loading="lazy"></div>
+        <div class="gallery-item"><img src="images/technician.jpg" alt="HVAC technician at work" loading="lazy"></div>
+        <div class="gallery-item"><img src="images/living-room.jpg" alt="Comfortable living room" loading="lazy"></div>
+        <div class="gallery-item"><img src="images/thermostat.jpg" alt="Smart thermostat" loading="lazy"></div>
+        <div class="gallery-item"><img src="images/commercial-building.jpg" alt="Commercial HVAC building" loading="lazy"></div>
+        <div class="gallery-item"><img src="images/snow-house.jpg" alt="Home in winter needing heating" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section section" id="reviews">
+    <div class="container">
+      <div class="text-center animate">
+        <h2>What Our Customers <span class="gradient-text">Say</span></h2>
+        <p class="section-subtitle">Real reviews from real customers in the Clayton and Triangle area.</p>
+      </div>
+      <div class="reviews-container animate">
+        <div class="reviews-track" id="reviewsTrack">
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">"Called on a Sunday expecting to pay extra — nope! Same fair price. The technician was professional, explained everything, and had our AC running in under an hour. Frost Fire is our go-to from now on."</p>
+              <div class="review-author">
+                <div class="review-avatar">JM</div>
+                <div>
+                  <div class="review-author-name">James M.</div>
+                  <div class="review-author-loc">Clayton, NC</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">"Our walk-in cooler went down on a Friday night. Frost Fire came out first thing Saturday and saved thousands of dollars in inventory. Can't recommend them enough for restaurant owners."</p>
+              <div class="review-author">
+                <div class="review-avatar">TP</div>
+                <div>
+                  <div class="review-author-name">Tony P.</div>
+                  <div class="review-author-loc">Raleigh, NC</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">"Honest, affordable, and reliable. They diagnosed the issue with our furnace quickly and didn't try to upsell us on a new system. Refreshing to find an HVAC company you can actually trust."</p>
+              <div class="review-author">
+                <div class="review-avatar">SR</div>
+                <div>
+                  <div class="review-author-name">Sarah R.</div>
+                  <div class="review-author-loc">Garner, NC</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">"Had a mini-split installed in our garage workshop. The team was fast, clean, and the price was very fair. The system works perfectly — garage is comfortable year-round now!"</p>
+              <div class="review-author">
+                <div class="review-avatar">DK</div>
+                <div>
+                  <div class="review-author-name">David K.</div>
+                  <div class="review-author-loc">Durham, NC</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">"Emergency heating repair on a cold January night. They answered the phone immediately and had someone here within the hour. Our family was warm again before bedtime. Lifesavers!"</p>
+              <div class="review-author">
+                <div class="review-avatar">LW</div>
+                <div>
+                  <div class="review-author-name">Lisa W.</div>
+                  <div class="review-author-loc">Fayetteville, NC</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-card-inner">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">"We switched from a big-name company to Frost Fire and the difference is night and day. Personal service, fair pricing, and they actually show up on time. Highly recommended."</p>
+              <div class="review-author">
+                <div class="review-avatar">MJ</div>
+                <div>
+                  <div class="review-author-name">Mike J.</div>
+                  <div class="review-author-loc">Smithfield, NC</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="review-nav">
+          <button onclick="slideReviews(-1)" aria-label="Previous reviews"><i class="fas fa-chevron-left"></i></button>
+          <button onclick="slideReviews(1)" aria-label="Next reviews"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREAS -->
+  <section class="map-section section" id="areas">
+    <div class="container">
+      <div class="text-center animate" style="margin-bottom:48px">
+        <h2>Proudly Serving the <span class="gradient-text">Triangle & Beyond</span></h2>
+        <p class="section-subtitle">Based in Clayton, NC — we serve homeowners and businesses within a 45-60 minute radius.</p>
+      </div>
+      <div class="map-grid">
+        <div class="animate">
+          <div class="map-areas">
+            <a href="service-areas/clayton-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Clayton, NC <strong style="color:var(--accent);margin-left:auto;font-size:.75rem">HQ</strong></a>
+            <a href="service-areas/raleigh-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Raleigh, NC</a>
+            <a href="service-areas/durham-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Durham, NC</a>
+            <a href="service-areas/garner-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Garner, NC</a>
+            <a href="service-areas/fayetteville-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Fayetteville, NC</a>
+            <a href="service-areas/smithfield-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Smithfield, NC</a>
+            <a href="service-areas/apex-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Apex, NC</a>
+            <a href="service-areas/cary-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Cary, NC</a>
+            <a href="service-areas/holly-springs-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Holly Springs, NC</a>
+            <a href="service-areas/fuquay-varina-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Fuquay-Varina, NC</a>
+          </div>
+          <p style="margin-top:24px;color:var(--text-light);font-size:.95rem">
+            <i class="fas fa-info-circle" style="color:var(--ice)"></i>
+            Don't see your city? Call us — we likely serve your area too!
+          </p>
+        </div>
+        <div class="map-embed animate">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207647.54959975798!2d-78.8!3d35.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ac5a2f9f51e0bb%3A0x6790b6528a11f0ad!2sClayton%2C%20NC!5e0!3m2!1sen!2sus!4v1707000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST ARTICLES -->
+  <style>
+    .blog-section { padding: 80px 0; background: #0a1628; }
+    .blog-section h2 { text-align: center; color: #fff; font-size: 2rem; margin-bottom: 12px; }
+    .blog-section .section-sub { text-align: center; color: #94a3b8; margin-bottom: 48px; font-size: 1.1rem; }
+    .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .blog-card { background: #111d33; border-radius: 12px; padding: 32px; border: 1px solid rgba(255,255,255,0.06); transition: transform .3s, border-color .3s; }
+    .blog-card:hover { transform: translateY(-4px); border-color: #f37021; }
+    .blog-card h3 { color: #fff; font-size: 1.2rem; margin-bottom: 12px; line-height: 1.4; }
+    .blog-card p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 16px; }
+    .blog-card a { color: #f37021; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+    .blog-card a:hover { text-decoration: underline; }
+    @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } .blog-section { padding: 60px 0; } }
+  </style>
+  <section class="blog-section">
+    <div class="container">
+      <h2>Latest from Our Blog</h2>
+      <p class="section-sub">Expert HVAC tips to keep your home comfortable year-round</p>
+      <div class="blog-grid">
+        <div class="blog-card">
+          <h3>Heat Pump vs. Gas Furnace in NC — Which Is Best?</h3>
+          <p>Choosing between a heat pump and gas furnace? We break down costs, efficiency, and which option works best for North Carolina's climate.</p>
+          <a href="blog/heat-pump-vs-gas-furnace.html">Read More →</a>
+        </div>
+        <div class="blog-card">
+          <h3>5 Signs Your Furnace Needs Repair This Winter</h3>
+          <p>Strange noises, rising bills, or uneven heating? Here are five warning signs your furnace is telling you it needs professional attention.</p>
+          <a href="blog/5-signs-furnace-needs-repair.html">Read More →</a>
+        </div>
+        <div class="blog-card">
+          <h3>10 Ways to Save Money on Energy Bills</h3>
+          <p>Simple HVAC adjustments and maintenance habits that can significantly lower your monthly energy costs without sacrificing comfort.</p>
+          <a href="blog/save-money-energy-bills-hvac-tips.html">Read More →</a>
+        </div>
+        <div class="blog-card">
+          <h3>Spring AC Tune-Up Checklist</h3>
+          <p>Get your air conditioner ready for summer with this essential maintenance checklist. Prevent breakdowns before the heat arrives.</p>
+          <a href="blog/spring-ac-tune-up-checklist.html">Read More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready for Reliable HVAC Service?</h2>
+        <p>Whether it's a routine tune-up or an emergency repair, Frost Fire is here for you — any day of the week, at the same great price.</p>
+        <div class="cta-buttons">
+          <a href="tel:9192304439" class="btn-white">
+            <i class="fas fa-phone"></i> Call (919) 230-4439
+          </a>
+          <a href="contact.html" class="btn btn-secondary" style="border-color:rgba(255,255,255,.5)">
+            <i class="fas fa-calendar-alt"></i> Schedule Online
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <img src="images/logo-white.svg" alt="Frost Fire Heating & Cooling" style="height: 48px; width: auto;">
+          </a>
+          <p>Locally owned and operated HVAC and refrigeration company based in Clayton, NC. Residential and commercial service with no weekend surcharges — because your comfort shouldn't cost more on a Sunday.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+            <a href="#" aria-label="Yelp"><i class="fab fa-yelp"></i></a>
+            <a href="#" aria-label="Nextdoor"><i class="fas fa-house-chimney"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services/ac-repair.html">AC Repair & Service</a></li>
+            <li><a href="services/ac-installation.html">AC Installation</a></li>
+            <li><a href="services/heating-repair.html">Heating Repair</a></li>
+            <li><a href="services/furnace-installation.html">Furnace Installation</a></li>
+            <li><a href="services/heat-pump.html">Heat Pump Services</a></li>
+            <li><a href="services/mini-split.html">Mini-Split Installation</a></li>
+            <li><a href="services/commercial.html">Commercial HVAC</a></li>
+            <li><a href="services/emergency.html">Emergency Repair</a></li>
+            <li><a href="services/maintenance.html">Maintenance Plans</a></li>
+            <li><a href="services/ductwork.html">Ductwork Services</a></li>
+            <li><a href="services/thermostat.html">Smart Thermostats</a></li>
+            <li><a href="services/indoor-air-quality.html">Indoor Air Quality</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Service Areas</h4>
+          <ul>
+            <li><a href="service-areas/clayton-nc.html">Clayton, NC</a></li>
+            <li><a href="service-areas/raleigh-nc.html">Raleigh, NC</a></li>
+            <li><a href="service-areas/durham-nc.html">Durham, NC</a></li>
+            <li><a href="service-areas/garner-nc.html">Garner, NC</a></li>
+            <li><a href="service-areas/fayetteville-nc.html">Fayetteville, NC</a></li>
+            <li><a href="service-areas/apex-nc.html">Apex, NC</a></li>
+            <li><a href="service-areas/cary-nc.html">Cary, NC</a></li>
+            <li><a href="service-areas/holly-springs-nc.html">Holly Springs, NC</a></li>
+            <li><a href="service-areas/fuquay-varina-nc.html">Fuquay-Varina, NC</a></li>
+            <li><a href="service-areas/smithfield-nc.html">Smithfield, NC</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog/">Blog</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="calculator.html">HVAC Calculator</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li><i class="fas fa-phone"></i> <a href="tel:9192304439">(919) 230-4439</a></li>
+            <li><i class="fas fa-map-marker-alt"></i> Clayton, NC 27520</li>
+            <li><i class="fas fa-clock"></i> Open 24/7</li>
+            <li><i class="fas fa-calendar"></i> Same Price Sundays!</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Frost Fire Heating and Cooling. All rights reserved. Licensed & Insured in NC.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING MOBILE CTA -->
+  <div class="floating-cta">
+    <a href="tel:9192304439">
+      <i class="fas fa-phone"></i> Call Now — (919) 230-4439
+    </a>
+  </div>
+
+  <!-- JS -->
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+    // Counter animation
+    function animateCounters() {
+      document.querySelectorAll('[data-target]').forEach(counter => {
+        const target = +counter.dataset.target;
+        const duration = 2000;
+        const start = performance.now();
+        const suffix = counter.innerHTML.includes('%') ? '%' : '';
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          counter.textContent = Math.floor(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      });
+    }
+    // Trigger counters when hero is visible
+    const heroObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        animateCounters();
+        heroObserver.disconnect();
+      }
+    });
+    heroObserver.observe(document.querySelector('.hero'));
+
+    // Reviews carousel
+    let reviewIndex = 0;
+    function slideReviews(direction) {
+      const track = document.getElementById('reviewsTrack');
+      const cards = track.querySelectorAll('.review-card');
+      const cardsPerView = window.innerWidth >= 1200 ? 3 : window.innerWidth >= 900 ? 2 : 1;
+      const maxIndex = cards.length - cardsPerView;
+      reviewIndex = Math.max(0, Math.min(maxIndex, reviewIndex + direction));
+      const percentage = (reviewIndex / cards.length) * 100;
+      track.style.transform = `translateX(-${percentage}%)`;
+    }
+    // Auto-scroll reviews
+    setInterval(() => slideReviews(1), 5000);
+  </script>
+
+<script src="chat-widget.js"></script>
+</body>
+</html>

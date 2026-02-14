@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" fill="none">
+  <defs>
+    <linearGradient id="ff-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0077b6"/>
+      <stop offset="50%" stop-color="#c9420f"/>
+      <stop offset="100%" stop-color="#c9420f"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(8, 4)">
+    <g stroke="#0077b6" stroke-width="2.5" stroke-linecap="round">
+      <line x1="28" y1="8" x2="28" y2="18"/><line x1="25" y1="10" x2="28" y2="14"/><line x1="31" y1="10" x2="28" y2="14"/>
+      <line x1="14" y1="28" x2="5" y2="28"/><line x1="12" y1="25" x2="8" y2="28"/><line x1="12" y1="31" x2="8" y2="28"/>
+      <line x1="16" y1="48" x2="10" y2="56"/><line x1="13" y1="47" x2="12" y2="52"/><line x1="18" y1="53" x2="12" y2="52"/>
+    </g>
+    <path d="M36 70 C36 70 18 52 18 36 C18 24 26 16 32 12 C30 22 36 28 40 32 C44 28 42 20 42 16 C50 22 56 30 56 40 C56 54 44 70 36 70Z" fill="url(#ff-grad)"/>
+    <path d="M36 70 C36 70 26 60 26 50 C26 42 32 38 36 36 C34 42 38 46 40 48 C42 46 40 40 42 38 C46 42 48 48 48 52 C48 62 40 70 36 70Z" fill="#e89f5c" opacity="0.7"/>
+    <circle cx="24" cy="44" r="2" fill="#0077b6" opacity="0.8"/>
+    <circle cx="20" cy="36" r="1.5" fill="#0096c7"/>
+    <circle cx="26" cy="52" r="1.5" fill="#0077b6" opacity="0.6"/>
+  </g>
+  <text x="78" y="38" font-family="'Montserrat', 'Arial Black', sans-serif" font-weight="800" font-size="32" letter-spacing="3">
+    <tspan fill="#0a1628">FROST</tspan><tspan fill="#c9420f" dx="6">FIRE</tspan>
+  </text>
+  <text x="78" y="58" font-family="'Inter', 'Arial', sans-serif" font-weight="500" font-size="12" fill="#4a5568" letter-spacing="4.5">HEATING &amp; COOLING</text>
+</svg>
