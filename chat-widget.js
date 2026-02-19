@@ -1,6 +1,7 @@
 (function() {
   const CONFIG = {
-    apiUrl: 'http://localhost:8000/api/v1/website-chat/message',
+    // Call the FastAPI backend directly (Fly.io). Do not post to the marketing-site origin.
+    apiUrl: 'https://get-forge-flow-api.fly.dev/api/v1/website-chat/message',
     website: 'frostfire',
     brandName: 'Frost Fire HVACR',
     brandColor: '#1e40af',
