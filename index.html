@@ -1012,15 +1012,14 @@
     .brand-logo {
       height: 40px;
       width: auto;
-      max-width: 100%;
+      max-width: 140px;
       object-fit: contain;
-      filter: grayscale(1);
-      opacity: .86;
+      filter: none;
+      opacity: 1;
       transition: var(--transition);
     }
     .brand-card:hover .brand-logo {
-      filter: grayscale(.3);
-      opacity: 1;
+      transform: scale(1.03);
     }
     .brand-fallback {
       display: none;

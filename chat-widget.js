@@ -1,7 +1,9 @@
 (function() {
   const CONFIG = {
-    // Call the FastAPI backend directly (Fly.io). Do not post to the marketing-site origin.
-    apiUrl: 'https://get-forge-flow-api.fly.dev/api/v1/website-chat/message',
+    // Use same-origin endpoints (Cloudflare Pages worker proxies to Fly.io).
+    // This avoids cross-origin/CORS failures and enables history polling for human takeover.
+    apiUrl: '/api/v1/website-chat/message',
+    historyUrl: '/api/v1/website-chat/history',
     website: 'frostfire',
     brandName: 'Frost Fire HVACR',
     brandColor: '#1e40af',
@@ -15,7 +17,8 @@
   let isOpen = false;
   let hasProactiveShown = false;
   let unreadCount = 0;
-  let messages = [];
+  let serverThread = [];
+  let pollHandle = null;
 
   // --- Styles ---
   const style = document.createElement('style');
@@ -173,17 +176,39 @@
       proactive.classList.remove('show');
       unreadCount = 0;
       badge.style.display = 'none';
-      if (messages.length === 0) {
-        addMessage('assistant', CONFIG.proactiveMessage);
-      }
+      renderThread(); // show proactive message immediately
+      fetchHistoryAndRender();
+      startPolling();
       setTimeout(() => input.focus(), 350);
     } else {
       win.classList.remove('open');
+      stopPolling();
+    }
+  }
+
+  function clearThreadUI() {
+    while (msgArea.firstChild) msgArea.removeChild(msgArea.firstChild);
+  }
+
+  function renderThread() {
+    clearThreadUI();
+    const items = Array.isArray(serverThread) ? serverThread : [];
+
+    if (items.length === 0) {
+      // Client-only intro message; not stored server-side.
+      addMessage('assistant', CONFIG.proactiveMessage);
+      return;
+    }
+
+    for (const m of items) {
+      const author = String(m.author_type || '').toLowerCase();
+      const body = String(m.body || '').trim();
+      if (!body) continue;
+      addMessage(author === 'visitor' ? 'user' : 'assistant', body);
     }
   }
 
   function addMessage(role, text) {
-    messages.push({ role, content: text });
     const div = document.createElement('div');
     div.className = 'cw-msg ' + role;
     div.innerHTML = role === 'assistant'
@@ -191,6 +216,30 @@
       : `<div class="cw-msg-bubble">${escHtml(text)}</div>`;
     msgArea.appendChild(div);
     msgArea.scrollTop = msgArea.scrollHeight;
+  }
+
+  async function fetchHistoryAndRender() {
+    if (!sessionId) return;
+    try {
+      const qs = `?session_id=${encodeURIComponent(sessionId)}&website=${encodeURIComponent(CONFIG.website)}&limit=200`;
+      const res = await fetch(CONFIG.historyUrl + qs, { method: 'GET' });
+      if (!res.ok) return;
+      const data = await res.json();
+      serverThread = Array.isArray(data.messages) ? data.messages : [];
+      renderThread();
+    } catch (e) {
+      // Silent: widget should keep working even if history polling fails.
+    }
+  }
+
+  function startPolling() {
+    stopPolling();
+    pollHandle = setInterval(fetchHistoryAndRender, 2000);
+  }
+
+  function stopPolling() {
+    if (pollHandle) clearInterval(pollHandle);
+    pollHandle = null;
   }
 
   function showTyping() {
@@ -230,10 +279,19 @@
       sessionId = data.session_id;
       localStorage.setItem('chat_session_' + CONFIG.website, sessionId);
       // Simulate human typing delay
-      const delay = Math.min(800 + data.response.length * 15, 3000);
+      const respText = String(data.response || '');
+      const delay = Math.min(800 + respText.length * 15, 3000);
       setTimeout(() => {
         hideTyping();
-        addMessage('assistant', data.response);
+        // Prefer server history (also includes human takeover replies).
+        fetchHistoryAndRender().then(() => {
+          // If history fetch failed for any reason, fall back to the immediate response.
+          const last = Array.isArray(serverThread) && serverThread.length ? serverThread[serverThread.length - 1] : null;
+          const lastBody = last ? String(last.body || '').trim() : '';
+          const lastAuthor = last ? String(last.author_type || '').toLowerCase() : '';
+          const hasResponseInHistory = lastAuthor !== 'visitor' && lastBody && lastBody === respText.trim();
+          if (!hasResponseInHistory && respText) addMessage('assistant', respText);
+        });
         if (!isOpen) {
           unreadCount++;
           badge.textContent = unreadCount;
