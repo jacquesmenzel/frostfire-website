@@ -151,7 +151,7 @@
       background: var(--dark);
       color: rgba(255,255,255,.8);
       font-size: .85rem;
-      padding: 8px 0;
+      padding: 12px 0;
       position: relative;
       z-index: 1001;
     }
@@ -160,13 +160,15 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 16px;
+      row-gap: 12px;
     }
     .top-bar-badges {
       display: flex;
-      gap: 20px;
+      gap: 24px;
       align-items: center;
       flex-wrap: wrap;
+      row-gap: 12px;
     }
     .top-bar-badges span { display: flex; align-items: center; gap: 6px; }
     .top-bar-badges i { color: var(--ice); }
@@ -1095,8 +1097,8 @@
       body { padding-bottom: 56px; }
       .container { padding: 0 20px; }
       .container-wide { padding: 0 20px; }
-      .top-bar .container { padding: 0 16px; }
-      .top-bar-badges { gap: 12px; font-size: .75rem; }
+      .top-bar .container { padding: 0 16px; gap: 12px; row-gap: 10px; }
+      .top-bar-badges { gap: 16px; row-gap: 10px; font-size: .75rem; }
       .nav { padding: 12px 20px; }
     }
     @media (max-width: 480px) {
