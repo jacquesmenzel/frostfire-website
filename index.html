@@ -157,10 +157,10 @@
     }
     .top-bar .container {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 24px;
       row-gap: 12px;
     }
     .top-bar-badges {
@@ -169,6 +169,7 @@
       align-items: center;
       flex-wrap: wrap;
       row-gap: 12px;
+      justify-content: center;
     }
     .top-bar-badges span { display: flex; align-items: center; gap: 6px; }
     .top-bar-badges i { color: var(--ice); }
@@ -1101,9 +1102,9 @@
       .trust-bar-inner { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 768px) {
-      .top-bar .container { gap: 12px; }
-      .top-bar-badges { gap: 12px; font-size: .75rem; flex: 1; flex-wrap: wrap; }
-      .top-bar-right { flex-shrink: 0; margin-left: auto; }
+      .top-bar .container { justify-content: space-between; gap: 12px; }
+      .top-bar-badges { justify-content: flex-start; gap: 12px; font-size: .75rem; max-width: 55%; }
+      .top-bar-right { flex-shrink: 0; }
       .nav { display: none; }
       .nav-links, .nav-phone { display: none; }
       .mobile-toggle { display: none; }
