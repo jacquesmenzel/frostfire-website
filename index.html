@@ -172,37 +172,10 @@
     }
     .top-bar-badges span { display: flex; align-items: center; gap: 6px; }
     .top-bar-badges i { color: var(--ice); }
-    .top-bar-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
     .top-bar-right a {
       color: var(--ice-light);
       text-decoration: none;
       font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .top-bar-phone-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1rem;
-    }
-    .top-bar-hamburger {
-      background: none;
-      border: none;
-      color: var(--ice-light);
-      font-size: 1.3rem;
-      cursor: pointer;
-      display: none;
     }
 
     /* ---- HEADER ---- */
@@ -908,8 +881,27 @@
       right: 0;
       z-index: 999;
       background: var(--accent);
-      padding: 12px 24px;
+      padding: 0;
       box-shadow: 0 -4px 20px rgba(0,0,0,.2);
+      max-width: 1400px;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+    }
+    .floating-cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+    }
+    .floating-cta-hamburger {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 8px;
+      margin-left: -8px;
     }
     .floating-cta a {
       display: flex;
@@ -919,7 +911,8 @@
       color: white;
       text-decoration: none;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      flex: 1;
     }
 
     /* ---- ANIMATIONS ---- */
@@ -1102,10 +1095,10 @@
       .trust-bar-inner { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 768px) {
+      .top-bar { display: none; }
       .nav { display: none; }
       .nav-links, .nav-phone { display: none; }
       .mobile-toggle { display: none; }
-      .top-bar-hamburger { display: block; }
       .hero-content { padding: 160px 0 80px; }
       .hero h1 { font-size: 2rem; }
       .hero-stats { gap: 24px; }
@@ -1126,10 +1119,6 @@
       body { padding-bottom: 56px; }
       .container { padding: 0 20px; }
       .container-wide { padding: 0 20px; }
-      .top-bar .container { padding: 0 16px; gap: 8px; row-gap: 10px; }
-      .top-bar-badges { gap: 12px; row-gap: 10px; font-size: .75rem; }
-      .top-bar-right { gap: 8px; }
-      .top-bar-right a:first-child { display: none; }
       .nav { padding: 12px 20px; }
     }
     @media (max-width: 480px) {
@@ -1173,12 +1162,6 @@
         </div>
         <div class="top-bar-right">
           <a href="tel:9192304439"><i class="fas fa-phone"></i> (919) 230-4439</a>
-          <a href="tel:9192304439" class="top-bar-phone-icon" title="Call now">
-            <i class="fas fa-phone"></i>
-          </a>
-          <button class="top-bar-hamburger" onclick="document.getElementById('mobileMenu').classList.add('active')">
-            <i class="fas fa-bars"></i>
-          </button>
         </div>
       </div>
     </div>
@@ -1791,9 +1774,14 @@
 
   <!-- FLOATING MOBILE CTA -->
   <div class="floating-cta">
-    <a href="tel:9192304439">
-      <i class="fas fa-phone"></i> Call Now — (919) 230-4439
-    </a>
+    <div class="floating-cta-inner">
+      <button class="floating-cta-hamburger" onclick="document.getElementById('mobileMenu').classList.add('active')" title="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="tel:9192304439">
+        <i class="fas fa-phone"></i> Call (919) 230-4439
+      </a>
+    </div>
   </div>
 
   <!-- JS -->
