@@ -635,50 +635,56 @@
     }
     .review-card {
       min-width: 100%;
-      padding: 0 12px;
+      padding: 0;
+      margin-bottom: 24px;
     }
-    @media(min-width:900px) { .review-card { min-width: 50%; } }
-    @media(min-width:1200px) { .review-card { min-width: 33.333%; } }
+    @media(min-width:900px) { .review-card { min-width: 50%; padding: 0 12px; } }
+    @media(min-width:1200px) { .review-card { min-width: 33.333%; padding: 0 12px; } }
     
     .review-card-inner {
-      background: var(--off-white);
-      border-radius: var(--radius);
-      padding: 36px;
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 28px;
       height: 100%;
       border: 1px solid var(--gray-200);
       transition: var(--transition);
+      display: flex;
+      flex-direction: column;
     }
     .review-card-inner:hover {
       border-color: var(--ice);
-      box-shadow: var(--shadow-lg);
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
     }
-    .review-stars { color: #fbbf24; font-size: 1.1rem; margin-bottom: 16px; }
+    .review-stars { color: #fbbf24; font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
     .review-text {
       font-size: .95rem;
       color: var(--text);
-      line-height: 1.8;
-      margin-bottom: 20px;
-      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      flex: 1;
     }
     .review-author {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+      padding-top: 16px;
+      border-top: 1px solid var(--gray-200);
     }
     .review-avatar {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--ice), var(--accent));
+      background: var(--ice);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      flex-shrink: 0;
     }
-    .review-author-name { font-weight: 600; color: var(--primary); }
-    .review-author-loc { font-size: .8rem; color: var(--text-light); }
+    .review-author-name { font-weight: 600; color: var(--primary); font-size: .95rem; }
+    .review-author-loc { font-size: .8rem; color: var(--text-light); margin-top: 2px; }
     
     .review-nav {
       display: flex;
@@ -1116,6 +1122,9 @@
       .footer-grid { grid-template-columns: 1fr; }
       .section { padding: 64px 0; }
       .floating-cta { display: block; }
+      .review-card { min-width: 100%; margin-bottom: 16px; }
+      .review-card-inner { padding: 24px; }
+      .review-nav button { width: 40px; height: 40px; font-size: .9rem; }
       body { padding-bottom: 56px; }
       .container { padding: 0 20px; }
       .container-wide { padding: 0 20px; }
