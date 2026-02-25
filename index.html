@@ -148,7 +148,6 @@
 
     /* ---- TOP BAR ---- */
     .top-bar {
-      display: none;
       background: var(--dark);
       color: rgba(255,255,255,.8);
       font-size: .85rem;
@@ -1102,7 +1101,9 @@
       .trust-bar-inner { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 768px) {
-      .top-bar { display: none; }
+      .top-bar .container { gap: 12px; }
+      .top-bar-badges { gap: 12px; font-size: .75rem; flex: 1; flex-wrap: wrap; }
+      .top-bar-right { flex-shrink: 0; margin-left: auto; }
       .nav { display: none; }
       .nav-links, .nav-phone { display: none; }
       .mobile-toggle { display: none; }
