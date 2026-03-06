@@ -1,9 +1,9 @@
 (function() {
   const CONFIG = {
     // Use same-origin endpoints (Cloudflare Pages worker proxies to Fly.io).
-    // This avoids cross-origin/CORS failures and enables history polling for human takeover.
     apiUrl: '/api/v1/website-chat/message',
     historyUrl: '/api/v1/website-chat/history',
+    streamUrl: '/api/v1/website-chat/stream',  // SSE endpoint for real-time updates
     website: 'frostfire',
     brandName: 'Frost Fire HVACR',
     brandColor: '#1e40af',
@@ -18,7 +18,12 @@
   let hasProactiveShown = false;
   let unreadCount = 0;
   let serverThread = [];
-  let pollHandle = null;
+  let eventSource = null;  // SSE connection
+  let sseRetryCount = 0;
+  const MAX_SSE_RETRIES = 3;
+  const SSE_RETRY_DELAY = 5000;  // 5 seconds between retries
+  const FALLBACK_POLL_INTERVAL = 30000;  // 30 seconds fallback (was 2 seconds!)
+  let fallbackPollHandle = null;
 
   // --- Styles ---
   const style = document.createElement('style');
@@ -176,15 +181,149 @@
       proactive.classList.remove('show');
       unreadCount = 0;
       badge.style.display = 'none';
-      renderThread(); // show proactive message immediately
+      renderThread();
       fetchHistoryAndRender();
-      startPolling();
+      connectSSE();  // Use SSE instead of polling!
       setTimeout(() => input.focus(), 350);
     } else {
       win.classList.remove('open');
-      stopPolling();
+      disconnectSSE();
     }
   }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // SSE (Server-Sent Events) - Real-time updates, no polling!
+  // ─────────────────────────────────────────────────────────────────────────
+
+  function connectSSE() {
+    if (!sessionId) {
+      // No session yet - wait for first message to create one
+      return;
+    }
+
+    disconnectSSE();  // Clean up any existing connection
+
+    // Don't connect if tab is hidden (save resources)
+    if (document.hidden) {
+      startFallbackPolling();
+      return;
+    }
+
+    const url = `${CONFIG.streamUrl}?session_id=${encodeURIComponent(sessionId)}&website=${encodeURIComponent(CONFIG.website)}`;
+    
+    try {
+      eventSource = new EventSource(url);
+
+      eventSource.onopen = function() {
+        console.log('[Chat] SSE connected');
+        sseRetryCount = 0;
+        stopFallbackPolling();
+      };
+
+      eventSource.addEventListener('connected', function(e) {
+        console.log('[Chat] SSE connected event:', e.data);
+      });
+
+      eventSource.addEventListener('message', function(e) {
+        try {
+          const data = JSON.parse(e.data);
+          handleIncomingMessage(data);
+        } catch (err) {
+          console.error('[Chat] Failed to parse SSE message:', err);
+        }
+      });
+
+      eventSource.addEventListener('mode_change', function(e) {
+        try {
+          const data = JSON.parse(e.data);
+          console.log('[Chat] Mode changed to:', data.mode);
+          // Could show indicator that human took over
+        } catch (err) {}
+      });
+
+      eventSource.addEventListener('heartbeat', function(e) {
+        // Connection is alive, nothing to do
+      });
+
+      eventSource.onerror = function(e) {
+        console.warn('[Chat] SSE error, will retry...', e);
+        disconnectSSE();
+
+        if (sseRetryCount < MAX_SSE_RETRIES) {
+          sseRetryCount++;
+          setTimeout(connectSSE, SSE_RETRY_DELAY);
+        } else {
+          console.log('[Chat] SSE failed after retries, falling back to polling');
+          startFallbackPolling();
+        }
+      };
+    } catch (err) {
+      console.error('[Chat] Failed to create EventSource:', err);
+      startFallbackPolling();
+    }
+  }
+
+  function disconnectSSE() {
+    if (eventSource) {
+      eventSource.close();
+      eventSource = null;
+    }
+    stopFallbackPolling();
+  }
+
+  function handleIncomingMessage(data) {
+    // Add message to UI
+    const role = data.author_type === 'visitor' ? 'user' : 'assistant';
+    const body = (data.body || '').trim();
+    if (body) {
+      // Check if message already exists (prevent duplicates)
+      const lastMsg = serverThread[serverThread.length - 1];
+      if (!lastMsg || lastMsg.body !== body) {
+        serverThread.push(data);
+        addMessage(role, body);
+        
+        // Show badge if window is closed
+        if (!isOpen) {
+          unreadCount++;
+          badge.textContent = unreadCount;
+          badge.style.display = 'flex';
+        }
+      }
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // Fallback polling (only used if SSE fails)
+  // ─────────────────────────────────────────────────────────────────────────
+
+  function startFallbackPolling() {
+    stopFallbackPolling();
+    // Poll every 30 seconds (not 2 seconds!) as fallback
+    fallbackPollHandle = setInterval(fetchHistoryAndRender, FALLBACK_POLL_INTERVAL);
+  }
+
+  function stopFallbackPolling() {
+    if (fallbackPollHandle) {
+      clearInterval(fallbackPollHandle);
+      fallbackPollHandle = null;
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // Visibility handling - disconnect when tab hidden, reconnect when visible
+  // ─────────────────────────────────────────────────────────────────────────
+
+  document.addEventListener('visibilitychange', function() {
+    if (isOpen && sessionId) {
+      if (document.hidden) {
+        // Tab hidden - disconnect SSE to save resources
+        disconnectSSE();
+      } else {
+        // Tab visible again - reconnect
+        connectSSE();
+      }
+    }
+  });
 
   function clearThreadUI() {
     while (msgArea.firstChild) msgArea.removeChild(msgArea.firstChild);
@@ -195,7 +334,6 @@
     const items = Array.isArray(serverThread) ? serverThread : [];
 
     if (items.length === 0) {
-      // Client-only intro message; not stored server-side.
       addMessage('assistant', CONFIG.proactiveMessage);
       return;
     }
@@ -228,18 +366,8 @@
       serverThread = Array.isArray(data.messages) ? data.messages : [];
       renderThread();
     } catch (e) {
-      // Silent: widget should keep working even if history polling fails.
+      // Silent: widget should keep working even if history fetch fails.
     }
-  }
-
-  function startPolling() {
-    stopPolling();
-    pollHandle = setInterval(fetchHistoryAndRender, 2000);
-  }
-
-  function stopPolling() {
-    if (pollHandle) clearInterval(pollHandle);
-    pollHandle = null;
   }
 
   function showTyping() {
@@ -276,22 +404,25 @@
         body: JSON.stringify({ message: text, session_id: sessionId, website: CONFIG.website }),
       });
       const data = await res.json();
+      
+      // Store session ID and connect SSE if first message
+      const isFirstMessage = !sessionId;
       sessionId = data.session_id;
       localStorage.setItem('chat_session_' + CONFIG.website, sessionId);
+      
+      if (isFirstMessage) {
+        connectSSE();  // Start SSE after first message creates session
+      }
+      
       // Simulate human typing delay
       const respText = String(data.response || '');
       const delay = Math.min(800 + respText.length * 15, 3000);
       setTimeout(() => {
         hideTyping();
-        // Prefer server history (also includes human takeover replies).
-        fetchHistoryAndRender().then(() => {
-          // If history fetch failed for any reason, fall back to the immediate response.
-          const last = Array.isArray(serverThread) && serverThread.length ? serverThread[serverThread.length - 1] : null;
-          const lastBody = last ? String(last.body || '').trim() : '';
-          const lastAuthor = last ? String(last.author_type || '').toLowerCase() : '';
-          const hasResponseInHistory = lastAuthor !== 'visitor' && lastBody && lastBody === respText.trim();
-          if (!hasResponseInHistory && respText) addMessage('assistant', respText);
-        });
+        if (respText) {
+          addMessage('assistant', respText);
+          serverThread.push({ author_type: 'ai', body: respText });
+        }
         if (!isOpen) {
           unreadCount++;
           badge.textContent = unreadCount;
