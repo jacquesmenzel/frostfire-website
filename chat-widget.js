@@ -3,7 +3,8 @@
     // Use same-origin endpoints (Cloudflare Pages worker proxies to Fly.io).
     apiUrl: '/api/v1/website-chat/message',
     historyUrl: '/api/v1/website-chat/history',
-    streamUrl: '/api/v1/website-chat/stream',  // SSE endpoint for real-time updates
+    // SSE removed - Cloudflare Workers have 30-second limit causing constant reconnects
+    // Using simple polling instead (60 seconds is plenty for chat takeover detection)
     website: 'frostfire',
     brandName: 'Frost Fire HVACR',
     brandColor: '#1e40af',
@@ -18,12 +19,9 @@
   let hasProactiveShown = false;
   let unreadCount = 0;
   let serverThread = [];
-  let eventSource = null;  // SSE connection
-  let sseRetryCount = 0;
-  const MAX_SSE_RETRIES = 3;
-  const SSE_RETRY_DELAY = 5000;  // 5 seconds between retries
-  const FALLBACK_POLL_INTERVAL = 30000;  // 30 seconds fallback (was 2 seconds!)
-  let fallbackPollHandle = null;
+  // Polling config - 60 seconds is plenty for human takeover detection
+  const POLL_INTERVAL = 60000;  // 60 seconds (was 2 seconds before SSE!)
+  let pollHandle = null;
 
   // --- Styles ---
   const style = document.createElement('style');
@@ -183,144 +181,45 @@
       badge.style.display = 'none';
       renderThread();
       fetchHistoryAndRender();
-      connectSSE();  // Use SSE instead of polling!
+      startPolling();  // Simple polling (60s) - no SSE due to Cloudflare limits
       setTimeout(() => input.focus(), 350);
     } else {
       win.classList.remove('open');
-      disconnectSSE();
+      stopPolling();
     }
   }
 
   // ─────────────────────────────────────────────────────────────────────────
-  // SSE (Server-Sent Events) - Real-time updates, no polling!
+  // Simple polling for human takeover detection (60 seconds)
+  // Note: SSE removed because Cloudflare Workers have 30-second execution limit
+  // causing constant reconnects. Simple polling is more reliable here.
   // ─────────────────────────────────────────────────────────────────────────
 
-  function connectSSE() {
-    if (!sessionId) {
-      // No session yet - wait for first message to create one
-      return;
-    }
-
-    disconnectSSE();  // Clean up any existing connection
-
-    // Don't connect if tab is hidden (save resources)
-    if (document.hidden) {
-      startFallbackPolling();
-      return;
-    }
-
-    const url = `${CONFIG.streamUrl}?session_id=${encodeURIComponent(sessionId)}&website=${encodeURIComponent(CONFIG.website)}`;
-    
-    try {
-      eventSource = new EventSource(url);
-
-      eventSource.onopen = function() {
-        console.log('[Chat] SSE connected');
-        sseRetryCount = 0;
-        stopFallbackPolling();
-      };
-
-      eventSource.addEventListener('connected', function(e) {
-        console.log('[Chat] SSE connected event:', e.data);
-      });
-
-      eventSource.addEventListener('message', function(e) {
-        try {
-          const data = JSON.parse(e.data);
-          handleIncomingMessage(data);
-        } catch (err) {
-          console.error('[Chat] Failed to parse SSE message:', err);
-        }
-      });
-
-      eventSource.addEventListener('mode_change', function(e) {
-        try {
-          const data = JSON.parse(e.data);
-          console.log('[Chat] Mode changed to:', data.mode);
-          // Could show indicator that human took over
-        } catch (err) {}
-      });
-
-      eventSource.addEventListener('heartbeat', function(e) {
-        // Connection is alive, nothing to do
-      });
-
-      eventSource.onerror = function(e) {
-        console.warn('[Chat] SSE error, will retry...', e);
-        disconnectSSE();
-
-        if (sseRetryCount < MAX_SSE_RETRIES) {
-          sseRetryCount++;
-          setTimeout(connectSSE, SSE_RETRY_DELAY);
-        } else {
-          console.log('[Chat] SSE failed after retries, falling back to polling');
-          startFallbackPolling();
-        }
-      };
-    } catch (err) {
-      console.error('[Chat] Failed to create EventSource:', err);
-      startFallbackPolling();
-    }
+  function startPolling() {
+    stopPolling();
+    if (!sessionId) return;
+    // Poll every 60 seconds for human takeover detection
+    // This is reasonable - if human takes over, visitor sees reply within 1 minute
+    pollHandle = setInterval(fetchHistoryAndRender, POLL_INTERVAL);
   }
 
-  function disconnectSSE() {
-    if (eventSource) {
-      eventSource.close();
-      eventSource = null;
-    }
-    stopFallbackPolling();
-  }
-
-  function handleIncomingMessage(data) {
-    // Add message to UI
-    const role = data.author_type === 'visitor' ? 'user' : 'assistant';
-    const body = (data.body || '').trim();
-    if (body) {
-      // Check if message already exists (prevent duplicates)
-      const lastMsg = serverThread[serverThread.length - 1];
-      if (!lastMsg || lastMsg.body !== body) {
-        serverThread.push(data);
-        addMessage(role, body);
-        
-        // Show badge if window is closed
-        if (!isOpen) {
-          unreadCount++;
-          badge.textContent = unreadCount;
-          badge.style.display = 'flex';
-        }
-      }
+  function stopPolling() {
+    if (pollHandle) {
+      clearInterval(pollHandle);
+      pollHandle = null;
     }
   }
 
   // ─────────────────────────────────────────────────────────────────────────
-  // Fallback polling (only used if SSE fails)
-  // ─────────────────────────────────────────────────────────────────────────
-
-  function startFallbackPolling() {
-    stopFallbackPolling();
-    // Poll every 30 seconds (not 2 seconds!) as fallback
-    fallbackPollHandle = setInterval(fetchHistoryAndRender, FALLBACK_POLL_INTERVAL);
-  }
-
-  function stopFallbackPolling() {
-    if (fallbackPollHandle) {
-      clearInterval(fallbackPollHandle);
-      fallbackPollHandle = null;
-    }
-  }
-
-  // ─────────────────────────────────────────────────────────────────────────
-  // Visibility handling - disconnect when tab hidden, reconnect when visible
+  // Visibility handling - stop polling when tab hidden to save resources
   // ─────────────────────────────────────────────────────────────────────────
 
   document.addEventListener('visibilitychange', function() {
     if (isOpen && sessionId) {
       if (document.hidden) {
-        // Tab hidden - disconnect SSE to save resources
-        disconnectSSE();
+        stopPolling();
       } else {
-        // Tab visible again - reconnect
-        connectSSE();
+        startPolling();
       }
     }
   });
@@ -405,13 +304,13 @@
       });
       const data = await res.json();
       
-      // Store session ID and connect SSE if first message
+      // Store session ID and start polling if first message
       const isFirstMessage = !sessionId;
       sessionId = data.session_id;
       localStorage.setItem('chat_session_' + CONFIG.website, sessionId);
       
       if (isFirstMessage) {
-        connectSSE();  // Start SSE after first message creates session
+        startPolling();  // Start polling after first message creates session
       }
       
       // Simulate human typing delay
