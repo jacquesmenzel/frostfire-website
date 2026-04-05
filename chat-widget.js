@@ -1,10 +1,9 @@
 (function() {
   const CONFIG = {
     // Use same-origin endpoints (Cloudflare Pages worker proxies to Fly.io).
+    // This avoids cross-origin/CORS failures and enables history polling for human takeover.
     apiUrl: '/api/v1/website-chat/message',
     historyUrl: '/api/v1/website-chat/history',
-    // SSE removed - Cloudflare Workers have 30-second limit causing constant reconnects
-    // Using simple polling instead (60 seconds is plenty for chat takeover detection)
     website: 'frostfire',
     brandName: 'Frost Fire HVACR',
     brandColor: '#1e40af',
@@ -19,8 +18,6 @@
   let hasProactiveShown = false;
   let unreadCount = 0;
   let serverThread = [];
-  // Polling config - 60 seconds is plenty for human takeover detection
-  const POLL_INTERVAL = 60000;  // 60 seconds (was 2 seconds before SSE!)
   let pollHandle = null;
 
   // --- Styles ---
@@ -179,50 +176,15 @@
       proactive.classList.remove('show');
       unreadCount = 0;
       badge.style.display = 'none';
-      renderThread();
+      renderThread(); // show proactive message immediately
       fetchHistoryAndRender();
-      startPolling();  // Simple polling (60s) - no SSE due to Cloudflare limits
+      startPolling();
       setTimeout(() => input.focus(), 350);
     } else {
       win.classList.remove('open');
       stopPolling();
     }
   }
-
-  // ─────────────────────────────────────────────────────────────────────────
-  // Simple polling for human takeover detection (60 seconds)
-  // Note: SSE removed because Cloudflare Workers have 30-second execution limit
-  // causing constant reconnects. Simple polling is more reliable here.
-  // ─────────────────────────────────────────────────────────────────────────
-
-  function startPolling() {
-    stopPolling();
-    if (!sessionId) return;
-    // Poll every 60 seconds for human takeover detection
-    // This is reasonable - if human takes over, visitor sees reply within 1 minute
-    pollHandle = setInterval(fetchHistoryAndRender, POLL_INTERVAL);
-  }
-
-  function stopPolling() {
-    if (pollHandle) {
-      clearInterval(pollHandle);
-      pollHandle = null;
-    }
-  }
-
-  // ─────────────────────────────────────────────────────────────────────────
-  // Visibility handling - stop polling when tab hidden to save resources
-  // ─────────────────────────────────────────────────────────────────────────
-
-  document.addEventListener('visibilitychange', function() {
-    if (isOpen && sessionId) {
-      if (document.hidden) {
-        stopPolling();
-      } else {
-        startPolling();
-      }
-    }
-  });
 
   function clearThreadUI() {
     while (msgArea.firstChild) msgArea.removeChild(msgArea.firstChild);
@@ -233,6 +195,7 @@
     const items = Array.isArray(serverThread) ? serverThread : [];
 
     if (items.length === 0) {
+      // Client-only intro message; not stored server-side.
       addMessage('assistant', CONFIG.proactiveMessage);
       return;
     }
@@ -265,8 +228,18 @@
       serverThread = Array.isArray(data.messages) ? data.messages : [];
       renderThread();
     } catch (e) {
-      // Silent: widget should keep working even if history fetch fails.
+      // Silent: widget should keep working even if history polling fails.
     }
+  }
+
+  function startPolling() {
+    stopPolling();
+    pollHandle = setInterval(fetchHistoryAndRender, 2000);
+  }
+
+  function stopPolling() {
+    if (pollHandle) clearInterval(pollHandle);
+    pollHandle = null;
   }
 
   function showTyping() {
@@ -303,25 +276,22 @@
         body: JSON.stringify({ message: text, session_id: sessionId, website: CONFIG.website }),
       });
       const data = await res.json();
-      
-      // Store session ID and start polling if first message
-      const isFirstMessage = !sessionId;
       sessionId = data.session_id;
       localStorage.setItem('chat_session_' + CONFIG.website, sessionId);
-      
-      if (isFirstMessage) {
-        startPolling();  // Start polling after first message creates session
-      }
-      
       // Simulate human typing delay
       const respText = String(data.response || '');
       const delay = Math.min(800 + respText.length * 15, 3000);
       setTimeout(() => {
         hideTyping();
-        if (respText) {
-          addMessage('assistant', respText);
-          serverThread.push({ author_type: 'ai', body: respText });
-        }
+        // Prefer server history (also includes human takeover replies).
+        fetchHistoryAndRender().then(() => {
+          // If history fetch failed for any reason, fall back to the immediate response.
+          const last = Array.isArray(serverThread) && serverThread.length ? serverThread[serverThread.length - 1] : null;
+          const lastBody = last ? String(last.body || '').trim() : '';
+          const lastAuthor = last ? String(last.author_type || '').toLowerCase() : '';
+          const hasResponseInHistory = lastAuthor !== 'visitor' && lastBody && lastBody === respText.trim();
+          if (!hasResponseInHistory && respText) addMessage('assistant', respText);
+        });
         if (!isOpen) {
           unreadCount++;
           badge.textContent = unreadCount;

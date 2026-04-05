@@ -1,6 +1,5 @@
 // Proxy chat widget requests to the actual backend API (FastAPI on Fly.io).
 // NOTE: aios.getforgeflow.com is a frontend host and will 405 on POST.
-// NOTE: SSE streaming removed - Cloudflare Workers have 30-second limit.
 const UPSTREAM_BASE = "https://get-forge-flow-api.fly.dev";
 const CHAT_MESSAGE_UPSTREAM = `${UPSTREAM_BASE}/api/v1/website-chat/message`;
 const CHAT_HISTORY_UPSTREAM = `${UPSTREAM_BASE}/api/v1/website-chat/history`;
@@ -83,9 +82,6 @@ async function handleChatHistoryProxy(request) {
     },
   });
 }
-
-// SSE proxy removed - Cloudflare Workers have 30-second execution limit
-// which caused constant reconnects. Using 60-second polling instead.
 
 export default {
   async fetch(request, env) {
