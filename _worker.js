@@ -3,16 +3,23 @@
 const UPSTREAM_BASE = "https://get-forge-flow-api.fly.dev";
 const CHAT_MESSAGE_UPSTREAM = `${UPSTREAM_BASE}/api/v1/website-chat/message`;
 const CHAT_HISTORY_UPSTREAM = `${UPSTREAM_BASE}/api/v1/website-chat/history`;
+const WEBSITE_SESSION_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/session`;
+const WEBSITE_EVENT_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/event`;
+const WEBSITE_LEAD_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/lead`;
+
+function corsHeaders(methods) {
+  return {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": methods,
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
+}
 
 async function handleChatProxy(request) {
   if (request.method === "OPTIONS") {
     return new Response(null, {
       status: 204,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type",
-      },
+      headers: corsHeaders("POST, OPTIONS"),
     });
   }
 
@@ -46,11 +53,7 @@ async function handleChatHistoryProxy(request) {
   if (request.method === "OPTIONS") {
     return new Response(null, {
       status: 204,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type",
-      },
+      headers: corsHeaders("GET, OPTIONS"),
     });
   }
 
@@ -83,6 +86,41 @@ async function handleChatHistoryProxy(request) {
   });
 }
 
+async function handleWebsiteGrowthProxy(request, upstreamUrl, allowedMethod) {
+  if (request.method === "OPTIONS") {
+    return new Response(null, {
+      status: 204,
+      headers: corsHeaders(`${allowedMethod}, OPTIONS`),
+    });
+  }
+
+  if (request.method !== allowedMethod) {
+    return new Response(JSON.stringify({ detail: "Method not allowed" }), {
+      status: 405,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  const upstream = await fetch(upstreamUrl, {
+    method: allowedMethod,
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    },
+    body: allowedMethod === "POST" ? await request.text() : undefined,
+  });
+
+  const body = await upstream.text();
+  return new Response(body, {
+    status: upstream.status,
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "no-store",
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -91,6 +129,15 @@ export default {
     }
     if (url.pathname === "/api/v1/website-chat/history") {
       return handleChatHistoryProxy(request);
+    }
+    if (url.pathname === "/api/v1/public/website/session") {
+      return handleWebsiteGrowthProxy(request, WEBSITE_SESSION_UPSTREAM, "POST");
+    }
+    if (url.pathname === "/api/v1/public/website/event") {
+      return handleWebsiteGrowthProxy(request, WEBSITE_EVENT_UPSTREAM, "POST");
+    }
+    if (url.pathname === "/api/v1/public/website/lead") {
+      return handleWebsiteGrowthProxy(request, WEBSITE_LEAD_UPSTREAM, "POST");
     }
     return env.ASSETS.fetch(request);
   },

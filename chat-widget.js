@@ -1,4 +1,36 @@
 (function() {
+  if (!window.FrostFireAttribution) {
+    const base = (document.currentScript && document.currentScript.src) || '';
+    const attrSrc = base.includes('/')
+      ? base.replace(/chat-widget\.js(?:\?.*)?$/, 'js/attribution.js')
+      : 'js/attribution.js';
+    const configSrc = base.includes('/')
+      ? base.replace(/chat-widget\.js(?:\?.*)?$/, 'js/analytics-config.js')
+      : 'js/analytics-config.js';
+    const loadScript = function (src, onDone) {
+      const existing = Array.from(document.getElementsByTagName('script')).find(function (tag) {
+        return tag.src === src;
+      });
+      if (existing) {
+        if (onDone) onDone();
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = false;
+      script.onload = function () {
+        if (onDone) onDone();
+      };
+      script.onerror = function () {
+        if (onDone) onDone();
+      };
+      document.head.appendChild(script);
+    };
+    loadScript(configSrc, function () {
+      loadScript(attrSrc);
+    });
+  }
+
   const CONFIG = {
     // Use same-origin endpoints (Cloudflare Pages worker proxies to Fly.io).
     // This avoids cross-origin/CORS failures and enables history polling for human takeover.
@@ -19,6 +51,12 @@
   let unreadCount = 0;
   let serverThread = [];
   let pollHandle = null;
+
+  function getAttributionApi() {
+    return window.FrostFireAttribution && typeof window.FrostFireAttribution.getContext === 'function'
+      ? window.FrostFireAttribution
+      : null;
+  }
 
   // --- Styles ---
   const style = document.createElement('style');
@@ -179,6 +217,10 @@
       renderThread(); // show proactive message immediately
       fetchHistoryAndRender();
       startPolling();
+      const attributionApi = getAttributionApi();
+      if (attributionApi && typeof attributionApi.trackEvent === 'function') {
+        attributionApi.trackEvent('chat_open', { lead_channel: 'chat', cta_type: 'chat_bubble' });
+      }
       setTimeout(() => input.focus(), 350);
     } else {
       win.classList.remove('open');
@@ -270,10 +312,21 @@
     showTyping();
 
     try {
+      const attributionApi = getAttributionApi();
+      const attribution = attributionApi && typeof attributionApi.getContext === 'function'
+        ? {
+            ...attributionApi.getContext(),
+            landing_page_url: attributionApi.getStored && attributionApi.getStored().landing_page_url,
+            landing_page_path: attributionApi.getStored && attributionApi.getStored().landing_page_path,
+          }
+        : null;
+      if (attributionApi && typeof attributionApi.trackEvent === 'function') {
+        attributionApi.trackEvent('chat_message_sent', { lead_channel: 'chat' });
+      }
       const res = await fetch(CONFIG.apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, session_id: sessionId, website: CONFIG.website }),
+        body: JSON.stringify({ message: text, session_id: sessionId, website: CONFIG.website, attribution }),
       });
       const data = await res.json();
       sessionId = data.session_id;
