@@ -2,12 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>HVAC Pricing Calculator | Frost Fire Heating & Cooling</title>
-  <meta name="description" content="Get an instant HVAC installation price estimate for your home. Free calculator for heat pumps, AC, and furnace systems in Raleigh, Clayton NC area.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instant HVAC Estimate | Frost Fire Heating & Cooling</title>
+  <meta name="description" content="Answer a few quick questions and review your Frost Fire HVAC replacement options for heat pumps, condensers, and gas furnaces.">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png?v=2">
+  <link rel="apple-touch-icon" href="images/favicon-180.png?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta property="og:title" content="Instant HVAC Estimate | Frost Fire Heating & Cooling">
+  <meta property="og:description" content="Review personalized replacement options from Frost Fire for heat pumps, condenser and furnace systems, and gas furnace installs.">
+  <meta property="og:url" content="https://frostfirehvacr.com/calculator.html">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1545259742-b4fd8fea67e4?w=1200&q=80">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Instant HVAC Estimate | Frost Fire Heating & Cooling">
+  <meta name="twitter:description" content="Review personalized replacement options from Frost Fire for heat pumps, condenser and furnace systems, and gas furnace installs.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1545259742-b4fd8fea67e4?w=1200&q=80">
+  <link rel="canonical" href="https://frostfirehvacr.com/calculator.html">
   <style>
     :root {
       --primary: #0f2b4c;
@@ -24,1521 +37,1270 @@
       --off-white: #f7fafc;
       --gray-100: #edf2f7;
       --gray-200: #e2e8f0;
-      --radius: 20px;
-      --radius-sm: 12px;
-      --transition: all .4s cubic-bezier(.4,0,.2,1);
+      --radius: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --transition: all .3s cubic-bezier(.4,0,.2,1);
+      --shadow: 0 20px 60px -24px rgba(10, 22, 40, .26);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { font-size: 16px; -webkit-tap-highlight-color: transparent; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', sans-serif;
       color: var(--text);
-      line-height: 1.6;
+      background: linear-gradient(180deg, #f7fbff 0%, #eef5fa 100%);
       overflow-x: hidden;
-      background: var(--dark);
-      min-height: 100vh;
-      min-height: 100dvh;
     }
 
-    /* ============ FIXED NAV ============ */
-    .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+    .top-bar {
+      background: var(--dark);
+      color: rgba(255,255,255,.8);
+      font-size: .85rem;
+      padding: 12px 0;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .top-bar .container,
+    .top-bar-badges {
       display: flex;
       align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .top-bar-badges span { display: flex; align-items: center; gap: 6px; }
+    .top-bar-badges i { color: var(--ice); }
+    .top-bar-right a {
+      color: var(--ice-light);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(15,43,76,.97);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 4px 30px rgba(0,0,0,.12);
+    }
+
+    .nav {
+      display: flex;
       justify-content: space-between;
-      padding: 12px 20px;
-      background: rgba(15,43,76,.95);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0,180,216,.1);
+      align-items: center;
+      padding: 16px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+      gap: 18px;
     }
-    .nav-logo {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 1.2rem;
-      color: var(--white);
+
+    .logo {
+      display: flex;
+      align-items: center;
       text-decoration: none;
-      letter-spacing: -.5px;
     }
-    .nav-logo .ice { color: var(--ice); }
-    .nav-logo .fire { color: var(--accent); }
+    .logo img {
+      display: block;
+      height: 56px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,.86);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--ice-light); }
+
     .nav-phone {
-      display: flex; align-items: center; gap: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       color: var(--white);
       text-decoration: none;
-      font-weight: 600;
-      font-size: .85rem;
-      background: var(--accent);
-      padding: 8px 18px;
-      border-radius: 50px;
-      transition: var(--transition);
-    }
-    .nav-phone:active { transform: scale(.96); }
-
-    /* ============ PROGRESS BAR ============ */
-    .progress-track {
-      position: fixed;
-      top: 52px; left: 0; right: 0;
-      z-index: 999;
-      height: 4px;
-      background: rgba(255,255,255,.08);
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--accent);
-      transition: width .6s cubic-bezier(.4,0,.2,1);
-      border-radius: 0 4px 4px 0;
-      box-shadow: 0 0 12px rgba(232,83,30,.4);
-    }
-    .progress-info {
-      position: fixed;
-      top: 60px; right: 20px;
-      z-index: 999;
-      font-size: .75rem;
-      font-weight: 600;
-      color: rgba(255,255,255,.4);
+      font-weight: 700;
+      border: 2px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      padding: 11px 18px;
       transition: var(--transition);
     }
 
-    /* ============ FULL-SCREEN STEPS ============ */
-    .calculator {
+    .nav-phone:hover {
+      border-color: rgba(255,255,255,.48);
+      transform: translateY(-1px);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,22,40,.98);
+      z-index: 9999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    .mobile-menu.active { display: flex; }
+
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .hero {
       position: relative;
-      min-height: 100vh;
-      min-height: 100dvh;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(15,43,76,.96), rgba(26,61,110,.92)),
+        url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80') center/cover no-repeat;
+      color: var(--white);
+      padding: 72px 0 54px;
     }
-    .step {
+
+    .hero::after {
+      content: '';
       position: absolute;
       inset: 0;
-      min-height: 100vh;
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 80px 24px 40px;
-      opacity: 0;
-      transform: translateY(40px);
+      background:
+        radial-gradient(circle at top right, rgba(0,180,216,.16), transparent 24%),
+        radial-gradient(circle at bottom left, rgba(232,83,30,.14), transparent 26%);
       pointer-events: none;
-      transition: opacity .5s ease, transform .5s ease;
     }
-    .step.active {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
+
+    .hero-inner {
       position: relative;
-    }
-    .step.exit-up {
-      opacity: 0;
-      transform: translateY(-40px);
-    }
-
-    .step-inner {
-      width: 100%;
-      max-width: 560px;
-      text-align: center;
-    }
-
-    .step-number {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: .75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--ice);
-      margin-bottom: 16px;
-      opacity: .7;
-    }
-    .step-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.6rem, 5vw, 2.4rem);
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
-    .step-subtitle {
-      color: rgba(255,255,255,.45);
-      font-size: 1rem;
-      margin-bottom: 36px;
-      max-width: 420px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* ============ OPTION CARDS ============ */
-    .options {
+      z-index: 1;
       display: grid;
-      gap: 14px;
-      width: 100%;
-    }
-    .options-2 { grid-template-columns: 1fr 1fr; }
-    .options-3 { grid-template-columns: 1fr 1fr 1fr; }
-
-    .opt {
-      position: relative;
-      background: rgba(255,255,255,.04);
-      border: 2px solid rgba(255,255,255,.08);
-      border-radius: var(--radius-sm);
-      padding: 24px 16px;
-      cursor: pointer;
-      transition: var(--transition);
-      -webkit-user-select: none;
-      user-select: none;
-      text-align: center;
-      min-height: 110px;
-      display: flex;
-      flex-direction: column;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+      gap: 28px;
       align-items: center;
-      justify-content: center;
-    }
-    .opt:hover {
-      border-color: rgba(0,180,216,.3);
-      background: rgba(0,180,216,.06);
-      transform: translateY(-2px);
-    }
-    .opt:active { transform: scale(.97); }
-    .opt.selected {
-      border-color: var(--ice);
-      background: rgba(0,180,216,.1);
-      box-shadow: 0 0 0 4px rgba(0,180,216,.12), 0 8px 32px rgba(0,180,216,.15);
-    }
-    .opt.selected::after {
-      content: '✓';
-      position: absolute;
-      top: 8px; right: 10px;
-      width: 22px; height: 22px;
-      background: var(--ice);
-      color: var(--white);
-      border-radius: 50%;
-      font-size: .7rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
-    .opt-icon {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      display: block;
-      line-height: 1;
-    }
-    .opt-label {
-      font-weight: 700;
-      font-size: .95rem;
-      color: var(--white);
-      display: block;
-      margin-bottom: 2px;
-    }
-    .opt-desc {
-      font-size: .78rem;
-      color: rgba(255,255,255,.4);
-      display: block;
-    }
-
-    /* ============ SLIDER STEP ============ */
-    .sqft-display {
-      margin-bottom: 32px;
-    }
-    .sqft-value {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(3.5rem, 12vw, 5rem);
-      font-weight: 900;
-      line-height: 1;
-      background: linear-gradient(135deg, var(--white) 30%, var(--ice));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .sqft-unit {
-      font-size: 1rem;
-      color: rgba(255,255,255,.4);
-      font-weight: 500;
-      margin-top: 4px;
-    }
-
-    .slider-container { width: 100%; padding: 0 4px; }
-    input[type="range"] {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 6px;
-      border-radius: 3px;
-      background: rgba(255,255,255,.1);
-      outline: none;
-      margin: 20px 0;
-    }
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: var(--white);
-      border: 4px solid var(--ice);
-      box-shadow: 0 0 20px rgba(0,180,216,.4), 0 4px 12px rgba(0,0,0,.3);
-      cursor: pointer;
-      transition: transform .2s ease;
-    }
-    input[type="range"]::-webkit-slider-thumb:active { transform: scale(1.2); }
-    input[type="range"]::-moz-range-thumb {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: var(--white);
-      border: 4px solid var(--ice);
-      box-shadow: 0 0 20px rgba(0,180,216,.4);
-      cursor: pointer;
-    }
-    .slider-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: .78rem;
-      color: rgba(255,255,255,.3);
-      font-weight: 500;
-    }
-    .sqft-manual {
-      margin-top: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .sqft-manual-label {
-      font-size: .85rem;
-      color: rgba(255,255,255,.35);
-    }
-    .sqft-input {
-      width: 100px;
-      padding: 8px 12px;
-      background: rgba(255,255,255,.06);
-      border: 2px solid rgba(255,255,255,.12);
-      border-radius: 8px;
-      color: var(--white);
-      font-size: 1rem;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      text-align: center;
-      transition: var(--transition);
-    }
-    .sqft-input:focus {
-      outline: none;
-      border-color: var(--ice);
-      background: rgba(0,180,216,.06);
-    }
-
-    /* ============ NAV BUTTONS ============ */
-    .step-actions {
-      margin-top: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      width: 100%;
-    }
-    .btn-continue {
-      width: 100%;
-      max-width: 360px;
-      padding: 18px 32px;
-      border: none;
-      border-radius: 60px;
-      font-family: 'Inter', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-continue.primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-      color: var(--white);
-      box-shadow: 0 8px 32px rgba(232,83,30,.3);
-    }
-    .btn-continue.primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(232,83,30,.4);
-    }
-    .btn-continue.primary:active { transform: scale(.98); }
-    .btn-continue.disabled {
-      opacity: .25;
-      pointer-events: none;
-    }
-    .btn-continue .ripple {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(255,255,255,.3);
-      transform: scale(0);
-      animation: ripple .6s ease-out;
-    }
-    @keyframes ripple {
-      to { transform: scale(4); opacity: 0; }
-    }
-    .btn-back {
-      background: none;
-      border: none;
-      color: rgba(255,255,255,.35);
-      font-family: 'Inter', sans-serif;
-      font-size: .9rem;
-      font-weight: 500;
-      cursor: pointer;
-      padding: 8px 16px;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .btn-back:hover { color: rgba(255,255,255,.6); }
-
-    /* ============ KEYBOARD HINT ============ */
-    .key-hint {
-      position: fixed;
-      bottom: 24px; right: 24px;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: .75rem;
-      color: rgba(255,255,255,.2);
-      pointer-events: none;
-    }
-    .key-hint kbd {
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 4px;
-      padding: 2px 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: .7rem;
-    }
-
-    /* ============ RESULTS PAGE ============ */
-    .results-step {
-      padding-top: 60px !important;
-      justify-content: flex-start !important;
-      overflow-y: auto;
-    }
-    .results-step .step-inner {
-      max-width: 640px;
-    }
-
-    .results-hero {
-      background: linear-gradient(160deg, var(--primary) 0%, var(--dark) 60%, rgba(0,180,216,.15) 100%);
-      border-radius: var(--radius);
-      padding: 40px 28px;
-      margin-bottom: 24px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(0,180,216,.1);
-    }
-    .results-hero::before {
-      content: '';
-      position: absolute;
-      top: -60%; right: -30%;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(0,180,216,.12) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .results-hero::after {
-      content: '';
-      position: absolute;
-      bottom: -40%; left: -20%;
-      width: 250px; height: 250px;
-      background: radial-gradient(circle, rgba(232,83,30,.08) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .results-badge {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(0,180,216,.15);
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 12px;
+      font-weight: 800;
       color: var(--ice-light);
-      padding: 6px 14px;
-      border-radius: 50px;
-      font-size: .72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 20px;
-      position: relative;
-    }
-    .results-system-icon {
-      font-size: 3rem;
-      margin-bottom: 12px;
-      display: block;
-      opacity: .9;
-    }
-    .results-tons {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(2rem, 8vw, 3.2rem);
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1;
-      position: relative;
-    }
-    .results-tons .unit {
-      font-size: .35em;
-      color: var(--ice);
-      font-weight: 700;
-      vertical-align: super;
-      margin-left: 4px;
-    }
-    .results-system-label {
-      color: rgba(255,255,255,.5);
-      font-size: .95rem;
-      margin-top: 8px;
-      font-weight: 500;
-    }
-    .results-btu-badge {
-      display: inline-block;
-      margin-top: 12px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
-      padding: 6px 16px;
-      border-radius: 50px;
-      font-size: .85rem;
-      font-weight: 600;
-      color: rgba(255,255,255,.7);
-    }
-
-    /* Stats row */
-    .stats-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .stat-card {
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: var(--radius-sm);
-      padding: 20px 16px;
-      text-align: center;
-    }
-    .stat-icon {
-      font-size: 1.4rem;
-      color: var(--ice);
-      margin-bottom: 8px;
-    }
-    .stat-value {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--white);
-    }
-    .stat-label {
-      font-size: .75rem;
-      color: rgba(255,255,255,.4);
-      margin-top: 2px;
-      font-weight: 500;
-    }
-
-    /* ============ TIER CARDS ============ */
-    .tiers-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--white);
       margin-bottom: 16px;
-      text-align: left;
     }
-    .tier-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .tier {
-      background: rgba(255,255,255,.03);
-      border: 2px solid rgba(255,255,255,.06);
-      border-radius: var(--radius-sm);
-      padding: 22px 20px;
-      text-align: left;
-      position: relative;
-      transition: var(--transition);
-    }
-    .tier.recommended {
-      border-color: var(--ice);
-      background: rgba(0,180,216,.06);
-      box-shadow: 0 0 0 4px rgba(0,180,216,.08);
-    }
-    .tier-badge {
-      position: absolute;
-      top: -10px; right: 16px;
-      background: var(--ice);
-      color: var(--white);
-      font-size: .65rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 3px 12px;
-      border-radius: 50px;
-    }
-    .tier-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    .tier-name {
+
+    .hero h1 {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
+      font-size: clamp(2.3rem, 5vw, 4.1rem);
+      line-height: 1.04;
+      margin-bottom: 14px;
+      color: var(--white);
+      max-width: 720px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: rgba(255,255,255,.82);
       font-size: 1.05rem;
-      color: var(--white);
-    }
-    .tier-name .tier-icon { margin-right: 6px; }
-    .tier-price {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: var(--ice);
-    }
-    .tier-features {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .tier-features li {
-      font-size: .82rem;
-      color: rgba(255,255,255,.5);
-      padding: 3px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .tier-features li i {
-      color: var(--ice);
-      font-size: .7rem;
-      flex-shrink: 0;
-    }
-    .tier.recommended .tier-features li i { color: var(--ice-light); }
-
-    /* Financing hint */
-    .financing-hint {
-      background: linear-gradient(135deg, rgba(232,83,30,.08), rgba(255,107,53,.08));
-      border: 1px solid rgba(232,83,30,.15);
-      border-radius: var(--radius-sm);
-      padding: 18px 20px;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .financing-icon {
-      font-size: 1.8rem;
-      flex-shrink: 0;
-    }
-    .financing-text {
-      text-align: left;
-    }
-    .financing-text strong {
-      display: block;
-      color: var(--white);
-      font-size: 1rem;
-      margin-bottom: 2px;
-    }
-    .financing-text span {
-      font-size: .82rem;
-      color: rgba(255,255,255,.45);
+      line-height: 1.85;
     }
 
-    /* Efficiency */
-    .efficiency-section {
-      background: rgba(0,180,216,.04);
-      border: 1px solid rgba(0,180,216,.1);
-      border-radius: var(--radius-sm);
-      padding: 22px 20px;
-      margin-bottom: 24px;
-      text-align: left;
+    .hero-points {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
     }
-    .efficiency-section h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 8px;
+
+    .hero-point {
       display: flex;
-      align-items: center;
-      gap: 8px;
+      gap: 12px;
+      align-items: flex-start;
+      color: rgba(255,255,255,.88);
+      font-size: .96rem;
+      line-height: 1.7;
     }
-    .efficiency-section h3 i { color: var(--ice); }
-    .efficiency-section p {
-      font-size: .88rem;
-      color: rgba(255,255,255,.5);
+
+    .hero-point i { color: var(--ice-light); margin-top: 4px; }
+
+    .hero-card {
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--white);
+      font-size: 1.45rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-card p {
+      color: rgba(255,255,255,.78);
+      font-size: .95rem;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .hero-card-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-card-grid div {
+      border-radius: 18px;
+      background: rgba(255,255,255,.12);
+      padding: 14px 16px;
+      color: rgba(255,255,255,.92);
+      font-size: .93rem;
       line-height: 1.6;
     }
-    .efficiency-section strong { color: var(--ice-light); }
 
-    /* Savings comparison */
-    .savings-bar {
-      margin: 16px 0 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .hero-card-grid strong {
+      display: block;
+      font-size: .82rem;
+      color: var(--ice-light);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 4px;
     }
-    .savings-row {
+
+    .main-section {
+      margin-top: -28px;
+      position: relative;
+      z-index: 2;
+      padding-bottom: 72px;
+    }
+
+    .funnel-shell {
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(226,232,240,.95);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .funnel-head {
+      padding: 28px 32px 22px;
+      border-bottom: 1px solid rgba(226,232,240,.95);
+      background: linear-gradient(180deg, rgba(247,250,252,.96), rgba(255,255,255,.98));
+    }
+
+    .progress-row {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .progress-row h2 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary);
+      font-size: 1.45rem;
+    }
+
+    .progress-text {
+      color: var(--text-light);
+      font-size: .92rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--gray-200);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 8.333%;
+      background: linear-gradient(90deg, var(--ice), #66dbf2);
+      transition: width .22s ease;
+    }
+
+    .step-kicker {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .question {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary);
+      font-size: clamp(1.8rem, 3vw, 2.75rem);
+      line-height: 1.08;
+      margin-bottom: 10px;
+    }
+
+    .question-copy {
+      color: var(--text-light);
+      max-width: 820px;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .funnel-body {
+      padding: 28px 32px 24px;
+      min-height: 320px;
+    }
+
+    .choice-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .choice-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .choice-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .choice-card {
+      border: 1px solid rgba(226,232,240,.95);
+      background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(247,250,252,.98));
+      border-radius: 22px;
+      padding: 18px;
+      display: grid;
+      gap: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+      min-height: 150px;
+      text-align: left;
+      overflow: hidden;
+    }
+
+    .choice-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0,180,216,.34);
+      box-shadow: 0 18px 40px rgba(15,43,76,.08);
+    }
+
+    .choice-card.selected {
+      border-color: rgba(0,180,216,.7);
+      background: linear-gradient(180deg, #ffffff, #eefbff);
+      box-shadow: 0 18px 40px rgba(0,180,216,.12);
+    }
+
+    .choice-card.has-image {
+      padding-top: 0;
+      gap: 0;
+    }
+
+    .choice-media {
+      margin: -18px -18px 0;
+      overflow: hidden;
+      min-height: 220px;
+      border-bottom: 1px solid rgba(226,232,240,.95);
+    }
+
+    .choice-media img {
+      width: 100%;
+      height: 220px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .choice-top {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
       gap: 12px;
     }
-    .savings-label {
-      font-size: .78rem;
-      color: rgba(255,255,255,.5);
-      width: 80px;
-      flex-shrink: 0;
-      text-align: right;
-      font-weight: 600;
-    }
-    .savings-track {
-      flex: 1;
-      height: 24px;
-      background: rgba(255,255,255,.05);
-      border-radius: 6px;
-      overflow: hidden;
-      position: relative;
-    }
-    .savings-fill {
-      height: 100%;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
+
+    .choice-card.has-image .choice-top {
       justify-content: flex-end;
-      padding-right: 8px;
-      font-size: .7rem;
-      font-weight: 700;
-      color: var(--white);
-      transition: width 1s ease;
-    }
-    .savings-fill.old {
-      background: linear-gradient(90deg, rgba(232,83,30,.6), rgba(232,83,30,.8));
-    }
-    .savings-fill.new {
-      background: linear-gradient(90deg, rgba(0,180,216,.6), rgba(0,180,216,.9));
+      margin: 14px 0 0;
     }
 
-    /* CTA */
-    .cta-section {
-      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-      border-radius: var(--radius);
-      padding: 36px 24px;
-      text-align: center;
-      margin-bottom: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: -50%; right: -30%;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(255,255,255,.1) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .cta-section h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 800;
+    .choice-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, var(--primary-light), var(--primary));
       color: var(--white);
-      margin-bottom: 8px;
-      position: relative;
+      font-size: 15px;
+      font-weight: 800;
     }
-    .cta-section p {
-      color: rgba(255,255,255,.85);
-      font-size: .95rem;
-      margin-bottom: 24px;
-      position: relative;
+
+    .choice-card.has-image .choice-icon {
+      display: none;
     }
-    .cta-buttons {
-      display: flex;
-      flex-direction: column;
+
+    .choice-check {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid #cbd5e0;
+      display: grid;
+      place-items: center;
+      color: transparent;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .choice-card.selected .choice-check {
+      border-color: var(--ice);
+      background: var(--ice);
+      color: var(--white);
+    }
+
+    .choice-title {
+      font-size: 1.08rem;
+      line-height: 1.3;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .choice-card.has-image .choice-title {
+      font-size: 1rem;
+      padding: 12px 0 2px;
+    }
+
+    .choice-copy {
+      color: var(--text-light);
+      line-height: 1.7;
+      font-size: .93rem;
+    }
+
+    .choice-card.has-image .choice-copy {
+      display: none;
+    }
+
+    .field {
+      display: grid;
       gap: 10px;
-      position: relative;
+      max-width: 620px;
     }
-    .cta-btn {
+
+    .field label {
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .field input {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid #d8e1ea;
+      background: var(--white);
+      padding: 16px 18px;
+      font: inherit;
+      font-size: 1rem;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .field input:focus {
+      outline: none;
+      border-color: rgba(0,180,216,.75);
+      box-shadow: 0 0 0 4px rgba(0,180,216,.12);
+    }
+
+    .split-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      max-width: 720px;
+    }
+
+    .consent-box,
+    .notice {
+      margin-top: 18px;
+      border-radius: 18px;
+      padding: 16px 18px;
+      font-size: .94rem;
+      line-height: 1.8;
+    }
+
+    .consent-box {
+      background: linear-gradient(135deg, rgba(15,43,76,.05), rgba(0,180,216,.07));
+      border: 1px solid rgba(226,232,240,.95);
+      color: var(--text);
+    }
+
+    .notice {
+      background: #fff7f2;
+      border: 1px solid rgba(232,83,30,.14);
+      color: #8d523f;
+    }
+
+    .funnel-foot {
+      padding: 0 32px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .foot-note {
+      color: var(--text-light);
+      font-size: .92rem;
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 150px;
+      padding: 15px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font: inherit;
+      font-weight: 800;
+      font-size: .96rem;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      color: var(--white);
+      box-shadow: 0 14px 28px rgba(232,83,30,.22);
+    }
+
+    .btn.secondary {
+      background: var(--gray-100);
+      color: var(--primary);
+    }
+
+    .btn:disabled {
+      opacity: .46;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .support-card {
+      border-radius: 24px;
+      background: rgba(255,255,255,.94);
+      border: 1px solid rgba(226,232,240,.95);
+      box-shadow: 0 12px 30px rgba(15,43,76,.06);
+      padding: 22px;
+    }
+
+    .support-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary);
+      font-size: 1.12rem;
+      margin-bottom: 10px;
+    }
+
+    .support-card p {
+      color: var(--text-light);
+      line-height: 1.8;
+      font-size: .94rem;
+    }
+
+    .footer {
+      background: var(--dark);
+      color: rgba(255,255,255,.7);
+      padding: 80px 0 0;
+      margin-top: 80px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .footer-brand .logo { margin-bottom: 16px; }
+    .footer-brand p { font-size: .9rem; line-height: 1.8; max-width: 320px; }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 16px 24px;
-      border-radius: 60px;
-      font-weight: 700;
-      font-size: 1rem;
+      color: rgba(255,255,255,.7);
       text-decoration: none;
       transition: var(--transition);
-      font-family: 'Inter', sans-serif;
-      border: none;
-      cursor: pointer;
     }
-    .cta-btn-phone {
-      background: var(--white);
-      color: var(--accent);
-    }
-    .cta-btn-phone:active { transform: scale(.97); }
-    .cta-btn-schedule {
-      background: rgba(255,255,255,.15);
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,.3);
-    }
-    .cta-btn-schedule:active { transform: scale(.97); }
 
-    .disclaimer {
-      text-align: center;
-      font-size: .72rem;
-      color: rgba(255,255,255,.25);
-      margin: 16px 0;
-      line-height: 1.5;
+    .footer-social a:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--white);
     }
-    .restart-btn {
+
+    .footer h4 {
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .footer ul { list-style: none; }
+    .footer ul li { margin-bottom: 10px; }
+
+    .footer ul a {
+      color: rgba(255,255,255,.6);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: var(--transition);
+    }
+
+    .footer ul a:hover {
+      color: var(--ice-light);
+      padding-left: 4px;
+    }
+
+    .footer-contact li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-contact i { color: var(--ice); width: 16px; }
+
+    .footer-bottom {
+      padding: 24px 0;
+      text-align: center;
+      font-size: .85rem;
+      color: rgba(255,255,255,.4);
+    }
+
+    .floating-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: var(--accent);
+      box-shadow: 0 -4px 20px rgba(0,0,0,.2);
+    }
+
+    .floating-cta-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+    }
+
+    .floating-cta-hamburger {
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 8px;
+      margin-left: -8px;
+    }
+
+    .floating-cta a {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      margin: 0 auto 40px;
-      background: none;
-      border: none;
-      color: var(--ice);
-      font-size: .88rem;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      padding: 10px 20px;
-      opacity: .6;
-      transition: var(--transition);
-    }
-    .restart-btn:hover { opacity: 1; }
-
-    /* ============ CONFETTI / CELEBRATION ============ */
-    .celebration {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none;
-      z-index: 9999;
-    }
-    .confetti-piece {
-      position: absolute;
-      width: 8px; height: 8px;
-      border-radius: 2px;
-      animation: confetti-fall 2.5s ease-out forwards;
-    }
-    @keyframes confetti-fall {
-      0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+      gap: 10px;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 700;
+      flex: 1;
     }
 
-    /* ============ LOADING CALC ============ */
-    .calc-loading {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    .calc-spinner {
-      width: 48px; height: 48px;
-      border: 4px solid rgba(0,180,216,.15);
-      border-top-color: var(--ice);
-      border-radius: 50%;
-      animation: spin .8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .calc-loading-text {
-      color: rgba(255,255,255,.5);
-      font-size: .95rem;
-      font-weight: 500;
+    @media (max-width: 1024px) {
+      .hero-inner,
+      .support-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .choice-grid.three {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
-    /* ============ ANIMATE IN CHILDREN ============ */
-    .results-step .step-inner > * {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity .5s ease, transform .5s ease;
-    }
-    .results-step.active .step-inner > * {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .results-step.active .step-inner > *:nth-child(1) { transition-delay: .1s; }
-    .results-step.active .step-inner > *:nth-child(2) { transition-delay: .2s; }
-    .results-step.active .step-inner > *:nth-child(3) { transition-delay: .3s; }
-    .results-step.active .step-inner > *:nth-child(4) { transition-delay: .4s; }
-    .results-step.active .step-inner > *:nth-child(5) { transition-delay: .5s; }
-    .results-step.active .step-inner > *:nth-child(6) { transition-delay: .6s; }
-    .results-step.active .step-inner > *:nth-child(7) { transition-delay: .7s; }
-    .results-step.active .step-inner > *:nth-child(8) { transition-delay: .8s; }
-    .results-step.active .step-inner > *:nth-child(9) { transition-delay: .9s; }
-
-    /* ============ RESPONSIVE ============ */
-    @media (max-width: 600px) {
-      .options-2 { grid-template-columns: 1fr 1fr; }
-      .options-3 { grid-template-columns: 1fr 1fr 1fr; }
-      .opt { padding: 18px 10px; min-height: 100px; }
-      .opt-icon { font-size: 1.6rem; }
-      .opt-label { font-size: .85rem; }
-      .opt-desc { font-size: .7rem; }
-      .key-hint { display: none; }
-      .tier-header { flex-direction: column; align-items: flex-start; gap: 4px; }
-    }
-    @media (max-width: 380px) {
-      .options-3 { grid-template-columns: 1fr 1fr; }
-      .step { padding: 70px 16px 30px; }
+    @media (max-width: 768px) {
+      .top-bar { display: none; }
+      .nav-links, .nav-phone { display: none; }
+      .mobile-toggle { display: inline-flex; }
+      .hero { padding: 42px 0 34px; }
+      .funnel-head,
+      .funnel-body,
+      .funnel-foot { padding-left: 20px; padding-right: 20px; }
+      .split-fields,
+      .choice-grid.two,
+      .choice-grid.three { grid-template-columns: 1fr; }
+      .funnel-foot { align-items: stretch; }
+      .actions, .btn { width: 100%; }
+      .floating-cta { display: block; }
+      body { padding-bottom: 58px; }
     }
   </style>
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="HVAC Pricing Calculator | Frost Fire Heating & Cooling">
-  <meta property="og:description" content="Get an instant HVAC installation price estimate for your home. Free calculator for heat pumps, AC, and furnace systems in Raleigh, Clayton NC area.">
-  <meta property="og:url" content="https://frostfirehvacr.com/calculator.html">
-  <meta property="og:site_name" content="Frost Fire Heating & Cooling">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1545259742-b4fd8fea67e4?w=1200&q=80">
-  <meta property="og:locale" content="en_US">
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="HVAC Pricing Calculator | Frost Fire Heating & Cooling">
-  <meta name="twitter:description" content="Get an instant HVAC installation price estimate for your home. Free calculator for heat pumps, AC, and furnace systems in Raleigh, Clayton NC area.">
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1545259742-b4fd8fea67e4?w=1200&q=80">
-  <!-- Canonical -->
-  <link rel="canonical" href="https://frostfirehvacr.com/calculator.html">
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "HVAC Pricing Calculator",
-    "applicationCategory": "UtilityApplication",
-    "provider": {
-      "@type": "HVACBusiness",
-      "name": "Frost Fire Heating and Cooling",
-      "telephone": "+19192304439"
-    }
-  }
-  </script>
 </head>
 <body>
-
-  <!-- NAV -->
-  <nav class="nav">
-    <a href="index.html" class="nav-logo"><span class="ice">Frost</span> <span class="fire">Fire</span></a>
-    <a href="tel:9192304439" class="nav-phone"><i class="fas fa-phone"></i> (919) 230-4439</a>
-  </nav>
-
-  <!-- PROGRESS -->
-  <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:11%"></div></div>
-  <div class="progress-info" id="progressInfo">1 of 9</div>
-
-  <!-- CALCULATOR -->
-  <div class="calculator" id="calculator">
-
-    <!-- STEP 1: Current System -->
-    <div class="step active" data-step="1">
-      <div class="step-inner">
-        <div class="step-number">Step 1 of 9</div>
-        <h1 class="step-title">What do you have<br>right now?</h2>
-        <p class="step-subtitle">Tell us about your current heating & cooling setup</p>
-        <div class="options options-2">
-          <div class="opt" data-field="currentSystem" data-value="heatpump" onclick="select(this)">
-            <span class="opt-icon">🔄</span>
-            <span class="opt-label">Heat Pump</span>
-            <span class="opt-desc">All-electric system</span>
-          </div>
-          <div class="opt" data-field="currentSystem" data-value="gasfurnace" onclick="select(this)">
-            <span class="opt-icon">🔥</span>
-            <span class="opt-label">AC + Gas Furnace</span>
-            <span class="opt-desc">Split gas/electric</span>
-          </div>
-          <div class="opt" data-field="currentSystem" data-value="windowac" onclick="select(this)">
-            <span class="opt-icon">🪟</span>
-            <span class="opt-label">Window Units</span>
-            <span class="opt-desc">No central system</span>
-          </div>
-          <div class="opt" data-field="currentSystem" data-value="none" onclick="select(this)">
-            <span class="opt-icon">🏗️</span>
-            <span class="opt-label">New Build</span>
-            <span class="opt-desc">No existing system</span>
-          </div>
+  <header class="header" id="header">
+    <div class="top-bar">
+      <div class="container">
+        <div class="top-bar-badges">
+          <span><i class="fas fa-shield-halved"></i> Licensed & Insured</span>
+          <span><i class="fas fa-calendar-check"></i> Same Price on Sundays!</span>
+          <span><i class="fas fa-bolt"></i> 24/7 Emergency Service</span>
         </div>
-        <div class="step-actions">
-          <button class="btn-continue primary disabled" id="next1" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
+        <div class="top-bar-right">
+          <a href="tel:9192304439"><i class="fas fa-phone"></i> (919) 230-4439</a>
         </div>
       </div>
     </div>
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <img src="images/frostfire-logo.png" alt="Frost Fire Heating & Cooling" style="height:56px;width:auto;">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#why-us">Why Us</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="service-areas.html">Service Areas</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="tel:9192304439" class="nav-phone">
+        <i class="fas fa-phone"></i>
+        <span>(919) 230-4439</span>
+      </a>
+      <button class="mobile-toggle" onclick="document.getElementById('mobileMenu').classList.add('active')">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
 
-    <!-- STEP 2: Desired System Type -->
-    <div class="step" data-step="2">
-      <div class="step-inner">
-        <div class="step-number">Step 2 of 9</div>
-        <h2 class="step-title">What system<br>do you want?</h2>
-        <p class="step-subtitle">Choose the configuration that fits your needs</p>
-        <div class="options options-2">
-          <div class="opt" data-field="systemType" data-value="heatpump" onclick="select(this)">
-            <span class="opt-icon">🔄</span>
-            <span class="opt-label">Heat Pump</span>
-            <span class="opt-desc">Heats & cools — most efficient</span>
-          </div>
-          <div class="opt" data-field="systemType" data-value="straightcool" onclick="select(this)">
-            <span class="opt-icon">❄️🔥</span>
-            <span class="opt-label">AC + Furnace</span>
-            <span class="opt-desc">Straight cool with gas heat</span>
-          </div>
-        </div>
-        <div class="step-actions">
-          <button class="btn-continue primary disabled" id="next2" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
-          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 3: Square Footage -->
-    <div class="step" data-step="3">
-      <div class="step-inner">
-        <div class="step-number">Step 3 of 9</div>
-        <h2 class="step-title">How big is your home?</h2>
-        <p class="step-subtitle">Total conditioned living space</p>
-        <div class="sqft-display">
-          <div class="sqft-value" id="sqftValue">2,000</div>
-          <div class="sqft-unit">square feet</div>
-        </div>
-        <div class="slider-container">
-          <input type="range" id="sqftSlider" min="500" max="5000" step="50" value="2000" oninput="updateSqft(this.value)">
-          <div class="slider-labels"><span>500</span><span>2,500</span><span>5,000</span></div>
-        </div>
-        <div class="sqft-manual">
-          <span class="sqft-manual-label">Or type exact:</span>
-          <input type="number" class="sqft-input" id="sqftInput" value="2000" min="500" max="5000" oninput="updateSqftFromInput(this.value)">
-        </div>
-        <div class="step-actions">
-          <button class="btn-continue primary" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
-          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 4: Stories -->
-    <div class="step" data-step="4">
-      <div class="step-inner">
-        <div class="step-number">Step 4 of 9</div>
-        <h2 class="step-title">How many stories?</h2>
-        <p class="step-subtitle">Number of floors in your home</p>
-        <div class="options options-3">
-          <div class="opt" data-field="stories" data-value="1" onclick="select(this)">
-            <span class="opt-icon">🏠</span>
-            <span class="opt-label">1 Story</span>
-            <span class="opt-desc">Single level</span>
-          </div>
-          <div class="opt" data-field="stories" data-value="2" onclick="select(this)">
-            <span class="opt-icon">🏡</span>
-            <span class="opt-label">2 Stories</span>
-            <span class="opt-desc">Two levels</span>
-          </div>
-          <div class="opt" data-field="stories" data-value="3" onclick="select(this)">
-            <span class="opt-icon">🏢</span>
-            <span class="opt-label">3+</span>
-            <span class="opt-desc">Multi-level</span>
-          </div>
-        </div>
-        <div class="step-actions">
-          <button class="btn-continue primary disabled" id="next4" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
-          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 5: Home Age -->
-    <div class="step" data-step="5">
-      <div class="step-inner">
-        <div class="step-number">Step 5 of 9</div>
-        <h2 class="step-title">How old is your home?</h2>
-        <p class="step-subtitle">Older homes typically need more capacity</p>
-        <div class="options options-3">
-          <div class="opt" data-field="homeAge" data-value="new" onclick="select(this)">
-            <span class="opt-icon">✨</span>
-            <span class="opt-label">New Build</span>
-            <span class="opt-desc">0–10 years</span>
-          </div>
-          <div class="opt" data-field="homeAge" data-value="mid" onclick="select(this)">
-            <span class="opt-icon">🏠</span>
-            <span class="opt-label">Mid-Age</span>
-            <span class="opt-desc">10–30 years</span>
-          </div>
-          <div class="opt" data-field="homeAge" data-value="old" onclick="select(this)">
-            <span class="opt-icon">🏚️</span>
-            <span class="opt-label">Older</span>
-            <span class="opt-desc">30+ years</span>
-          </div>
-        </div>
-        <div class="step-actions">
-          <button class="btn-continue primary disabled" id="next5" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
-          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 6: Insulation -->
-    <div class="step" data-step="6">
-      <div class="step-inner">
-        <div class="step-number">Step 6 of 9</div>
-        <h2 class="step-title">How's the insulation?</h2>
-        <p class="step-subtitle">Better insulation = smaller system needed</p>
-        <div class="options options-3">
-          <div class="opt" data-field="insulation" data-value="good" onclick="select(this)">
-            <span class="opt-icon">🛡️</span>
-            <span class="opt-label">Good</span>
-            <span class="opt-desc">Well sealed</span>
-          </div>
-          <div class="opt" data-field="insulation" data-value="average" onclick="select(this)">
-            <span class="opt-icon">👍</span>
-            <span class="opt-label">Average</span>
-            <span class="opt-desc">Typical home</span>
-          </div>
-          <div class="opt" data-field="insulation" data-value="poor" onclick="select(this)">
-            <span class="opt-icon">⚠️</span>
-            <span class="opt-label">Poor</span>
-            <span class="opt-desc">Drafty / old</span>
-          </div>
-        </div>
-        <div class="step-actions">
-          <button class="btn-continue primary disabled" id="next6" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
-          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 7: Windows -->
-    <div class="step" data-step="7">
-      <div class="step-inner">
-        <div class="step-number">Step 7 of 9</div>
-        <h2 class="step-title">How many windows?</h2>
-        <p class="step-subtitle">More glass = more heat gain to handle</p>
-        <div class="options options-3">
-          <div class="opt" data-field="windows" data-value="few" onclick="select(this)">
-            <span class="opt-icon">🪟</span>
-            <span class="opt-label">Few</span>
-            <span class="opt-desc">Minimal</span>
-          </div>
-          <div class="opt" data-field="windows" data-value="average" onclick="select(this)">
-            <span class="opt-icon">🪟🪟</span>
-            <span class="opt-label">Average</span>
-            <span class="opt-desc">Normal</span>
-          </div>
-          <div class="opt" data-field="windows" data-value="many" onclick="select(this)">
-            <span class="opt-icon">🪟🪟🪟</span>
-            <span class="opt-label">Many</span>
-            <span class="opt-desc">Lots of glass</span>
-          </div>
-        </div>
-        <div class="step-actions">
-          <button class="btn-continue primary disabled" id="next7" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
-          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 8: Sun Exposure -->
-    <div class="step" data-step="8">
-      <div class="step-inner">
-        <div class="step-number">Step 8 of 9</div>
-        <h2 class="step-title">Sun exposure?</h2>
-        <p class="step-subtitle">How much direct sunlight hits your home</p>
-        <div class="options options-3">
-          <div class="opt" data-field="sun" data-value="shade" onclick="select(this)">
-            <span class="opt-icon">🌳</span>
-            <span class="opt-label">Shaded</span>
-            <span class="opt-desc">Heavy trees</span>
-          </div>
-          <div class="opt" data-field="sun" data-value="mixed" onclick="select(this)">
-            <span class="opt-icon">⛅</span>
-            <span class="opt-label">Mixed</span>
-            <span class="opt-desc">Some of each</span>
-          </div>
-          <div class="opt" data-field="sun" data-value="full" onclick="select(this)">
-            <span class="opt-icon">☀️</span>
-            <span class="opt-label">Full Sun</span>
-            <span class="opt-desc">All day sun</span>
-          </div>
-        </div>
-        <div class="step-actions">
-          <button class="btn-continue primary disabled" id="next8" onclick="next()">Continue <i class="fas fa-arrow-right"></i></button>
-          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- STEP 9: Ceiling Height -->
-    <div class="step" data-step="9">
-      <div class="step-inner">
-        <div class="step-number">Step 9 of 9</div>
-        <h2 class="step-title">Ceiling height?</h2>
-        <p class="step-subtitle">Taller ceilings = more air to condition</p>
-        <div class="options options-3">
-          <div class="opt" data-field="ceiling" data-value="standard" onclick="select(this)">
-            <span class="opt-icon">📏</span>
-            <span class="opt-label">Standard</span>
-            <span class="opt-desc">8 ft</span>
-          </div>
-          <div class="opt" data-field="ceiling" data-value="high" onclick="select(this)">
-            <span class="opt-icon">📐</span>
-            <span class="opt-label">High</span>
-            <span class="opt-desc">9–10 ft</span>
-          </div>
-          <div class="opt" data-field="ceiling" data-value="vaulted" onclick="select(this)">
-            <span class="opt-icon">⛪</span>
-            <span class="opt-label">Vaulted</span>
-            <span class="opt-desc">10+ ft</span>
-          </div>
-        </div>
-        <div class="step-actions">
-          <button class="btn-continue primary disabled" id="next9" onclick="calculate()">See My Pricing <i class="fas fa-dollar-sign"></i></button>
-          <button class="btn-back" onclick="prev()"><i class="fas fa-arrow-left"></i> Back</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- LOADING -->
-    <div class="step" data-step="loading">
-      <div class="step-inner">
-        <div class="calc-loading">
-          <div class="calc-spinner"></div>
-          <div class="calc-loading-text">Calculating your perfect system...</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- RESULTS -->
-    <div class="step results-step" data-step="results">
-      <div class="step-inner">
-
-        <div class="results-hero">
-          <div class="results-badge"><i class="fas fa-check-circle"></i> Your Custom Estimate</div>
-          <div style="display:flex;align-items:center;gap:24px;position:relative;">
-            <div style="flex:1;">
-              <div class="results-system-icon" id="resultIcon">🔄</div>
-              <div class="results-tons" id="resultMonthly" style="color:var(--ice-light);">$89<span style="font-size:.4em;color:var(--ice);font-weight:700;">/mo</span></div>
-              <div class="results-system-label" style="margin-top:4px;font-size:1.1rem;color:rgba(255,255,255,.7);">with approved financing</div>
-              <div style="margin-top:12px;font-size:.95rem;color:rgba(255,255,255,.35);" id="resultPrice">Total: Starting at $7,500</div>
-              <div class="results-system-label" id="resultSystem" style="margin-top:4px;">Heat Pump System</div>
-              <div class="results-btu-badge" id="resultSize"><i class="fas fa-bolt"></i>&nbsp; 3 Ton · 36,000 BTU/h cooling capacity</div>
-            </div>
-            <div style="flex-shrink:0;width:140px;height:140px;border-radius:16px;overflow:hidden;border:2px solid rgba(0,180,216,.15);">
-              <img src="images/ac-unit.jpg" alt="HVAC equipment installation" style="width:100%;height:100%;object-fit:cover;" id="resultEquipImg">
-            </div>
-          </div>
-        </div>
-
-        <div class="stats-row">
-          <div class="stat-card">
-            <div class="stat-icon"><i class="fas fa-home"></i></div>
-            <div class="stat-value" id="resultSqft">2,000</div>
-            <div class="stat-label">Square Feet</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon"><i class="fas fa-temperature-half"></i></div>
-            <div class="stat-value" id="resultClimate">Zone 4</div>
-            <div class="stat-label">Raleigh, NC</div>
-          </div>
-        </div>
-
-        <div class="tiers-title">Choose Your Package</div>
-        <div class="tier-cards" id="tierCards"></div>
-
-        <div class="financing-hint">
-          <div class="financing-icon">💰</div>
-          <div class="financing-text">
-            <strong id="financingAmount">As low as $89/month</strong>
-            <span>With approved financing — 0% options available</span>
-          </div>
-        </div>
-
-        <div class="efficiency-section">
-          <h3><i class="fas fa-leaf"></i> Energy Savings</h3>
-          <p id="resultEfficiency"></p>
-          <div class="savings-bar">
-            <div class="savings-row">
-              <span class="savings-label">Old System</span>
-              <div class="savings-track"><div class="savings-fill old" id="savingsOld" style="width:0%"></div></div>
-            </div>
-            <div class="savings-row">
-              <span class="savings-label">New System</span>
-              <div class="savings-track"><div class="savings-fill new" id="savingsNew" style="width:0%"></div></div>
-            </div>
-          </div>
-          <p style="font-size:.75rem;margin-top:8px;opacity:.6" id="savingsNote"></p>
-        </div>
-
-        <div class="cta-section">
-          <h3>🔥 Get Your Free In-Home Estimate</h3>
-          <p>A licensed Frost Fire technician will confirm your sizing and give you an exact price — no obligation.</p>
-          <div class="cta-buttons">
-            <a href="tel:9192304439" class="cta-btn cta-btn-phone"><i class="fas fa-phone"></i> (919) 230-4439</a>
-            <a href="contact.html" class="cta-btn cta-btn-schedule"><i class="fas fa-calendar-check"></i> Schedule Online</a>
-          </div>
-        </div>
-
-        <p class="disclaimer">* Prices shown are estimates based on typical installations in the Raleigh/Clayton, NC area. Actual pricing requires a free on-site assessment by a licensed Frost Fire technician. Final cost depends on equipment brand, efficiency rating, ductwork condition, and installation complexity. System sizing is based on simplified Manual J principles.</p>
-        <button class="restart-btn" onclick="restart()"><i class="fas fa-redo"></i> Start Over</button>
-      </div>
-    </div>
-
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="this.parentElement.classList.remove('active')">
+      <i class="fas fa-times"></i>
+    </button>
+    <a href="index.html#services" onclick="this.parentElement.classList.remove('active')">Services</a>
+    <a href="index.html#why-us" onclick="this.parentElement.classList.remove('active')">Why Us</a>
+    <a href="reviews.html" onclick="this.parentElement.classList.remove('active')">Reviews</a>
+    <a href="service-areas.html" onclick="this.parentElement.classList.remove('active')">Service Areas</a>
+    <a href="contact.html" onclick="this.parentElement.classList.remove('active')">Contact</a>
+    <a href="tel:9192304439" class="btn primary" style="margin-top:12px; width:auto;">Call Now</a>
   </div>
 
-  <!-- KEY HINT (desktop) -->
-  <div class="key-hint"><kbd>Enter</kbd> to continue &middot; <kbd>↑</kbd><kbd>↓</kbd> to navigate</div>
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="eyebrow"><i class="fas fa-calculator"></i> Instant Replacement Estimate</div>
+        <h1>Get your HVAC options without all the extra junk.</h1>
+        <p>
+          This is the streamlined Frost Fire experience: answer a few quick questions, review your best-fit system path,
+          then land on a dedicated offers page with pricing, tune-up, and free appointment options.
+        </p>
+        <div class="hero-points">
+          <div class="hero-point"><i class="fas fa-check-circle"></i><span>Only real Frost Fire offerings: heat pumps, condenser + gas furnace, and gas furnace installs.</span></div>
+          <div class="hero-point"><i class="fas fa-check-circle"></i><span>Short, visual, mobile-friendly flow inspired by the screenshot direction you shared.</span></div>
+          <div class="hero-point"><i class="fas fa-check-circle"></i><span>Final page hands off into Carrier-framed options with a free appointment and $59 tune-up path.</span></div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>What to expect</h3>
+        <p>Most people finish this in under two minutes. We ask enough to make the results page useful without turning it into a giant form.</p>
+        <div class="hero-card-grid">
+          <div><strong>Step 1</strong> Home type and system interest</div>
+          <div><strong>Step 2</strong> Size, zones, project type, and timing</div>
+          <div><strong>Step 3</strong> Contact details and text preference</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-  // ===== STATE =====
-  const TOTAL = 9;
-  let cur = 1;
-  const D = { currentSystem:null, systemType:null, sqft:2000, stories:null, homeAge:null, insulation:null, windows:null, sun:null, ceiling:null };
-
-  // ===== HELPERS =====
-  const $ = s => document.querySelector(s);
-  const $$ = s => document.querySelectorAll(s);
-
-  function showStep(n) {
-    $$('.step').forEach(s => {
-      if (s.classList.contains('active')) {
-        s.classList.remove('active');
-        s.classList.add('exit-up');
-        setTimeout(() => s.classList.remove('exit-up'), 500);
-      }
-    });
-    const target = $(`[data-step="${n}"]`);
-    setTimeout(() => {
-      target.classList.add('active');
-      target.scrollTo?.({ top: 0 });
-      window.scrollTo({ top: 0 });
-    }, 80);
-    if (typeof n === 'number') {
-      $('#progressFill').style.width = ((n / TOTAL) * 100) + '%';
-      $('#progressInfo').textContent = n + ' of ' + TOTAL;
-    }
-  }
-
-  function select(el) {
-    const field = el.dataset.field;
-    D[field] = el.dataset.value;
-    el.closest('.options').querySelectorAll('.opt').forEach(o => o.classList.remove('selected'));
-    el.classList.add('selected');
-    // Enable continue
-    const btn = el.closest('.step').querySelector('.btn-continue');
-    if (btn) btn.classList.remove('disabled');
-    // Auto-advance after brief delay
-    setTimeout(() => {
-      if (cur < TOTAL) next();
-      else if (cur === TOTAL) calculate();
-    }, 350);
-  }
-
-  function next() {
-    if (cur >= TOTAL) return;
-    cur++;
-    showStep(cur);
-  }
-  function prev() {
-    if (cur <= 1) return;
-    cur--;
-    showStep(cur);
-  }
-
-  function updateSqft(v) {
-    v = Math.max(500, Math.min(5000, +v));
-    D.sqft = v;
-    $('#sqftValue').textContent = v.toLocaleString();
-    $('#sqftInput').value = v;
-  }
-  function updateSqftFromInput(v) {
-    v = Math.max(500, Math.min(5000, +v));
-    D.sqft = v;
-    $('#sqftValue').textContent = v.toLocaleString();
-    $('#sqftSlider').value = v;
-  }
-
-  function restart() {
-    cur = 1;
-    Object.assign(D, { currentSystem:null, systemType:null, sqft:2000, stories:null, homeAge:null, insulation:null, windows:null, sun:null, ceiling:null });
-    $$('.opt').forEach(o => o.classList.remove('selected'));
-    ['next1','next2','next4','next5','next6','next7','next8','next9'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.classList.add('disabled');
-    });
-    updateSqft(2000);
-    $$('.step').forEach(s => { s.classList.remove('active'); s.classList.remove('exit-up'); });
-    $('[data-step="1"]').classList.add('active');
-    $('#progressFill').style.width = '11%';
-    $('#progressInfo').textContent = '1 of 9';
-    window.scrollTo({ top: 0 });
-  }
-
-  // ===== KEYBOARD =====
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Enter') {
-      const activeStep = $('.step.active');
-      const btn = activeStep?.querySelector('.btn-continue:not(.disabled)');
-      if (btn) btn.click();
-    }
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prev();
-  });
-
-  // ===== CALCULATION (same Manual J logic) =====
-  function calculate() {
-    // Show loading
-    showStep('loading');
-    $('#progressFill').style.width = '100%';
-    $('#progressInfo').textContent = '✓';
-
-    setTimeout(() => {
-      const sqft = D.sqft;
-      let btuPerSqft = 20; // Raleigh NC base
-
-      const insulationF = { good:.90, average:1.0, poor:1.15 };
-      const ageF = { new:.92, mid:1.0, old:1.10 };
-      const windowF = { few:.93, average:1.0, many:1.10 };
-      const sunF = { shade:.90, mixed:1.0, full:1.12 };
-      const ceilingF = { standard:1.0, high:1.10, vaulted:1.20 };
-      const storyF = { '1':1.0, '2':1.05, '3':1.10 };
-
-      btuPerSqft *= (insulationF[D.insulation]||1);
-      btuPerSqft *= (ageF[D.homeAge]||1);
-      btuPerSqft *= (windowF[D.windows]||1);
-      btuPerSqft *= (sunF[D.sun]||1);
-      btuPerSqft *= (ceilingF[D.ceiling]||1);
-      btuPerSqft *= (storyF[D.stories]||1);
-
-      const totalBTU = Math.round(sqft * btuPerSqft);
-      const rawTons = totalBTU / 12000;
-      const sizes = [1.5,2,2.5,3,3.5,4,5];
-      let tons = sizes[0];
-      for (let i = 0; i < sizes.length; i++) {
-        if (rawTons <= sizes[i] + 0.25) { tons = sizes[i]; break; }
-        if (i === sizes.length - 1) tons = sizes[i];
-      }
-      const nomBTU = tons * 12000;
-
-      const prices = {
-        heatpump: { 1.5:[5500,8500,11000], 2:[6000,9500,12500], 2.5:[6500,10500,14000], 3:[7500,12000,16000], 3.5:[8500,13500,18000], 4:[9500,15000,20000], 5:[11000,18000,24000] },
-        straightcool: { 1.5:[5000,8000,10500], 2:[5500,9000,12000], 2.5:[6000,10000,13500], 3:[7000,11500,15500], 3.5:[8000,13000,17500], 4:[9000,14500,19500], 5:[10500,17000,23000] }
-      };
-
-      const key = D.systemType === 'heatpump' ? 'heatpump' : 'straightcool';
-      const [pGood, pBetter, pBest] = prices[key][tons];
-      const isHP = D.systemType === 'heatpump';
-
-      // New install surcharge for no existing ductwork
-      const newInstallUp = (D.currentSystem === 'windowac' || D.currentSystem === 'none') ? 1.15 : 1.0;
-
-      // Populate results — MONTHLY is the hero number
-      $('#resultIcon').textContent = isHP ? '🔄' : '❄️🔥';
-      const startPrice = Math.round(pGood * newInstallUp / 100) * 100;
-      const monthlyEst = Math.round((pBetter * newInstallUp) / 120); // ~10yr estimate
-      $('#resultMonthly').innerHTML = '$' + monthlyEst + '<span style="font-size:.4em;color:var(--ice);font-weight:700;">/mo</span>';
-      $('#resultPrice').innerHTML = 'Total: Starting at $' + startPrice.toLocaleString();
-      $('#resultSystem').textContent = isHP ? 'Heat Pump System' : 'AC + Gas Furnace';
-      $('#resultSize').innerHTML = '<i class="fas fa-bolt"></i>&nbsp; ' + tons + ' Ton · ' + nomBTU.toLocaleString() + ' BTU/h cooling capacity';
-      $('#resultSqft').textContent = sqft.toLocaleString();
-      // Equipment image — use local Carrier unit photo
-      const eqImg = $('#resultEquipImg');
-      if (eqImg) eqImg.alt = isHP ? 'Carrier heat pump outdoor unit' : 'Carrier AC condenser unit';
-
-      // Financing
-      $('#financingAmount').textContent = 'As low as $' + monthlyEst + '/month';
-
-      // Tier cards
-      const tierData = [
-        {
-          name: 'Good', icon: '👍', price: pGood, badge: null,
-          features: isHP
-            ? [`${tons}-ton heat pump (15.2 SEER2)`, 'Standard air handler', 'Basic thermostat', '10-year parts warranty']
-            : [`${tons}-ton AC (15.2 SEER2)`, 'Gas furnace (80% AFUE)', 'Basic thermostat', '10-year parts warranty']
-        },
-        {
-          name: 'Better', icon: '⭐', price: pBetter, badge: 'Most Popular',
-          features: isHP
-            ? [`${tons}-ton heat pump (17+ SEER2)`, 'Variable-speed air handler', 'Smart WiFi thermostat', 'Enhanced warranty + maintenance']
-            : [`${tons}-ton AC (17+ SEER2)`, 'Gas furnace (96% AFUE)', 'Smart WiFi thermostat', 'Enhanced warranty + maintenance']
-        },
-        {
-          name: 'Best', icon: '🏆', price: pBest, badge: null,
-          features: isHP
-            ? [`${tons}-ton inverter heat pump (20+ SEER2)`, 'Variable-speed communicating AH', 'Premium smart thermostat + IAQ', 'Extended labor warranty + 2yr maint']
-            : [`${tons}-ton inverter AC (20+ SEER2)`, 'Modulating furnace (98% AFUE)', 'Premium smart thermostat + IAQ', 'Extended labor warranty + 2yr maint']
-        }
-      ];
-
-      const tierContainer = $('#tierCards');
-      tierContainer.innerHTML = '';
-      tierData.forEach((t, i) => {
-        const div = document.createElement('div');
-        div.className = 'tier' + (i === 1 ? ' recommended' : '');
-        const adjPrice = Math.round(t.price * newInstallUp / 100) * 100;
-        div.innerHTML = `
-          ${t.badge ? '<div class="tier-badge">' + t.badge + '</div>' : ''}
-          <div class="tier-header">
-            <div class="tier-name"><span class="tier-icon">${t.icon}</span> ${t.name}</div>
-            <div class="tier-price">Starting at $${adjPrice.toLocaleString()}</div>
+  <main class="main-section">
+    <div class="container">
+      <div class="funnel-shell">
+        <div class="funnel-head">
+          <div class="progress-row">
+            <h2>Quick &amp; Easy Instant Replacement Quote</h2>
+            <div class="progress-text" id="progressMeta">Step 1 of 12</div>
           </div>
-          <ul class="tier-features">${t.features.map(f => '<li><i class="fas fa-check"></i> ' + f + '</li>').join('')}</ul>
-        `;
-        tierContainer.appendChild(div);
-      });
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="step-kicker" id="stepCount">Step 1</div>
+          <h3 class="question" id="questionTitle"></h3>
+          <p class="question-copy" id="questionCopy"></p>
+        </div>
 
-      // Efficiency
-      if (isHP) {
-        $('#resultEfficiency').innerHTML = `Upgrading to a modern ${tons}-ton heat pump can cut your energy bills by <strong>30–50%</strong> compared to a 10+ year old system. We recommend <strong>17+ SEER2</strong> for the best value in the Raleigh area.`;
-      } else {
-        $('#resultEfficiency').innerHTML = `A new ${tons}-ton high-efficiency system can reduce energy costs by <strong>25–40%</strong>. Pair a <strong>17+ SEER2</strong> AC with a <strong>96%+ AFUE</strong> furnace for optimal savings.`;
+        <div class="funnel-body">
+          <div id="stepBody"></div>
+        </div>
+
+        <div class="funnel-foot">
+          <div class="foot-note" id="footerNote">
+            Your answers stay in this browser session so the next page can feel connected and personalized.
+          </div>
+          <div class="actions">
+            <button class="btn secondary" id="backBtn">Back</button>
+            <button class="btn primary" id="nextBtn">Continue</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="support-grid">
+        <div class="support-card">
+          <h3>Fast and visual</h3>
+          <p>The early steps stay image-driven and simple so the page feels more like a polished funnel than an old-school calculator.</p>
+        </div>
+        <div class="support-card">
+          <h3>Built for real sales conversations</h3>
+          <p>The answers shape how we frame the results page, including pricing adjustments, timing emphasis, and the right CTA path.</p>
+        </div>
+        <div class="support-card">
+          <h3>Still leads into a real visit</h3>
+          <p>We make it clear that final sizing is confirmed in person so the online estimate helps move the customer forward without overpromising.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="images/frostfire-logo.png" alt="Frost Fire Heating & Cooling" style="height:72px;width:auto;">
+          </a>
+          <p>Locally owned and operated HVAC and refrigeration company based in Clayton, NC. Residential and commercial service with no weekend surcharges.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+            <a href="#" aria-label="Yelp"><i class="fab fa-yelp"></i></a>
+            <a href="#" aria-label="Nextdoor"><i class="fas fa-house-chimney"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services/ac-repair.html">AC Repair & Service</a></li>
+            <li><a href="services/ac-installation.html">AC Installation</a></li>
+            <li><a href="services/heating-repair.html">Heating Repair</a></li>
+            <li><a href="services/furnace-installation.html">Furnace Installation</a></li>
+            <li><a href="services/heat-pump.html">Heat Pump Services</a></li>
+            <li><a href="services/maintenance.html">Maintenance Plans</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Service Areas</h4>
+          <ul>
+            <li><a href="service-areas/clayton-nc.html">Clayton, NC</a></li>
+            <li><a href="service-areas/raleigh-nc.html">Raleigh, NC</a></li>
+            <li><a href="service-areas/durham-nc.html">Durham, NC</a></li>
+            <li><a href="service-areas/garner-nc.html">Garner, NC</a></li>
+            <li><a href="service-areas/apex-nc.html">Apex, NC</a></li>
+            <li><a href="service-areas/cary-nc.html">Cary, NC</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog/">Blog</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="calculator.html">Instant Estimate</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li><i class="fas fa-phone"></i> <a href="tel:9192304439">(919) 230-4439</a></li>
+            <li><i class="fas fa-map-marker-alt"></i> Clayton, NC 27520</li>
+            <li><i class="fas fa-clock"></i> Open 24/7</li>
+            <li><i class="fas fa-calendar"></i> Same Price Sundays!</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Frost Fire Heating and Cooling. All rights reserved. Licensed & Insured in NC.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="floating-cta">
+    <div class="floating-cta-inner">
+      <button class="floating-cta-hamburger" onclick="document.getElementById('mobileMenu').classList.add('active')" title="Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a href="tel:9192304439"><i class="fas fa-phone"></i> Call (919) 230-4439</a>
+    </div>
+  </div>
+
+  <script>
+    const steps = [
+      {
+        id: 'homeType',
+        title: 'What style of home best matches yours?',
+        copy: 'This helps us frame the install conversation before we show your options.',
+        type: 'choice',
+        layout: 'two',
+        note: 'Keep the first click easy and visual so the flow feels light right away.',
+        options: [
+          { value: 'single-family', label: 'Single Family Home', copy: '', icon: '', image: 'images/single-family-home.png', imageAlt: 'Single-family home exterior' },
+          { value: 'townhome', label: 'Townhome', copy: '', icon: '', image: 'images/townhome.png', imageAlt: 'Townhome exterior' },
+          { value: 'manufactured', label: 'Manufactured Home', copy: '', icon: '', image: 'images/manufactured-home.png', imageAlt: 'Manufactured home exterior' },
+          { value: 'small-commercial', label: 'Light Commercial', copy: '', icon: '', image: 'images/light-commercial.png', imageAlt: 'Light commercial strip plaza exterior' }
+        ]
+      },
+      {
+        id: 'systemType',
+        title: 'What type of system are you interested in?',
+        copy: 'Only real Frost Fire offerings are shown here. No window units and no filler options.',
+        type: 'choice',
+        layout: 'two',
+        note: 'This choice drives the pricing and package framing on the next page.',
+        options: [
+          { value: 'heat-pump', label: 'Heat pump', copy: 'All-electric heating and cooling in one system.', icon: 'HP', image: 'https://images.unsplash.com/photo-1637971821576-f42fa65cd79c?w=900&q=80', imageAlt: 'Outdoor heat pump unit beside a home' },
+          { value: 'condenser-gas-furnace', label: 'Condenser + gas furnace', copy: 'Traditional split setup with AC and gas heat.', icon: 'CF', image: 'https://images.unsplash.com/photo-1698479603408-1a66a6d9e80f?w=900&q=80', imageAlt: 'Residential condenser installation placeholder image' },
+          { value: 'gas-furnace', label: 'Gas furnace only', copy: 'Heat-only replacement or furnace-focused project.', icon: 'GF', image: 'https://images.unsplash.com/photo-1614447413576-b346c641c128?w=900&q=80', imageAlt: 'Gas furnace installation placeholder image' }
+        ]
+      },
+      {
+        id: 'zones',
+        title: 'How many total systems or zones do you have?',
+        copy: 'This is usually the number of thermostats or outdoor units involved.',
+        type: 'choice',
+        layout: 'three',
+        note: 'This gives us a quick picture of how simple or layered the replacement may be.',
+        options: [
+          { value: '1', label: '1 system / zone', copy: 'Most common for standard homes.', icon: '1' },
+          { value: '2', label: '2 systems / zones', copy: 'Separate upstairs/downstairs or dual systems.', icon: '2' },
+          { value: '3+', label: '3 or more', copy: 'Large home or more complex layout.', icon: '3' }
+        ]
+      },
+      {
+        id: 'squareFeet',
+        title: 'How much space are you trying to heat or cool?',
+        copy: 'This does not replace proper sizing, but it helps us estimate the likely equipment range.',
+        type: 'choice',
+        layout: 'two',
+        note: 'Simple square-footage ranges read better than a technical load-calculation question.',
+        options: [
+          { value: '600-1200', label: '600 to 1,200 sq ft', copy: 'Smaller footprint or condo-sized area.', icon: 'S' },
+          { value: '1201-1800', label: '1,201 to 1,800 sq ft', copy: 'Typical smaller home range.', icon: 'M' },
+          { value: '1801-2500', label: '1,801 to 2,500 sq ft', copy: 'Very common family-home range.', icon: 'L' },
+          { value: '2501-3500', label: '2,501 to 3,500 sq ft', copy: 'Larger home or multi-level layout.', icon: 'XL' },
+          { value: '3501+', label: '3,501+ sq ft', copy: 'Large-home or more complex estimate.', icon: 'XX' },
+          { value: 'not-sure', label: 'I am not sure', copy: 'We can still show a rough path and confirm on-site.', icon: '?' }
+        ]
+      },
+      {
+        id: 'installType',
+        title: 'What kind of project is this?',
+        copy: 'This helps us separate a straightforward swap from work that needs more investigation.',
+        type: 'choice',
+        layout: 'two',
+        note: 'We want to know whether this feels like a clean replacement or a more open-ended project.',
+        options: [
+          { value: 'replace-same', label: 'Replace existing with similar setup', copy: 'Most predictable install path.', icon: 'RS' },
+          { value: 'replace-upgrade', label: 'Replace and upgrade the system', copy: 'Better efficiency or equipment tier.', icon: 'UP' },
+          { value: 'system-problem', label: 'Current system keeps failing', copy: 'Need help deciding repair vs replacement.', icon: 'FX' },
+          { value: 'new-scope', label: 'Not sure yet', copy: 'Need a real in-home recommendation.', icon: '??' }
+        ]
+      },
+      {
+        id: 'comfortFocus',
+        title: 'What matters most to you right now?',
+        copy: 'This shapes how the next page should frame the recommended option.',
+        type: 'choice',
+        layout: 'two',
+        note: 'This tells us whether to lead with price, payment, comfort, or efficiency.',
+        options: [
+          { value: 'lowest-price', label: 'Keep the price as low as possible', copy: 'Value-focused package presentation.', icon: '$' },
+          { value: 'monthly-payment', label: 'Keep the monthly payment manageable', copy: 'Finance-forward messaging.', icon: 'PM' },
+          { value: 'comfort-reliability', label: 'Get something more reliable', copy: 'Comfort and fewer headaches.', icon: 'OK' },
+          { value: 'efficiency', label: 'Improve efficiency and lower utility bills', copy: 'Longer-term value and performance.', icon: 'EF' }
+        ]
+      },
+      {
+        id: 'timeline',
+        title: 'How soon are you planning to move forward?',
+        copy: 'This helps us know whether to emphasize scheduling now or let you keep shopping comfortably.',
+        type: 'choice',
+        layout: 'two',
+        note: 'Timing affects which CTA should feel strongest on the results page.',
+        options: [
+          { value: 'asap', label: 'As soon as possible', copy: 'Need to solve this quickly.', icon: 'AS' },
+          { value: 'this-week', label: 'Within the next week', copy: 'Actively comparing options now.', icon: 'WK' },
+          { value: 'this-month', label: 'Within the next month', copy: 'Planning soon, not same-day urgent.', icon: 'MO' },
+          { value: 'shopping', label: 'Just shopping for now', copy: 'Researching before deciding.', icon: 'SH' }
+        ]
+      },
+      {
+        id: 'name',
+        title: 'Who should we make the estimate out to?',
+        copy: 'Use your real name so the next page and follow-up feel personalized.',
+        type: 'text',
+        note: 'We ask for contact details later so the first half stays easy.',
+        fields: [
+          { key: 'firstName', label: 'First name', placeholder: 'First name' },
+          { key: 'lastName', label: 'Last name', placeholder: 'Last name' }
+        ]
+      },
+      {
+        id: 'zipCode',
+        title: 'What ZIP code is the property in?',
+        copy: 'We use this to confirm the estimate stays local to your market and service area.',
+        type: 'single-input',
+        note: 'ZIP code also helps keep the estimate framed for the right area.',
+        field: { key: 'zipCode', label: 'ZIP code', placeholder: '27520', inputmode: 'numeric' }
+      },
+      {
+        id: 'email',
+        title: 'What email should receive a copy of your options?',
+        copy: 'We hate spam too. This is for estimate summary and booking details only.',
+        type: 'single-input',
+        note: 'Email comes before phone so the flow still feels easy and useful.',
+        field: { key: 'email', label: 'Email address', placeholder: 'name@example.com', inputmode: 'email' }
+      },
+      {
+        id: 'phone',
+        title: 'What is the best mobile number for appointment updates?',
+        copy: 'If you book, this is where we send estimate, scheduling, and arrival updates.',
+        type: 'single-input',
+        note: 'Phone comes late in the flow so the quiz earns the ask first.',
+        field: { key: 'phone', label: 'Mobile phone', placeholder: '(919) 555-1234', inputmode: 'tel' }
+      },
+      {
+        id: 'textConsent',
+        title: 'Can we text you about your estimate and appointment options?',
+        copy: 'Reply STOP to opt out. Message frequency varies. Consent is not a condition of purchase.',
+        type: 'choice',
+        layout: 'two',
+        note: 'If you decline, the next page still works and softens the follow-up language.',
+        consent: true,
+        options: [
+          { value: 'yes', label: 'Yes, text me updates', copy: 'Estimate, scheduling, and reminder texts are okay.', icon: 'Y' },
+          { value: 'no', label: 'No, I would rather not', copy: 'We will still show your options on the next page.', icon: 'N' }
+        ]
       }
+    ];
 
-      // Savings bars (animate after show)
-      setTimeout(() => {
-        $('#savingsOld').style.width = '100%';
-        $('#savingsOld').textContent = '$185/mo';
-        $('#savingsNew').style.width = '58%';
-        $('#savingsNew').textContent = '$108/mo';
-      }, 600);
-      $('#savingsNote').textContent = 'Estimated monthly energy cost comparison based on typical Raleigh, NC home';
+    const state = {};
+    let currentStep = 0;
 
-      // Show results
-      showStep('results');
-      if (window.FrostFireTrackEvent) {
-        window.FrostFireTrackEvent('calculator_complete', {
-          lead_channel: 'calculator',
-          cta_type: 'calculator_result',
-          value: monthlyEst,
-          system_type: D.systemType,
-          current_system: D.currentSystem,
-          sqft: sqft,
-          tons: tons,
-          start_price: startPrice
-        });
-      }
-      launchConfetti();
-    }, 1500);
-  }
+    const stepBody = document.getElementById('stepBody');
+    const questionTitle = document.getElementById('questionTitle');
+    const questionCopy = document.getElementById('questionCopy');
+    const stepCount = document.getElementById('stepCount');
+    const progressMeta = document.getElementById('progressMeta');
+    const progressFill = document.getElementById('progressFill');
+    const footerNote = document.getElementById('footerNote');
+    const backBtn = document.getElementById('backBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let autoAdvanceTimer = null;
 
-  // ===== CONFETTI =====
-  function launchConfetti() {
-    const el = document.createElement('div');
-    el.className = 'celebration';
-    document.body.appendChild(el);
-    const colors = ['#00b4d8','#e8531e','#ff6b35','#90e0ef','#ffffff'];
-    for (let i = 0; i < 40; i++) {
-      const c = document.createElement('div');
-      c.className = 'confetti-piece';
-      c.style.left = Math.random() * 100 + '%';
-      c.style.background = colors[Math.floor(Math.random() * colors.length)];
-      c.style.animationDelay = Math.random() * .8 + 's';
-      c.style.animationDuration = (1.5 + Math.random()) + 's';
-      c.style.width = (6 + Math.random() * 6) + 'px';
-      c.style.height = (6 + Math.random() * 6) + 'px';
-      el.appendChild(c);
+    function validateStep(step) {
+      if (step.type === 'choice') return !!state[step.id];
+      if (step.type === 'single-input') return Boolean((state[step.field.key] || '').trim());
+      if (step.type === 'text') return step.fields.every((field) => Boolean((state[field.key] || '').trim()));
+      return false;
     }
-    setTimeout(() => el.remove(), 3500);
-  }
-</script>
 
-<script src="js/attribution.js"></script>
-<script src="chat-widget.js"></script>
+    function renderChoiceStep(step) {
+      const grid = document.createElement('div');
+      grid.className = 'choice-grid ' + (step.layout || 'two');
+      step.options.forEach((option) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'choice-card' + (state[step.id] === option.value ? ' selected' : '') + (option.image ? ' has-image' : '');
+        button.innerHTML = [
+          option.image ? '<div class="choice-media"><img src="' + option.image + '" alt="' + (option.imageAlt || option.label) + '" loading="lazy"></div>' : '',
+          '<div class="choice-top">',
+          '<div class="choice-icon">' + option.icon + '</div>',
+          '<div class="choice-check">✓</div>',
+          '</div>',
+          '<div class="choice-title">' + option.label + '</div>',
+          '<div class="choice-copy">' + option.copy + '</div>'
+        ].join('');
+        button.addEventListener('click', () => {
+          if (autoAdvanceTimer) window.clearTimeout(autoAdvanceTimer);
+          const clickedStepIndex = currentStep;
+          state[step.id] = option.value;
+          renderStep();
+          autoAdvanceTimer = window.setTimeout(() => {
+            if (currentStep === clickedStepIndex && state[step.id] === option.value) {
+              goNext();
+            }
+          }, 180);
+        });
+        grid.appendChild(button);
+      });
+      stepBody.appendChild(grid);
+
+      if (step.consent && state[step.id] === 'no') {
+        const notice = document.createElement('div');
+        notice.className = 'notice';
+        notice.textContent = 'No problem. We can still show your personalized options on the next page and you can always call Frost Fire directly to schedule.';
+        stepBody.appendChild(notice);
+      }
+    }
+
+    function renderSingleInput(step) {
+      const fieldWrap = document.createElement('div');
+      fieldWrap.className = 'field';
+      fieldWrap.innerHTML =
+        '<label for="' + step.field.key + '">' + step.field.label + '</label>' +
+        '<input id="' + step.field.key + '" placeholder="' + step.field.placeholder + '"' +
+        (step.field.inputmode ? ' inputmode="' + step.field.inputmode + '"' : '') +
+        ' value="' + (state[step.field.key] || '') + '">';
+      stepBody.appendChild(fieldWrap);
+      const input = fieldWrap.querySelector('input');
+      input.addEventListener('input', (event) => {
+        state[step.field.key] = event.target.value;
+        nextBtn.disabled = !validateStep(step);
+      });
+      input.focus();
+    }
+
+    function renderTextStep(step) {
+      const split = document.createElement('div');
+      split.className = 'split-fields';
+      step.fields.forEach((field) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'field';
+        wrap.innerHTML =
+          '<label for="' + field.key + '">' + field.label + '</label>' +
+          '<input id="' + field.key + '" placeholder="' + field.placeholder + '" value="' + (state[field.key] || '') + '">';
+        split.appendChild(wrap);
+      });
+      stepBody.appendChild(split);
+      step.fields.forEach((field) => {
+        const input = document.getElementById(field.key);
+        input.addEventListener('input', (event) => {
+          state[field.key] = event.target.value;
+          nextBtn.disabled = !validateStep(step);
+        });
+      });
+      document.getElementById(step.fields[0].key).focus();
+    }
+
+    function renderStep() {
+      const step = steps[currentStep];
+      questionTitle.textContent = step.title;
+      questionCopy.textContent = step.copy;
+      stepCount.textContent = 'Step ' + (currentStep + 1);
+      progressMeta.textContent = 'Step ' + (currentStep + 1) + ' of ' + steps.length;
+      progressFill.style.width = (((currentStep + 1) / steps.length) * 100).toFixed(3) + '%';
+      footerNote.textContent = step.note || 'Continue through the full flow to reach your personalized options.';
+      stepBody.innerHTML = '';
+
+      if (step.type === 'choice') renderChoiceStep(step);
+      if (step.type === 'single-input') renderSingleInput(step);
+      if (step.type === 'text') renderTextStep(step);
+
+      if (step.id === 'textConsent') {
+        const consent = document.createElement('div');
+        consent.className = 'consent-box';
+        consent.textContent = 'By providing your phone number, you agree to receive appointment scheduling, reminder, and estimate-related texts from Frost Fire HVACR. Consent is not a condition of purchase.';
+        stepBody.appendChild(consent);
+      }
+
+      backBtn.disabled = currentStep === 0;
+      nextBtn.textContent = currentStep === steps.length - 1 ? 'See My Options' : 'Continue';
+      nextBtn.disabled = !validateStep(step);
+    }
+
+    function goNext() {
+      const step = steps[currentStep];
+      if (!validateStep(step)) return;
+      if (currentStep === steps.length - 1) {
+        const payload = { ...state, completedAt: new Date().toISOString() };
+        sessionStorage.setItem('frostfireQuotePrototype', JSON.stringify(payload));
+        window.location.href = 'estimate-offers.html';
+        return;
+      }
+      currentStep += 1;
+      renderStep();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goBack() {
+      if (currentStep === 0) return;
+      currentStep -= 1;
+      renderStep();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    backBtn.addEventListener('click', goBack);
+    nextBtn.addEventListener('click', goNext);
+    renderStep();
+  </script>
+  <script src="js/analytics-config.js"></script>
+  <script src="js/attribution.js"></script>
+  <script src="chat-widget.js"></script>
 </body>
 </html>

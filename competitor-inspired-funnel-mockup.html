@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frost Fire HVACR Funnel Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-950: #0b1730;
+      --navy-900: #102544;
+      --navy-800: #183560;
+      --purple-900: #44206b;
+      --purple-800: #5b2f87;
+      --purple-700: #6c3ea0;
+      --orange-600: #f25e2d;
+      --orange-500: #ff7443;
+      --ice-500: #35c7ef;
+      --ice-100: #e9fbff;
+      --slate-700: #4a5971;
+      --slate-500: #70839c;
+      --slate-300: #d4dde7;
+      --slate-200: #e9eef4;
+      --slate-100: #f6f8fb;
+      --white: #fff;
+      --shadow-lg: 0 28px 90px rgba(11, 23, 48, 0.16);
+      --shadow-md: 0 18px 40px rgba(16, 37, 68, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--navy-900);
+      background:
+        radial-gradient(circle at top left, rgba(53, 199, 239, 0.14), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(242, 94, 45, 0.10), transparent 28%),
+        linear-gradient(180deg, #f7faff 0%, #eef4f9 100%);
+      min-height: 100vh;
+    }
+
+    .shell {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 36px 24px 80px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      color: var(--ice-500);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.08;
+      margin: 0 0 12px;
+      color: var(--navy-950);
+    }
+
+    .lede {
+      margin: 0;
+      max-width: 760px;
+      color: var(--slate-500);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(212, 221, 231, 0.95);
+      color: var(--slate-700);
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 8px 18px rgba(11, 23, 48, 0.05);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 340px minmax(0, 1fr) 360px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .panel, .canvas, .phone {
+      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(212, 221, 231, 0.9);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(12px);
+    }
+
+    .panel {
+      padding: 24px;
+    }
+
+    .panel-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      line-height: 1.2;
+      margin: 0;
+      color: var(--navy-950);
+    }
+
+    .muted {
+      color: var(--slate-500);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .bullet {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px;
+      background: var(--slate-100);
+      border-radius: var(--radius-md);
+    }
+
+    .bullet-icon {
+      width: 38px;
+      height: 38px;
+      flex: 0 0 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: var(--white);
+      color: var(--orange-600);
+      font-weight: 800;
+      box-shadow: inset 0 0 0 1px rgba(212, 221, 231, 0.95);
+    }
+
+    .phone-stack {
+      display: grid;
+      gap: 22px;
+    }
+
+    .phone {
+      padding: 18px;
+    }
+
+    .phone-frame {
+      max-width: 320px;
+      margin: 0 auto;
+      border-radius: 34px;
+      background: #0d1117;
+      padding: 12px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .phone-inner {
+      background: var(--white);
+      border-radius: 26px;
+      overflow: hidden;
+      min-height: 640px;
+      position: relative;
+    }
+
+    .phone-bar {
+      height: 74px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--slate-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      font-size: 13px;
+      color: var(--slate-700);
+      font-weight: 700;
+    }
+
+    .phone-bar::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      width: 108px;
+      height: 24px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: #101010;
+    }
+
+    .phone-app {
+      background: linear-gradient(180deg, var(--purple-700), var(--purple-800));
+      color: var(--white);
+      padding: 22px 18px 26px;
+      min-height: 566px;
+    }
+
+    .brand-badge {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .brand-logo {
+      display: inline-block;
+      border-radius: 16px;
+      background: rgba(255,255,255,.08);
+      padding: 10px 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .progress {
+      height: 6px;
+      background: rgba(255,255,255,.18);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 18px;
+    }
+
+    .progress > div {
+      height: 100%;
+      width: 84%;
+      background: linear-gradient(90deg, #fff, var(--ice-500));
+    }
+
+    .step-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .question {
+      font-size: 30px;
+      line-height: 1.14;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin: 0 0 10px;
+    }
+
+    .question-copy {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,.84);
+      margin-bottom: 18px;
+    }
+
+    .choice,
+    .copy-box {
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.08);
+    }
+
+    .choice {
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .choice-key {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.12);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .choice.selected {
+      background: rgba(255,255,255,.16);
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.72);
+    }
+
+    .copy-box {
+      padding: 16px;
+      margin-top: 12px;
+      color: rgba(255,255,255,.9);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .error-box {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(242, 94, 45, .18);
+      border: 1px solid rgba(255,255,255,.08);
+      color: #ffd8cb;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .ok-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .back-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .ok-btn {
+      flex: 1;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--orange-600), var(--orange-500));
+      color: var(--white);
+      height: 52px;
+      font-size: 18px;
+      font-weight: 800;
+      box-shadow: 0 14px 30px rgba(242, 94, 45, .25);
+    }
+
+    .canvas {
+      overflow: hidden;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--navy-950), var(--navy-800));
+      color: var(--white);
+      padding: 34px 34px 30px;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(53,199,239,.16), transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero h2 {
+      margin: 0 0 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px, 3.2vw, 40px);
+      line-height: 1.08;
+      max-width: 620px;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 700px;
+      color: rgba(255,255,255,.78);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      padding: 28px 34px 0;
+      align-items: start;
+    }
+
+    .video-card,
+    .offer-card,
+    .info-card,
+    .testimonial-card {
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      border: 1px solid rgba(212, 221, 231, 0.95);
+      box-shadow: 0 12px 28px rgba(16, 37, 68, 0.08);
+    }
+
+    .video-card {
+      overflow: hidden;
+    }
+
+    .video-placeholder {
+      height: 270px;
+      background:
+        linear-gradient(135deg, rgba(16,37,68,.88), rgba(68,32,107,.86)),
+        url('images/ac-unit.jpg') center/cover;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .play {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      border: 2px solid rgba(255,255,255,.45);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 34px;
+      backdrop-filter: blur(6px);
+    }
+
+    .video-copy {
+      padding: 22px 24px 24px;
+    }
+
+    .video-copy h3,
+    .section-title {
+      margin: 0 0 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 26px;
+      line-height: 1.15;
+      color: var(--navy-950);
+    }
+
+    .video-copy p,
+    .section-copy {
+      margin: 0;
+      color: var(--slate-500);
+      line-height: 1.75;
+      font-size: 15px;
+    }
+
+    .offer-card {
+      padding: 24px;
+      background: linear-gradient(180deg, #fff, #fbfdff);
+    }
+
+    .offer-banner {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--orange-600);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 14px;
+    }
+
+    .offer-price {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 46px;
+      line-height: 1;
+      color: var(--orange-600);
+      margin: 0 0 10px;
+    }
+
+    .offer-list,
+    .info-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .offer-line,
+    .info-line {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--slate-700);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--orange-600);
+      margin-top: 7px;
+      flex: 0 0 10px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn,
+    .ghost-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 15px 18px;
+      font-weight: 800;
+      font-size: 15px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta-btn {
+      background: linear-gradient(135deg, var(--orange-600), var(--orange-500));
+      color: var(--white);
+      min-width: 220px;
+      box-shadow: 0 16px 30px rgba(242, 94, 45, .20);
+    }
+
+    .ghost-btn {
+      background: var(--slate-100);
+      color: var(--navy-900);
+      min-width: 180px;
+    }
+
+    .body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 24px 34px 34px;
+    }
+
+    .info-card,
+    .testimonial-card {
+      padding: 24px;
+    }
+
+    .testimonial-quote {
+      font-size: 15px;
+      color: var(--slate-700);
+      line-height: 1.8;
+      margin: 0 0 16px;
+    }
+
+    .quote-author {
+      font-weight: 800;
+      color: var(--navy-950);
+      font-size: 14px;
+    }
+
+    .right-rail {
+      display: grid;
+      gap: 20px;
+    }
+
+    .summary-card {
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(246,249,252,.95));
+    }
+
+    .summary-card h3 {
+      margin: 0 0 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      color: var(--navy-950);
+    }
+
+    .summary-note {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      background: var(--ice-100);
+      color: var(--navy-900);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .copy-snippet {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      background: var(--slate-100);
+      color: var(--slate-700);
+      font-size: 13px;
+      line-height: 1.7;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      white-space: pre-wrap;
+    }
+
+    @media (max-width: 1220px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid,
+      .body-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        padding: 24px 16px 56px;
+      }
+
+      .topbar {
+        flex-direction: column;
+      }
+
+      .chip-row {
+        justify-content: flex-start;
+      }
+
+      .hero,
+      .hero-grid,
+      .body-grid {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Competitor-Inspired Mockup</div>
+        <h1 class="title">Mobile quiz + consent gate + follow-up landing page.</h1>
+        <p class="lede">
+          This version borrows the useful funnel structure from the competitor screenshots without copying their exact copy.
+          The idea is: quick quiz, Frost Fire text consent step, then a landing page that explains the visit, shows a video,
+          presents a compelling offer, and moves them toward scheduling.
+        </p>
+      </div>
+      <div class="chip-row">
+        <div class="chip">Text consent step</div>
+        <div class="chip">Video placeholder</div>
+        <div class="chip">$59 tune-up offer block</div>
+        <div class="chip">Free appointment CTA</div>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div class="panel">
+        <div class="eyebrow">Funnel Notes</div>
+        <h2 class="panel-title">What to keep from the competitor</h2>
+        <div class="stack" style="margin-top:18px;">
+          <div class="bullet">
+            <div class="bullet-icon">1</div>
+            <div>
+              <strong>Short mobile-first quiz</strong><br>
+              <span class="muted">Fast questions, visually clear answers, and simple progression before asking for contact info.</span>
+            </div>
+          </div>
+          <div class="bullet">
+            <div class="bullet-icon">2</div>
+            <div>
+              <strong>Separate landing page after quiz</strong><br>
+              <span class="muted">That page can do the heavy lifting: video, trust, visit expectations, specials, and scheduling.</span>
+            </div>
+          </div>
+          <div class="bullet">
+            <div class="bullet-icon">3</div>
+            <div>
+              <strong>Offer stack after interest is proven</strong><br>
+              <span class="muted">Tune-up, free in-home estimate, financing, same-day call to action.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="eyebrow" style="margin-top:22px;">What to improve</div>
+        <div class="stack">
+          <div class="bullet">
+            <div class="bullet-icon">A</div>
+            <div>
+              <strong>Better copy than “Bummer”</strong><br>
+              <span class="muted">Use a human but professional fallback message instead of sounding awkward or needy.</span>
+            </div>
+          </div>
+          <div class="bullet">
+            <div class="bullet-icon">B</div>
+            <div>
+              <strong>Less clutter after the quiz</strong><br>
+              <span class="muted">One video, one offer section, one “what happens next” section, one testimonial block.</span>
+            </div>
+          </div>
+          <div class="bullet">
+            <div class="bullet-icon">C</div>
+            <div>
+              <strong>Stronger Frost Fire voice</strong><br>
+              <span class="muted">Honest, local, same-price-on-Sundays, and “we’ll confirm everything in person.”</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="canvas">
+        <div class="hero">
+          <div class="eyebrow" style="color:var(--ice-500);">Post-Quiz Landing Page</div>
+          <h2>Your personalized options are ready. Now let’s show them what happens next.</h2>
+          <p>
+            This page is what customers land on after they finish the quiz and accept text communication.
+            It should reassure them, explain the visit, highlight the current offer, and make scheduling feel easy.
+          </p>
+        </div>
+
+        <div class="hero-grid">
+          <div class="video-card">
+            <div class="video-placeholder">
+              <div class="play">▶</div>
+            </div>
+            <div class="video-copy">
+              <h3>Meet Frost Fire before we arrive</h3>
+              <p>
+                Placeholder for a short owner or technician video. This should explain how the estimate works, what makes Frost Fire different,
+                and why the customer can feel comfortable booking the visit.
+              </p>
+            </div>
+          </div>
+
+          <div class="offer-card">
+            <div class="offer-banner">Current Offer</div>
+            <div class="offer-price">$59 Tune-Up</div>
+            <div class="section-copy">
+              Use this as the primary special on the page, or swap in a seasonal replacement incentive.
+              Pair it with a free in-home appointment CTA so customers have two clear paths.
+            </div>
+            <div class="offer-list">
+              <div class="offer-line"><span class="dot"></span><span>Good fit for customers still comparing options</span></div>
+              <div class="offer-line"><span class="dot"></span><span>Can lead naturally into replacement conversations if needed</span></div>
+              <div class="offer-line"><span class="dot"></span><span>Lets you advertise something tangible, not just “contact us”</span></div>
+            </div>
+            <div class="cta-row">
+              <a class="cta-btn" href="#">Schedule Free Appointment</a>
+              <a class="ghost-btn" href="#">Claim $59 Tune-Up</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="body-grid">
+          <div class="info-card">
+            <div class="eyebrow">What Happens Next</div>
+            <h3 class="section-title">What to expect from your in-home visit</h3>
+            <div class="info-list">
+              <div class="info-line"><span class="dot"></span><span><strong>No pressure.</strong> We inspect the outdoor unit, indoor equipment, ductwork, and basic installation conditions.</span></div>
+              <div class="info-line"><span class="dot"></span><span><strong>Real sizing.</strong> We confirm whether the online recommendation makes sense for your home before we quote exact equipment.</span></div>
+              <div class="info-line"><span class="dot"></span><span><strong>Clear pricing.</strong> We walk you through your options, financing, and any current promotions without making the process feel confusing.</span></div>
+              <div class="info-line"><span class="dot"></span><span><strong>Fast follow-up.</strong> If you book, we’ll text appointment reminders and arrival updates so you’re not guessing.</span></div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="eyebrow">Trust Builder</div>
+            <h3 class="section-title">Why this page should feel believable</h3>
+            <p class="testimonial-quote">
+              “The estimate process should make customers feel more informed, not more sold. Use real photos, short local proof,
+              and simple language about what the visit includes.”
+            </p>
+            <div class="quote-author">Suggested content blocks</div>
+            <div class="info-list" style="margin-top:12px;">
+              <div class="info-line"><span class="dot"></span><span>1 short testimonial with a real install photo</span></div>
+              <div class="info-line"><span class="dot"></span><span>1 “same price on Sundays” badge or callout</span></div>
+              <div class="info-line"><span class="dot"></span><span>1 financing teaser if replacement is the real goal</span></div>
+              <div class="info-line"><span class="dot"></span><span>1 clear CTA above the fold and one repeated lower on the page</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone-stack">
+        <div class="phone">
+          <div class="eyebrow">Consent Screen</div>
+          <div class="phone-frame">
+            <div class="phone-inner">
+              <div class="phone-bar">form.frostfirehvacr.com</div>
+              <div class="phone-app">
+                <div class="progress"><div></div></div>
+                <div class="brand-badge"><span class="brand-logo">Frost Fire HVACR</span></div>
+                <div class="step-tag">10</div>
+                <div class="question">Can we text you about your estimate and appointment options?</div>
+                <div class="question-copy">
+                  By sharing your phone number, you agree to receive appointment scheduling, reminder, and estimate-related text messages from Frost Fire HVACR.
+                  Message frequency varies. Reply STOP to opt out.
+                </div>
+                <div class="choice selected"><span class="choice-key">A</span> Yes, text me updates</div>
+                <div class="choice"><span class="choice-key">B</span> No, I’d rather not</div>
+                <div class="ok-row">
+                  <div class="back-btn">‹</div>
+                  <button class="ok-btn">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone">
+          <div class="eyebrow">If They Decline Texts</div>
+          <div class="phone-frame">
+            <div class="phone-inner">
+              <div class="phone-bar">form.frostfirehvacr.com</div>
+              <div class="phone-app">
+                <div class="progress"><div style="width:92%;"></div></div>
+                <div class="brand-badge"><span class="brand-logo">Frost Fire HVACR</span></div>
+                <div class="step-tag">11</div>
+                <div class="question">No problem. We usually send estimate and appointment details by text and email.</div>
+                <div class="copy-box">
+                  If you’d still like your personalized options, we can show them on the next page and you can call us directly to schedule.
+                </div>
+                <div class="choice selected"><span class="choice-key">A</span> Show me my options anyway</div>
+                <div class="choice"><span class="choice-key">B</span> Exit for now</div>
+                <div class="error-box">
+                  Suggested replacement for the competitor’s “Bummer” message: calm, clear, and still moves them forward.
+                </div>
+                <div class="ok-row">
+                  <div class="back-btn">‹</div>
+                  <button class="ok-btn">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel summary-card">
+          <div class="eyebrow">Suggested Frost Fire Copy</div>
+          <h3>Fallback message</h3>
+          <div class="copy-snippet">No problem. We usually send estimate and appointment details by text and email.
+
+If you still want to see your personalized options, tap continue and we’ll show them on the next page. You can always call us directly to schedule.</div>
+
+          <div class="summary-note">
+            This keeps the door open without sounding weak. It also naturally supports the next-page landing experience you asked for.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

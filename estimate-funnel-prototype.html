@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frost Fire HVACR Quote Funnel Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-950: #091425;
+      --navy-900: #0f2640;
+      --navy-800: #17385b;
+      --purple-900: #47226c;
+      --purple-800: #5f3290;
+      --purple-700: #7040aa;
+      --orange-600: #f25b2a;
+      --orange-500: #ff7443;
+      --ice-500: #35c7ef;
+      --ice-100: #ebfbff;
+      --slate-700: #4a5b72;
+      --slate-500: #72839a;
+      --slate-300: #d3dde8;
+      --slate-200: #e8eef5;
+      --slate-100: #f6f9fc;
+      --white: #ffffff;
+      --success-600: #139769;
+      --danger-500: #d94f4f;
+      --shadow-lg: 0 26px 80px rgba(9, 20, 37, 0.16);
+      --shadow-md: 0 16px 40px rgba(15, 38, 64, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      color: var(--navy-900);
+      background:
+        radial-gradient(circle at top left, rgba(53, 199, 239, 0.14), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(242, 91, 42, 0.10), transparent 28%),
+        linear-gradient(180deg, #f8fbff 0%, #eef4f9 100%);
+    }
+
+    .page {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--ice-500);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+    }
+
+    .title {
+      margin: 0 0 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.04;
+      color: var(--navy-950);
+      max-width: 760px;
+    }
+
+    .lede {
+      margin: 0;
+      max-width: 760px;
+      color: var(--slate-500);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .chip {
+      border-radius: 999px;
+      padding: 10px 14px;
+      border: 1px solid rgba(211, 221, 232, 0.95);
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--slate-700);
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 8px 18px rgba(9, 20, 37, 0.05);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr) 320px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .panel,
+    .card {
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(211, 221, 232, 0.9);
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(12px);
+    }
+
+    .panel {
+      padding: 24px;
+    }
+
+    .rail {
+      display: grid;
+      gap: 20px;
+      position: sticky;
+      top: 24px;
+    }
+
+    .panel-title {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      line-height: 1.18;
+      color: var(--navy-950);
+    }
+
+    .muted {
+      color: var(--slate-500);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .bullet-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .bullet {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: var(--slate-100);
+    }
+
+    .bullet-number {
+      width: 36px;
+      height: 36px;
+      flex: 0 0 36px;
+      border-radius: 12px;
+      background: var(--white);
+      color: var(--orange-600);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      box-shadow: inset 0 0 0 1px rgba(211, 221, 232, 0.95);
+    }
+
+    .funnel-card {
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid rgba(211, 221, 232, 0.85);
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-lockup img {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--navy-950);
+      padding: 6px;
+    }
+
+    .brand-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy-950);
+    }
+
+    .brand-sub {
+      color: var(--slate-500);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .progress-meta {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--slate-500);
+    }
+
+    .progress-track {
+      height: 10px;
+      border-radius: 999px;
+      background: var(--slate-200);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--ice-500), #7be4ff);
+      width: 8.333%;
+      transition: width .25s ease;
+    }
+
+    .step-count {
+      color: var(--ice-500);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 10px;
+    }
+
+    .question {
+      margin: 0 0 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      line-height: 1.06;
+      color: var(--navy-950);
+    }
+
+    .question-copy {
+      margin: 0;
+      color: var(--slate-500);
+      font-size: 15px;
+      line-height: 1.75;
+      max-width: 760px;
+    }
+
+    .body {
+      padding: 28px 32px 20px;
+    }
+
+    .choice-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .choice-grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .choice-grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .choice-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(211, 221, 232, 0.95);
+      background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(246,249,252,.98));
+      padding: 18px;
+      cursor: pointer;
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+      display: grid;
+      gap: 10px;
+      min-height: 148px;
+      align-content: start;
+      text-align: left;
+      overflow: hidden;
+    }
+
+    .choice-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(53, 199, 239, 0.55);
+      box-shadow: 0 16px 34px rgba(15, 38, 64, 0.10);
+    }
+
+    .choice-card.selected {
+      border-color: rgba(53, 199, 239, 0.8);
+      background: linear-gradient(180deg, #ffffff, #eefbff);
+      box-shadow: 0 18px 38px rgba(53, 199, 239, 0.14);
+    }
+
+    .choice-card.has-image {
+      padding-top: 0;
+    }
+
+    .choice-media {
+      margin: -18px -18px 4px;
+      border-radius: calc(var(--radius-lg) - 2px) calc(var(--radius-lg) - 2px) 18px 18px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(211, 221, 232, 0.9);
+      background: var(--slate-200);
+      min-height: 140px;
+    }
+
+    .choice-media img {
+      width: 100%;
+      height: 148px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .choice-card.has-image .choice-top,
+    .choice-card.has-image .choice-title,
+    .choice-card.has-image .choice-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .choice-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .choice-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--purple-700), var(--navy-800));
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .choice-check {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid var(--slate-300);
+      display: grid;
+      place-items: center;
+      color: transparent;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .choice-card.selected .choice-check {
+      border-color: var(--ice-500);
+      background: var(--ice-500);
+      color: var(--white);
+    }
+
+    .choice-title {
+      font-size: 20px;
+      line-height: 1.15;
+      font-weight: 800;
+      color: var(--navy-950);
+    }
+
+    .choice-copy {
+      color: var(--slate-500);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .field {
+      display: grid;
+      gap: 10px;
+      max-width: 560px;
+    }
+
+    .field label {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--slate-700);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(211, 221, 232, 0.95);
+      background: var(--white);
+      padding: 16px 18px;
+      font: inherit;
+      font-size: 16px;
+      color: var(--navy-950);
+      box-shadow: inset 0 0 0 1px transparent;
+      transition: border-color .16s ease, box-shadow .16s ease;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      outline: none;
+      border-color: rgba(53, 199, 239, 0.8);
+      box-shadow: 0 0 0 4px rgba(53, 199, 239, 0.16);
+    }
+
+    .split-fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 640px;
+    }
+
+    .consent-box {
+      max-width: 760px;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(71,34,108,.06), rgba(53,199,239,.08));
+      border: 1px solid rgba(211, 221, 232, 0.95);
+      color: var(--slate-700);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .notice {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      background: #fff7f2;
+      border: 1px solid rgba(242, 91, 42, 0.18);
+      color: #9b4e35;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer {
+      padding: 0 32px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-note {
+      color: var(--slate-500);
+      font-size: 13px;
+      line-height: 1.7;
+      max-width: 420px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 15px 22px;
+      font-size: 15px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 140px;
+    }
+
+    .btn.secondary {
+      background: var(--slate-100);
+      color: var(--navy-900);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--orange-600), var(--orange-500));
+      color: var(--white);
+      box-shadow: 0 16px 30px rgba(242, 91, 42, 0.22);
+    }
+
+    .btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .summary-card {
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(15,38,64,.98), rgba(9,20,37,.98));
+      color: var(--white);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .summary-title {
+      margin: 0 0 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      color: var(--white);
+    }
+
+    .summary-copy {
+      margin: 0;
+      color: rgba(255,255,255,.78);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .summary-boxes {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .summary-box {
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .summary-label {
+      color: rgba(255,255,255,.58);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 6px;
+    }
+
+    .summary-value {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .summary-accent {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(242,91,42,.18), rgba(255,116,67,.10));
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .summary-accent strong {
+      display: block;
+      margin-bottom: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+    }
+
+    .steps-overview {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .step-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: var(--slate-100);
+      color: var(--slate-700);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .step-row.active {
+      background: var(--ice-100);
+      color: var(--navy-900);
+    }
+
+    .step-pill {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      font-weight: 800;
+      background: var(--white);
+      color: var(--navy-900);
+      box-shadow: inset 0 0 0 1px rgba(211, 221, 232, 0.95);
+    }
+
+    @media (max-width: 1220px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .rail {
+        position: static;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        padding: 20px 16px 48px;
+      }
+
+      .topbar {
+        flex-direction: column;
+      }
+
+      .chips {
+        justify-content: flex-start;
+      }
+
+      .header,
+      .body,
+      .footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .choice-grid.two,
+      .choice-grid.three,
+      .split-fields {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer {
+        align-items: stretch;
+      }
+
+      .actions {
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Working Prototype</div>
+        <h1 class="title">Real Frost Fire step funnel prototype</h1>
+        <p class="lede">
+          This is a true step-by-step prototype with the order locked in, real navigation, mobile responsiveness,
+          and a handoff into a separate post-completion page. When you finish, it sends the selections into the offers page.
+        </p>
+      </div>
+      <div class="chips">
+        <div class="chip">12 steps</div>
+        <div class="chip">Desktop + mobile</div>
+        <div class="chip">Separate results page</div>
+        <div class="chip">Frost Fire branding</div>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div class="rail">
+        <div class="panel">
+          <div class="eyebrow">Why this flow</div>
+          <h2 class="panel-title">This is the actual order customers will experience.</h2>
+          <p class="muted">
+            It starts with fast qualification, moves into contact info later, and ends with text consent.
+            That keeps the early steps easy while still supporting the follow-up page you asked for.
+          </p>
+          <div class="bullet-list">
+            <div class="bullet">
+              <div class="bullet-number">1</div>
+              <div><strong>Fast first half</strong><br><span class="muted">Home type, system type, sizing, comfort, and urgency.</span></div>
+            </div>
+            <div class="bullet">
+              <div class="bullet-number">2</div>
+              <div><strong>Contact later</strong><br><span class="muted">Name, ZIP, email, phone, then consent near the end.</span></div>
+            </div>
+            <div class="bullet">
+              <div class="bullet-number">3</div>
+              <div><strong>Dedicated landing page</strong><br><span class="muted">Pricing, video placeholder, tune-up offer, and free appointment options.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="eyebrow">Step Order</div>
+          <div class="steps-overview" id="stepOverview"></div>
+        </div>
+      </div>
+
+      <div class="card funnel-card">
+        <div class="header">
+          <div class="brand-row">
+            <div class="brand-lockup">
+              <img src="images/logo-icon.svg" alt="Frost Fire HVACR">
+              <div>
+                <div class="brand-name">Frost Fire HVACR</div>
+                <div class="brand-sub">Personalized replacement and visit funnel</div>
+              </div>
+            </div>
+            <div class="progress-meta" id="progressMeta">Step 1 of 12</div>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+
+          <div class="step-count" id="stepCount">Step 1</div>
+          <h2 class="question" id="questionTitle"></h2>
+          <p class="question-copy" id="questionCopy"></p>
+        </div>
+
+        <div class="body">
+          <div id="stepBody"></div>
+        </div>
+
+        <div class="footer">
+          <div class="footer-note" id="footerNote">
+            We only use this prototype data locally in your browser so you can test the flow.
+          </div>
+          <div class="actions">
+            <button class="btn secondary" id="backBtn">Back</button>
+            <button class="btn primary" id="nextBtn">Continue</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="rail">
+        <div class="summary-card">
+          <div class="eyebrow" style="color:var(--ice-500);">Live Preview</div>
+          <h3 class="summary-title">What this lead looks like so far</h3>
+          <p class="summary-copy">
+            This updates as you move through the flow, so you can quickly tell whether the quiz is collecting the right information.
+          </p>
+
+          <div class="summary-boxes">
+            <div class="summary-box">
+              <div class="summary-label">System</div>
+              <div class="summary-value" id="summarySystem">Not selected yet</div>
+            </div>
+            <div class="summary-box">
+              <div class="summary-label">Home Profile</div>
+              <div class="summary-value" id="summaryHome">Still gathering details</div>
+            </div>
+            <div class="summary-box">
+              <div class="summary-label">Timeline</div>
+              <div class="summary-value" id="summaryTimeline">Unknown</div>
+            </div>
+          </div>
+
+          <div class="summary-accent">
+            <div class="summary-label" style="color:rgba(255,255,255,.66);">Results page handoff</div>
+            <strong>$59 tune-up or free appointment</strong>
+            <div class="summary-copy">
+              After step 12, this prototype redirects to the dedicated offer page with pricing cards and both options visible.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const steps = [
+      {
+        id: 'homeType',
+        title: 'What style of home best matches yours?',
+        copy: 'This helps us frame the sizing and replacement conversation before we show your options.',
+        type: 'choice',
+        layout: 'two',
+        note: 'The first step should feel easy and visual on both desktop and mobile.',
+        options: [
+          { value: 'single-family', label: 'Single-family home', copy: 'Detached home with one main system footprint.', icon: 'SF', image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80', imageAlt: 'Single-family residential home exterior' },
+          { value: 'townhome', label: 'Townhome or row home', copy: 'Shared-wall home with tighter layout considerations.', icon: 'TH', image: 'https://images.unsplash.com/photo-1448630360428-65456885c650?w=900&q=80', imageAlt: 'Townhomes in a neighborhood setting' },
+          { value: 'manufactured', label: 'Manufactured or mobile home', copy: 'Different duct and equipment fit matters here.', icon: 'MH', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=900&q=80', imageAlt: 'Compact residential home exterior used as a placeholder for manufactured housing' },
+          { value: 'small-commercial', label: 'Light commercial space', copy: 'Office, retail, or similar small commercial project.', icon: 'CO', image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80', imageAlt: 'Small commercial building exterior' }
+        ]
+      },
+      {
+        id: 'systemType',
+        title: 'What type of system are you interested in?',
+        copy: 'Only real Frost Fire offerings are shown here. No window units and no filler options.',
+        type: 'choice',
+        layout: 'two',
+        note: 'System type should be one of the earliest filters because it changes the results page dramatically.',
+        options: [
+          { value: 'heat-pump', label: 'Heat pump', copy: 'All-electric heating and cooling in one system.', icon: 'HP', image: 'https://images.unsplash.com/photo-1637971821576-f42fa65cd79c?w=900&q=80', imageAlt: 'Outdoor heat pump unit beside a home' },
+          { value: 'condenser-gas-furnace', label: 'Condenser + gas furnace', copy: 'Traditional split setup with AC and gas heat.', icon: 'CF', image: 'https://images.unsplash.com/photo-1698479603408-1a66a6d9e80f?w=900&q=80', imageAlt: 'Residential condenser installation placeholder image' },
+          { value: 'gas-furnace', label: 'Gas furnace only', copy: 'Heat-only replacement or furnace-focused project.', icon: 'GF', image: 'https://images.unsplash.com/photo-1614447413576-b346c641c128?w=900&q=80', imageAlt: 'Gas furnace installation placeholder image' }
+        ]
+      },
+      {
+        id: 'zones',
+        title: 'How many total systems or zones do you have?',
+        copy: 'This is usually the number of thermostats or outdoor units involved.',
+        type: 'choice',
+        layout: 'three',
+        note: 'A simple zone count is easier for homeowners than asking technical equipment questions this early.',
+        options: [
+          { value: '1', label: '1 system / zone', copy: 'Most common for standard homes.', icon: '1' },
+          { value: '2', label: '2 systems / zones', copy: 'Separate upstairs/downstairs or dual systems.', icon: '2' },
+          { value: '3+', label: '3 or more', copy: 'Large home or more complex layout.', icon: '3' }
+        ]
+      },
+      {
+        id: 'squareFeet',
+        title: 'How much space are you trying to heat or cool?',
+        copy: 'This does not replace proper sizing, but it helps us estimate the likely equipment range.',
+        type: 'choice',
+        layout: 'two',
+        note: 'Keep these human-readable ranges; they scan well on mobile.',
+        options: [
+          { value: '600-1200', label: '600 to 1,200 sq ft', copy: 'Smaller footprint or condo-sized area.', icon: 'S' },
+          { value: '1201-1800', label: '1,201 to 1,800 sq ft', copy: 'Typical smaller home range.', icon: 'M' },
+          { value: '1801-2500', label: '1,801 to 2,500 sq ft', copy: 'Very common family-home range.', icon: 'L' },
+          { value: '2501-3500', label: '2,501 to 3,500 sq ft', copy: 'Larger home or multi-level layout.', icon: 'XL' },
+          { value: '3501+', label: '3,501+ sq ft', copy: 'Large-home or more complex estimate.', icon: 'XX' },
+          { value: 'not-sure', label: 'I am not sure', copy: 'We can still show a rough path and confirm on-site.', icon: '?' }
+        ]
+      },
+      {
+        id: 'installType',
+        title: 'What kind of project is this?',
+        copy: 'This helps us separate a straightforward swap from work that needs more investigation.',
+        type: 'choice',
+        layout: 'two',
+        note: 'This is where the flow starts qualifying easy wins versus complex installs.',
+        options: [
+          { value: 'replace-same', label: 'Replace existing with similar setup', copy: 'Most predictable install path.', icon: 'RS' },
+          { value: 'replace-upgrade', label: 'Replace and upgrade the system', copy: 'Better efficiency or equipment tier.', icon: 'UP' },
+          { value: 'system-problem', label: 'Current system keeps failing', copy: 'Need help deciding repair vs replacement.', icon: 'FX' },
+          { value: 'new-scope', label: 'Not sure yet', copy: 'Need a real in-home recommendation.', icon: '??' }
+        ]
+      },
+      {
+        id: 'comfortFocus',
+        title: 'What matters most to you right now?',
+        copy: 'This is the lead-intent question that shapes the follow-up offer and sales conversation.',
+        type: 'choice',
+        layout: 'two',
+        note: 'This should influence the results-page messaging and the recommended CTA.',
+        options: [
+          { value: 'lowest-price', label: 'Keep the price as low as possible', copy: 'Value-focused package presentation.', icon: '$' },
+          { value: 'monthly-payment', label: 'Keep the monthly payment manageable', copy: 'Finance-forward messaging.', icon: 'PM' },
+          { value: 'comfort-reliability', label: 'Get something more reliable', copy: 'Comfort and fewer headaches.', icon: 'OK' },
+          { value: 'efficiency', label: 'Improve efficiency and lower utility bills', copy: 'Longer-term value and performance.', icon: 'EF' }
+        ]
+      },
+      {
+        id: 'timeline',
+        title: 'How soon are you planning to move forward?',
+        copy: 'This helps us know whether to emphasize scheduling now or let you keep shopping comfortably.',
+        type: 'choice',
+        layout: 'two',
+        note: 'The results page can use different CTA emphasis based on this answer.',
+        options: [
+          { value: 'asap', label: 'As soon as possible', copy: 'Need to solve this quickly.', icon: 'AS' },
+          { value: 'this-week', label: 'Within the next week', copy: 'Actively comparing options now.', icon: 'WK' },
+          { value: 'this-month', label: 'Within the next month', copy: 'Planning soon, not same-day urgent.', icon: 'MO' },
+          { value: 'shopping', label: 'Just shopping for now', copy: 'Researching before deciding.', icon: 'SH' }
+        ]
+      },
+      {
+        id: 'name',
+        title: 'Who should we make the estimate out to?',
+        copy: 'Use your real name so the follow-up page and future messages feel personalized.',
+        type: 'text',
+        note: 'Contact collection starts after the customer already sees value in the flow.',
+        fields: [
+          { key: 'firstName', label: 'First name', placeholder: 'First name' },
+          { key: 'lastName', label: 'Last name', placeholder: 'Last name' }
+        ]
+      },
+      {
+        id: 'zipCode',
+        title: 'What ZIP code is the property in?',
+        copy: 'We use this to confirm you are in our service area and keep the estimate local to your market.',
+        type: 'single-input',
+        note: 'ZIP code also gives you a clean handoff to service-area logic later.',
+        field: { key: 'zipCode', label: 'ZIP code', placeholder: '27520', inputmode: 'numeric' }
+      },
+      {
+        id: 'email',
+        title: 'What email should receive a copy of your estimate?',
+        copy: 'We hate spam too. This is for your estimate summary and booking details only.',
+        type: 'single-input',
+        note: 'Email comes before phone so the funnel still feels useful if they are hesitant about texts.',
+        field: { key: 'email', label: 'Email address', placeholder: 'name@example.com', inputmode: 'email' }
+      },
+      {
+        id: 'phone',
+        title: 'What is the best mobile number for appointment updates?',
+        copy: 'If you book, this is where we will send appointment reminders and arrival updates.',
+        type: 'single-input',
+        note: 'Phone is positioned late so the quiz earns the ask first.',
+        field: { key: 'phone', label: 'Mobile phone', placeholder: '(919) 555-1234', inputmode: 'tel' }
+      },
+      {
+        id: 'textConsent',
+        title: 'Can we text you about your estimate and appointment options?',
+        copy: 'Reply STOP to opt out. Message frequency varies. Consent is not a condition of purchase.',
+        type: 'choice',
+        layout: 'two',
+        note: 'If they decline, the results page still works and shows a softer follow-up message.',
+        consent: true,
+        options: [
+          { value: 'yes', label: 'Yes, text me updates', copy: 'Estimate, scheduling, and reminder texts are okay.', icon: 'Y' },
+          { value: 'no', label: 'No, I would rather not', copy: 'We will still show your options on the next page.', icon: 'N' }
+        ]
+      }
+    ];
+
+    const state = {};
+    let currentStep = 0;
+
+    const stepBody = document.getElementById('stepBody');
+    const questionTitle = document.getElementById('questionTitle');
+    const questionCopy = document.getElementById('questionCopy');
+    const stepCount = document.getElementById('stepCount');
+    const progressMeta = document.getElementById('progressMeta');
+    const progressFill = document.getElementById('progressFill');
+    const footerNote = document.getElementById('footerNote');
+    const backBtn = document.getElementById('backBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const stepOverview = document.getElementById('stepOverview');
+    const summarySystem = document.getElementById('summarySystem');
+    const summaryHome = document.getElementById('summaryHome');
+    const summaryTimeline = document.getElementById('summaryTimeline');
+
+    function prettyChoice(step, value) {
+      const option = (step.options || []).find((item) => item.value === value);
+      return option ? option.label : value;
+    }
+
+    function buildOverview() {
+      stepOverview.innerHTML = '';
+      steps.forEach((step, index) => {
+        const row = document.createElement('div');
+        row.className = 'step-row' + (index === currentStep ? ' active' : '');
+        row.innerHTML = '<div class="step-pill">' + (index + 1) + '</div><div>' + step.title + '</div>';
+        stepOverview.appendChild(row);
+      });
+    }
+
+    function updateSummary() {
+      const systemStep = steps.find((step) => step.id === 'systemType');
+      summarySystem.textContent = state.systemType ? prettyChoice(systemStep, state.systemType) : 'Not selected yet';
+
+      const homeTypeStep = steps.find((step) => step.id === 'homeType');
+      const homeBits = [];
+      if (state.homeType) homeBits.push(prettyChoice(homeTypeStep, state.homeType));
+      if (state.squareFeet) homeBits.push(state.squareFeet.replace('-', ' to ') + ' sq ft');
+      if (state.zones) homeBits.push(state.zones + ' zone' + (state.zones === '1' ? '' : 's'));
+      summaryHome.textContent = homeBits.length ? homeBits.join(' • ') : 'Still gathering details';
+
+      const timelineStep = steps.find((step) => step.id === 'timeline');
+      summaryTimeline.textContent = state.timeline ? prettyChoice(timelineStep, state.timeline) : 'Unknown';
+    }
+
+    function validateStep(step) {
+      if (step.type === 'choice') return !!state[step.id];
+      if (step.type === 'single-input') {
+        const key = step.field.key;
+        return Boolean((state[key] || '').trim());
+      }
+      if (step.type === 'text') {
+        return step.fields.every((field) => Boolean((state[field.key] || '').trim()));
+      }
+      return false;
+    }
+
+    function renderChoiceStep(step) {
+      const grid = document.createElement('div');
+      grid.className = 'choice-grid ' + (step.layout || 'two');
+      step.options.forEach((option) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'choice-card' + (state[step.id] === option.value ? ' selected' : '') + (option.image ? ' has-image' : '');
+        button.innerHTML = [
+          option.image ? '<div class="choice-media"><img src="' + option.image + '" alt="' + (option.imageAlt || option.label) + '" loading="lazy"></div>' : '',
+          '<div class="choice-top">',
+          '<div class="choice-icon">' + option.icon + '</div>',
+          '<div class="choice-check">✓</div>',
+          '</div>',
+          '<div class="choice-title">' + option.label + '</div>',
+          '<div class="choice-copy">' + option.copy + '</div>'
+        ].join('');
+        button.addEventListener('click', () => {
+          state[step.id] = option.value;
+          renderStep();
+        });
+        grid.appendChild(button);
+      });
+      stepBody.appendChild(grid);
+
+      if (step.consent && state[step.id] === 'no') {
+        const notice = document.createElement('div');
+        notice.className = 'notice';
+        notice.textContent = 'No problem. We usually send estimate and appointment details by text and email. If you continue, we will still show your personalized options on the next page and you can always call us directly to schedule.';
+        stepBody.appendChild(notice);
+      }
+    }
+
+    function renderSingleInput(step) {
+      const fieldWrap = document.createElement('div');
+      fieldWrap.className = 'field';
+      fieldWrap.innerHTML =
+        '<label for="' + step.field.key + '">' + step.field.label + '</label>' +
+        '<input id="' + step.field.key + '" placeholder="' + step.field.placeholder + '"' +
+        (step.field.inputmode ? ' inputmode="' + step.field.inputmode + '"' : '') +
+        ' value="' + (state[step.field.key] || '') + '">';
+      stepBody.appendChild(fieldWrap);
+      const input = fieldWrap.querySelector('input');
+      input.addEventListener('input', (event) => {
+        state[step.field.key] = event.target.value;
+        nextBtn.disabled = !validateStep(step);
+      });
+      input.focus();
+    }
+
+    function renderTextStep(step) {
+      const split = document.createElement('div');
+      split.className = 'split-fields';
+      step.fields.forEach((field) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'field';
+        wrap.innerHTML =
+          '<label for="' + field.key + '">' + field.label + '</label>' +
+          '<input id="' + field.key + '" placeholder="' + field.placeholder + '" value="' + (state[field.key] || '') + '">';
+        split.appendChild(wrap);
+      });
+      stepBody.appendChild(split);
+      step.fields.forEach((field) => {
+        const input = document.getElementById(field.key);
+        input.addEventListener('input', (event) => {
+          state[field.key] = event.target.value;
+          nextBtn.disabled = !validateStep(step);
+        });
+      });
+      const firstInput = document.getElementById(step.fields[0].key);
+      firstInput.focus();
+    }
+
+    function renderStep() {
+      const step = steps[currentStep];
+      questionTitle.textContent = step.title;
+      questionCopy.textContent = step.copy;
+      stepCount.textContent = 'Step ' + (currentStep + 1);
+      progressMeta.textContent = 'Step ' + (currentStep + 1) + ' of ' + steps.length;
+      progressFill.style.width = (((currentStep + 1) / steps.length) * 100).toFixed(3) + '%';
+      footerNote.textContent = step.note || 'Continue through the full flow to reach the dedicated offer page.';
+      stepBody.innerHTML = '';
+
+      if (step.type === 'choice') renderChoiceStep(step);
+      if (step.type === 'single-input') renderSingleInput(step);
+      if (step.type === 'text') renderTextStep(step);
+
+      if (step.id === 'textConsent') {
+        const consent = document.createElement('div');
+        consent.className = 'consent-box';
+        consent.textContent = 'By providing your phone number, you agree to receive appointment scheduling, reminder, and estimate-related texts from Frost Fire HVACR. This prototype keeps that language visible so you can tune the tone before launch.';
+        stepBody.appendChild(consent);
+      }
+
+      backBtn.disabled = currentStep === 0;
+      nextBtn.textContent = currentStep === steps.length - 1 ? 'See My Options' : 'Continue';
+      nextBtn.disabled = !validateStep(step);
+      buildOverview();
+      updateSummary();
+    }
+
+    function goNext() {
+      const step = steps[currentStep];
+      if (!validateStep(step)) return;
+      if (currentStep === steps.length - 1) {
+        const payload = {
+          ...state,
+          completedAt: new Date().toISOString()
+        };
+        sessionStorage.setItem('frostfireQuotePrototype', JSON.stringify(payload));
+        window.location.href = 'estimate-offers-prototype.html';
+        return;
+      }
+      currentStep += 1;
+      renderStep();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goBack() {
+      if (currentStep === 0) return;
+      currentStep -= 1;
+      renderStep();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    nextBtn.addEventListener('click', goNext);
+    backBtn.addEventListener('click', goBack);
+
+    buildOverview();
+    renderStep();
+  </script>
+</body>
+</html>

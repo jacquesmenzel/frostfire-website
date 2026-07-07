@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frost Fire HVACR Calculator Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-950: #081526;
+      --navy-900: #0f243c;
+      --navy-800: #183754;
+      --slate-700: #44556a;
+      --slate-500: #6d8094;
+      --slate-300: #cfd8e2;
+      --slate-200: #e5ebf2;
+      --slate-100: #f4f7fb;
+      --white: #ffffff;
+      --ice-600: #17a9d7;
+      --ice-500: #29c2ed;
+      --ice-100: #e9f9fe;
+      --orange-600: #f05a28;
+      --orange-500: #ff7443;
+      --orange-100: #fff0ea;
+      --success-600: #169c69;
+      --shadow-lg: 0 28px 80px rgba(8, 21, 38, 0.16);
+      --shadow-md: 0 16px 40px rgba(15, 36, 60, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--navy-900);
+      background:
+        radial-gradient(circle at top left, rgba(41, 194, 237, 0.15), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(240, 90, 40, 0.10), transparent 30%),
+        linear-gradient(180deg, #f8fbff 0%, #eef4f8 100%);
+      min-height: 100vh;
+    }
+
+    .shell {
+      max-width: 1420px;
+      margin: 0 auto;
+      padding: 40px 24px 64px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-kicker {
+      color: var(--ice-600);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .brand-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--navy-950);
+    }
+
+    .brand-copy {
+      color: var(--slate-500);
+      font-size: 14px;
+      max-width: 620px;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      border: 1px solid rgba(23, 169, 215, 0.18);
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--slate-700);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(8, 21, 38, 0.05);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr) 320px;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .panel,
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(207, 216, 226, 0.9);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(12px);
+    }
+
+    .panel {
+      padding: 24px;
+    }
+
+    .panel h2,
+    .panel h3,
+    .card h2,
+    .card h3 {
+      margin: 0;
+    }
+
+    .left-rail {
+      display: grid;
+      gap: 20px;
+      position: sticky;
+      top: 24px;
+    }
+
+    .proof-list,
+    .next-steps,
+    .summary-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .proof-item,
+    .step-item,
+    .summary-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: var(--slate-100);
+    }
+
+    .proof-icon,
+    .step-icon,
+    .summary-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 38px;
+      background: var(--white);
+      color: var(--ice-600);
+      font-weight: 800;
+      box-shadow: inset 0 0 0 1px rgba(207, 216, 226, 0.8);
+    }
+
+    .eyebrow {
+      color: var(--ice-600);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .panel-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      line-height: 1.2;
+      color: var(--navy-950);
+    }
+
+    .muted {
+      color: var(--slate-500);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .main-card {
+      overflow: hidden;
+    }
+
+    .progress-wrap {
+      padding: 28px 32px 0;
+    }
+
+    .progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .progress-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy-900);
+    }
+
+    .progress-meta {
+      font-size: 13px;
+      color: var(--slate-500);
+    }
+
+    .progress-track {
+      height: 10px;
+      border-radius: 999px;
+      background: var(--slate-200);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 33%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--ice-600), var(--ice-500));
+    }
+
+    .stepper {
+      display: flex;
+      gap: 12px;
+      margin: 18px 0 0;
+      flex-wrap: wrap;
+    }
+
+    .step-pill {
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--slate-500);
+      background: var(--slate-100);
+    }
+
+    .step-pill.active {
+      color: var(--ice-600);
+      background: var(--ice-100);
+    }
+
+    .hero {
+      padding: 28px 32px 18px;
+      border-bottom: 1px solid rgba(207, 216, 226, 0.75);
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(30px, 4vw, 42px);
+      line-height: 1.08;
+      color: var(--navy-950);
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 720px;
+      color: var(--slate-500);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .option-grid {
+      padding: 28px 32px 8px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .option-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 68px minmax(0, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(207, 216, 226, 0.9);
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(246,249,252,0.95));
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .option-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(23, 169, 215, 0.4);
+      box-shadow: 0 18px 44px rgba(15, 36, 60, 0.12);
+    }
+
+    .option-card.selected {
+      border-color: rgba(23, 169, 215, 0.7);
+      background: linear-gradient(180deg, #ffffff, #f1fbff);
+      box-shadow: 0 20px 48px rgba(23, 169, 215, 0.16);
+    }
+
+    .option-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      font-size: 30px;
+      background: linear-gradient(180deg, var(--navy-900), var(--navy-800));
+      color: var(--white);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    }
+
+    .option-card.selected .option-icon {
+      background: linear-gradient(180deg, var(--ice-600), var(--navy-800));
+    }
+
+    .option-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy-950);
+    }
+
+    .option-subtitle {
+      color: var(--slate-500);
+      font-size: 14px;
+      line-height: 1.65;
+      max-width: 540px;
+    }
+
+    .option-bullets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .option-badge {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--slate-700);
+      background: var(--slate-100);
+      border-radius: 999px;
+      padding: 7px 10px;
+    }
+
+    .selector {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid var(--slate-300);
+      display: grid;
+      place-items: center;
+      color: transparent;
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .option-card.selected .selector {
+      border-color: var(--ice-600);
+      background: var(--ice-600);
+      color: var(--white);
+    }
+
+    .helper-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      padding: 16px 32px 0;
+    }
+
+    .helper-box {
+      background: var(--slate-100);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+    }
+
+    .helper-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--slate-500);
+      margin-bottom: 6px;
+    }
+
+    .helper-value {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy-900);
+      line-height: 1.5;
+    }
+
+    .footer-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px 32px 32px;
+    }
+
+    .link-btn,
+    .primary-btn {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      font-family: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .link-btn {
+      background: transparent;
+      color: var(--slate-500);
+      padding: 12px 0;
+      font-size: 14px;
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, var(--orange-600), var(--orange-500));
+      color: var(--white);
+      padding: 16px 22px;
+      min-width: 220px;
+      font-size: 15px;
+      box-shadow: 0 18px 36px rgba(240, 90, 40, 0.24);
+    }
+
+    .right-rail {
+      display: grid;
+      gap: 20px;
+      position: sticky;
+      top: 24px;
+    }
+
+    .estimate-card {
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(15,36,60,0.98), rgba(8,21,38,0.98));
+      color: var(--white);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .estimate-kicker {
+      color: rgba(144, 224, 239, 0.84);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .estimate-range {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 40px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .estimate-range span {
+      color: var(--ice-500);
+    }
+
+    .estimate-copy {
+      color: rgba(255,255,255,0.72);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .mini-summary {
+      margin: 18px 0 16px;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mini-summary strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .finance-box {
+      padding: 16px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(240,90,40,0.18), rgba(255,116,67,0.12));
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 16px;
+    }
+
+    .finance-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.58);
+      margin-bottom: 8px;
+    }
+
+    .finance-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+
+    .estimate-btn {
+      display: inline-flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      border-radius: 999px;
+      padding: 16px 18px;
+      font-weight: 800;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--orange-600), var(--orange-500));
+      color: var(--white);
+      box-shadow: 0 18px 36px rgba(240, 90, 40, 0.22);
+    }
+
+    .secondary-link {
+      display: inline-flex;
+      margin-top: 12px;
+      justify-content: center;
+      width: 100%;
+      color: rgba(255,255,255,0.74);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .dark-tag {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.8);
+      border-radius: 999px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .notes-card {
+      padding: 22px;
+    }
+
+    .notes-card ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--slate-700);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1160px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .left-rail,
+      .right-rail {
+        position: static;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        padding: 24px 16px 40px;
+      }
+
+      .topbar,
+      .footer-actions,
+      .progress-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero,
+      .progress-wrap,
+      .option-grid,
+      .helper-strip,
+      .footer-actions {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .helper-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .option-card {
+        grid-template-columns: 1fr;
+      }
+
+      .selector {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+      }
+
+      .primary-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-kicker">Calculator Redesign Mockup</div>
+        <div class="brand-name">Frost Fire HVACR</div>
+        <div class="brand-copy">
+          Direction based on stronger estimator patterns: fewer steps, no fake gamification, only real equipment types,
+          and a results view that sells clarity instead of chaos.
+        </div>
+      </div>
+      <div class="top-actions">
+        <div class="chip">24/7 Availability</div>
+        <div class="chip">Licensed & Insured</div>
+        <div class="chip">Same Price on Sundays</div>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div class="left-rail">
+        <div class="panel">
+          <div class="eyebrow">Why This Direction</div>
+          <h2 class="panel-title">Make it feel premium, not playful.</h2>
+          <p class="muted">
+            The best-performing quote flows I reviewed all keep the first screen simple: show credible options, explain
+            what happens next, and avoid anything that feels like a toy.
+          </p>
+          <div class="proof-list">
+            <div class="proof-item">
+              <div class="proof-icon">01</div>
+              <div>
+                <strong>Fewer, better questions</strong><br>
+                <span class="muted">Start with the equipment type, then ask only the questions that materially affect the range.</span>
+              </div>
+            </div>
+            <div class="proof-item">
+              <div class="proof-icon">02</div>
+              <div>
+                <strong>Show a range, not fake certainty</strong><br>
+                <span class="muted">Trust goes up when the customer sees “typical project range” instead of a magic exact number.</span>
+              </div>
+            </div>
+            <div class="proof-item">
+              <div class="proof-icon">03</div>
+              <div>
+                <strong>Book the in-home estimate</strong><br>
+                <span class="muted">The calculator should qualify interest and move them into a real appointment, not pretend to replace one.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="eyebrow">Recommended Flow</div>
+          <h3 class="panel-title" style="font-size:22px;">5-step version</h3>
+          <div class="next-steps">
+            <div class="step-item">
+              <div class="step-icon">A</div>
+              <div><strong>System Type</strong><br><span class="muted">Heat pump, condenser + gas furnace, or gas furnace.</span></div>
+            </div>
+            <div class="step-item">
+              <div class="step-icon">B</div>
+              <div><strong>Home Profile</strong><br><span class="muted">Square footage, number of floors, age of home.</span></div>
+            </div>
+            <div class="step-item">
+              <div class="step-icon">C</div>
+              <div><strong>Comfort Factors</strong><br><span class="muted">Ductwork condition, insulation, hot/cold spots, urgency.</span></div>
+            </div>
+            <div class="step-item">
+              <div class="step-icon">D</div>
+              <div><strong>Estimate Range</strong><br><span class="muted">Show financing teaser and what is included.</span></div>
+            </div>
+            <div class="step-item">
+              <div class="step-icon">E</div>
+              <div><strong>Lead Capture</strong><br><span class="muted">Book free in-home estimate or save the quote.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card main-card">
+        <div class="progress-wrap">
+          <div class="progress-header">
+            <div class="progress-title">Instant HVAC Estimate</div>
+            <div class="progress-meta">Step 1 of 3 in this mockup</div>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill"></div>
+          </div>
+          <div class="stepper">
+            <div class="step-pill active">System Type</div>
+            <div class="step-pill">Home Details</div>
+            <div class="step-pill">Estimate Preview</div>
+          </div>
+        </div>
+
+        <div class="hero">
+          <div class="eyebrow">Step 1</div>
+          <h1>What system are you interested in?</h1>
+          <p>
+            Start with the type of replacement or upgrade you want priced. We’ll use that to show a realistic project
+            range and financing preview before you book your free in-home estimate.
+          </p>
+        </div>
+
+        <div class="option-grid">
+          <div class="option-card selected">
+            <div class="option-icon">HP</div>
+            <div>
+              <div class="option-title">Heat Pump</div>
+              <div class="option-subtitle">
+                Best for all-electric heating and cooling, energy efficiency, and homeowners who want one system handling both seasons.
+              </div>
+              <div class="option-bullets">
+                <div class="option-badge">Heating + cooling in one system</div>
+                <div class="option-badge">Strong fit for NC climate</div>
+                <div class="option-badge">Financing-friendly upgrade</div>
+              </div>
+            </div>
+            <div class="selector">✓</div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-icon">CF</div>
+            <div>
+              <div class="option-title">Condenser + Gas Furnace</div>
+              <div class="option-subtitle">
+                Traditional split setup with AC for cooling and a gas furnace for heat. Good fit for homeowners who prefer gas heat in winter.
+              </div>
+              <div class="option-bullets">
+                <div class="option-badge">Central AC + gas heat</div>
+                <div class="option-badge">Popular replacement option</div>
+                <div class="option-badge">Great for existing gas setups</div>
+              </div>
+            </div>
+            <div class="selector">✓</div>
+          </div>
+
+          <div class="option-card">
+            <div class="option-icon">GF</div>
+            <div>
+              <div class="option-title">Gas Furnace</div>
+              <div class="option-subtitle">
+                For heat-only replacement pricing or furnace-focused projects where cooling is not the primary scope right now.
+              </div>
+              <div class="option-bullets">
+                <div class="option-badge">Heat-only replacement</div>
+                <div class="option-badge">Furnace upgrade path</div>
+                <div class="option-badge">Simple replacement flow</div>
+              </div>
+            </div>
+            <div class="selector">✓</div>
+          </div>
+        </div>
+
+        <div class="helper-strip">
+          <div class="helper-box">
+            <div class="helper-label">What we removed</div>
+            <div class="helper-value">Window units, “new build” toy options, and weak iconography that cheapened the experience.</div>
+          </div>
+          <div class="helper-box">
+            <div class="helper-label">What we’ll ask next</div>
+            <div class="helper-value">Square footage, number of floors, ductwork status, and whether this is a straight replacement.</div>
+          </div>
+          <div class="helper-box">
+            <div class="helper-label">Goal of the calculator</div>
+            <div class="helper-value">Set expectations, filter serious leads, and drive booking for an in-home estimate.</div>
+          </div>
+        </div>
+
+        <div class="footer-actions">
+          <button class="link-btn">Back to Website</button>
+          <button class="primary-btn">Continue to Home Details</button>
+        </div>
+      </div>
+
+      <div class="right-rail">
+        <div class="estimate-card">
+          <div class="estimate-kicker">Estimate Preview</div>
+          <div class="estimate-range">$7.5k <span>to</span> $14.8k</div>
+          <div class="estimate-copy">
+            Example preview for a standard heat pump replacement. Final pricing still gets confirmed on-site after sizing,
+            ductwork review, electrical, and installation conditions.
+          </div>
+
+          <div class="mini-summary">
+            <strong>What’s included in the preview</strong>
+            Equipment range, standard install assumptions, financing teaser, and next-step recommendation.
+          </div>
+
+          <div class="finance-box">
+            <div class="finance-label">Typical Financing Preview</div>
+            <div class="finance-value">From $89/mo</div>
+            <div class="estimate-copy" style="margin:0;">With approved financing on qualified systems.</div>
+          </div>
+
+          <a class="estimate-btn" href="#">Book Free In-Home Estimate</a>
+          <a class="secondary-link" href="#">Or call (919) 230-4439</a>
+
+          <div class="tag-row">
+            <div class="dark-tag">24/7 service</div>
+            <div class="dark-tag">Licensed techs</div>
+            <div class="dark-tag">Real local estimate</div>
+          </div>
+        </div>
+
+        <div class="panel notes-card">
+          <div class="eyebrow">Design Notes</div>
+          <h3 class="panel-title" style="font-size:22px;">What feels more professional here</h3>
+          <ul>
+            <li>Large, clean cards with real service language instead of emoji-heavy quiz tiles.</li>
+            <li>The right rail keeps business value visible without hijacking the main decision.</li>
+            <li>The first screen is framed like a consultation tool, not a game.</li>
+            <li>This structure can be adapted into a results-first or lead-capture-first flow later.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

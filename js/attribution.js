@@ -31,6 +31,18 @@
     document.head.appendChild(script);
   }
 
+  function pushDataLayer(eventName, payload) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(
+      Object.assign(
+        {
+          event: eventName,
+        },
+        payload || {}
+      )
+    );
+  }
+
   function installVendorAnalytics() {
     if (ANALYTICS_CONFIG.gtmId) {
       (function (w, d, s, l, i) {
@@ -204,16 +216,18 @@
 
   function trackEvent(eventType, extra) {
     const context = buildContext();
+    const eventPayload = {
+      page_location: context.page_url,
+      page_path: context.page_path,
+      page_title: context.page_title,
+      page_type: context.page_type,
+      cta_type: extra && extra.cta_type ? extra.cta_type : undefined,
+      lead_channel: extra && extra.lead_channel ? extra.lead_channel : undefined,
+      value: extra && typeof extra.value === 'number' ? extra.value : undefined
+    };
+    pushDataLayer(eventType, eventPayload);
     if (window.gtag && ANALYTICS_CONFIG.ga4MeasurementId) {
-      window.gtag('event', eventType, {
-        page_location: context.page_url,
-        page_path: context.page_path,
-        page_title: context.page_title,
-        page_type: context.page_type,
-        cta_type: extra && extra.cta_type ? extra.cta_type : undefined,
-        lead_channel: extra && extra.lead_channel ? extra.lead_channel : undefined,
-        value: extra && typeof extra.value === 'number' ? extra.value : undefined
-      });
+      window.gtag('event', eventType, eventPayload);
     }
     return postJson(API.event, {
       context,
@@ -226,6 +240,15 @@
   }
 
   function trackLead(payload) {
+    const details = (payload && payload.details) || {};
+    pushDataLayer('website_lead', {
+      lead_channel: payload && payload.lead_channel ? payload.lead_channel : 'website',
+      cta_type: details.cta_type || undefined,
+      service_requested: payload && payload.service_requested ? payload.service_requested : undefined,
+      city: payload && payload.city ? payload.city : undefined,
+      page_path: payload && payload.context ? payload.context.page_path : undefined,
+      page_type: payload && payload.context ? payload.context.page_type : undefined
+    });
     return postJson(API.lead, payload);
   }
 
@@ -234,14 +257,6 @@
     persistFirstTouch();
     installVendorAnalytics();
     const context = buildContext();
-    if (window.gtag && ANALYTICS_CONFIG.ga4MeasurementId) {
-      window.gtag('event', 'page_view', {
-        page_location: context.page_url,
-        page_path: context.page_path,
-        page_title: context.page_title,
-        page_type: context.page_type
-      });
-    }
     return postJson(API.session, { context }).then(function () {
       return trackEvent('page_view', { page_type: context.page_type });
     });
