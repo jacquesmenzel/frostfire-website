@@ -134,7 +134,7 @@
     const landingPath = stored.landing_page_path || getPagePath();
     return {
       website: 'frostfire',
-      session_key: sessionStorage.getItem('ff_session_key') || '',
+      session_key: ensureSessionKey(),
       visitor_id: ensureVisitorId(),
       landing_page_url: landingUrl,
       landing_page_path: landingPath,
@@ -192,16 +192,26 @@
     return next;
   }
 
-  async function postJson(url, body) {
+  async function postJson(url, body, opts) {
+    const requireOk = !!(opts && opts.requireOk);
     try {
-      await fetch(url, {
+      const resp = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
         keepalive: true,
       });
-    } catch {
-      // Best effort only.
+      if (requireOk && !resp.ok) {
+        const text = await resp.text().catch(function () {
+          return '';
+        });
+        throw new Error('Lead API ' + resp.status + (text ? ': ' + text.slice(0, 200) : ''));
+      }
+      return resp;
+    } catch (err) {
+      if (requireOk) throw err;
+      // Best effort only for analytics/session events.
+      return null;
     }
   }
 
@@ -249,7 +259,8 @@
       page_path: payload && payload.context ? payload.context.page_path : undefined,
       page_type: payload && payload.context ? payload.context.page_type : undefined
     });
-    return postJson(API.lead, payload);
+    // Lead submits must surface failures so the form can show a retry/call message.
+    return postJson(API.lead, payload, { requireOk: true });
   }
 
   function bootSession() {
@@ -303,8 +314,7 @@
   }
 
   function installContactFormTracking() {
-    const form = document.getElementById('contact-form');
-    if (!form) return;
+    // Legacy hook used by older form handlers.
     const originalTrackLead = window.FrostFireTrackLead;
     window.FrostFireTrackLead = function (lead) {
       trackLead(lead);
@@ -312,6 +322,46 @@
         originalTrackLead(lead);
       }
     };
+
+    // Any form marked data-ff-lead="true" (or #contact-form) posts into CRM.
+    document.querySelectorAll('form[data-ff-lead="true"], form#contact-form').forEach(function (form) {
+      if (form.dataset.ffLeadBound === '1') return;
+      form.dataset.ffLeadBound = '1';
+      // main.js owns #contact-form submit; only auto-bind other marked forms here.
+      if (form.id === 'contact-form') return;
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const fd = new FormData(form);
+        const lead = {
+          context: buildContext(),
+          lead_channel: form.getAttribute('data-ff-channel') || 'form',
+          full_name: String(fd.get('name') || fd.get('full_name') || '').trim(),
+          email: String(fd.get('email') || '').trim() || null,
+          phone: String(fd.get('phone') || '').trim() || null,
+          service_requested: String(fd.get('service') || fd.get('service_requested') || '').trim() || null,
+          city: String(fd.get('city') || '').trim() || null,
+          address: String(fd.get('address') || '').trim() || null,
+          message: String(fd.get('message') || '').trim() || null,
+          details: {
+            source_page: window.location.pathname,
+            cta_type: form.getAttribute('data-ff-cta') || 'marked_form',
+            form_id: form.id || null,
+          },
+        };
+        if (!lead.full_name || (!lead.phone && !lead.email)) {
+          alert('Please provide your name and a phone or email so we can follow up.');
+          return;
+        }
+        trackLead(lead)
+          .then(function () {
+            alert('Thanks! Your request is in our system. For immediate help call (919) 230-4439.');
+            form.reset();
+          })
+          .catch(function () {
+            alert('We hit a temporary issue submitting your request. Please call (919) 230-4439.');
+          });
+      });
+    });
   }
 
   function installCalculatorHelpers() {

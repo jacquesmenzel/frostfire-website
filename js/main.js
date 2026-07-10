@@ -117,11 +117,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (trackLead) {
           await trackLead(lead);
         } else {
-          await fetch('/api/v1/public/website/lead', {
+          const resp = await fetch('/api/v1/public/website/lead', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(lead),
           });
+          if (!resp.ok) {
+            throw new Error('Lead submit failed (' + resp.status + ')');
+          }
         }
         if (trackEvent) {
           trackEvent('form_submit', { lead_channel: 'form', cta_type: 'contact_form' });
