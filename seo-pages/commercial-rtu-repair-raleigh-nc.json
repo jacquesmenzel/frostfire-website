@@ -1,0 +1,133 @@
+{
+  "slug": "commercial-rtu-repair-raleigh-nc",
+  "title": "RTU Repair Raleigh NC | Commercial Rooftop Units | Frost Fire",
+  "meta_description": "Rooftop unit down in Raleigh? Frost Fire repairs commercial RTUs across the Triangle — restaurants, retail, offices. Open Sundays, no extra charge. (919) 230-4439.",
+  "service_type": "Commercial RTU and Rooftop Unit Repair",
+  "h1": "Commercial RTU & Rooftop Unit Repair",
+  "h1_html": "Commercial RTU & <span class=\"gradient-text\">Rooftop Unit Repair</span>",
+  "subtitle": "When your RTU fails, comfort and revenue go with it. Same-day commercial rooftop HVAC repair for Raleigh, Durham, Clayton, and the Triangle.",
+  "breadcrumb": "RTU Repair",
+  "hero_image": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
+  "hero_alt": "Commercial rooftop HVAC equipment",
+  "intro_h2": "RTU Repair for Raleigh Restaurants, Retail & Offices",
+  "intro_h2_html": "RTU Repair for Raleigh <span class=\"gradient-text\">Restaurants, Retail & Offices</span>",
+  "intro_paragraphs": [
+    "A failed rooftop unit (RTU) can shut down a dining room, overheat a kitchen, or make a retail floor unusable. Frost Fire Heating and Cooling provides commercial <strong>RTU repair in Raleigh, NC</strong> and throughout the Triangle — diagnosing package units, heat pumps, and gas/electric rooftop systems that restaurants and light commercial buildings rely on every day.",
+    "We handle the failures that show up in real searches: RTU not cooling, short cycling, tripped breakers, frozen coils, failed compressors, ignition problems, and economizer issues. Our goal is simple — restore comfort and airflow fast, with clear pricing and minimal disruption to your customers.",
+    "Looking for <em>rtu repair Raleigh NC</em> or <em>rooftop unit repair near me</em>? Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a>. We are open after hours and <a href=\"open-sundays-no-extra-charge-hvac.html\">Sundays with no extra charge</a>."
+  ],
+  "cards_h2": "Rooftop Unit Problems We Diagnose & Repair",
+  "cards_h2_html": "Rooftop Unit Problems We <span class=\"gradient-text\">Diagnose & Repair</span>",
+  "cards": [
+    {
+      "icon": "fa-temperature-high",
+      "title": "RTU Not Cooling",
+      "body": "Low airflow, dirty coils, refrigerant issues, failed compressors, or condenser fan failures that leave the space hot."
+    },
+    {
+      "icon": "fa-fire",
+      "title": "Heating / Ignition Failures",
+      "body": "Gas heat ignition problems, limit trips, and heat exchanger concerns that leave offices and dining rooms cold."
+    },
+    {
+      "icon": "fa-bolt",
+      "title": "Electrical & Control Board Issues",
+      "body": "Tripped breakers, bad contactors, failed capacitors, and control boards that keep the unit from starting."
+    },
+    {
+      "icon": "fa-wind",
+      "title": "Blower & Airflow Problems",
+      "body": "Weak supply air, clogged filters, belt issues, and economizer dampers stuck open or closed."
+    },
+    {
+      "icon": "fa-industry",
+      "title": "Restaurant Kitchen Load Stress",
+      "body": "RTUs fighting kitchen heat, hood make-up air imbalance, and systems that can't keep up during peak service."
+    },
+    {
+      "icon": "fa-clock",
+      "title": "After-Hours Commercial Emergencies",
+      "body": "Nights and weekends — we respond when a failed RTU would otherwise force you to close early."
+    }
+  ],
+  "process_h2": "Our Commercial RTU Repair Process",
+  "process_h2_html": "Our Commercial RTU Repair <span class=\"gradient-text\">Process</span>",
+  "steps": [
+    {
+      "title": "Rapid Intake",
+      "body": "We confirm unit type, symptoms, and business impact so we can prioritize revenue-critical failures."
+    },
+    {
+      "title": "Rooftop Diagnostics",
+      "body": "Safe rooftop access, electrical checks, refrigerant readings, and airflow evaluation."
+    },
+    {
+      "title": "Repair Options",
+      "body": "We explain repair vs. temporary bypass vs. replacement when equipment is near end of life."
+    },
+    {
+      "title": "Verify & Advise",
+      "body": "We confirm the space is recovering, then recommend maintenance that prevents the next outage."
+    }
+  ],
+  "why_title": "Why Businesses Call Frost Fire for RTU Repair",
+  "why_bullets": [
+    "Commercial rooftop experience for restaurants, retail, and offices",
+    "Same-day / emergency response across the Triangle",
+    "Open Sundays — no weekend surcharge",
+    "Licensed & insured NC contractor",
+    "Transparent estimates before major repairs",
+    "Support for related walk-in cooler and commercial refrigeration emergencies"
+  ],
+  "areas_title": "RTU Service Area",
+  "areas_paragraphs": [
+    "We repair commercial rooftop units in <a href=\"../service-areas/raleigh-nc.html\">Raleigh</a>, <a href=\"../service-areas/durham-nc.html\">Durham</a>, <a href=\"../service-areas/clayton-nc.html\">Clayton</a>, Cary, Garner, and surrounding Triangle markets.",
+    "Also see <a href=\"commercial.html\">commercial HVAC</a>, <a href=\"walk-in-cooler-repair-raleigh-nc.html\">walk-in cooler repair</a>, and tips for operators in our <a href=\"../blog/hvac-tips-restaurant-owners.html\">restaurant HVAC guide</a>."
+  ],
+  "faqs": [
+    {
+      "q": "How fast can you repair a commercial RTU in Raleigh?",
+      "a": "Many rooftop failures can be diagnosed the same day. Call (919) 230-4439 and we will prioritize based on business impact and parts availability."
+    },
+    {
+      "q": "Do you charge more for weekend RTU service?",
+      "a": "No. Frost Fire charges the same rates on Sundays and weekends as weekdays."
+    },
+    {
+      "q": "Can you service restaurant rooftop units?",
+      "a": "Yes. We regularly work on restaurant and light-commercial package units that struggle under kitchen heat loads."
+    },
+    {
+      "q": "What if the RTU needs replacement instead of repair?",
+      "a": "We will tell you honestly when repair no longer makes sense and outline replacement options with clear pricing."
+    }
+  ],
+  "cta_title": "RTU Down? Get Comfort Back Fast.",
+  "cta_body": "Call Frost Fire for commercial rooftop unit repair across Raleigh and the Triangle.",
+  "related": [
+    {
+      "href": "commercial.html",
+      "icon": "fa-building",
+      "title": "Commercial HVAC",
+      "body": "Full commercial HVAC and refrigeration services"
+    },
+    {
+      "href": "walk-in-cooler-repair-raleigh-nc.html",
+      "icon": "fa-snowflake",
+      "title": "Walk-In Cooler Repair",
+      "body": "Same-day cooler repair for food service"
+    },
+    {
+      "href": "emergency.html",
+      "icon": "fa-bolt",
+      "title": "Emergency Service",
+      "body": "24/7 emergency HVAC response"
+    },
+    {
+      "href": "open-sundays-no-extra-charge-hvac.html",
+      "icon": "fa-calendar-check",
+      "title": "Open Sundays",
+      "body": "Weekend service without the surcharge"
+    }
+  ]
+}
