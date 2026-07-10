@@ -1,0 +1,132 @@
+{
+  "slug": "emergency-ac-repair-clayton-nc",
+  "title": "Emergency AC Repair Clayton NC | Same-Day | Frost Fire",
+  "meta_description": "AC out in Clayton or Raleigh? Same-day emergency air conditioning repair 7 days a week — open Sundays with no extra charge. Call (919) 230-4439.",
+  "service_type": "Emergency AC Repair",
+  "h1": "Emergency AC Repair — Same-Day Service, 7 Days a Week",
+  "h1_html": "Emergency AC Repair — <span class=\"gradient-text\">Same-Day</span>, 7 Days a Week",
+  "subtitle": "Clayton-based emergency AC repair for no-cool failures across Clayton, Raleigh, Garner, and Smithfield — no Sunday surcharge.",
+  "breadcrumb": "Emergency AC Repair Clayton",
+  "hero_image": "https://images.unsplash.com/photo-1631545806608-c8bba7639d4a?w=1200&q=80",
+  "hero_alt": "Air conditioning outdoor unit",
+  "intro_h2": "Same-Day Emergency AC Repair in Clayton & the Triangle",
+  "intro_h2_html": "Same-Day Emergency AC Repair in <span class=\"gradient-text\">Clayton & the Triangle</span>",
+  "intro_paragraphs": [
+    "When your AC stops cooling in a North Carolina heat wave, you need a technician today — not a Monday callback. Frost Fire is Clayton's hometown HVAC company offering <strong>emergency AC repair in Clayton, NC</strong> with same-day triage across Raleigh, Durham, Garner, and Smithfield.",
+    "We fix the failures that spike every summer: bad capacitors, failed contactors, frozen evaporator coils, low refrigerant, clogged drains, and outdoor fans that quit in the afternoon heat. You get clear pricing before major work and the same rates on Sundays.",
+    "Searching <em>emergency ac repair clayton nc</em> or <em>same day ac repair raleigh nc</em>? Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a>."
+  ],
+  "cards_h2": "Emergency AC Problems We Fix Fast",
+  "cards_h2_html": "Emergency AC Problems We <span class=\"gradient-text\">Fix Fast</span>",
+  "cards": [
+    {
+      "icon": "fa-bolt",
+      "title": "No Cooling / Warm Air",
+      "body": "System runs but blows warm — we diagnose refrigerant, airflow, and outdoor unit failures fast."
+    },
+    {
+      "icon": "fa-icicles",
+      "title": "Frozen Coil",
+      "body": "Ice on the lines or coil usually means airflow or refrigerant issues — we thaw and fix the cause."
+    },
+    {
+      "icon": "fa-plug",
+      "title": "Capacitor & Contactor Failures",
+      "body": "Classic mid-summer outdoor unit failures. Common parts, quick restoration when stocked."
+    },
+    {
+      "icon": "fa-droplet",
+      "title": "Water Leaks & Drain Clogs",
+      "body": "Condensate overflows that shut systems down or damage ceilings."
+    },
+    {
+      "icon": "fa-fan",
+      "title": "Fan Motor Failures",
+      "body": "Outdoor fan not spinning, loud bearings, or overheating compressors."
+    },
+    {
+      "icon": "fa-moon",
+      "title": "After-Hours & Sunday Failures",
+      "body": "Nights and weekends — same price, no overtime surcharge."
+    }
+  ],
+  "process_h2": "How Emergency AC Service Works",
+  "process_h2_html": "How Emergency AC Service <span class=\"gradient-text\">Works</span>",
+  "steps": [
+    {
+      "title": "Call Now",
+      "body": "Describe symptoms and how long the home has been without cooling."
+    },
+    {
+      "title": "Triage & Dispatch",
+      "body": "We prioritize heat-risk and no-cool emergencies for the soonest ETA."
+    },
+    {
+      "title": "Diagnose & Approve",
+      "body": "You get a clear explanation and approve repair before major work."
+    },
+    {
+      "title": "Restore Cooling",
+      "body": "We complete the repair and verify supply temperatures before leaving."
+    }
+  ],
+  "why_title": "Why Clayton Calls Frost Fire First",
+  "why_bullets": [
+    "Hometown Clayton base — fast local response",
+    "Same-day emergency AC repair 7 days a week",
+    "No Sunday or holiday surcharge",
+    "Licensed & insured NC contractor",
+    "Upfront pricing before major repairs"
+  ],
+  "areas_title": "Emergency AC Service Area",
+  "areas_paragraphs": [
+    "Primary coverage: <a href=\"../service-areas/clayton-nc.html\">Clayton</a>, <a href=\"../service-areas/raleigh-nc.html\">Raleigh</a>, <a href=\"../service-areas/garner-nc.html\">Garner</a>, <a href=\"../service-areas/smithfield-nc.html\">Smithfield</a>, and nearby Johnston/Wake communities.",
+    "Also see <a href=\"after-hours-hvac-repair.html\">after-hours HVAC repair</a> and <a href=\"open-sundays-no-extra-charge-hvac.html\">open Sundays — no extra charge</a>."
+  ],
+  "faqs": [
+    {
+      "q": "How fast is emergency AC repair in Clayton?",
+      "a": "We triage same-day whenever capacity allows. Call (919) 230-4439 for the current ETA."
+    },
+    {
+      "q": "Do you charge more on Sundays?",
+      "a": "No. Same rates Sundays and weekdays."
+    },
+    {
+      "q": "What should I check before you arrive?",
+      "a": "Confirm the thermostat settings, check the breaker, and replace a dirty filter if safe to do so."
+    },
+    {
+      "q": "Do you also handle heating emergencies?",
+      "a": "Yes. After-hours heating failures are covered under our emergency and after-hours service."
+    }
+  ],
+  "cta_title": "AC Out? Call Frost Fire Now.",
+  "cta_body": "Same-day emergency AC repair from our Clayton home base — 7 days a week.",
+  "related": [
+    {
+      "href": "after-hours-hvac-repair.html",
+      "icon": "fa-moon",
+      "title": "After-Hours HVAC",
+      "body": "Nights & weekends"
+    },
+    {
+      "href": "same-day-ac-repair-clayton-nc.html",
+      "icon": "fa-clock",
+      "title": "Same-Day AC Clayton",
+      "body": "Fast local response"
+    },
+    {
+      "href": "open-sundays-no-extra-charge-hvac.html",
+      "icon": "fa-calendar-check",
+      "title": "Open Sundays",
+      "body": "No surcharge"
+    },
+    {
+      "href": "emergency.html",
+      "icon": "fa-bolt",
+      "title": "Emergency Hub",
+      "body": "24/7 HVAC emergencies"
+    }
+  ]
+}

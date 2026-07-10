@@ -1,0 +1,125 @@
+{
+  "slug": "same-day-ac-repair-clayton-nc",
+  "title": "Same-Day AC Repair Clayton NC | Frost Fire",
+  "meta_description": "Same-day AC repair in Clayton, NC. Fast local response from your hometown HVAC company — open Sundays, no surcharge. Call (919) 230-4439.",
+  "service_type": "Same-Day AC Repair",
+  "h1": "Same-Day AC Repair in Clayton, NC",
+  "h1_html": "Same-Day AC Repair in <span class=\"gradient-text\">Clayton, NC</span>",
+  "subtitle": "Hometown speed for Clayton no-cool calls — same-day triage, licensed techs, Sunday service without markup.",
+  "breadcrumb": "Same-Day AC Repair Clayton",
+  "hero_image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80",
+  "hero_alt": "HVAC technician service",
+  "intro_h2": "Same-Day AC Repair from Clayton's Local Team",
+  "intro_h2_html": "Same-Day AC Repair from Clayton's <span class=\"gradient-text\">Local Team</span>",
+  "intro_paragraphs": [
+    "Frost Fire is based in Clayton — which means <strong>same-day AC repair in Clayton, NC</strong> is not a marketing slogan, it is a routing advantage. When your system stops cooling, call us for the soonest available window.",
+    "We cover Flowers Plantation, Riverwood, downtown Clayton, and nearby Wilson's Mills / Garner edge neighborhoods. Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a>."
+  ],
+  "cards_h2": "Same-Day Issues We See Most",
+  "cards_h2_html": "Same-Day Issues We <span class=\"gradient-text\">See Most</span>",
+  "cards": [
+    {
+      "icon": "fa-plug",
+      "title": "Capacitors & Contactors",
+      "body": "Quick outdoor unit restores when parts are on the truck."
+    },
+    {
+      "icon": "fa-wind",
+      "title": "Airflow Problems",
+      "body": "Filters, blower issues, and freeze-ups."
+    },
+    {
+      "icon": "fa-droplet",
+      "title": "Drain Line Clogs",
+      "body": "Safety switches tripping from condensate backups."
+    },
+    {
+      "icon": "fa-temperature-high",
+      "title": "Low Refrigerant",
+      "body": "Diagnosis first — then leak find/repair options."
+    },
+    {
+      "icon": "fa-fan",
+      "title": "Fan Motors",
+      "body": "Outdoor and indoor blower failures."
+    },
+    {
+      "icon": "fa-house",
+      "title": "Thermostat Issues",
+      "body": "Miswiring, dead batteries, and bad sensors."
+    }
+  ],
+  "process_h2": "Same-Day Process",
+  "process_h2_html": "Same-Day <span class=\"gradient-text\">Process</span>",
+  "steps": [
+    {
+      "title": "Call Local",
+      "body": "Reach Clayton-based dispatch at (919) 230-4439."
+    },
+    {
+      "title": "Get a Window",
+      "body": "We book the soonest same-day slot available."
+    },
+    {
+      "title": "Fix Fast",
+      "body": "Diagnose, approve, repair, verify cooling."
+    },
+    {
+      "title": "Fair Price",
+      "body": "Including Sundays — no surcharge."
+    }
+  ],
+  "why_title": "Why Clayton Chooses Local Same-Day Service",
+  "why_bullets": [
+    "Based in Clayton for faster ETAs",
+    "Same-day triage priority for no-cool calls",
+    "No Sunday surcharge",
+    "Transparent approvals"
+  ],
+  "areas_title": "Clayton Same-Day Coverage",
+  "areas_paragraphs": [
+    "Clayton 27520/27527, Wilson's Mills, and nearby Garner/Smithfield edges. See <a href=\"emergency-ac-repair-clayton-nc.html\">emergency AC repair Clayton</a>."
+  ],
+  "faqs": [
+    {
+      "q": "Is same-day always guaranteed?",
+      "a": "We triage for same-day whenever capacity allows. Peak heat days book out — call early."
+    },
+    {
+      "q": "Do you serve Flowers Plantation?",
+      "a": "Yes — a regular Clayton route."
+    },
+    {
+      "q": "Sunday same-day?",
+      "a": "Yes when capacity allows, at weekday rates."
+    }
+  ],
+  "cta_title": "Need Same-Day AC Help in Clayton?",
+  "cta_body": "Call Frost Fire — your hometown HVAC team.",
+  "related": [
+    {
+      "href": "emergency-ac-repair-clayton-nc.html",
+      "icon": "fa-bolt",
+      "title": "Emergency AC",
+      "body": "Priority no-cool"
+    },
+    {
+      "href": "../service-areas/clayton-nc.html",
+      "icon": "fa-map-marker-alt",
+      "title": "Clayton Hub",
+      "body": "Full Clayton page"
+    },
+    {
+      "href": "open-sundays-no-extra-charge-hvac.html",
+      "icon": "fa-calendar-check",
+      "title": "Open Sundays",
+      "body": "No surcharge"
+    },
+    {
+      "href": "ac-repair.html",
+      "icon": "fa-wrench",
+      "title": "AC Repair",
+      "body": "Core service"
+    }
+  ]
+}

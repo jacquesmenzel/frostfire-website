@@ -1,0 +1,125 @@
+{
+  "slug": "weekend-hvac-durham-nc",
+  "title": "Weekend HVAC Repair Durham NC | No Surcharge | Frost Fire",
+  "meta_description": "Weekend HVAC repair in Durham, NC. Saturday and Sunday heating & cooling help with no weekend surcharge. Call (919) 230-4439.",
+  "service_type": "Weekend HVAC Repair",
+  "h1": "Weekend HVAC Repair in Durham — No Surcharge",
+  "h1_html": "Weekend HVAC Repair in Durham — <span class=\"gradient-text\">No Surcharge</span>",
+  "subtitle": "Saturday and Sunday HVAC repair for Durham homes and businesses — same price as weekdays.",
+  "breadcrumb": "Weekend HVAC Durham",
+  "hero_image": "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?w=1200&q=80",
+  "hero_alt": "Weekend service",
+  "intro_h2": "Durham Weekend HVAC Without the Markup",
+  "intro_h2_html": "Durham Weekend HVAC Without the <span class=\"gradient-text\">Markup</span>",
+  "intro_paragraphs": [
+    "Weekend breakdowns are normal. Weekend surcharges should not be. Frost Fire provides <strong>weekend HVAC repair in Durham, NC</strong> at the same rates we charge Monday through Friday.",
+    "Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a> for AC, heat pump, furnace, and commercial help."
+  ],
+  "cards_h2": "Weekend Calls We Take",
+  "cards_h2_html": "Weekend Calls We <span class=\"gradient-text\">Take</span>",
+  "cards": [
+    {
+      "icon": "fa-snowflake",
+      "title": "AC No-Cool",
+      "body": "Saturday/Sunday cooling failures."
+    },
+    {
+      "icon": "fa-fire",
+      "title": "Heat Outages",
+      "body": "Cold-snap furnace and heat pump failures."
+    },
+    {
+      "icon": "fa-industry",
+      "title": "Commercial RTUs",
+      "body": "Retail and restaurant comfort."
+    },
+    {
+      "icon": "fa-snowflake",
+      "title": "Coolers & Freezers",
+      "body": "Food-service refrigeration."
+    },
+    {
+      "icon": "fa-moon",
+      "title": "After-Hours Overlap",
+      "body": "Friday night into weekend coverage."
+    },
+    {
+      "icon": "fa-dollar-sign",
+      "title": "No Surcharge",
+      "body": "Same fair weekend pricing."
+    }
+  ],
+  "process_h2": "Weekend Process",
+  "process_h2_html": "Weekend <span class=\"gradient-text\">Process</span>",
+  "steps": [
+    {
+      "title": "Call",
+      "body": "Reach us for weekend triage."
+    },
+    {
+      "title": "ETA",
+      "body": "Honest Saturday/Sunday availability."
+    },
+    {
+      "title": "Repair",
+      "body": "Diagnose and restore comfort."
+    },
+    {
+      "title": "Same Price",
+      "body": "No weekend premium."
+    }
+  ],
+  "why_title": "Why Durham Weekends Are Different With Us",
+  "why_bullets": [
+    "Open weekends for HVAC repair",
+    "No surcharge policy",
+    "Residential + commercial",
+    "Triangle coverage including Durham"
+  ],
+  "areas_title": "Durham Weekend Coverage",
+  "areas_paragraphs": [
+    "Durham and nearby Triangle cities. See <a href=\"sunday-ac-repair-raleigh-nc.html\">Sunday AC Raleigh</a> and <a href=\"open-sundays-no-extra-charge-hvac.html\">no extra charge</a>."
+  ],
+  "faqs": [
+    {
+      "q": "Do you work Saturdays and Sundays in Durham?",
+      "a": "Yes."
+    },
+    {
+      "q": "Is there a weekend fee?",
+      "a": "No Sunday/weekend surcharge on our standard rates."
+    },
+    {
+      "q": "Commercial too?",
+      "a": "Yes — RTUs and refrigeration included."
+    }
+  ],
+  "cta_title": "Need Weekend HVAC in Durham?",
+  "cta_body": "Call Frost Fire — same price weekends.",
+  "related": [
+    {
+      "href": "sunday-ac-repair-raleigh-nc.html",
+      "icon": "fa-sun",
+      "title": "Sunday AC Raleigh",
+      "body": "Sunday cooling"
+    },
+    {
+      "href": "open-sundays-no-extra-charge-hvac.html",
+      "icon": "fa-calendar-check",
+      "title": "No Extra Charge",
+      "body": "Policy page"
+    },
+    {
+      "href": "walk-in-cooler-repair-durham-nc.html",
+      "icon": "fa-snowflake",
+      "title": "Durham Coolers",
+      "body": "Commercial"
+    },
+    {
+      "href": "../service-areas/durham-nc.html",
+      "icon": "fa-map-marker-alt",
+      "title": "Durham Hub",
+      "body": "City page"
+    }
+  ]
+}

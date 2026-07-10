@@ -1,0 +1,127 @@
+{
+  "slug": "after-hours-hvac-repair",
+  "title": "After-Hours HVAC Repair | Nights & Weekends | Frost Fire",
+  "meta_description": "Heating or cooling emergency after hours? Frost Fire answers nights, weekends, and holidays across the Triangle — no Sunday surcharge. Call (919) 230-4439.",
+  "service_type": "After-Hours HVAC Repair",
+  "h1": "After-Hours HVAC Repair — Nights, Weekends & Holidays",
+  "h1_html": "After-Hours HVAC Repair — <span class=\"gradient-text\">Nights, Weekends & Holidays</span>",
+  "subtitle": "When your system fails after 5pm or on the weekend, we answer — across Raleigh, Clayton, Durham, and the Triangle.",
+  "breadcrumb": "After-Hours HVAC Repair",
+  "hero_image": "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?w=1200&q=80",
+  "hero_alt": "Nighttime service call concept",
+  "intro_h2": "HVAC Help When Other Companies Are Closed",
+  "intro_h2_html": "HVAC Help When Other Companies Are <span class=\"gradient-text\">Closed</span>",
+  "intro_paragraphs": [
+    "Most HVAC failures ignore business hours. Frost Fire provides <strong>after-hours HVAC repair</strong> for nights, weekends, and holidays across the Triangle — with the same fair rates on Sundays that we charge on Tuesday.",
+    "Call us for no-cool AC emergencies, heat pump failures, furnace outages, and commercial refrigeration issues that cannot wait until morning. We will tell you honestly whether it is a true emergency dispatch or a first-thing morning slot.",
+    "Searching <em>after hours hvac repair near me</em> or <em>night time ac repair</em>? Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a>."
+  ],
+  "cards_h2": "When to Call After Hours",
+  "cards_h2_html": "When to Call <span class=\"gradient-text\">After Hours</span>",
+  "cards": [
+    {
+      "icon": "fa-temperature-high",
+      "title": "No Cooling in Extreme Heat",
+      "body": "Unsafe indoor temperatures for kids, seniors, or medical needs."
+    },
+    {
+      "icon": "fa-temperature-low",
+      "title": "No Heat in a Cold Snap",
+      "body": "Furnace or heat pump outages overnight."
+    },
+    {
+      "icon": "fa-snowflake",
+      "title": "Commercial Cooler/Freezer Down",
+      "body": "Inventory-threatening refrigeration failures."
+    },
+    {
+      "icon": "fa-house-flood-water",
+      "title": "Active Water Leak from HVAC",
+      "body": "Condensate overflows damaging ceilings or floors."
+    },
+    {
+      "icon": "fa-smell",
+      "title": "Burning Smell / Electrical Concern",
+      "body": "Shut the system off at the breaker and call immediately."
+    },
+    {
+      "icon": "fa-calendar-xmark",
+      "title": "Weekend Breakdowns",
+      "body": "Saturday and Sunday failures without surcharge pricing."
+    }
+  ],
+  "process_h2": "What Happens When You Call",
+  "process_h2_html": "What Happens When You <span class=\"gradient-text\">Call</span>",
+  "steps": [
+    {
+      "title": "Live Triage",
+      "body": "We ask safety and symptom questions to prioritize correctly."
+    },
+    {
+      "title": "Honest ETA",
+      "body": "You get a real expectation — emergency dispatch or next available."
+    },
+    {
+      "title": "Safe Steps While Waiting",
+      "body": "Filter checks, breaker resets, and what not to do."
+    },
+    {
+      "title": "Repair & Verify",
+      "body": "On-site diagnosis, approval, and restored comfort."
+    }
+  ],
+  "why_title": "Why After-Hours Customers Choose Frost Fire",
+  "why_bullets": [
+    "Real after-hours answering for HVAC emergencies",
+    "No Sunday / holiday surcharge",
+    "Residential and commercial coverage",
+    "Clear communication on ETA and price",
+    "Clayton-based Triangle coverage"
+  ],
+  "areas_title": "After-Hours Coverage",
+  "areas_paragraphs": [
+    "Raleigh, Clayton, Durham, Garner, Cary, and surrounding Triangle communities. See also <a href=\"emergency-ac-repair-clayton-nc.html\">emergency AC repair Clayton</a>."
+  ],
+  "faqs": [
+    {
+      "q": "Do you charge more after hours?",
+      "a": "We do not add a Sunday surcharge. Call for current after-hours availability and any applicable emergency dispatch details."
+    },
+    {
+      "q": "Should I wait until morning?",
+      "a": "If temperatures are unsafe, water is leaking, or food inventory is at risk, call now. Otherwise we can often book first-thing morning."
+    },
+    {
+      "q": "Do you cover commercial after hours?",
+      "a": "Yes — including RTUs and walk-in coolers/freezers."
+    }
+  ],
+  "cta_title": "Need Help After Hours?",
+  "cta_body": "Call Frost Fire for night and weekend HVAC emergencies across the Triangle.",
+  "related": [
+    {
+      "href": "emergency-ac-repair-clayton-nc.html",
+      "icon": "fa-snowflake",
+      "title": "Emergency AC Clayton",
+      "body": "Same-day no-cool help"
+    },
+    {
+      "href": "sunday-ac-repair-raleigh-nc.html",
+      "icon": "fa-sun",
+      "title": "Sunday AC Raleigh",
+      "body": "Weekend cooling repair"
+    },
+    {
+      "href": "open-sundays-no-extra-charge-hvac.html",
+      "icon": "fa-calendar-check",
+      "title": "No Sunday Surcharge",
+      "body": "Same price weekends"
+    },
+    {
+      "href": "emergency.html",
+      "icon": "fa-bolt",
+      "title": "Emergency Service",
+      "body": "24/7 hub"
+    }
+  ]
+}

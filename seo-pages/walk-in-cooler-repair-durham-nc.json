@@ -1,0 +1,125 @@
+{
+  "slug": "walk-in-cooler-repair-durham-nc",
+  "title": "Walk-In Cooler Repair Durham NC | Same-Day | Frost Fire",
+  "meta_description": "Walk-in cooler repair in Durham, NC. Same-day commercial cooler service for restaurants — open Sundays, no surcharge. Call (919) 230-4439.",
+  "service_type": "Walk-In Cooler Repair",
+  "h1": "Walk-In Cooler Repair in Durham, NC",
+  "h1_html": "Walk-In Cooler Repair in <span class=\"gradient-text\">Durham, NC</span>",
+  "subtitle": "Same-day walk-in cooler repair for Durham restaurants and food service — protect inventory without weekend markup.",
+  "breadcrumb": "Walk-In Cooler Repair Durham",
+  "hero_image": "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1200&q=80",
+  "hero_alt": "Commercial kitchen cooler",
+  "intro_h2": "Durham Restaurant Walk-In Cooler Repair",
+  "intro_h2_html": "Durham Restaurant Walk-In Cooler <span class=\"gradient-text\">Repair</span>",
+  "intro_paragraphs": [
+    "Durham's food scene runs on cold storage. When a walk-in warmer than it should be, Frost Fire provides <strong>walk-in cooler repair in Durham, NC</strong> with same-day priority and Sunday service at weekday rates.",
+    "Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a>. Also serving Raleigh cooler emergencies via our <a href=\"walk-in-cooler-repair-raleigh-nc.html\">Raleigh cooler page</a>."
+  ],
+  "cards_h2": "Cooler Failures We Fix in Durham",
+  "cards_h2_html": "Cooler Failures We Fix in <span class=\"gradient-text\">Durham</span>",
+  "cards": [
+    {
+      "icon": "fa-fan",
+      "title": "Compressor Issues",
+      "body": "Short cycling and no pull-down."
+    },
+    {
+      "icon": "fa-snowflake",
+      "title": "Iced Evaporators",
+      "body": "Airflow and defrost-related ice."
+    },
+    {
+      "icon": "fa-droplet",
+      "title": "Refrigerant Leaks",
+      "body": "Locate, repair, recharge."
+    },
+    {
+      "icon": "fa-door-closed",
+      "title": "Door Seals",
+      "body": "Gaskets and latches wasting energy."
+    },
+    {
+      "icon": "fa-gauge-high",
+      "title": "Controls",
+      "body": "Sensors and controllers out of spec."
+    },
+    {
+      "icon": "fa-utensils",
+      "title": "Service-Hour Emergencies",
+      "body": "We work around prep when possible."
+    }
+  ],
+  "process_h2": "Durham Cooler Repair Process",
+  "process_h2_html": "Durham Cooler Repair <span class=\"gradient-text\">Process</span>",
+  "steps": [
+    {
+      "title": "Call",
+      "body": "Share box temp and product risk."
+    },
+    {
+      "title": "Dispatch",
+      "body": "Priority for inventory threats."
+    },
+    {
+      "title": "Repair",
+      "body": "Diagnose and restore holding temp."
+    },
+    {
+      "title": "Prevent",
+      "body": "Flag maintenance needs."
+    }
+  ],
+  "why_title": "Why Durham Kitchens Call Frost Fire",
+  "why_bullets": [
+    "Same-day commercial cooler focus",
+    "No Sunday surcharge",
+    "Triangle restaurant experience",
+    "Cooler + freezer + RTU capability"
+  ],
+  "areas_title": "Durham Coverage",
+  "areas_paragraphs": [
+    "Downtown Durham, Duke area, Southpoint corridor, and greater Durham County. See <a href=\"../service-areas/durham-nc.html\">Durham HVAC hub</a>."
+  ],
+  "faqs": [
+    {
+      "q": "Same-day in Durham?",
+      "a": "Yes when capacity allows — inventory emergencies are prioritized."
+    },
+    {
+      "q": "Sunday cooler repair?",
+      "a": "Yes, at weekday rates."
+    },
+    {
+      "q": "Freezers too?",
+      "a": "Yes — see our Durham freezer page."
+    }
+  ],
+  "cta_title": "Durham Cooler Down?",
+  "cta_body": "Call Frost Fire for same-day walk-in cooler repair in Durham.",
+  "related": [
+    {
+      "href": "walk-in-freezer-repair-durham-nc.html",
+      "icon": "fa-icicles",
+      "title": "Durham Freezer Repair",
+      "body": "Frozen storage"
+    },
+    {
+      "href": "walk-in-cooler-repair-raleigh-nc.html",
+      "icon": "fa-snowflake",
+      "title": "Raleigh Coolers",
+      "body": "Raleigh page"
+    },
+    {
+      "href": "weekend-hvac-durham-nc.html",
+      "icon": "fa-calendar",
+      "title": "Weekend HVAC Durham",
+      "body": "Weekend help"
+    },
+    {
+      "href": "commercial.html",
+      "icon": "fa-building",
+      "title": "Commercial",
+      "body": "Full commercial"
+    }
+  ]
+}

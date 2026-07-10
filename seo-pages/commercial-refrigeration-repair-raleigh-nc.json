@@ -1,0 +1,125 @@
+{
+  "slug": "commercial-refrigeration-repair-raleigh-nc",
+  "title": "Commercial Refrigeration Repair Raleigh NC | Frost Fire",
+  "meta_description": "Commercial refrigeration repair in Raleigh — walk-ins, freezers, and food-service cold storage. Same-day options, open Sundays. Call (919) 230-4439.",
+  "service_type": "Commercial Refrigeration Repair",
+  "h1": "Commercial Refrigeration Repair — Triangle Food Service",
+  "h1_html": "Commercial Refrigeration Repair — <span class=\"gradient-text\">Triangle Food Service</span>",
+  "subtitle": "Walk-in coolers, freezers, and commercial cold storage repair for Raleigh restaurants, cafes, and food businesses.",
+  "breadcrumb": "Commercial Refrigeration Repair",
+  "hero_image": "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=1200&q=80",
+  "hero_alt": "Commercial refrigeration equipment",
+  "intro_h2": "Commercial Refrigeration Repair Across Raleigh",
+  "intro_h2_html": "Commercial Refrigeration Repair Across <span class=\"gradient-text\">Raleigh</span>",
+  "intro_paragraphs": [
+    "Frost Fire provides <strong>commercial refrigeration repair in Raleigh, NC</strong> for businesses that cannot afford warm product or a health-code scare. From walk-in coolers to freezers and condensing units, we diagnose fast and restore safe temperatures.",
+    "Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a> for same-day triage — including Sundays with no surcharge."
+  ],
+  "cards_h2": "Commercial Refrigeration Systems We Service",
+  "cards_h2_html": "Commercial Refrigeration Systems We <span class=\"gradient-text\">Service</span>",
+  "cards": [
+    {
+      "icon": "fa-snowflake",
+      "title": "Walk-In Coolers",
+      "body": "Restaurant and food-service cooler repair."
+    },
+    {
+      "icon": "fa-icicles",
+      "title": "Walk-In Freezers",
+      "body": "Frozen storage pull-down and defrost repairs."
+    },
+    {
+      "icon": "fa-box",
+      "title": "Reach-Ins & Prep Coolers",
+      "body": "Line equipment that fails during service."
+    },
+    {
+      "icon": "fa-fan",
+      "title": "Condensing Units",
+      "body": "Pad and roof-mounted refrigeration condensers."
+    },
+    {
+      "icon": "fa-wrench",
+      "title": "Controls & Expansion Devices",
+      "body": "TXVs, solenoids, controllers, and sensors."
+    },
+    {
+      "icon": "fa-truck",
+      "title": "Emergency Dispatch",
+      "body": "Inventory-first prioritization."
+    }
+  ],
+  "process_h2": "Our Commercial Refrigeration Process",
+  "process_h2_html": "Our Commercial Refrigeration <span class=\"gradient-text\">Process</span>",
+  "steps": [
+    {
+      "title": "Priority Intake",
+      "body": "Product risk and temperature history guide dispatch."
+    },
+    {
+      "title": "Full Diagnosis",
+      "body": "Electrical, refrigerant, airflow, and mechanical checks."
+    },
+    {
+      "title": "Approved Repair",
+      "body": "Clear options before major parts or labor."
+    },
+    {
+      "title": "Temperature Verification",
+      "body": "Confirm holding temps and advise on prevention."
+    }
+  ],
+  "why_title": "Why Triangle Businesses Choose Frost Fire",
+  "why_bullets": [
+    "Commercial refrigeration + HVAC under one team",
+    "Same-day emergency options",
+    "No Sunday surcharge",
+    "Licensed NC HVAC/R contractor"
+  ],
+  "areas_title": "Service Area",
+  "areas_paragraphs": [
+    "Raleigh, Durham, Clayton, Cary, Garner, and surrounding cities. Deep dives: <a href=\"walk-in-cooler-repair-raleigh-nc.html\">cooler</a>, <a href=\"walk-in-freezer-repair-raleigh-nc.html\">freezer</a>, <a href=\"restaurant-cooler-repair-raleigh-nc.html\">restaurant cooler</a>."
+  ],
+  "faqs": [
+    {
+      "q": "Is this only for restaurants?",
+      "a": "Restaurants are common, but we also serve cafes, markets, and other food-service cold storage."
+    },
+    {
+      "q": "Do you work Sundays?",
+      "a": "Yes — same price as weekdays."
+    },
+    {
+      "q": "Can you maintain systems too?",
+      "a": "Yes. Preventive condenser cleaning and inspections reduce emergency failures."
+    }
+  ],
+  "cta_title": "Need Commercial Refrigeration Help?",
+  "cta_body": "Call Frost Fire for same-day commercial refrigeration repair in Raleigh.",
+  "related": [
+    {
+      "href": "restaurant-cooler-repair-raleigh-nc.html",
+      "icon": "fa-utensils",
+      "title": "Restaurant Coolers",
+      "body": "Food-service focus"
+    },
+    {
+      "href": "walk-in-cooler-repair-raleigh-nc.html",
+      "icon": "fa-snowflake",
+      "title": "Walk-In Coolers",
+      "body": "Cooler emergencies"
+    },
+    {
+      "href": "commercial-rtu-repair-raleigh-nc.html",
+      "icon": "fa-industry",
+      "title": "RTU Repair",
+      "body": "Rooftop HVAC"
+    },
+    {
+      "href": "commercial.html",
+      "icon": "fa-building",
+      "title": "Commercial Hub",
+      "body": "All commercial services"
+    }
+  ]
+}

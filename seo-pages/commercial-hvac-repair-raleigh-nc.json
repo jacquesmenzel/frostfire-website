@@ -1,0 +1,125 @@
+{
+  "slug": "commercial-hvac-repair-raleigh-nc",
+  "title": "Commercial HVAC Repair Raleigh NC | Frost Fire",
+  "meta_description": "Commercial HVAC repair in Raleigh, NC — RTUs, package units, and business comfort systems. Same-day options, open Sundays. Call (919) 230-4439.",
+  "service_type": "Commercial HVAC Repair",
+  "h1": "Commercial HVAC Repair in Raleigh, NC",
+  "h1_html": "Commercial HVAC Repair in <span class=\"gradient-text\">Raleigh, NC</span>",
+  "subtitle": "Rooftop units, package systems, and business HVAC repair for Raleigh restaurants, retail, and offices.",
+  "breadcrumb": "Commercial HVAC Repair Raleigh",
+  "hero_image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
+  "hero_alt": "Commercial building",
+  "intro_h2": "Raleigh Commercial HVAC Repair That Keeps Doors Open",
+  "intro_h2_html": "Raleigh Commercial HVAC Repair That Keeps <span class=\"gradient-text\">Doors Open</span>",
+  "intro_paragraphs": [
+    "When a dining room or retail floor goes hot, revenue stops. Frost Fire provides <strong>commercial HVAC repair in Raleigh, NC</strong> for rooftop units, split systems, and light commercial package equipment — with Sunday service at weekday rates.",
+    "Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a>. Deep dive: <a href=\"commercial-rtu-repair-raleigh-nc.html\">RTU repair Raleigh</a>."
+  ],
+  "cards_h2": "Commercial Systems We Service",
+  "cards_h2_html": "Commercial Systems We <span class=\"gradient-text\">Service</span>",
+  "cards": [
+    {
+      "icon": "fa-industry",
+      "title": "Rooftop Units (RTUs)",
+      "body": "Package unit diagnostics and repair."
+    },
+    {
+      "icon": "fa-building",
+      "title": "Light Commercial Splits",
+      "body": "Office and retail comfort systems."
+    },
+    {
+      "icon": "fa-wind",
+      "title": "Airflow & Belts",
+      "body": "Blower performance issues."
+    },
+    {
+      "icon": "fa-snowflake",
+      "title": "Tied Refrigeration Needs",
+      "body": "Coordinate with cooler/freezer repairs."
+    },
+    {
+      "icon": "fa-bolt",
+      "title": "Controls & Thermostats",
+      "body": "Commercial control failures."
+    },
+    {
+      "icon": "fa-clock",
+      "title": "After-Hours Business Failures",
+      "body": "Nights and weekends."
+    }
+  ],
+  "process_h2": "Commercial Repair Process",
+  "process_h2_html": "Commercial Repair <span class=\"gradient-text\">Process</span>",
+  "steps": [
+    {
+      "title": "Business Intake",
+      "body": "Impact on customers and staff guides priority."
+    },
+    {
+      "title": "On-Site Diagnosis",
+      "body": "Full commercial HVAC diagnostic."
+    },
+    {
+      "title": "Options & Approval",
+      "body": "Repair paths with clear pricing."
+    },
+    {
+      "title": "Restore Operations",
+      "body": "Verify comfort and advise next steps."
+    }
+  ],
+  "why_title": "Why Raleigh Businesses Choose Frost Fire",
+  "why_bullets": [
+    "Commercial HVAC + refrigeration capability",
+    "Same-day options for no-cool businesses",
+    "No Sunday surcharge",
+    "Licensed NC commercial service"
+  ],
+  "areas_title": "Raleigh Commercial Coverage",
+  "areas_paragraphs": [
+    "Raleigh and Triangle commercial corridors. Related: <a href=\"commercial.html\">commercial hub</a>, <a href=\"commercial-rtu-repair-clayton-nc.html\">Clayton RTU</a>."
+  ],
+  "faqs": [
+    {
+      "q": "Do you only repair RTUs?",
+      "a": "RTUs are common, but we also service other light commercial HVAC systems."
+    },
+    {
+      "q": "Can you help restaurants with both HVAC and coolers?",
+      "a": "Yes — comfort and refrigeration under one contractor."
+    },
+    {
+      "q": "Sunday commercial repair?",
+      "a": "Yes, at weekday rates."
+    }
+  ],
+  "cta_title": "Commercial HVAC Down in Raleigh?",
+  "cta_body": "Call Frost Fire for same-day commercial HVAC repair.",
+  "related": [
+    {
+      "href": "commercial-rtu-repair-raleigh-nc.html",
+      "icon": "fa-industry",
+      "title": "RTU Repair",
+      "body": "Rooftop focus"
+    },
+    {
+      "href": "commercial-refrigeration-repair-raleigh-nc.html",
+      "icon": "fa-snowflake",
+      "title": "Refrigeration",
+      "body": "Cold storage"
+    },
+    {
+      "href": "commercial.html",
+      "icon": "fa-building",
+      "title": "Commercial Hub",
+      "body": "All commercial"
+    },
+    {
+      "href": "after-hours-hvac-repair.html",
+      "icon": "fa-moon",
+      "title": "After Hours",
+      "body": "Nights/weekends"
+    }
+  ]
+}

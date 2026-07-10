@@ -1,0 +1,125 @@
+{
+  "slug": "mini-split-installation-cary-nc",
+  "title": "Mini Split Installation Cary NC | Ductless HVAC | Frost Fire",
+  "meta_description": "Mini split installation in Cary, NC. Ductless heating & cooling for additions, offices, and problem rooms — expert install. Call (919) 230-4439.",
+  "service_type": "Mini Split Installation",
+  "h1": "Mini Split Installation in Cary, NC",
+  "h1_html": "Mini Split Installation in <span class=\"gradient-text\">Cary, NC</span>",
+  "subtitle": "Ductless mini-split installation for Cary homes and light commercial — efficient zone comfort without new ductwork.",
+  "breadcrumb": "Mini Split Installation Cary",
+  "hero_image": "https://images.unsplash.com/photo-1631545806608-c8bba7639d4a?w=1200&q=80",
+  "hero_alt": "Ductless mini split wall unit",
+  "intro_h2": "Cary Ductless Mini-Split Installation",
+  "intro_h2_html": "Cary Ductless Mini-Split <span class=\"gradient-text\">Installation</span>",
+  "intro_paragraphs": [
+    "Bonus rooms, sunrooms, home offices, and garage conversions in Cary often need comfort without tearing into finished ductwork. Frost Fire provides professional <strong>mini split installation in Cary, NC</strong> — right-sized equipment, clean line-set runs, and proper vacuum/commissioning.",
+    "Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a> for a consult. Also see our <a href=\"mini-split.html\">mini-split services</a> hub."
+  ],
+  "cards_h2": "Where Mini-Splits Shine in Cary",
+  "cards_h2_html": "Where Mini-Splits Shine in <span class=\"gradient-text\">Cary</span>",
+  "cards": [
+    {
+      "icon": "fa-house",
+      "title": "Home Additions",
+      "body": "New spaces without extending ducts."
+    },
+    {
+      "icon": "fa-laptop",
+      "title": "Home Offices",
+      "body": "Independent zone control for all-day comfort."
+    },
+    {
+      "icon": "fa-sun",
+      "title": "Sunrooms",
+      "body": "High-glass spaces that overheat."
+    },
+    {
+      "icon": "fa-building",
+      "title": "Light Commercial",
+      "body": "Server closets, suites, and small offices."
+    },
+    {
+      "icon": "fa-leaf",
+      "title": "Efficiency Upgrades",
+      "body": "High-SEER ductless options."
+    },
+    {
+      "icon": "fa-wrench",
+      "title": "Repair & Service",
+      "body": "We also service existing mini-splits."
+    }
+  ],
+  "process_h2": "Installation Process",
+  "process_h2_html": "Installation <span class=\"gradient-text\">Process</span>",
+  "steps": [
+    {
+      "title": "Load & Layout",
+      "body": "We size the system and plan indoor head locations."
+    },
+    {
+      "title": "Clean Install",
+      "body": "Line sets, condensate, and outdoor pad/placement."
+    },
+    {
+      "title": "Commission",
+      "body": "Vacuum, charge verification, and performance checks."
+    },
+    {
+      "title": "Owner Walkthrough",
+      "body": "Remote/app basics and filter care."
+    }
+  ],
+  "why_title": "Why Cary Homeowners Choose Frost Fire",
+  "why_bullets": [
+    "Proper sizing — not just cheapest equipment",
+    "Clean aesthetic installs",
+    "Service support after installation",
+    "Triangle-wide licensed team"
+  ],
+  "areas_title": "Cary & Nearby",
+  "areas_paragraphs": [
+    "Cary, Morrisville, Apex, and west Triangle. City hub: <a href=\"../service-areas/cary-nc.html\">Cary HVAC</a>."
+  ],
+  "faqs": [
+    {
+      "q": "Single-zone or multi-zone?",
+      "a": "Both. We recommend based on rooms and electrical capacity."
+    },
+    {
+      "q": "Do you pull permits when required?",
+      "a": "Yes — we follow local requirements for the job scope."
+    },
+    {
+      "q": "Can you service brands you did not install?",
+      "a": "In most cases yes — call with the brand/model."
+    }
+  ],
+  "cta_title": "Ready for a Cary Mini-Split?",
+  "cta_body": "Call Frost Fire for ductless installation done right.",
+  "related": [
+    {
+      "href": "mini-split.html",
+      "icon": "fa-temperature-arrow-down",
+      "title": "Mini-Split Hub",
+      "body": "All ductless services"
+    },
+    {
+      "href": "../service-areas/cary-nc.html",
+      "icon": "fa-map-marker-alt",
+      "title": "Cary Hub",
+      "body": "City page"
+    },
+    {
+      "href": "../service-areas/morrisville-nc.html",
+      "icon": "fa-map-marker-alt",
+      "title": "Morrisville",
+      "body": "Nearby city"
+    },
+    {
+      "href": "heat-pump-repair-clayton-nc.html",
+      "icon": "fa-wind",
+      "title": "Heat Pumps",
+      "body": "Heat pump repair"
+    }
+  ]
+}

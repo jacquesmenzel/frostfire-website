@@ -1,0 +1,29 @@
+{
+  "slug": "selma-nc",
+  "city": "Selma",
+  "title": "HVAC Repair in Selma, NC | Same-Day Service",
+  "meta_description": "HVAC repair in Selma, NC. Same-day AC and heating service near Smithfield — open Sundays with no extra charge. Call (919) 230-4439.",
+  "subtitle": "Fast HVAC repair for Selma homes and businesses — fair prices, licensed techs, Sunday availability.",
+  "county": "Johnston County",
+  "zips": "27576",
+  "neighborhoods": "Downtown Selma, US-70 corridor, Mitchener Field area, Princeton nearby edge",
+  "landmarks": "Selma Union Station / Amtrak, historic downtown Selma, US-70 Business",
+  "population": "Johnston County town east of Smithfield",
+  "wikipedia": "https://en.wikipedia.org/wiki/Selma,_North_Carolina",
+  "intro_paragraphs": [
+    "Selma sits minutes from Smithfield and within easy reach of our Clayton shop. Frost Fire provides <strong>HVAC repair in Selma, NC</strong> for homeowners and businesses that want same-day help without weekend penalty rates.",
+    "Older housing stock near downtown often needs careful ductwork and system matching, while newer builds need warranty-friendly diagnostics. We handle both — plus commercial refrigeration for food service along the US-70 corridor.",
+    "Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a> for emergency AC or heating repair."
+  ],
+  "why_intro": "Selma is part of our Johnston County core. You get local routing, honest pricing, and the same Sunday no-surcharge policy we offer in Clayton and Smithfield.",
+  "faqs": [
+    {
+      "q": "Do you serve Selma and Smithfield together?",
+      "a": "Yes. Both are regular Johnston County routes for Frost Fire."
+    },
+    {
+      "q": "Is emergency service available?",
+      "a": "Yes. Call (919) 230-4439 anytime for triage and the soonest available response."
+    }
+  ]
+}

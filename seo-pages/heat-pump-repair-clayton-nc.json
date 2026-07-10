@@ -1,0 +1,125 @@
+{
+  "slug": "heat-pump-repair-clayton-nc",
+  "title": "Heat Pump Repair Clayton NC | Same-Day | Frost Fire",
+  "meta_description": "Heat pump repair in Clayton, NC. Same-day diagnostics for no-heat and no-cool heat pump failures — open Sundays, no surcharge. Call (919) 230-4439.",
+  "service_type": "Heat Pump Repair",
+  "h1": "Heat Pump Repair in Clayton, NC",
+  "h1_html": "Heat Pump Repair in <span class=\"gradient-text\">Clayton, NC</span>",
+  "subtitle": "Hometown heat pump repair for Clayton — reversing valve issues, auxiliary heat problems, and seasonal changeover failures.",
+  "breadcrumb": "Heat Pump Repair Clayton",
+  "hero_image": "https://images.unsplash.com/photo-1631545806608-c8bba7639d4a?w=1200&q=80",
+  "hero_alt": "Heat pump outdoor unit",
+  "intro_h2": "Clayton Heat Pump Repair Done Right",
+  "intro_h2_html": "Clayton Heat Pump Repair Done <span class=\"gradient-text\">Right</span>",
+  "intro_paragraphs": [
+    "Heat pumps are everywhere in Clayton's newer neighborhoods — and they fail in ways furnaces do not. Frost Fire provides <strong>heat pump repair in Clayton, NC</strong> for no-cool summers, weak winter heat, iced outdoor units, and stuck auxiliary heat.",
+    "Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a> for same-day options."
+  ],
+  "cards_h2": "Heat Pump Problems We Fix",
+  "cards_h2_html": "Heat Pump Problems We <span class=\"gradient-text\">Fix</span>",
+  "cards": [
+    {
+      "icon": "fa-exchange-alt",
+      "title": "Reversing Valve Issues",
+      "body": "Stuck in heat or cool mode."
+    },
+    {
+      "icon": "fa-fire",
+      "title": "Auxiliary Heat Problems",
+      "body": "Strips stuck on or not engaging."
+    },
+    {
+      "icon": "fa-icicles",
+      "title": "Iced Outdoor Units",
+      "body": "Defrost failures in winter."
+    },
+    {
+      "icon": "fa-plug",
+      "title": "Capacitors & Contactors",
+      "body": "Common outdoor unit failures."
+    },
+    {
+      "icon": "fa-thermometer-half",
+      "title": "Thermostat / Dual Fuel",
+      "body": "Changeover and control issues."
+    },
+    {
+      "icon": "fa-wind",
+      "title": "Airflow Restrictions",
+      "body": "Filters and blower problems cutting capacity."
+    }
+  ],
+  "process_h2": "Heat Pump Repair Process",
+  "process_h2_html": "Heat Pump Repair <span class=\"gradient-text\">Process</span>",
+  "steps": [
+    {
+      "title": "Symptom Intake",
+      "body": "Cooling, heating, or both?"
+    },
+    {
+      "title": "Full Diagnostic",
+      "body": "Electrical, refrigerant, airflow, controls."
+    },
+    {
+      "title": "Approved Fix",
+      "body": "Clear options before major parts."
+    },
+    {
+      "title": "Mode Verify",
+      "body": "Confirm heat and cool operation as applicable."
+    }
+  ],
+  "why_title": "Why Clayton Trusts Us With Heat Pumps",
+  "why_bullets": [
+    "Local Clayton technicians",
+    "Same-day triage",
+    "No Sunday surcharge",
+    "All major heat pump brands"
+  ],
+  "areas_title": "Clayton Heat Pump Coverage",
+  "areas_paragraphs": [
+    "Clayton, Wilson's Mills, and nearby Johnston County. See also <a href=\"heat-pump.html\">heat pump services</a>."
+  ],
+  "faqs": [
+    {
+      "q": "Do you repair dual-fuel systems?",
+      "a": "Yes — heat pump plus gas furnace changeover systems."
+    },
+    {
+      "q": "Same-day heat pump repair?",
+      "a": "Often yes in Clayton — call for availability."
+    },
+    {
+      "q": "Sunday service?",
+      "a": "Yes, same rates."
+    }
+  ],
+  "cta_title": "Heat Pump Acting Up in Clayton?",
+  "cta_body": "Call Frost Fire for same-day heat pump repair.",
+  "related": [
+    {
+      "href": "same-day-ac-repair-clayton-nc.html",
+      "icon": "fa-clock",
+      "title": "Same-Day AC",
+      "body": "Cooling emergencies"
+    },
+    {
+      "href": "heat-pump.html",
+      "icon": "fa-wind",
+      "title": "Heat Pump Hub",
+      "body": "Full heat pump page"
+    },
+    {
+      "href": "emergency-ac-repair-clayton-nc.html",
+      "icon": "fa-bolt",
+      "title": "Emergency AC",
+      "body": "No-cool priority"
+    },
+    {
+      "href": "../service-areas/clayton-nc.html",
+      "icon": "fa-map-marker-alt",
+      "title": "Clayton",
+      "body": "City hub"
+    }
+  ]
+}

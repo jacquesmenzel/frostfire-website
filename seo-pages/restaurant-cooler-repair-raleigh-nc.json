@@ -1,0 +1,125 @@
+{
+  "slug": "restaurant-cooler-repair-raleigh-nc",
+  "title": "Restaurant Cooler Repair Raleigh NC | Same-Day | Frost Fire",
+  "meta_description": "Restaurant cooler repair in Raleigh — same-day walk-in and reach-in service for food businesses. Open Sundays, no surcharge. Call (919) 230-4439.",
+  "service_type": "Restaurant Cooler Repair",
+  "h1": "Restaurant Cooler Repair — Protect Your Inventory",
+  "h1_html": "Restaurant Cooler Repair — <span class=\"gradient-text\">Protect Your Inventory</span>",
+  "subtitle": "Same-day restaurant cooler repair for Raleigh and Triangle food service — walk-ins, reach-ins, and make-lines.",
+  "breadcrumb": "Restaurant Cooler Repair",
+  "hero_image": "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1200&q=80",
+  "hero_alt": "Restaurant kitchen",
+  "intro_h2": "Restaurant Cooler Repair Built Around Service Hours",
+  "intro_h2_html": "Restaurant Cooler Repair Built Around <span class=\"gradient-text\">Service Hours</span>",
+  "intro_paragraphs": [
+    "A warm cooler during dinner rush is not a inconvenience — it is lost food cost and potential health-code risk. Frost Fire provides <strong>restaurant cooler repair in Raleigh, NC</strong> with same-day priority for walk-ins, reach-ins, and related cold-line equipment.",
+    "We understand prep schedules, delivery windows, and why \"come Monday\" is not an option. Searching <em>restaurant cooler repair near me</em>? Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a>."
+  ],
+  "cards_h2": "Restaurant Cold-Side Failures We Handle",
+  "cards_h2_html": "Restaurant Cold-Side Failures We <span class=\"gradient-text\">Handle</span>",
+  "cards": [
+    {
+      "icon": "fa-snowflake",
+      "title": "Walk-In Coolers",
+      "body": "Temperature rise, iced coils, door seal failures, and compressor issues."
+    },
+    {
+      "icon": "fa-box",
+      "title": "Reach-In Coolers",
+      "body": "Prep-line and bar coolers that will not hold temp during service."
+    },
+    {
+      "icon": "fa-icicles",
+      "title": "Walk-In Freezers",
+      "body": "Not freezing, excessive frost, and defrost failures."
+    },
+    {
+      "icon": "fa-industry",
+      "title": "Condensing Units",
+      "body": "Roof or pad-mounted units short cycling or overheating."
+    },
+    {
+      "icon": "fa-clock",
+      "title": "Pre-Service Emergencies",
+      "body": "Failures discovered at open — we triage for fastest help."
+    },
+    {
+      "icon": "fa-calendar-check",
+      "title": "Sunday Kitchen Failures",
+      "body": "Weekend brunch and dinner rushes without surcharge pricing."
+    }
+  ],
+  "process_h2": "How We Support Restaurant Operators",
+  "process_h2_html": "How We Support <span class=\"gradient-text\">Restaurant Operators</span>",
+  "steps": [
+    {
+      "title": "Urgent Intake",
+      "body": "We capture box temps, product risk, and service timing."
+    },
+    {
+      "title": "On-Site Diagnosis",
+      "body": "Pressures, electrical, airflow, seals, and controls."
+    },
+    {
+      "title": "Repair During Your Window",
+      "body": "We work around prep and service when possible."
+    },
+    {
+      "title": "Verify Pull-Down",
+      "body": "Confirm safe holding temps before we leave."
+    }
+  ],
+  "why_title": "Why Raleigh Restaurants Call Frost Fire",
+  "why_bullets": [
+    "Same-day commercial refrigeration priority",
+    "No Sunday surcharge",
+    "Experience with restaurant operating constraints",
+    "Cooler, freezer, and RTU capability under one contractor"
+  ],
+  "areas_title": "Restaurant Service Area",
+  "areas_paragraphs": [
+    "Raleigh, Durham, Clayton, Cary, Garner, and nearby Triangle cities. See <a href=\"walk-in-cooler-repair-raleigh-nc.html\">walk-in cooler repair</a> and <a href=\"walk-in-freezer-repair-raleigh-nc.html\">walk-in freezer repair</a>."
+  ],
+  "faqs": [
+    {
+      "q": "Can you come during off-peak kitchen hours?",
+      "a": "Often yes — tell us your prep window when you call."
+    },
+    {
+      "q": "Do you repair reach-ins as well as walk-ins?",
+      "a": "Yes. Reach-ins, walk-ins, and related cold storage."
+    },
+    {
+      "q": "Sunday pricing?",
+      "a": "Same rates as weekdays — no weekend surcharge."
+    }
+  ],
+  "cta_title": "Cooler Down? Call Now.",
+  "cta_body": "Same-day restaurant cooler repair across Raleigh and the Triangle.",
+  "related": [
+    {
+      "href": "walk-in-cooler-repair-raleigh-nc.html",
+      "icon": "fa-snowflake",
+      "title": "Walk-In Cooler",
+      "body": "Dedicated cooler page"
+    },
+    {
+      "href": "walk-in-freezer-repair-raleigh-nc.html",
+      "icon": "fa-icicles",
+      "title": "Walk-In Freezer",
+      "body": "Frozen inventory emergencies"
+    },
+    {
+      "href": "commercial-rtu-repair-raleigh-nc.html",
+      "icon": "fa-industry",
+      "title": "RTU Repair",
+      "body": "Dining room comfort"
+    },
+    {
+      "href": "commercial.html",
+      "icon": "fa-building",
+      "title": "Commercial HVAC",
+      "body": "Full commercial hub"
+    }
+  ]
+}

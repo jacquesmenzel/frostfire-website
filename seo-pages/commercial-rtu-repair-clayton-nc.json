@@ -1,0 +1,125 @@
+{
+  "slug": "commercial-rtu-repair-clayton-nc",
+  "title": "Commercial RTU Repair Clayton NC | Frost Fire",
+  "meta_description": "Commercial RTU / rooftop unit repair in Clayton, NC. Same-day commercial HVAC for local businesses — open Sundays. Call (919) 230-4439.",
+  "service_type": "Commercial RTU Repair",
+  "h1": "Commercial RTU Repair in Clayton, NC",
+  "h1_html": "Commercial RTU Repair in <span class=\"gradient-text\">Clayton, NC</span>",
+  "subtitle": "Rooftop unit repair for Clayton restaurants, retail, and offices — hometown commercial response, no Sunday surcharge.",
+  "breadcrumb": "RTU Repair Clayton",
+  "hero_image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
+  "hero_alt": "Commercial building rooftop",
+  "intro_h2": "Clayton Commercial Rooftop Unit Repair",
+  "intro_h2_html": "Clayton Commercial Rooftop Unit <span class=\"gradient-text\">Repair</span>",
+  "intro_paragraphs": [
+    "Clayton's US-70 and Main Street commercial growth means more rooftop package units working overtime. Frost Fire provides <strong>commercial RTU repair in Clayton, NC</strong> with same-day options for no-cool dining rooms and retail spaces.",
+    "Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a>. Also see our <a href=\"commercial-rtu-repair-raleigh-nc.html\">Raleigh RTU page</a>."
+  ],
+  "cards_h2": "RTU Issues We Repair",
+  "cards_h2_html": "RTU Issues We <span class=\"gradient-text\">Repair</span>",
+  "cards": [
+    {
+      "icon": "fa-fan",
+      "title": "No Cooling",
+      "body": "Compressors, capacitors, and refrigerant problems."
+    },
+    {
+      "icon": "fa-wind",
+      "title": "Blower & Airflow",
+      "body": "Weak supply air and belt/motor failures."
+    },
+    {
+      "icon": "fa-bolt",
+      "title": "Electrical & Controls",
+      "body": "Contactors, boards, and thermostat issues."
+    },
+    {
+      "icon": "fa-droplet",
+      "title": "Drain & Pan Problems",
+      "body": "Rooftop condensate issues."
+    },
+    {
+      "icon": "fa-industry",
+      "title": "Economizer Issues",
+      "body": "Fresh-air and damper problems."
+    },
+    {
+      "icon": "fa-utensils",
+      "title": "Restaurant Comfort Failures",
+      "body": "Hot dining rooms during service."
+    }
+  ],
+  "process_h2": "Clayton RTU Process",
+  "process_h2_html": "Clayton RTU <span class=\"gradient-text\">Process</span>",
+  "steps": [
+    {
+      "title": "Call",
+      "body": "Describe building type and symptoms."
+    },
+    {
+      "title": "Roof-Ready Dispatch",
+      "body": "We arrive prepared for package-unit diagnostics."
+    },
+    {
+      "title": "Approve Repair",
+      "body": "Clear commercial options before major work."
+    },
+    {
+      "title": "Verify Comfort",
+      "body": "Confirm cooling/heating performance."
+    }
+  ],
+  "why_title": "Hometown Commercial Advantage",
+  "why_bullets": [
+    "Clayton-based commercial routing",
+    "RTU + refrigeration capability",
+    "No Sunday surcharge",
+    "Licensed commercial HVAC service"
+  ],
+  "areas_title": "Clayton Commercial Coverage",
+  "areas_paragraphs": [
+    "Clayton, Wilson's Mills, and nearby Johnston County commercial corridors. Raleigh RTUs: <a href=\"commercial-rtu-repair-raleigh-nc.html\">RTU repair Raleigh</a>."
+  ],
+  "faqs": [
+    {
+      "q": "Do you service all RTU brands?",
+      "a": "We service most major commercial package unit brands — call with the model if known."
+    },
+    {
+      "q": "Same-day RTU repair in Clayton?",
+      "a": "Often yes — commercial no-cool calls are prioritized."
+    },
+    {
+      "q": "Sunday commercial service?",
+      "a": "Yes, at weekday rates."
+    }
+  ],
+  "cta_title": "RTU Down in Clayton?",
+  "cta_body": "Call Frost Fire for commercial rooftop unit repair.",
+  "related": [
+    {
+      "href": "commercial-rtu-repair-raleigh-nc.html",
+      "icon": "fa-industry",
+      "title": "Raleigh RTU",
+      "body": "Triangle RTU page"
+    },
+    {
+      "href": "commercial-hvac-repair-raleigh-nc.html",
+      "icon": "fa-building",
+      "title": "Commercial HVAC",
+      "body": "Broader commercial"
+    },
+    {
+      "href": "commercial.html",
+      "icon": "fa-wrench",
+      "title": "Commercial Hub",
+      "body": "All commercial"
+    },
+    {
+      "href": "../service-areas/clayton-nc.html",
+      "icon": "fa-map-marker-alt",
+      "title": "Clayton",
+      "body": "City hub"
+    }
+  ]
+}

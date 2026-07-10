@@ -1,0 +1,125 @@
+{
+  "slug": "walk-in-freezer-repair-durham-nc",
+  "title": "Walk-In Freezer Repair Durham NC | Frost Fire",
+  "meta_description": "Walk-in freezer repair in Durham, NC. Same-day commercial freezer service — open Sundays, no surcharge. Call (919) 230-4439.",
+  "service_type": "Walk-In Freezer Repair",
+  "h1": "Walk-In Freezer Repair in Durham, NC",
+  "h1_html": "Walk-In Freezer Repair in <span class=\"gradient-text\">Durham, NC</span>",
+  "subtitle": "Commercial walk-in freezer repair for Durham restaurants — same-day options, no weekend surcharge.",
+  "breadcrumb": "Walk-In Freezer Repair Durham",
+  "hero_image": "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=1200&q=80",
+  "hero_alt": "Walk-in freezer",
+  "intro_h2": "Durham Walk-In Freezer Emergencies",
+  "intro_h2_html": "Durham Walk-In Freezer <span class=\"gradient-text\">Emergencies</span>",
+  "intro_paragraphs": [
+    "Frozen inventory does not wait for Monday. Frost Fire provides <strong>walk-in freezer repair in Durham, NC</strong> with same-day triage for restaurants and food businesses.",
+    "Call <a href=\"tel:9192304439\" style=\"color:var(--accent);font-weight:700\">(919) 230-4439</a>."
+  ],
+  "cards_h2": "Freezer Problems We Fix",
+  "cards_h2_html": "Freezer Problems We <span class=\"gradient-text\">Fix</span>",
+  "cards": [
+    {
+      "icon": "fa-temperature-high",
+      "title": "Not Freezing",
+      "body": "Box temperature climbing above safe range."
+    },
+    {
+      "icon": "fa-icicles",
+      "title": "Defrost Failures",
+      "body": "Ice-bound evaporators and failed heaters."
+    },
+    {
+      "icon": "fa-fan",
+      "title": "Compressor Issues",
+      "body": "Hard starts and no pull-down."
+    },
+    {
+      "icon": "fa-door-closed",
+      "title": "Door Heaters/Gaskets",
+      "body": "Frost at the frame and air leaks."
+    },
+    {
+      "icon": "fa-droplet",
+      "title": "Refrigerant Leaks",
+      "body": "Leak find and correct recharge."
+    },
+    {
+      "icon": "fa-clock",
+      "title": "After-Hours Failures",
+      "body": "Nights and Sundays included."
+    }
+  ],
+  "process_h2": "Repair Process",
+  "process_h2_html": "Repair <span class=\"gradient-text\">Process</span>",
+  "steps": [
+    {
+      "title": "Triage",
+      "body": "Temperature and product risk first."
+    },
+    {
+      "title": "Diagnose",
+      "body": "Full refrigeration diagnostic."
+    },
+    {
+      "title": "Repair",
+      "body": "Approved fix and pull-down verify."
+    },
+    {
+      "title": "Advise",
+      "body": "Prevention tips for the next rush."
+    }
+  ],
+  "why_title": "Why Durham Operators Call Us",
+  "why_bullets": [
+    "Same-day freezer priority",
+    "No Sunday surcharge",
+    "Commercial refrigeration focus",
+    "Paired cooler/RTU support"
+  ],
+  "areas_title": "Durham Freezer Coverage",
+  "areas_paragraphs": [
+    "Greater Durham and nearby Triangle cities. See <a href=\"walk-in-freezer-repair-raleigh-nc.html\">Raleigh freezer repair</a>."
+  ],
+  "faqs": [
+    {
+      "q": "Same-day freezer repair in Durham?",
+      "a": "Yes when capacity allows — call for priority triage."
+    },
+    {
+      "q": "Sunday rates?",
+      "a": "Same as weekdays."
+    },
+    {
+      "q": "Coolers too?",
+      "a": "Yes — see our Durham cooler page."
+    }
+  ],
+  "cta_title": "Freezer Down in Durham?",
+  "cta_body": "Call Frost Fire for same-day walk-in freezer repair.",
+  "related": [
+    {
+      "href": "walk-in-cooler-repair-durham-nc.html",
+      "icon": "fa-snowflake",
+      "title": "Durham Coolers",
+      "body": "Cooler repair"
+    },
+    {
+      "href": "walk-in-freezer-repair-raleigh-nc.html",
+      "icon": "fa-icicles",
+      "title": "Raleigh Freezers",
+      "body": "Raleigh page"
+    },
+    {
+      "href": "restaurant-cooler-repair-raleigh-nc.html",
+      "icon": "fa-utensils",
+      "title": "Restaurant Coolers",
+      "body": "Food service"
+    },
+    {
+      "href": "commercial.html",
+      "icon": "fa-building",
+      "title": "Commercial",
+      "body": "All commercial"
+    }
+  ]
+}
