@@ -1,0 +1,166 @@
+{
+  "slug": "thermostat-not-working-troubleshooting",
+  "title": "Thermostat Not Working? Troubleshooting Guide",
+  "meta_description": "Thermostat blank, wrong mode, or Wi-Fi issues? Troubleshoot batteries, breakers, C-wires, and calibration before calling for HVAC service in the Triangle.",
+  "h1": "Thermostat Not Working: A Complete Troubleshooting Guide",
+  "subtitle": "Fix the common thermostat problems that look like full HVAC failures — and know when the equipment (not the thermostat) is the real culprit.",
+  "category": "Troubleshooting",
+  "hero_image": "https://images.unsplash.com/photo-1558002039-873aed8848d0?w=1200&q=80",
+  "hero_alt": "Smart home thermostat on wall",
+  "date_published": "2026-07-10",
+  "date_modified": "2026-07-10",
+  "intro": [
+    "A surprising number of \"AC is dead\" calls are thermostat problems: dead batteries, wrong mode, schedule holds, Wi-Fi dropouts, or a missing C-wire after a DIY smart thermostat install.",
+    "Use this guide before you assume the worst. If the thermostat is fine and the equipment still will not run, move to our <a href=\"things-to-check-when-ac-not-working.html\">AC checklist</a> or call for <a href=\"../services/thermostat.html\">thermostat service</a>."
+  ],
+  "howto_name": "Troubleshoot a thermostat that is not working",
+  "howto_steps": [
+    {
+      "title": "Check display power",
+      "body": "Replace batteries or verify the thermostat is receiving power."
+    },
+    {
+      "title": "Confirm mode and setpoint",
+      "body": "Set Cool/Heat correctly and move setpoint past room temperature."
+    },
+    {
+      "title": "Remove schedule/hold conflicts",
+      "body": "Clear holds and temporary schedules that override your setpoint."
+    },
+    {
+      "title": "Check HVAC breakers",
+      "body": "Reset air handler and condenser breakers if the thermostat has power but equipment is silent."
+    },
+    {
+      "title": "For smart thermostats, verify app/equipment config",
+      "body": "Confirm Wi-Fi, equipment type, and C-wire requirements."
+    },
+    {
+      "title": "Call a pro if still failing",
+      "body": "Wiring, control boards, and equipment faults need diagnosis."
+    }
+  ],
+  "sections": [
+    {
+      "id": "blank-display",
+      "title": "Blank or Dead Display",
+      "paragraphs": [
+        "Replace batteries first on battery-powered models. If it is power-stealing or C-wire powered and still blank, check the air handler breaker and furnace door switch (many units will not power the thermostat if the door panel is ajar).",
+        "After storms around <a href=\"../service-areas/raleigh-nc.html\">Raleigh</a> and <a href=\"../service-areas/durham-nc.html\">Durham</a>, breakers and surge damage are common."
+      ]
+    },
+    {
+      "id": "wrong-mode",
+      "title": "Wrong Mode, Fan Settings, and Setpoint Confusion",
+      "paragraphs": [
+        "Cooling requires Cool mode and a setpoint below room temperature. Heating requires Heat mode and a setpoint above room temperature. Fan On circulates air continuously and can make people think the system is \"running but not conditioning.\"",
+        "Auto is usually correct for diagnosis."
+      ]
+    },
+    {
+      "id": "schedules-holds",
+      "title": "Schedules, Holds, and App Overrides",
+      "paragraphs": [
+        "Smart thermostats may be following a schedule you forgot about, an energy-saving feature, or another household member's app change. Check for \"Hold,\" \"Away,\" or geofencing.",
+        "If two apps control one thermostat, you will lose the setpoint war every time."
+      ]
+    },
+    {
+      "id": "c-wire",
+      "title": "C-Wire and Smart Thermostat Install Issues",
+      "paragraphs": [
+        "Many modern thermostats need a common wire (C-wire) for stable power. Without it, symptoms include random reboots, blank screens, or weak Wi-Fi modules.",
+        "Adapters exist, but incorrect wiring can damage controls. If you are not comfortable with low-voltage wiring, hire it — a miswire can be expensive."
+      ]
+    },
+    {
+      "id": "calibration",
+      "title": "Temperature Reading Feels Wrong",
+      "paragraphs": [
+        "Thermostats in direct sun, near supply vents, or on exterior walls read poorly. The system may be doing exactly what the sensor says — even if the hallway feels different.",
+        "Relocation or a remote sensor can fix \"hot/cold room\" complaints that are really thermostat placement problems."
+      ]
+    },
+    {
+      "id": "rapid-cycling",
+      "title": "Rapid Clicking or Short Cycling",
+      "paragraphs": [
+        "If the thermostat calls for cooling every few minutes, look for oversized equipment, failing sensors, or incorrect cycle settings. Short cycling wears compressors.",
+        "A professional can check temperature swing settings and equipment staging."
+      ]
+    },
+    {
+      "id": "heat-pump-thermostats",
+      "title": "Heat Pump Thermostat Quirks",
+      "paragraphs": [
+        "Heat pump thermostats must be configured for heat pump equipment, not furnace-only. Wrong setup causes aux heat to run incorrectly or reversing valve logic to fail.",
+        "If you recently replaced a thermostat on a heat pump in <a href=\"../service-areas/clayton-nc.html\">Clayton</a> or <a href=\"../service-areas/cary-nc.html\">Cary</a>, tell the technician — configuration is a top suspect."
+      ]
+    },
+    {
+      "id": "when-equipment-is-fault",
+      "title": "When the Thermostat Is Fine but Nothing Runs",
+      "paragraphs": [
+        "If the thermostat clearly calls for cool/heat and contactors/boards do not respond, the fault is downstream: capacitor, contactor, control board, float switch, or safety lockout.",
+        "Do not keep replacing thermostats hoping one will magically fix a dead condenser."
+      ]
+    },
+    {
+      "id": "upgrade-guidance",
+      "title": "When to Upgrade the Thermostat",
+      "paragraphs": [
+        "Upgrade for better scheduling, remote sensors, or heat pump dual-fuel control — not as a first repair for a system that needs mechanical work. See <a href=\"../services/thermostat.html\">thermostat services</a> for install options."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Why does my thermostat go blank at night?",
+      "a": "Often weak batteries or unstable power without a C-wire."
+    },
+    {
+      "q": "Can a bad thermostat ruin my compressor?",
+      "a": "Short cycling and incorrect heat pump configuration can contribute to premature wear."
+    },
+    {
+      "q": "Do you install Google Nest / Ecobee?",
+      "a": "We can advise on compatibility and install when the equipment supports it. Call with your system type."
+    },
+    {
+      "q": "My Wi-Fi thermostat is offline — will HVAC still work?",
+      "a": "Usually yes for local control, but features and remote changes will not. Confirm local mode/setpoint."
+    },
+    {
+      "q": "Should I reset my thermostat?",
+      "a": "A reboot can help electronics glitches. Write down settings first so you can restore schedules."
+    },
+    {
+      "q": "Can you come on Sunday for thermostat issues?",
+      "a": "If it is causing a no-heat/no-cool emergency, call — no Sunday surcharge."
+    }
+  ],
+  "related": [
+    {
+      "href": "../services/thermostat.html",
+      "title": "Thermostat Services",
+      "blurb": "Install & setup"
+    },
+    {
+      "href": "things-to-check-when-ac-not-working.html",
+      "title": "AC Not Working Checklist",
+      "blurb": "Broader troubleshooting"
+    },
+    {
+      "href": "../services/heat-pump.html",
+      "title": "Heat Pump Services",
+      "blurb": "Heat pump configs"
+    },
+    {
+      "href": "hvac-noises-what-they-mean.html",
+      "title": "HVAC Noises Guide",
+      "blurb": "Clicking & more"
+    }
+  ],
+  "cta_title": "Still Stuck After Thermostat Checks?",
+  "cta_body": "Call Frost Fire at (919) 230-4439 — we diagnose controls and equipment, not just swap parts."
+}

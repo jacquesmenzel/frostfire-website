@@ -1,0 +1,146 @@
+{
+  "slug": "when-to-call-emergency-hvac",
+  "title": "When to Call Emergency HVAC Service",
+  "meta_description": "When is an HVAC problem a true emergency? Safety red flags, heat/cool extremes, water leaks, and when Triangle homeowners can wait until morning.",
+  "h1": "When to Call Emergency HVAC (and When You Can Wait)",
+  "subtitle": "A clear decision guide for nights, weekends, and holidays — so you spend money on real emergencies, not panic.",
+  "category": "Emergency",
+  "hero_image": "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?w=1200&q=80",
+  "hero_alt": "Nighttime city lights suggesting after-hours service",
+  "date_published": "2026-07-10",
+  "date_modified": "2026-07-10",
+  "intro": [
+    "Not every hot house at 9pm is a life-critical emergency — but some are. The goal is to protect people, property, and equipment without paying panic prices (and for the record: Frost Fire does not add a Sunday surcharge).",
+    "This guide helps Triangle homeowners decide <strong>when to call emergency HVAC</strong> versus booking the next morning. Related pages: <a href=\"../services/emergency.html\">emergency service</a>, <a href=\"../services/after-hours-hvac-repair.html\">after-hours repair</a>, and <a href=\"../services/open-sundays-no-extra-charge-hvac.html\">open Sundays</a>."
+  ],
+  "sections": [
+    {
+      "id": "true-emergencies",
+      "title": "True Emergencies: Call Now",
+      "list": [
+        "<strong>Gas smell:</strong> evacuate, call the gas utility first, then HVAC for furnace follow-up",
+        "<strong>Burning smell / smoke from equipment:</strong> shut power off if safe and call",
+        "<strong>Active water leak</strong> damaging ceilings, floors, or electrical areas",
+        "<strong>No heat</strong> during dangerous cold with vulnerable occupants",
+        "<strong>No cooling</strong> during extreme heat with medical risk, infants, elderly, or no safe alternate location",
+        "<strong>Commercial cooler/freezer down</strong> with inventory at risk"
+      ],
+      "paragraphs": [
+        "If any of the above apply, do not wait for \"normal business hours.\" Call <a href=\"tel:9192304439\">(919) 230-4439</a>."
+      ]
+    },
+    {
+      "id": "can-wait",
+      "title": "Usually Can Wait Until Morning",
+      "paragraphs": [
+        "Mild discomfort with safe indoor temperatures, a single room imbalance, a noisy but still-cooling system (without grinding), or a cosmetic thermostat glitch while equipment still runs can often wait.",
+        "Use the overnight hours to gather info: filter condition, breaker status, and thermostat settings. That makes the morning visit faster."
+      ]
+    },
+    {
+      "id": "heat-wave-rules",
+      "title": "Special Rules for Triangle Heat Waves",
+      "paragraphs": [
+        "When it is 98°F in <a href=\"../service-areas/raleigh-nc.html\">Raleigh</a>, indoor temperatures climb fast in closed homes. If you cannot cool below unsafe levels and cannot relocate, treat it as urgent — especially for medically vulnerable households.",
+        "Close blinds, avoid oven use, drink water, and run fans as a bridge while waiting for dispatch."
+      ]
+    },
+    {
+      "id": "cold-snap-rules",
+      "title": "Special Rules for Cold Snaps",
+      "paragraphs": [
+        "No heat with freezing outdoor temperatures risks pipe freezes. Open cabinet doors near plumbing on exterior walls, drip faucets if advised by local guidance, and use safe supplemental heat only (never unvented hazards).",
+        "Heat pump owners: try Emergency Heat as a bridge and read our <a href=\"heat-pump-icing-up-what-to-do.html\">icing guide</a>."
+      ]
+    },
+    {
+      "id": "water-damage",
+      "title": "Water Is an Emergency Even If the House Is Comfortable",
+      "paragraphs": [
+        "A clogged condensate line can dump gallons into a closet or attic. Comfort may still be okay while flooring warps. Shut the system down and call — water damage restoration costs dwarf an after-hours drain clear."
+      ]
+    },
+    {
+      "id": "commercial",
+      "title": "Business and Restaurant Emergencies",
+      "paragraphs": [
+        "Hot dining rooms and warm walk-ins are revenue emergencies. See <a href=\"../services/walk-in-cooler-repair-raleigh-nc.html\">walk-in cooler repair</a> and <a href=\"../services/commercial-rtu-repair-raleigh-nc.html\">RTU repair</a> for commercial-specific help."
+      ]
+    },
+    {
+      "id": "what-to-say",
+      "title": "What to Say When You Call",
+      "ordered_list": [
+        "Describe the symptom and when it started",
+        "Mention vulnerable occupants or property risk",
+        "Share what you already checked (breaker, filter, thermostat)",
+        "Note any burning smells, water, or ice",
+        "Ask for the soonest triage window"
+      ]
+    },
+    {
+      "id": "cost-expectations",
+      "title": "Cost Expectations Without the Games",
+      "paragraphs": [
+        "You should get clear communication before major work. Frost Fire's differentiator is straightforward: we do not pile on a Sunday premium. That does not mean every after-hours scenario is identical — it means you will not be punished for the calendar."
+      ]
+    },
+    {
+      "id": "prevent-next",
+      "title": "Prevent the Next Emergency",
+      "paragraphs": [
+        "Most peak-season emergencies are maintenance failures in disguise. Read <a href=\"why-hvac-maintenance-is-important.html\">why maintenance is important</a> and schedule tune-ups before summer and winter."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Do you answer the phone after hours?",
+      "a": "Call (919) 230-4439 for triage. We prioritize unsafe conditions and equipment/property risks."
+    },
+    {
+      "q": "Is Sunday more expensive?",
+      "a": "No. Same rates on Sundays."
+    },
+    {
+      "q": "What if I am not sure it is an emergency?",
+      "a": "Call anyway and describe symptoms — we will help you decide."
+    },
+    {
+      "q": "Can you fix it the same night?",
+      "a": "Sometimes. Parts and access matter. We will be honest about ETA and options."
+    },
+    {
+      "q": "Should I reset breakers repeatedly?",
+      "a": "No. One reset max. Repeated trips mean stop and call."
+    },
+    {
+      "q": "Are restaurant cooler failures emergencies?",
+      "a": "Yes when inventory or health-code risk is present."
+    }
+  ],
+  "related": [
+    {
+      "href": "../services/emergency.html",
+      "title": "Emergency HVAC",
+      "blurb": "24/7 hub"
+    },
+    {
+      "href": "../services/after-hours-hvac-repair.html",
+      "title": "After-Hours Repair",
+      "blurb": "Nights & weekends"
+    },
+    {
+      "href": "../services/emergency-ac-repair-clayton-nc.html",
+      "title": "Emergency AC Clayton",
+      "blurb": "Same-day cooling"
+    },
+    {
+      "href": "../services/open-sundays-no-extra-charge-hvac.html",
+      "title": "Open Sundays",
+      "blurb": "No surcharge"
+    }
+  ],
+  "cta_title": "Think It Might Be an Emergency?",
+  "cta_body": "Call Frost Fire now at (919) 230-4439 — we will triage quickly and tell you the next best step."
+}

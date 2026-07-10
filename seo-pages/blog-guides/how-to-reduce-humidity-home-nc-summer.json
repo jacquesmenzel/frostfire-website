@@ -1,0 +1,147 @@
+{
+  "slug": "how-to-reduce-humidity-home-nc-summer",
+  "title": "How to Reduce Humidity at Home in NC",
+  "meta_description": "How to reduce humidity in your North Carolina home this summer: AC runtime, sizing, drains, ventilation, and dehumidifier tips for Triangle homeowners.",
+  "h1": "How to Reduce Humidity in Your Home During a North Carolina Summer",
+  "subtitle": "Why Triangle homes feel muggy even at 72°F — and the practical fixes that actually work.",
+  "category": "Indoor Air Quality",
+  "hero_image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80",
+  "hero_alt": "Comfortable home interior",
+  "date_published": "2026-07-10",
+  "date_modified": "2026-07-10",
+  "intro": [
+    "North Carolina summers are not just hot — they are wet. Indoor relative humidity above ~50–55% feels sticky, stresses wood floors, encourages biological growth, and makes 75°F feel like 80°F.",
+    "This guide covers <strong>how to reduce humidity at home</strong> with HVAC-focused strategies for <a href=\"../service-areas/raleigh-nc.html\">Raleigh</a>, <a href=\"../service-areas/durham-nc.html\">Durham</a>, and <a href=\"../service-areas/clayton-nc.html\">Clayton</a> homes. Related: <a href=\"../services/indoor-air-quality.html\">indoor air quality</a> and <a href=\"../services/ac-repair.html\">AC repair</a>."
+  ],
+  "sections": [
+    {
+      "id": "why-muggy",
+      "title": "Why Your House Feels Muggy at \"Normal\" Thermostat Settings",
+      "paragraphs": [
+        "Air conditioners remove moisture when they run long enough for the coil to get cold and condensate to drain. Short runtimes cool the air thermometer quickly but leave humidity behind — classic oversized-system behavior.",
+        "If your AC blasts on, satisfies the thermostat in 5 minutes, and shuts off, you may be comfortable on paper and clammy in reality."
+      ]
+    },
+    {
+      "id": "thermostat-strategy",
+      "title": "Thermostat Strategy That Helps Humidity",
+      "paragraphs": [
+        "Avoid huge setbacks that cause short, aggressive recovery. Slightly higher setpoints with longer runtimes can feel better than ice-cold short cycles.",
+        "Fan Auto is usually better for dehumidification than Fan On, which can re-evaporate moisture off a wet coil into the house."
+      ],
+      "callout": {
+        "title": "Try this",
+        "body": "If you have a thermostat with a humidity target or \"humiditrax\"-style features, set a realistic RH goal and let the system work — do not fight it with constant fan."
+      }
+    },
+    {
+      "id": "maintenance-drains",
+      "title": "Maintenance, Coils, and Condensate Drains",
+      "paragraphs": [
+        "A dirty evaporator coil cannot exchange heat or condense moisture efficiently. Clogged drains cause shutdowns and water damage. Filter discipline matters.",
+        "Schedule cooling-season <a href=\"../services/maintenance.html\">maintenance</a> before peak humidity months."
+      ]
+    },
+    {
+      "id": "oversizing",
+      "title": "Oversized Systems and Humidity",
+      "paragraphs": [
+        "Bigger is not better. Oversized AC removes heat too fast and under-dehumidifies. If humidity has been a lifelong problem since a replacement install, ask about load calculation history — not just tonnage on the data plate."
+      ]
+    },
+    {
+      "id": "whole-home-dehumidifiers",
+      "title": "Whole-Home Dehumidifiers and IAQ Gear",
+      "paragraphs": [
+        "In some Triangle homes — especially tighter new builds — a whole-home dehumidifier paired with the HVAC system is the comfort breakthrough. Portable units help a room; ducted solutions help a house.",
+        "See <a href=\"../services/indoor-air-quality.html\">IAQ services</a> for options beyond portable boxes."
+      ]
+    },
+    {
+      "id": "sources",
+      "title": "Moisture Sources You Can Control",
+      "list": [
+        "Run bath fans during/after showers",
+        "Use kitchen exhaust when cooking",
+        "Fix crawlspace vapor issues and standing water",
+        "Avoid indoor clothes drying without venting",
+        "Watch for duct leaks pulling crawlspace air"
+      ],
+      "paragraphs": [
+        "HVAC cannot outrun an open moisture source forever."
+      ]
+    },
+    {
+      "id": "ducts-and-returns",
+      "title": "Ducts, Returns, and Hot Attics",
+      "paragraphs": [
+        "Leaky return ducts in humid crawlspaces import moisture. Supply leaks in attics waste capacity. If humidity and room imbalance travel together, read our <a href=\"ductwork-problems-signs-and-fixes.html\">ductwork guide</a>."
+      ]
+    },
+    {
+      "id": "when-ac-is-broken",
+      "title": "When Humidity Means the AC Is Actually Failing",
+      "paragraphs": [
+        "If the system runs constantly and never dries the air, you may have low refrigerant, failing blower performance, or a control issue. That is repair territory — use the <a href=\"things-to-check-when-ac-not-working.html\">AC not working checklist</a>, then call."
+      ]
+    },
+    {
+      "id": "targets",
+      "title": "Humidity Targets That Feel Human",
+      "paragraphs": [
+        "Many people feel best around 40–50% RH indoors in summer (exact comfort varies). Below the 30s can feel dry; above the mid-50s/60s feels sticky and risks moisture problems.",
+        "Buy an inexpensive hygrometer. Guessing RH from \"how it feels\" is unreliable."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Why is my house humid if the AC is on?",
+      "a": "Short cycling, oversized equipment, dirty coils, fan-on settings, or moisture sources can all leave RH high even when temperature drops."
+    },
+    {
+      "q": "Should I close vents to dehumidify?",
+      "a": "Usually no — it can raise static pressure and cause other problems."
+    },
+    {
+      "q": "Do heat pumps dehumidify in summer?",
+      "a": "Yes, in cooling mode they condense moisture like an AC when they run properly."
+    },
+    {
+      "q": "Will a lower thermostat setting fix humidity?",
+      "a": "Not always. You can get colder and still clammy if runtime patterns are wrong."
+    },
+    {
+      "q": "Are portable dehumidifiers enough?",
+      "a": "They help a zone. Whole-home solutions are better for whole-house RH control."
+    },
+    {
+      "q": "Can you diagnose humidity issues on a visit?",
+      "a": "Yes. Call (919) 230-4439 — we look at equipment, airflow, and moisture sources."
+    }
+  ],
+  "related": [
+    {
+      "href": "../services/indoor-air-quality.html",
+      "title": "Indoor Air Quality",
+      "blurb": "Humidity & IAQ solutions"
+    },
+    {
+      "href": "ductwork-problems-signs-and-fixes.html",
+      "title": "Ductwork Problems",
+      "blurb": "Airflow & leaks"
+    },
+    {
+      "href": "why-hvac-maintenance-is-important.html",
+      "title": "Why Maintenance Matters",
+      "blurb": "Coil & drain care"
+    },
+    {
+      "href": "indoor-air-quality-tips-nc.html",
+      "title": "IAQ Tips for NC",
+      "blurb": "More IAQ advice"
+    }
+  ],
+  "cta_title": "Tired of Sticky Indoor Air?",
+  "cta_body": "Call Frost Fire at (919) 230-4439 — we fix humidity problems at the system level, not with guesswork."
+}

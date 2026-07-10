@@ -1,0 +1,153 @@
+{
+  "slug": "hvac-noises-what-they-mean",
+  "title": "HVAC Noises Explained: What They Mean",
+  "meta_description": "Banging, screeching, rattling, clicking, or bubbling from your HVAC? Learn what common HVAC noises mean, how urgent they are, and when to call a Triangle pro.",
+  "h1": "HVAC Noises Explained: What That Sound Means",
+  "subtitle": "A practical guide to diagnosing common heating and cooling noises — and which ones mean shut it down now.",
+  "category": "Troubleshooting",
+  "hero_image": "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
+  "hero_alt": "Mechanical equipment and tools",
+  "date_published": "2026-07-10",
+  "date_modified": "2026-07-10",
+  "intro": [
+    "Your HVAC system should be a background hum — not a concert. New or worsening noises are one of the best early-warning systems you have before a no-cool or no-heat failure.",
+    "This guide explains common <strong>HVAC noises and what they mean</strong>, how urgent each one is, and what Triangle homeowners can safely check before calling <a href=\"../services/ac-repair.html\">AC repair</a> or <a href=\"../services/heating-repair.html\">heating repair</a>."
+  ],
+  "sections": [
+    {
+      "id": "why-noise-matters",
+      "title": "Why You Should Never Ignore New HVAC Sounds",
+      "paragraphs": [
+        "Bearings, belts, contactors, and compressors rarely fail silently. Noise is friction, looseness, electrical arcing, or refrigerant/airflow distress announcing itself.",
+        "Catching a screeching blower motor early can mean a motor replacement instead of a burned module and smoke damage. Catching a failing contactor can prevent a weekend outage in July."
+      ]
+    },
+    {
+      "id": "banging-clanking",
+      "title": "Banging or Clanking",
+      "paragraphs": [
+        "A loud bang at startup or shutdown can be expanding ductwork (\"oil canning\") — annoying but often not an emergency. Repeated heavy clanking from the outdoor unit or air handler is different: loose blower wheel, broken mount, or compressor internals."
+      ],
+      "list": [
+        "<strong>Duct pop at start:</strong> often airflow/static pressure; schedule inspection if severe",
+        "<strong>Metal clanking outdoors:</strong> shut down and call — debris or failing fan/compressor risk",
+        "<strong>Furnace delayed ignition bang:</strong> safety issue — call promptly"
+      ]
+    },
+    {
+      "id": "screeching-squealing",
+      "title": "Screeching or Squealing",
+      "paragraphs": [
+        "High-pitched squeals usually point to blower motor bearings, a failing belt (on older belt-drive equipment), or an outdoor fan motor on its way out. Do not keep running a screaming motor — heat builds fast.",
+        "If the noise started after a long idle season, bearings may have dried. A maintenance visit can catch borderline motors before peak season."
+      ]
+    },
+    {
+      "id": "rattling",
+      "title": "Rattling",
+      "paragraphs": [
+        "Rattles are often loose screws, panel covers, refrigerant line vibration, or debris in the outdoor cabinet. Sometimes a simple panel screw fixes it. Sometimes a fan blade is bent and walking out of balance.",
+        "If rattling came with reduced cooling, prioritize service — a failing fan can overheat the compressor."
+      ]
+    },
+    {
+      "id": "clicking",
+      "title": "Clicking",
+      "paragraphs": [
+        "A single click at startup is often a contactor or relay — normal. Rapid or continuous clicking can mean a failing contactor, control board issue, or thermostat rapid-cycling.",
+        "Smart thermostats with wrong cycle settings can click equipment on/off too frequently and shorten compressor life."
+      ]
+    },
+    {
+      "id": "bubbling-hissing",
+      "title": "Bubbling, Hissing, or Whooshing",
+      "paragraphs": [
+        "Hissing can be a refrigerant leak (urgent for performance and environmental reasons) or air escaping from ducts. Bubbling in lines can accompany refrigerant issues. Whooshing from vents is often airflow — sometimes undersized returns.",
+        "Do not try to \"top off\" refrigerant yourself. Leak find and repair is the correct path."
+      ]
+    },
+    {
+      "id": "humming",
+      "title": "Loud Humming Without the Fan Starting",
+      "paragraphs": [
+        "A hard hum from the outdoor unit with a still fan is a classic failed capacitor or seized fan motor symptom. Shut the system off at the thermostat and breaker if the hum persists — protecting the compressor matters.",
+        "This is one of the most common mid-summer failures we see across <a href=\"../service-areas/clayton-nc.html\">Clayton</a> and <a href=\"../service-areas/raleigh-nc.html\">Raleigh</a>."
+      ]
+    },
+    {
+      "id": "grinding-scraping",
+      "title": "Grinding or Scraping",
+      "paragraphs": [
+        "Treat grinding as urgent. Something hard is contacting something spinning. Shut the system down and call. Continuing to run can destroy a blower wheel or motor."
+      ]
+    },
+    {
+      "id": "what-to-do",
+      "title": "What to Do When You Hear a Bad Noise",
+      "ordered_list": [
+        "Note when it happens (start, run, shutoff) and where (indoor, outdoor, vents)",
+        "Check for obvious loose access panels",
+        "Replace a filthy filter if airflow-related whistling/rattling is present",
+        "Shut the system down for grinding, screaming bearings, or humming-with-no-fan",
+        "Call Frost Fire with your notes — it speeds diagnosis"
+      ]
+    },
+    {
+      "id": "prevention",
+      "title": "Prevention: Maintenance Catches Noise Early",
+      "paragraphs": [
+        "During <a href=\"../services/maintenance.html\">maintenance</a>, technicians listen for bearing wear, check motor amp draw, and inspect fans for balance. That is how noises get fixed before they become failures — including on Sundays without a surcharge when you need urgent help."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is a ticking sound normal?",
+      "a": "Light expansion sounds can be normal. Rapid electrical ticking or continuous relay chatter should be inspected."
+    },
+    {
+      "q": "Why does my ductwork bang?",
+      "a": "Often metal ducts flex under pressure changes. Severe or new banging deserves an airflow evaluation."
+    },
+    {
+      "q": "Can low refrigerant cause noise?",
+      "a": "It can contribute to unusual sounds and poor cooling, but hissing leaks and compressor stress are the bigger concerns."
+    },
+    {
+      "q": "Should I keep running a noisy system?",
+      "a": "Not if the noise is grinding, screeching, or a hard hum with no fan. Those can turn a repair into a replacement."
+    },
+    {
+      "q": "Do heat pumps make unique noises?",
+      "a": "Yes — defrost cycles can steam and whoosh in winter. That can be normal. Continuous ice with loud distress is not."
+    },
+    {
+      "q": "Can you diagnose from a phone video?",
+      "a": "A short video helps triage. Call (919) 230-4439 and we will tell you if it sounds urgent."
+    }
+  ],
+  "related": [
+    {
+      "href": "things-to-check-when-ac-not-working.html",
+      "title": "AC Not Working Checklist",
+      "blurb": "Start here if cooling failed"
+    },
+    {
+      "href": "../services/ac-repair.html",
+      "title": "AC Repair",
+      "blurb": "Cooling system repair"
+    },
+    {
+      "href": "../services/heating-repair.html",
+      "title": "Heating Repair",
+      "blurb": "Furnace/heat pump sounds"
+    },
+    {
+      "href": "why-hvac-maintenance-is-important.html",
+      "title": "Why Maintenance Matters",
+      "blurb": "Catch wear early"
+    }
+  ],
+  "cta_title": "Hearing Something New From Your HVAC?",
+  "cta_body": "Call Frost Fire at (919) 230-4439 — we will help you decide if it is urgent."
+}

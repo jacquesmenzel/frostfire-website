@@ -1,0 +1,142 @@
+{
+  "slug": "how-often-change-hvac-air-filter",
+  "title": "How Often to Change Your HVAC Air Filter",
+  "meta_description": "How often should you change your HVAC air filter in NC? MERV ratings, pets, pollen, filter sizes, and mistakes that hurt airflow — Triangle homeowner guide.",
+  "h1": "How Often Should You Change Your HVAC Air Filter?",
+  "subtitle": "A clear filter schedule for North Carolina homes — including pets, allergies, MERV ratings, and the mistakes that freeze AC coils.",
+  "category": "Maintenance",
+  "hero_image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80",
+  "hero_alt": "Home maintenance and cleaning",
+  "date_published": "2026-07-10",
+  "date_modified": "2026-07-10",
+  "intro": [
+    "If you do only one DIY HVAC task, make it this: change the air filter on schedule. In the Triangle, pollen, humidity, and long cooling seasons clog filters faster than generic \"every 90 days\" advice suggests.",
+    "This guide covers <strong>how often to change your HVAC air filter</strong>, which MERV rating makes sense, and how the wrong filter can cause frozen coils and expensive <a href=\"../services/ac-repair.html\">AC repairs</a>."
+  ],
+  "sections": [
+    {
+      "id": "why-filters-matter",
+      "title": "Why Filters Matter More Than People Think",
+      "paragraphs": [
+        "Filters protect the blower and coil from dust. When clogged, airflow drops, the evaporator coil gets too cold, ice forms, and cooling dies — often with water damage when it thaws.",
+        "Filters also affect indoor air quality. They are not a substitute for source control or proper ventilation, but a loaded filter is both an airflow problem and an IAQ problem."
+      ]
+    },
+    {
+      "id": "how-often",
+      "title": "How Often to Change Filters in the Triangle",
+      "paragraphs": [
+        "Use this as a starting schedule, then adjust by inspecting monthly:"
+      ],
+      "list": [
+        "<strong>1 inch standard filter, no pets:</strong> every 30–60 days in cooling season; 60–90 days lighter seasons",
+        "<strong>Pets (especially multiple):</strong> every 30 days, sometimes sooner",
+        "<strong>Allergies / NC pollen peaks:</strong> every 30 days in spring and fall",
+        "<strong>Construction / renovations nearby:</strong> every 2–4 weeks until dust settles",
+        "<strong>Thicker media cabinets (4–5 inch):</strong> often 3–6 months, but still inspect — do not assume"
+      ],
+      "callout": {
+        "title": "Summer rule",
+        "body": "If the AC runs all afternoon in Clayton or Raleigh heat, check the filter monthly even if the box says 90 days."
+      }
+    },
+    {
+      "id": "merv-explained",
+      "title": "MERV Ratings Without the Marketing Fog",
+      "paragraphs": [
+        "MERV measures how small a particle a filter can capture. Higher is not always better for every system. Too-restrictive filters on systems not designed for them raise static pressure and cut airflow.",
+        "Many residential systems do well with MERV 8–11. MERV 13 can be appropriate on systems designed for it or with media cabinets. If a high-MERV filter caused weak airflow, step down and ask a tech to measure static pressure."
+      ]
+    },
+    {
+      "id": "sizes-and-fit",
+      "title": "Size, Fit, and Airflow Direction",
+      "paragraphs": [
+        "Use the exact size printed on the old filter (for example 16x25x1). \"Close enough\" sizes bypass dirty air around the edges.",
+        "Install with the arrow pointing toward the furnace/air handler (the direction of airflow). A backwards filter still filters somewhat but is not designed to seal and load correctly."
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "Common Filter Mistakes We See",
+      "ordered_list": [
+        "Running months past a clogged filter because \"it didn't look that bad\"",
+        "Buying the cheapest high-MERV filter that chokes an older system",
+        "Forgetting a second filter location (some homes have return grilles and a furnace slot)",
+        "Leaving plastic shipping wrap on a new filter (yes, it happens)",
+        "Never checking washable filters — they still need cleaning"
+      ]
+    },
+    {
+      "id": "iaq",
+      "title": "Filters vs. Real Indoor Air Quality Solutions",
+      "paragraphs": [
+        "A filter helps, but IAQ also depends on humidity control, ventilation, and source removal. If someone in the home has asthma or severe allergies, ask about <a href=\"../services/indoor-air-quality.html\">indoor air quality</a> options beyond a grocery-store filter."
+      ]
+    },
+    {
+      "id": "maintenance-tie-in",
+      "title": "Pair Filter Changes With Professional Maintenance",
+      "paragraphs": [
+        "Filters are DIY. Coil cleaning, capacitor testing, and drain clearing are not. Combine monthly filter discipline with twice-yearly <a href=\"../services/maintenance.html\">professional maintenance</a> for the best results in North Carolina."
+      ]
+    },
+    {
+      "id": "when-filter-isnt-enough",
+      "title": "When Changing the Filter Does Not Fix Cooling",
+      "paragraphs": [
+        "If a new filter does not restore cooling, move to the broader checklist in our <a href=\"things-to-check-when-ac-not-working.html\">AC not working guide</a>, then call for service. Capacitors, refrigerant leaks, and failed motors will not care how new your filter is."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Can a dirty filter freeze my AC?",
+      "a": "Yes. Restricted airflow is a leading cause of evaporator icing."
+    },
+    {
+      "q": "Are expensive filters always better?",
+      "a": "Not always. The best filter is one that fits, is changed on time, and matches what your system can push air through."
+    },
+    {
+      "q": "Do heat pumps use the same filters?",
+      "a": "Yes for shared air handlers. Change on the same schedule."
+    },
+    {
+      "q": "Should I run the fan constantly with a high-MERV filter?",
+      "a": "Only if comfort/IAQ goals call for it and the system can handle the static pressure. Ask a tech if unsure."
+    },
+    {
+      "q": "Where is my filter located?",
+      "a": "Common places: return grille on a wall/ceiling, or a slot at the furnace/air handler. Some homes have both."
+    },
+    {
+      "q": "Can Frost Fire remind me as part of a plan?",
+      "a": "Ask about maintenance plan options when you call (919) 230-4439."
+    }
+  ],
+  "related": [
+    {
+      "href": "why-hvac-maintenance-is-important.html",
+      "title": "Why Maintenance Is Important",
+      "blurb": "Bigger picture"
+    },
+    {
+      "href": "../services/indoor-air-quality.html",
+      "title": "Indoor Air Quality",
+      "blurb": "Beyond filters"
+    },
+    {
+      "href": "things-to-check-when-ac-not-working.html",
+      "title": "AC Not Working Checklist",
+      "blurb": "Next steps"
+    },
+    {
+      "href": "../services/maintenance.html",
+      "title": "Maintenance Plans",
+      "blurb": "Pro tune-ups"
+    }
+  ],
+  "cta_title": "Need Help Choosing the Right Filter Setup?",
+  "cta_body": "Call Frost Fire at (919) 230-4439 — we will match filter strategy to your system, not a one-size claim."
+}

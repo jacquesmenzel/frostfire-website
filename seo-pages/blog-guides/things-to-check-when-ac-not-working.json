@@ -1,0 +1,180 @@
+{
+  "slug": "things-to-check-when-ac-not-working",
+  "title": "AC Not Working? 12 Things to Check First",
+  "meta_description": "AC not working? Use this Triangle homeowner checklist: thermostat, breaker, filter, outdoor unit, vents, and condensate — plus when to stop DIY and call a pro.",
+  "h1": "Things to Check When Your AC Is Not Working",
+  "subtitle": "A calm, step-by-step checklist for Raleigh–Durham–Clayton homeowners before you call for service — and clear signs you should stop and phone a pro.",
+  "category": "Troubleshooting",
+  "hero_image": "https://images.unsplash.com/photo-1631545806608-c8bba7639d4a?w=1200&q=80",
+  "hero_alt": "Residential air conditioning outdoor unit",
+  "date_published": "2026-07-10",
+  "date_modified": "2026-07-10",
+  "intro": [
+    "When the house is hot and the AC will not cool, panic is normal. A methodical checklist is better. Many \"dead AC\" calls turn out to be a thermostat mode, tripped breaker, or packed filter — fixes you can check safely in minutes.",
+    "This guide walks through <strong>things to check when your AC is not working</strong>, in a safe order. It also tells you when to stop DIY and call <a href=\"../services/ac-repair.html\">AC repair</a> or <a href=\"../services/emergency-ac-repair-clayton-nc.html\">emergency AC service in Clayton</a>."
+  ],
+  "howto_name": "Homeowner checks when AC is not cooling",
+  "howto_steps": [
+    {
+      "title": "Verify thermostat settings",
+      "body": "Confirm Cool mode, setpoint below room temperature, and fan on Auto."
+    },
+    {
+      "title": "Check power and breakers",
+      "body": "Inspect the air handler breaker and outdoor disconnect/breaker."
+    },
+    {
+      "title": "Inspect and replace the filter",
+      "body": "Replace a dirty filter and restart the system after 5 minutes."
+    },
+    {
+      "title": "Check outdoor unit and vents",
+      "body": "Confirm the outdoor fan can run and interior vents are open."
+    },
+    {
+      "title": "Look for water/ice issues",
+      "body": "Check for condensate overflow or iced coils — shut down if iced."
+    },
+    {
+      "title": "Call a pro if still not cooling",
+      "body": "Provide symptoms, age of system, and what you already checked."
+    }
+  ],
+  "sections": [
+    {
+      "id": "safety-first",
+      "title": "Safety First: When Not to DIY",
+      "paragraphs": [
+        "Stop and call a professional if you smell burning plastic, see scorched wires, hear loud grinding metal, smell gas (for gas furnaces/dual fuel), or find standing water near electrical equipment.",
+        "Also stop if the breaker trips repeatedly after reset. Repeated trips mean a fault — not a nuisance."
+      ],
+      "callout": {
+        "title": "Rule of thumb",
+        "body": "If a step requires opening electrical panels beyond a simple breaker reset, or handling refrigerant, that is pro territory."
+      }
+    },
+    {
+      "id": "thermostat-checks",
+      "title": "1–3: Thermostat Checks Most People Skip",
+      "paragraphs": [
+        "Confirm the thermostat is in <strong>Cool</strong>, not Heat or Off. Set the temperature at least 3 degrees below room temperature. Set fan to <strong>Auto</strong> (On can circulate warm air and confuse the diagnosis).",
+        "Replace batteries if the display is dim or blank. For Wi-Fi thermostats, check that the app shows the equipment is online and not in a schedule hold that fights you.",
+        "If you recently installed a smart thermostat, a missing C-wire or incorrect equipment configuration can look exactly like an AC failure."
+      ]
+    },
+    {
+      "id": "power-checks",
+      "title": "4–5: Breakers, Switches, and the Outdoor Disconnect",
+      "paragraphs": [
+        "Check the breaker labeled Air Handler / Furnace / HVAC in your panel. Flip fully Off, then On. Check the outdoor condenser breaker too.",
+        "At the outdoor unit, confirm the disconnect pull-out is fully seated. After storms in <a href=\"../service-areas/raleigh-nc.html\">Raleigh</a> and <a href=\"../service-areas/knightdale-nc.html\">Knightdale</a>, we often find disconnects partially out or breakers tripped from voltage events."
+      ]
+    },
+    {
+      "id": "filter-airflow",
+      "title": "6–7: Filter and Airflow (The #1 Summer Culprit)",
+      "paragraphs": [
+        "A clogged filter is the most common homeowner-fixable cause of weak cooling and frozen coils. Pull the filter and hold it to a light. If you cannot see light through it, replace it.",
+        "Open supply registers in occupied rooms. Do not close most of the house \"to force air\" into one room — that raises static pressure and can freeze the coil.",
+        "Listen for the indoor blower. If the outdoor unit runs but the indoor fan does not, you likely have an air handler/furnace issue, not just \"low refrigerant.\""
+      ]
+    },
+    {
+      "id": "outdoor-unit",
+      "title": "8–9: Outdoor Unit Visual Checks",
+      "paragraphs": [
+        "On a cooling call, the outdoor fan should typically spin and the unit should sound active (not silent). If the fan is still and the compressor is humming loudly, shut it off — that can be a failed capacitor/fan motor situation that overheats the compressor.",
+        "Clear leaves, grass, and cottonwood from around the cabinet. Keep 2+ feet of clearance. Do not spray water into electrical components."
+      ]
+    },
+    {
+      "id": "ice-and-water",
+      "title": "10–11: Ice on Lines and Water Around the System",
+      "paragraphs": [
+        "Ice on the copper lines or indoor coil means stop cooling mode. Turn the system Off and run Fan Only to thaw if safe. Icing is usually airflow or refrigerant related — running through ice can damage the compressor.",
+        "Water around the indoor unit often means a clogged condensate drain. Many systems shut down on a float switch. Clearing drains can be DIY for some homeowners, but if you are unsure, call — water damage costs more than a service visit."
+      ]
+    },
+    {
+      "id": "still-not-cooling",
+      "title": "12: Still Not Cooling? What to Tell the Technician",
+      "paragraphs": [
+        "Write down: thermostat settings, which breakers you reset, filter condition, whether outdoor fan spins, any ice/water, strange noises, and how long since the last maintenance.",
+        "That information shortens diagnosis for <a href=\"../services/ac-repair.html\">AC repair</a> and helps prioritize true emergencies for same-day triage."
+      ]
+    },
+    {
+      "id": "common-causes",
+      "title": "Most Common Causes We See in the Triangle",
+      "paragraphs": [
+        "After thousands of summer calls, patterns repeat:"
+      ],
+      "list": [
+        "Dirty filters and neglected coils",
+        "Failed run capacitors on outdoor units",
+        "Tripped breakers after storms",
+        "Low refrigerant from leaks (needs leak find, not endless top-offs)",
+        "Thermostat misconfiguration after DIY smart thermostat installs",
+        "Condensate float switch trips"
+      ]
+    },
+    {
+      "id": "when-to-call-now",
+      "title": "When to Call Immediately",
+      "paragraphs": [
+        "Call now if indoor temperatures are unsafe for kids/seniors/pets, if you have water actively damaging ceilings, or if you smell burning. Frost Fire offers same-day triage when capacity allows and does not add a Sunday surcharge.",
+        "For after-hours failures, see <a href=\"../services/after-hours-hvac-repair.html\">after-hours HVAC repair</a>."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Why is my AC running but not cooling?",
+      "a": "Common causes include dirty filters, low refrigerant, failing capacitors, iced coils, or a thermostat fan setting circulating warm air. See our related article on AC running but not cooling for deeper detail."
+    },
+    {
+      "q": "How long should I wait after resetting a breaker?",
+      "a": "Give the system a couple of minutes, then set Cool and listen for indoor and outdoor operation. If the breaker trips again, stop and call a pro."
+    },
+    {
+      "q": "Can I add refrigerant myself?",
+      "a": "No. Refrigerant handling requires certification, and adding freon without fixing a leak is a temporary (and often harmful) band-aid."
+    },
+    {
+      "q": "Should I cover my outdoor unit in summer?",
+      "a": "No. Covers during cooling season restrict airflow. Keep the area clear instead."
+    },
+    {
+      "q": "Is same-day AC repair available?",
+      "a": "Often yes in our Clayton-based service area. Call (919) 230-4439 for current ETAs."
+    },
+    {
+      "q": "What if my AC fails on Sunday?",
+      "a": "Call us. We are open Sundays and charge the same rates as weekdays."
+    }
+  ],
+  "related": [
+    {
+      "href": "ac-running-not-cooling.html",
+      "title": "AC Running But Not Cooling",
+      "blurb": "Deeper diagnosis"
+    },
+    {
+      "href": "../services/emergency-ac-repair-clayton-nc.html",
+      "title": "Emergency AC Clayton",
+      "blurb": "Same-day help"
+    },
+    {
+      "href": "../services/ac-repair.html",
+      "title": "AC Repair Services",
+      "blurb": "Professional repair"
+    },
+    {
+      "href": "why-hvac-maintenance-is-important.html",
+      "title": "Why Maintenance Matters",
+      "blurb": "Prevent the next outage"
+    }
+  ],
+  "cta_title": "Checked the List and Still Hot?",
+  "cta_body": "Call Frost Fire at (919) 230-4439 for AC repair across the Triangle — same price on Sundays."
+}

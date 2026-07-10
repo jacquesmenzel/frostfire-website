@@ -1,0 +1,141 @@
+{
+  "slug": "heat-pump-icing-up-what-to-do",
+  "title": "Heat Pump Icing Up? What To Do | Frost Fire",
+  "meta_description": "Heat pump icing up in winter? Learn normal defrost vs problem ice, what Triangle homeowners should do, and when to call for heat pump repair.",
+  "h1": "Heat Pump Icing Up: Normal Defrost vs. a Real Problem",
+  "subtitle": "North Carolina winters confuse a lot of heat pump owners. Here is how to tell safe frost from a failure — and what to do next.",
+  "category": "Heat Pumps",
+  "hero_image": "https://images.unsplash.com/photo-1631545806608-c8bba7639d4a?w=1200&q=80",
+  "hero_alt": "Outdoor heat pump unit",
+  "date_published": "2026-07-10",
+  "date_modified": "2026-07-10",
+  "intro": [
+    "Seeing ice on your outdoor unit can be alarming. Sometimes it is normal. Sometimes it is a defrost failure that will leave you with no heat and a damaged outdoor coil.",
+    "This guide explains <strong>heat pump icing</strong> for Triangle homeowners, what you should do safely, and when to call for <a href=\"../services/heat-pump.html\">heat pump service</a> or <a href=\"../services/heat-pump-repair-clayton-nc.html\">heat pump repair in Clayton</a>."
+  ],
+  "sections": [
+    {
+      "id": "normal-frost",
+      "title": "Normal Frost and the Defrost Cycle",
+      "paragraphs": [
+        "In cold, damp weather, outdoor coils collect frost while extracting heat from outdoor air. A healthy heat pump periodically enters defrost: it temporarily switches modes, outdoor steam/whoosh sounds can occur, and meltwater drips off.",
+        "A light frost coating that clears after a defrost cycle is expected. A solid block of ice that never clears is not."
+      ]
+    },
+    {
+      "id": "problem-ice",
+      "title": "Problem Ice: Signs Defrost Is Failing",
+      "list": [
+        "Ice bridging between fins into a solid sheet that remains after cycles",
+        "Outdoor fan hitting ice or scraping",
+        "Unit stuck in defrost or never entering defrost",
+        "Indoor air cool while system claims to be heating",
+        "Auxiliary heat running constantly with high electric bills"
+      ],
+      "paragraphs": [
+        "Common causes include failed defrost sensors/boards, low refrigerant, failing outdoor fan motors, and airflow restrictions. Guessing with a hairdryer is not a repair strategy for sealed-system issues."
+      ]
+    },
+    {
+      "id": "what-homeowners-should-do",
+      "title": "What You Should Do (and Not Do)",
+      "ordered_list": [
+        "Check the filter — poor indoor airflow affects the whole system",
+        "Make sure outdoor unit is not buried in leaves or plastic",
+        "Do not chip ice with tools — you can destroy the coil",
+        "Do not pour boiling water repeatedly onto electrical components",
+        "If ice is severe, switch to Emergency Heat if available and call a pro"
+      ],
+      "callout": {
+        "title": "Emergency Heat note",
+        "body": "Emergency Heat uses electric strips (or furnace on dual fuel). It keeps you warm but costs more. Use it as a bridge, not a lifestyle."
+      }
+    },
+    {
+      "id": "nc-winter-tips",
+      "title": "Triangle Winter Tips for Heat Pumps",
+      "paragraphs": [
+        "Set reasonable temperatures — giant setbacks can force long aux-heat recovery. Keep outdoor clearance. Schedule fall maintenance so defrost operation is verified before the first hard freeze.",
+        "Homes in <a href=\"../service-areas/wake-forest-nc.html\">Wake Forest</a>, <a href=\"../service-areas/cary-nc.html\">Cary</a>, and <a href=\"../service-areas/durham-nc.html\">Durham</a> with heat pumps should treat October/November tune-ups as seriously as spring AC visits."
+      ]
+    },
+    {
+      "id": "summer-ice",
+      "title": "What About Ice in Summer?",
+      "paragraphs": [
+        "Ice in cooling mode is a different problem — usually airflow or refrigerant related. Turn the system off and see our <a href=\"things-to-check-when-ac-not-working.html\">AC checklist</a>. Running an iced cooling system risks compressor damage."
+      ]
+    },
+    {
+      "id": "repair-vs-replace",
+      "title": "Repair vs. Replace on Icing Failures",
+      "paragraphs": [
+        "A sensor or board can be a straightforward repair. Repeated icing from a leaking system on a 15-year-old unit may trigger a replace conversation. Ask for options in writing and compare repair cost against remaining expected life."
+      ]
+    },
+    {
+      "id": "dual-fuel",
+      "title": "Dual-Fuel Systems",
+      "paragraphs": [
+        "If you have a heat pump paired with a gas furnace, changeover settings matter. Incorrect balance points cause odd behavior that looks like \"the heat pump is broken\" when controls need correction."
+      ]
+    },
+    {
+      "id": "when-to-call",
+      "title": "When to Call Frost Fire",
+      "paragraphs": [
+        "Call if ice remains after a defrost attempt window, if the fan is obstructed by ice, or if the home cannot hold temperature. We service heat pumps across the Triangle and do not add a Sunday surcharge when weekend help is needed."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Is steam from my heat pump normal?",
+      "a": "During defrost, steam-like vapor is common on cold days. Continuous thick ice is not."
+    },
+    {
+      "q": "Why is my heat pump blowing cool air sometimes?",
+      "a": "Briefly during defrost, supply air can feel cooler. Prolonged cool air in heat mode needs service."
+    },
+    {
+      "q": "Can I run Emergency Heat all winter?",
+      "a": "You can, but bills will climb. Fix the heat pump issue rather than living on strips."
+    },
+    {
+      "q": "Do mini-splits ice up too?",
+      "a": "Yes. Outdoor units on ductless systems also defrost. Persistent ice still needs diagnosis."
+    },
+    {
+      "q": "Will maintenance prevent icing problems?",
+      "a": "It helps by verifying defrost components and charge before winter."
+    },
+    {
+      "q": "Same-day heat pump repair?",
+      "a": "Call (919) 230-4439 for triage — no-heat calls are prioritized in cold snaps."
+    }
+  ],
+  "related": [
+    {
+      "href": "../services/heat-pump.html",
+      "title": "Heat Pump Services",
+      "blurb": "Install & repair"
+    },
+    {
+      "href": "../services/heat-pump-repair-clayton-nc.html",
+      "title": "Heat Pump Repair Clayton",
+      "blurb": "Local repair page"
+    },
+    {
+      "href": "heat-pump-vs-gas-furnace.html",
+      "title": "Heat Pump vs Gas Furnace",
+      "blurb": "System choice"
+    },
+    {
+      "href": "why-hvac-maintenance-is-important.html",
+      "title": "Why Maintenance Matters",
+      "blurb": "Preventive care"
+    }
+  ],
+  "cta_title": "Heat Pump Buried in Ice?",
+  "cta_body": "Call Frost Fire at (919) 230-4439 — we will help you sort normal defrost from a real failure."
+}
