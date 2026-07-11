@@ -6,6 +6,7 @@ const CHAT_HISTORY_UPSTREAM = `${UPSTREAM_BASE}/api/v1/website-chat/history`;
 const WEBSITE_SESSION_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/session`;
 const WEBSITE_EVENT_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/event`;
 const WEBSITE_LEAD_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/lead`;
+const WEBSITE_REVIEWS_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/reviews`;
 
 function corsHeaders(methods) {
   return {
@@ -121,6 +122,44 @@ async function handleWebsiteGrowthProxy(request, upstreamUrl, allowedMethod) {
   });
 }
 
+async function handleWebsiteReviewsProxy(request) {
+  if (request.method === "OPTIONS") {
+    return new Response(null, {
+      status: 204,
+      headers: corsHeaders("GET, OPTIONS"),
+    });
+  }
+
+  if (request.method !== "GET") {
+    return new Response(JSON.stringify({ detail: "Method not allowed" }), {
+      status: 405,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  const url = new URL(request.url);
+  const upstreamUrl = new URL(WEBSITE_REVIEWS_UPSTREAM);
+  upstreamUrl.search = url.search;
+
+  const upstream = await fetch(upstreamUrl.toString(), {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+    },
+  });
+
+  const body = await upstream.text();
+  return new Response(body, {
+    status: upstream.status,
+    headers: {
+      "Content-Type": "application/json",
+      // Reviews change infrequently; cache at the edge for a short window.
+      "Cache-Control": "public, max-age=300, stale-while-revalidate=3600",
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -138,6 +177,9 @@ export default {
     }
     if (url.pathname === "/api/v1/public/website/lead") {
       return handleWebsiteGrowthProxy(request, WEBSITE_LEAD_UPSTREAM, "POST");
+    }
+    if (url.pathname === "/api/v1/public/website/reviews") {
+      return handleWebsiteReviewsProxy(request);
     }
     return env.ASSETS.fetch(request);
   },

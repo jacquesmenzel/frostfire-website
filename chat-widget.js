@@ -1,34 +1,42 @@
 (function() {
-  if (!window.FrostFireAttribution) {
-    const base = (document.currentScript && document.currentScript.src) || '';
-    const attrSrc = base.includes('/')
-      ? base.replace(/chat-widget\.js(?:\?.*)?$/, 'js/attribution.js')
-      : 'js/attribution.js';
-    const configSrc = base.includes('/')
-      ? base.replace(/chat-widget\.js(?:\?.*)?$/, 'js/analytics-config.js')
-      : 'js/analytics-config.js';
-    const loadScript = function (src, onDone) {
-      const existing = Array.from(document.getElementsByTagName('script')).find(function (tag) {
-        return tag.src === src;
-      });
-      if (existing) {
-        if (onDone) onDone();
-        return;
-      }
-      const script = document.createElement('script');
-      script.src = src;
-      script.async = false;
-      script.onload = function () {
-        if (onDone) onDone();
-      };
-      script.onerror = function () {
-        if (onDone) onDone();
-      };
-      document.head.appendChild(script);
-    };
-    loadScript(configSrc, function () {
-      loadScript(attrSrc);
+  const scriptBase = (document.currentScript && document.currentScript.src) || '';
+  const resolveSibling = function (relativePath) {
+    return scriptBase.includes('/')
+      ? scriptBase.replace(/chat-widget\.js(?:\?.*)?$/, relativePath)
+      : relativePath;
+  };
+  const loadScript = function (src, onDone, async) {
+    const existing = Array.from(document.getElementsByTagName('script')).find(function (tag) {
+      return tag.src === src;
     });
+    if (existing) {
+      if (onDone) onDone();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = async !== false;
+    script.onload = function () {
+      if (onDone) onDone();
+    };
+    script.onerror = function () {
+      if (onDone) onDone();
+    };
+    document.head.appendChild(script);
+  };
+
+  if (!window.FrostFireAttribution) {
+    const attrSrc = resolveSibling('js/attribution.js');
+    const configSrc = resolveSibling('js/analytics-config.js');
+    loadScript(configSrc, function () {
+      loadScript(attrSrc, null, false);
+    }, false);
+  }
+
+  // Google Reviews social-proof toast (async; does not block chat).
+  if (!window.FF_REVIEWS_TOAST_LOADED && !(window.FF_REVIEWS_TOAST && window.FF_REVIEWS_TOAST.enabled === false)) {
+    window.FF_REVIEWS_TOAST_LOADED = true;
+    loadScript(resolveSibling('js/google-reviews-toast.js'), null, true);
   }
 
   const CONFIG = {
