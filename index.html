@@ -367,6 +367,194 @@
       margin-bottom: 24px;
       backdrop-filter: blur(10px);
     }
+
+    /* Google Excellent rating strip (hero top-left) */
+    #ff-google-rating-badge {
+      margin: 0 0 18px;
+      max-width: 100%;
+    }
+    #ff-google-rating-badge[hidden] { display: none !important; }
+    .ffgs-hero-link {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      color: #fff;
+      text-decoration: none;
+      font-family: Inter, Montserrat, system-ui, sans-serif;
+      line-height: 1;
+      text-shadow: 0 1px 8px rgba(0,0,0,.35);
+    }
+    .ffgs-hero-link:hover,
+    .ffgs-hero-link:focus-visible {
+      opacity: .95;
+      outline: 2px solid rgba(251,188,4,.55);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+    .ffgs-hero-label {
+      font-weight: 800;
+      font-size: .95rem;
+      letter-spacing: .06em;
+    }
+    .ffgs-stars {
+      color: #fbbc04;
+      letter-spacing: 2px;
+      font-size: 1rem;
+      line-height: 1;
+    }
+    .ffgs-hero-count {
+      font-weight: 500;
+      font-size: .95rem;
+      color: rgba(255,255,255,.92);
+    }
+    .ffgs-google-word {
+      font-family: 'Product Sans', Inter, Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* Below-fold Google reviews carousel */
+    #ff-google-reviews-carousel {
+      background: #0a1628;
+      padding: 64px 0 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    #ff-google-reviews-carousel[hidden] { display: none !important; }
+    .ffgs-title {
+      text-align: center;
+      color: #fff;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      font-weight: 500;
+      margin: 0 0 32px;
+      line-height: 1.35;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .ffgs-track-wrap {
+      position: relative;
+    }
+    .ffgs-track {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 8px 4px 16px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,.25) transparent;
+    }
+    .ffgs-track:focus-visible {
+      outline: 2px solid rgba(232,83,30,.5);
+      outline-offset: 4px;
+    }
+    .ffgs-card {
+      flex: 0 0 min(280px, 78vw);
+      scroll-snap-align: start;
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px 18px 16px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.25);
+      display: flex;
+      flex-direction: column;
+      min-height: 230px;
+    }
+    .ffgs-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .ffgs-card-name {
+      font-weight: 700;
+      color: #0f2b4c;
+      font-size: .95rem;
+    }
+    .ffgs-card-date {
+      color: #8a97a6;
+      font-size: .78rem;
+      margin-top: 3px;
+    }
+    .ffgs-card-stars {
+      margin-bottom: 10px;
+    }
+    .ffgs-card-stars .ffgs-stars {
+      font-size: .95rem;
+    }
+    .ffgs-card-text {
+      color: #2a3a4c;
+      font-size: .9rem;
+      line-height: 1.5;
+      margin: 0 0 auto;
+      flex: 1;
+    }
+    .ffgs-card-more {
+      margin-top: 14px;
+      color: #8a97a6;
+      font-size: .85rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .ffgs-card-more:hover,
+    .ffgs-card-more:focus-visible {
+      color: #1a73e8;
+      text-decoration: underline;
+      outline: none;
+    }
+    .ffgs-next {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-60%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      font-size: 1.6rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 16px rgba(0,0,0,.3);
+      z-index: 2;
+    }
+    .ffgs-next:hover,
+    .ffgs-next:focus-visible {
+      background: var(--accent, #E8531E);
+      outline: none;
+    }
+    .ffgs-footer {
+      text-align: center;
+      margin-top: 8px;
+    }
+    .ffgs-all {
+      color: rgba(255,255,255,.8);
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .ffgs-all:hover,
+    .ffgs-all:focus-visible {
+      color: #fff;
+      text-decoration: underline;
+      outline: none;
+    }
+    @media (max-width:768px) {
+      .ffgs-hero-link { gap: 8px 12px; }
+      .ffgs-hero-label { font-size: .8rem; }
+      .ffgs-hero-count { font-size: .82rem; }
+      .ffgs-google-word { font-size: .95rem; }
+      #ff-google-reviews-carousel { padding: 48px 0 40px; }
+      .ffgs-next { right: 4px; }
+    }
     .hero h1 {
       font-size: clamp(2.5rem, 6vw, 4.2rem);
       color: var(--white);
@@ -1227,6 +1415,14 @@
       <span></span><span></span><span></span><span></span>
     </div>
     <div class="container hero-content">
+      <div id="ff-google-rating-badge" aria-label="Google rating summary">
+        <a class="ffgs-hero-link" href="https://g.page/r/CSjVCnRtfVKPEBM/review" target="_blank" rel="noopener noreferrer">
+          <span class="ffgs-hero-label">EXCELLENT</span>
+          <span class="ffgs-stars" aria-hidden="true">★★★★★</span>
+          <span class="ffgs-hero-count">55 Google reviews</span>
+          <span class="ffgs-google-word" aria-label="Google"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></span>
+        </a>
+      </div>
       <div class="hero-badge">
         <i class="fas fa-snowflake"></i>
         Clayton's Trusted HVAC & Refrigeration Experts
@@ -1269,6 +1465,9 @@
       </div>
     </div>
   </section>
+
+  <!-- Google 5-star reviews carousel (below the fold) -->
+  <section id="ff-google-reviews-carousel" class="ffgs-carousel-section" aria-label="Google five-star reviews" hidden></section>
 
   <!-- TRUST BAR -->
   <section class="trust-bar">
@@ -1871,6 +2070,7 @@
 
 <script src="js/analytics-config.js"></script>
 <script src="js/attribution.js"></script>
+<script src="js/google-reviews-social.js" defer></script>
 <script src="chat-widget.js"></script>
 </body>
 </html>

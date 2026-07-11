@@ -123,7 +123,7 @@
     var css = document.createElement('style');
     css.id = 'ff-reviews-toast-css';
     css.textContent = [
-      '#ff-reviews-toast-root{position:fixed;z-index:99990;right:24px;bottom:100px;width:min(340px,calc(100vw - 24px));',
+      '#ff-reviews-toast-root{position:fixed;z-index:99990;left:24px;right:auto;bottom:24px;width:min(340px,calc(100vw - 48px));',
       'font-family:Inter,Montserrat,system-ui,-apple-system,sans-serif;color:#0f2b4c;pointer-events:none;',
       '--ffrt-accent:#E8531E;--ffrt-navy:#0f2b4c;--ffrt-muted:#5b6b7c;--ffrt-border:rgba(15,43,76,.1);',
       '--ffrt-shadow:0 10px 30px rgba(15,43,76,.18);}',
@@ -138,7 +138,7 @@
       '#ff-reviews-toast-root .ffrt-badge-rating{display:flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:var(--ffrt-navy)}',
       '#ff-reviews-toast-root .ffrt-badge-count{font-size:12px;color:var(--ffrt-muted);font-weight:500;white-space:nowrap}',
       '#ff-reviews-toast-root .ffrt-card{display:none;background:#fff;border:1px solid var(--ffrt-border);border-radius:16px;',
-      'box-shadow:var(--ffrt-shadow);overflow:hidden;transform-origin:bottom right}',
+      'box-shadow:var(--ffrt-shadow);overflow:hidden;transform-origin:bottom left}',
       '#ff-reviews-toast-root.is-expanded .ffrt-card{display:block}',
       '#ff-reviews-toast-root.is-collapsed .ffrt-badge{display:inline-flex}',
       '#ff-reviews-toast-root.is-pulse .ffrt-card{animation:ffrt-pulse .7s ease}',
@@ -178,7 +178,6 @@
       '#ff-reviews-toast-root .ffrt-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;',
       'clip:rect(0,0,0,0);white-space:nowrap;border:0}',
       '@media (max-width:768px){#ff-reviews-toast-root{left:12px;right:auto;bottom:72px;width:min(320px,calc(100vw - 88px))}',
-      '#ff-reviews-toast-root .ffrt-card{transform-origin:bottom left}',
       '#ff-reviews-toast-root .ffrt-quote{font-size:13px}}',
       '@media (max-width:380px){#ff-reviews-toast-root{width:calc(100vw - 76px)}',
       '#ff-reviews-toast-root .ffrt-cta{width:100%}}'
@@ -408,12 +407,15 @@
     var cleaned = [];
     for (var i = 0; i < reviews.length; i++) {
       var r = reviews[i] || {};
+      var rating = Math.max(1, Math.min(5, Number(r.rating) || 0));
+      // Toast only rotates authentic 5-star Google reviews.
+      if (rating !== 5) continue;
       var excerpt = String(r.excerpt || r.review_text || '').trim();
       if (!excerpt) continue;
       cleaned.push({
         id: String(r.id || ('r' + i)),
         reviewer_name: String(r.reviewer_name || 'Google reviewer').trim(),
-        rating: Math.max(1, Math.min(5, Number(r.rating) || 5)),
+        rating: 5,
         excerpt: excerpt.length > 240 ? excerpt.slice(0, 237).replace(/\s+\S*$/, '') + '…' : excerpt,
         review_date: r.review_date || null,
       });
