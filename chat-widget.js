@@ -44,6 +44,7 @@
     // This avoids cross-origin/CORS failures and enables history polling for human takeover.
     apiUrl: '/api/v1/website-chat/message',
     historyUrl: '/api/v1/website-chat/history',
+    streamUrl: '/api/v1/website-chat/stream',
     website: 'frostfire',
     brandName: 'Frost Fire HVACR',
     brandColor: '#1e40af',
@@ -51,6 +52,9 @@
     proactiveMessage: "Hey! 👋 This is Sarah. Thanks for checking out our website! I'm a live rep and I'm actually online right now. If you have any questions or would like to schedule an appointment, I'm here to help!",
     avatarUrl: 'images/sarah-avatar.jpg',
     proactiveDelay: 30000,
+    // Slow fallback poll — primary updates come via SSE when available.
+    // Never re-render the thread unless message content actually changed (avoids 2s flash).
+    pollIntervalMs: 12000,
   };
 
   let sessionId = localStorage.getItem('chat_session_' + CONFIG.website) || null;
@@ -59,6 +63,8 @@
   let unreadCount = 0;
   let serverThread = [];
   let pollHandle = null;
+  let eventSource = null;
+  let lastThreadFingerprint = null;
 
   function getAttributionApi() {
     return window.FrostFireAttribution && typeof window.FrostFireAttribution.getContext === 'function'
@@ -222,9 +228,9 @@
       proactive.classList.remove('show');
       unreadCount = 0;
       badge.style.display = 'none';
-      renderThread(); // show proactive message immediately
+      renderThread(true); // show proactive message immediately
       fetchHistoryAndRender();
-      startPolling();
+      startLiveUpdates();
       const attributionApi = getAttributionApi();
       if (attributionApi && typeof attributionApi.trackEvent === 'function') {
         attributionApi.trackEvent('chat_open', { lead_channel: 'chat', cta_type: 'chat_bubble' });
@@ -232,7 +238,7 @@
       setTimeout(() => input.focus(), 350);
     } else {
       win.classList.remove('open');
-      stopPolling();
+      stopLiveUpdates();
     }
   }
 
@@ -240,7 +246,25 @@
     while (msgArea.firstChild) msgArea.removeChild(msgArea.firstChild);
   }
 
-  function renderThread() {
+  function threadFingerprint(messages) {
+    const items = Array.isArray(messages) ? messages : [];
+    return items.map(function (m) {
+      return [
+        String(m.id || ''),
+        String(m.author_type || ''),
+        String(m.body || '').trim(),
+      ].join('|');
+    }).join('\n');
+  }
+
+  function renderThread(force) {
+    const fp = threadFingerprint(serverThread);
+    // Skip DOM rebuild when nothing changed — 2s polling was wiping+repainting the
+    // whole thread and causing a visible flash.
+    if (!force && lastThreadFingerprint !== null && fp === lastThreadFingerprint) {
+      return;
+    }
+    lastThreadFingerprint = fp;
     clearThreadUI();
     const items = Array.isArray(serverThread) ? serverThread : [];
 
@@ -282,14 +306,30 @@
     }
   }
 
-  function startPolling() {
-    stopPolling();
-    pollHandle = setInterval(fetchHistoryAndRender, 2000);
+  function startLiveUpdates() {
+    stopLiveUpdates();
+    if (sessionId && typeof EventSource !== 'undefined') {
+      try {
+        const qs = `?session_id=${encodeURIComponent(sessionId)}&website=${encodeURIComponent(CONFIG.website)}`;
+        eventSource = new EventSource(CONFIG.streamUrl + qs);
+        const refresh = function () { fetchHistoryAndRender(); };
+        eventSource.addEventListener('message', refresh);
+        eventSource.addEventListener('mode_change', refresh);
+      } catch (e) {
+        eventSource = null;
+      }
+    }
+    // Slow backup poll for human takeover / missed SSE events.
+    pollHandle = setInterval(fetchHistoryAndRender, CONFIG.pollIntervalMs);
   }
 
-  function stopPolling() {
+  function stopLiveUpdates() {
     if (pollHandle) clearInterval(pollHandle);
     pollHandle = null;
+    if (eventSource) {
+      try { eventSource.close(); } catch (e) { /* ignore */ }
+      eventSource = null;
+    }
   }
 
   function showTyping() {
@@ -339,6 +379,8 @@
       const data = await res.json();
       sessionId = data.session_id;
       localStorage.setItem('chat_session_' + CONFIG.website, sessionId);
+      // Connect SSE once we have a session (first message creates it).
+      if (isOpen) startLiveUpdates();
       // Simulate human typing delay
       const respText = String(data.response || '');
       const delay = Math.min(800 + respText.length * 15, 3000);
@@ -351,7 +393,11 @@
           const lastBody = last ? String(last.body || '').trim() : '';
           const lastAuthor = last ? String(last.author_type || '').toLowerCase() : '';
           const hasResponseInHistory = lastAuthor !== 'visitor' && lastBody && lastBody === respText.trim();
-          if (!hasResponseInHistory && respText) addMessage('assistant', respText);
+          if (!hasResponseInHistory && respText) {
+            addMessage('assistant', respText);
+            // Local-only append: invalidate fingerprint so next poll can reconcile cleanly.
+            lastThreadFingerprint = null;
+          }
         });
         if (!isOpen) {
           unreadCount++;

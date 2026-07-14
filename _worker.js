@@ -3,6 +3,7 @@
 const UPSTREAM_BASE = "https://get-forge-flow-api.fly.dev";
 const CHAT_MESSAGE_UPSTREAM = `${UPSTREAM_BASE}/api/v1/website-chat/message`;
 const CHAT_HISTORY_UPSTREAM = `${UPSTREAM_BASE}/api/v1/website-chat/history`;
+const CHAT_STREAM_UPSTREAM = `${UPSTREAM_BASE}/api/v1/website-chat/stream`;
 const WEBSITE_SESSION_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/session`;
 const WEBSITE_EVENT_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/event`;
 const WEBSITE_LEAD_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/lead`;
@@ -82,6 +83,44 @@ async function handleChatHistoryProxy(request) {
     headers: {
       "Content-Type": "application/json",
       "Cache-Control": "no-store",
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
+}
+
+async function handleChatStreamProxy(request) {
+  if (request.method === "OPTIONS") {
+    return new Response(null, {
+      status: 204,
+      headers: corsHeaders("GET, OPTIONS"),
+    });
+  }
+
+  if (request.method !== "GET") {
+    return new Response(JSON.stringify({ detail: "Method not allowed" }), {
+      status: 405,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  const url = new URL(request.url);
+  const upstreamUrl = new URL(CHAT_STREAM_UPSTREAM);
+  upstreamUrl.search = url.search; // session_id, website
+
+  const upstream = await fetch(upstreamUrl.toString(), {
+    method: "GET",
+    headers: {
+      Accept: "text/event-stream",
+    },
+  });
+
+  // Stream through without buffering so SSE heartbeats reach the browser.
+  return new Response(upstream.body, {
+    status: upstream.status,
+    headers: {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+      Connection: "keep-alive",
       "Access-Control-Allow-Origin": "*",
     },
   });
@@ -168,6 +207,9 @@ export default {
     }
     if (url.pathname === "/api/v1/website-chat/history") {
       return handleChatHistoryProxy(request);
+    }
+    if (url.pathname === "/api/v1/website-chat/stream") {
+      return handleChatStreamProxy(request);
     }
     if (url.pathname === "/api/v1/public/website/session") {
       return handleWebsiteGrowthProxy(request, WEBSITE_SESSION_UPSTREAM, "POST");
