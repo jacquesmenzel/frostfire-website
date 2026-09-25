@@ -199,9 +199,15 @@ async function handleWebsiteReviewsProxy(request) {
   });
 }
 
+// ChatGPT ads / short links → Google Business Profile listing (not the website).
+const GMB_LISTING_URL = "https://share.google/tHEvSN05pkMKBOxyx";
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === "/gmb" || url.pathname === "/gmb/") {
+      return Response.redirect(GMB_LISTING_URL, 302);
+    }
     if (url.pathname === "/api/v1/website-chat/message") {
       return handleChatProxy(request);
     }
