@@ -96,7 +96,7 @@ const CORE_SERVICES = [
   { href: '../services/commercial.html', icon: 'fa-building', title: 'Commercial HVAC & Refrigeration' },
   { href: '../services/open-sundays-no-extra-charge-hvac.html', icon: 'fa-calendar-check', title: 'Open Sundays — No Surcharge' },
   { href: '../services/walk-in-cooler-repair-raleigh-nc.html', icon: 'fa-snowflake', title: 'Walk-In Cooler Repair' },
-  { href: '../services/maintenance.html', icon: 'fa-clipboard-check', title: 'Maintenance Plans' },
+  { href: 'https://join.frostfirehvacr.com/maintenance-signup', icon: 'fa-clipboard-check', title: 'Maintenance Plans' },
   { href: '../services/indoor-air-quality.html', icon: 'fa-lungs', title: 'Indoor Air Quality' },
 ];
 
