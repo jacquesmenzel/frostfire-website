@@ -16,7 +16,7 @@ export function buildLocalPage(spec) {
     ac: '<a href="../services/ac-repair.html">AC repair</a>',
     heat: '<a href="../services/heating-repair.html">heating repair</a>',
     hp: '<a href="../services/heat-pump.html">heat pump service</a>',
-    maint: '<a href="../services/maintenance.html">maintenance plans</a>',
+    maint: '<a href="https://join.frostfirehvacr.com/maintenance-signup">maintenance plans</a>',
     emerg: '<a href="../services/emergency-ac-repair-clayton-nc.html">emergency AC repair</a>',
     sunday: '<a href="../services/open-sundays-no-extra-charge-hvac.html">open Sundays — no surcharge</a>',
     mini: '<a href="../services/mini-split.html">mini-split installation</a>',

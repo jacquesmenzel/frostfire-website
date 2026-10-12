@@ -16,7 +16,7 @@ export const GUIDES_PART1 = [
     intro: [
       'Most homeowners in <a href="../service-areas/clayton-nc.html">Clayton</a>, <a href="../service-areas/raleigh-nc.html">Raleigh</a>, and <a href="../service-areas/durham-nc.html">Durham</a> only think about their HVAC system when it fails — usually on a 95°F afternoon or a freezing January night. By then, a cheap maintenance visit has turned into an expensive emergency repair.',
       'This guide explains <strong>why HVAC maintenance is important</strong> in plain language: what happens inside your system when it is neglected, what a real tune-up includes, how North Carolina\'s climate accelerates wear, and how to build a simple seasonal schedule that actually prevents breakdowns.',
-      'If you already know you want professional care, jump to our <a href="../services/maintenance.html">maintenance plans</a>. If you want to understand the "why" first, keep reading.',
+      'If you already know you want professional care, jump to our <a href="https://join.frostfirehvacr.com/maintenance-signup">maintenance plans</a>. If you want to understand the "why" first, keep reading.',
     ],
     sections: [
       {
