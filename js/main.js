@@ -1,4 +1,18 @@
 /* Frost Fire HVACR — Main JS */
+// Ad-channel phone numbers + Microsoft UET on every page (pages without attribution.js too).
+(function () {
+  ['/js/phone-numbers.js', '/js/microsoft-uet.js'].forEach(function (src) {
+    var name = src.split('/').pop();
+    var have = Array.prototype.some.call(document.scripts, function (s) {
+      return String(s.getAttribute('src') || '').split('?')[0].slice(-name.length) === name;
+    });
+    if (have) return;
+    var el = document.createElement('script');
+    el.src = src;
+    el.async = true;
+    document.head.appendChild(el);
+  });
+})();
 document.addEventListener('DOMContentLoaded', function() {
   // Mobile menu toggle
   const toggle = document.querySelector('.menu-toggle');

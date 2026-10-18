@@ -37,6 +37,17 @@
     document.head.appendChild(script);
   }
 
+  // Load /js/phone-numbers.js and /js/microsoft-uet.js once on every page that has this file.
+  function ensureSiteScripts() {
+    ['/js/phone-numbers.js', '/js/microsoft-uet.js'].forEach(function (src) {
+      const name = src.split('/').pop();
+      const have = Array.prototype.some.call(document.scripts, function (s) {
+        return String(s.getAttribute('src') || '').split('?')[0].endsWith(name);
+      });
+      if (!have) loadScript(src);
+    });
+  }
+
   function pushDataLayer(eventName, payload) {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(
@@ -351,7 +362,15 @@
       page_type: payload && payload.context ? payload.context.page_type : undefined
     });
     // Lead submits must surface failures so the form can show a retry/call message.
-    return postJson(API.lead, payload, { requireOk: true });
+    return postJson(API.lead, payload, { requireOk: true }).then(function (resp) {
+      // Microsoft UET conversion (no-op until js/microsoft-uet.js has a tag id).
+      try {
+        if (window.FrostFireUET) window.FrostFireUET.lead({ cta_type: details.cta_type || undefined });
+      } catch {
+        /* never block the form */
+      }
+      return resp;
+    });
   }
 
   function bootSession() {
@@ -482,6 +501,8 @@
     trackEvent('calculator_view', { lead_channel: 'calculator' });
   }
 
+  // Site-wide helpers: ad-channel phone numbers + Microsoft UET (main.js loads them too).
+  ensureSiteScripts();
   persistFirstTouch();
   persistSessionTouch();
   bootSession();

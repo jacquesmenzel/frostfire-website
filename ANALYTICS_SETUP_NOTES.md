@@ -180,3 +180,15 @@ After deploy, verify:
   - sitemap update
   - CTA placement
   - attribution-ready internal links
+
+## Microsoft Advertising UET + call-tracking numbers (2026-10-18)
+
+- `js/microsoft-uet.js` loads the Bing UET tag on every page (main.js and attribution.js inject it).
+  It does nothing until `UET_TAG_ID` is filled in (Microsoft Advertising → Tools → UET tag).
+  Events: `submit_lead_form` (any CRM lead form succeeds) and `phone_call_click` (any tel: tap).
+  Create matching "Event" conversion goals with those Action values.
+- `js/phone-numbers.js` swaps in the channel's Twilio tracking number on ad-click visits
+  (`msclkid`/`utm_source=bing` → Bing, `gclid`/google+cpc → Google Ads, `fbclid`/facebook → Meta,
+  `oppref`/chatgpt+cpc → ChatGPT) for the whole session, site-wide. Organic/direct visits keep
+  (919) 230-4439. Add `data-ff-phone-keep` around anything that must keep the main number.
+- The `/lp/{bing,google,meta,chatgpt}/` pages ship with their tracking number in the static HTML.

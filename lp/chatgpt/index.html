@@ -4,6 +4,7 @@
   - data-ff-page-type  -> website_sessions.landing_page_type / website_leads.landing_page_type = "lp_chatgpt"
   - data-ff-phone-channel -> which number js/phone-numbers.js shows (falls back to the main line until a
     ChatGPT tracking number is set there).
+    The static HTML already shows this page's tracking number (no-JS safe).
   Ad destination URL (keep the trailing slash so no redirect can drop the query string):
     https://frostfirehvacr.com/lp/chatgpt/?utm_source=chatgpt&utm_medium=cpc&utm_campaign={campaign_id}&utm_content={ad_id}
   OpenAI appends its click id (?oppref=...) itself; attribution.js keeps it in lead details.click_ids.
@@ -13,7 +14,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Same-Day HVAC Repair, Same Price 7 Days | Frost Fire Heating & Cooling</title>
-  <meta name="description" content="Heating or AC trouble in Clayton, Raleigh, Durham or the Triangle? Frost Fire Heating & Cooling: licensed and insured, 24/7 emergency service, and the same price on Sundays. Call (919) 230-4439.">
+  <meta name="description" content="Heating or AC trouble in Clayton, Raleigh, Durham or the Triangle? Frost Fire Heating & Cooling: licensed and insured, 24/7 emergency service, and the same price on Sundays. Call (984) 205-8039.">
   <!-- Paid-ads landing page: keep it out of search results (the SEO pages cover organic). -->
   <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://frostfirehvacr.com/">
@@ -155,9 +156,9 @@
         <img src="/images/frostfire-logo-160.png" width="52" height="52" alt="">
         <span>Frost Fire<small>Heating &amp; Cooling · Clayton, NC</small></span>
       </a>
-      <a class="head-call" href="tel:+19192304439" data-ff-phone aria-label="Call Frost Fire">
+      <a class="head-call" href="tel:+19842058039" data-ff-phone aria-label="Call Frost Fire">
         <i><svg width="18" height="18"><use href="#i-phone"/></svg></i>
-        <span class="num" data-ff-phone-text>(919) 230-4439</span>
+        <span class="num" data-ff-phone-text>(984) 205-8039</span>
       </a>
     </div>
   </header>
@@ -184,9 +185,9 @@
           </div>
 
           <div class="hero-cta">
-            <a class="btn btn-primary" href="tel:+19192304439" data-ff-phone>
+            <a class="btn btn-primary" href="tel:+19842058039" data-ff-phone>
               <svg width="20" height="20"><use href="#i-phone"/></svg>
-              <span>Call <span data-ff-phone-text>(919) 230-4439</span></span>
+              <span>Call <span data-ff-phone-text>(984) 205-8039</span></span>
             </a>
             <a class="btn btn-ghost" href="#book">Request a visit</a>
           </div>
@@ -241,7 +242,7 @@
             </div>
             <button class="btn btn-primary" type="submit" id="lp-submit">Request my visit</button>
             <div id="lp-form-msg" class="form-msg" role="status" aria-live="polite" hidden></div>
-            <p class="fine">Prefer to talk? <a href="tel:+19192304439" data-ff-phone>(919) 230-4439</a> · We never share your info.</p>
+            <p class="fine">Prefer to talk? <a href="tel:+19842058039" data-ff-phone>(984) 205-8039</a> · We never share your info.</p>
           </form>
         </div>
       </div>
@@ -311,7 +312,7 @@
           <li>Holly Springs</li><li>Fuquay-Varina</li><li>Smithfield</li><li>Fayetteville</li>
           <li>Knightdale</li><li>Wake Forest</li><li>Wendell</li><li>Morrisville</li><li>Selma</li><li>Benson</li><li>Angier</li><li>Rolesville</li>
         </ul>
-        <p class="center">Not on the list? <a href="tel:+19192304439" data-ff-phone="href">Call us</a> — we likely cover you.</p>
+        <p class="center">Not on the list? <a href="tel:+19842058039" data-ff-phone="href">Call us</a> — we likely cover you.</p>
       </div>
     </section>
 
@@ -319,9 +320,9 @@
       <div class="wrap">
         <h2>Talk to Frost Fire now</h2>
         <p>Same fair price on Sundays and holidays. 24/7 for emergencies.</p>
-        <a class="btn" href="tel:+19192304439" data-ff-phone>
+        <a class="btn" href="tel:+19842058039" data-ff-phone>
           <svg width="20" height="20"><use href="#i-phone"/></svg>
-          <span>Call <span data-ff-phone-text>(919) 230-4439</span></span>
+          <span>Call <span data-ff-phone-text>(984) 205-8039</span></span>
         </a>
       </div>
     </section>
@@ -335,9 +336,9 @@
   </footer>
 
   <div class="callbar">
-    <a href="tel:+19192304439" data-ff-phone>
+    <a href="tel:+19842058039" data-ff-phone>
       <svg width="20" height="20"><use href="#i-phone"/></svg>
-      <span>Tap to call <span data-ff-phone-text>(919) 230-4439</span></span>
+      <span>Tap to call <span data-ff-phone-text>(984) 205-8039</span></span>
     </a>
   </div>
 
@@ -355,7 +356,7 @@
       var btn = document.getElementById('lp-submit');
       function phoneDisplay() {
         var p = window.FrostFirePhone;
-        return p ? p.numberFor(p.resolveChannel()).display : '(919) 230-4439';
+        return p ? p.numberFor(p.resolveChannel()).display : '(984) 205-8039';
       }
       function show(kind, text) {
         msg.className = 'form-msg ' + kind;
@@ -396,7 +397,7 @@
             offer: 'same_price_7_days',
             landing_page_type: 'lp_chatgpt',
             phone_channel: phoneInfo ? phoneInfo.channel : 'chatgpt',
-            phone_number_shown: phoneInfo ? phoneInfo.number.e164 : '+19192304439',
+            phone_number_shown: phoneInfo ? phoneInfo.number.e164 : '+19842058039',
           },
         };
         btn.disabled = true;
