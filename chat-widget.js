@@ -50,7 +50,8 @@
     brandColor: '#1e40af',
     brandColorLight: '#3b82f6',
     proactiveMessage: "Hey! 👋 This is Sarah. Thanks for checking out our website! I'm a live rep and I'm actually online right now. If you have any questions or would like to schedule an appointment, I'm here to help!",
-    avatarUrl: 'images/sarah-avatar.jpg',
+    // Resolve next to chat-widget.js so pages in subfolders (/services/, /lp/...) get the avatar too.
+    avatarUrl: resolveSibling('images/sarah-avatar.jpg'),
     proactiveDelay: 30000,
     // Slow fallback poll — primary updates come via SSE when available.
     // Never re-render the thread unless message content actually changed (avoids 2s flash).

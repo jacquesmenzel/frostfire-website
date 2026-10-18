@@ -2,6 +2,12 @@
 (function () {
   const STORAGE_KEY = 'ff_attribution_v1';
   const VISITOR_KEY = 'ff_visitor_id';
+  const SESSION_TOUCH_KEY = 'ff_session_touch_v1';
+  // Ad-platform click ids we keep. gclid/gbraid/wbraid/fbclid also have their own
+  // CRM columns; the rest (Bing msclkid, ChatGPT/OpenAI ads oppref) travel in
+  // context.metadata.click_ids and lead.details.click_ids.
+  const CLICK_ID_PARAMS = ['gclid', 'gbraid', 'wbraid', 'fbclid', 'msclkid', 'oppref'];
+  const UTM_PARAMS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
   const ANALYTICS_CONFIG = window.FrostFireAnalyticsConfig || {};
   const API = {
     session: '/api/v1/public/website/session',
@@ -117,7 +123,12 @@
   }
 
   function inferPageType(pathname) {
+    // A page can declare its own type (e.g. <html data-ff-page-type="lp_chatgpt">)
+    // so paid landing pages split cleanly in website_sessions.landing_page_type.
+    const declared = document.documentElement.getAttribute('data-ff-page-type');
+    if (declared) return declared;
     const path = String(pathname || '/').toLowerCase();
+    if (path.indexOf('/lp/') === 0) return 'paid_landing';
     if (path === '/' || path.endsWith('/index.html')) return 'homepage';
     if (path.includes('/service-areas/') || path.endsWith('/service-areas.html')) return 'location';
     if (path.includes('/services/') || path.endsWith('/services.html')) return 'service';
@@ -127,9 +138,62 @@
     return 'page';
   }
 
-  function buildContext() {
-    const stored = getStoredAttribution();
+  function safeSessionGet(key) {
+    try {
+      return sessionStorage.getItem(key);
+    } catch {
+      return null;
+    }
+  }
+
+  function readClickIds(query) {
+    const out = {};
+    CLICK_ID_PARAMS.forEach(function (name) {
+      const value = query.get(name);
+      if (value) out[name] = String(value).slice(0, 255);
+    });
+    return out;
+  }
+
+  // When the URL carries a campaign marker (any utm_* or ad click id), remember it
+  // for this browser session so a returning visitor who clicks an ad (e.g. ChatGPT)
+  // is attributed to that ad for this session instead of their old first touch.
+  // First touch stays in localStorage and is still sent as metadata.first_touch.
+  function persistSessionTouch() {
     const query = getQuery();
+    const clickIds = readClickIds(query);
+    const hasUtm = UTM_PARAMS.some(function (name) {
+      return !!query.get(name);
+    });
+    if (!hasUtm && !Object.keys(clickIds).length) return;
+    const touch = { captured_at: nowIso(), landing_page_path: getPagePath(), click_ids: clickIds };
+    UTM_PARAMS.forEach(function (name) {
+      touch[name] = query.get(name) || null;
+    });
+    try {
+      sessionStorage.setItem(SESSION_TOUCH_KEY, JSON.stringify(touch));
+    } catch {
+      /* storage blocked: fall back to first touch */
+    }
+  }
+
+  function getSessionTouch() {
+    return safeJsonParse(safeSessionGet(SESSION_TOUCH_KEY));
+  }
+
+  function buildContext() {
+    const firstTouch = getStoredAttribution();
+    const sessionTouch = getSessionTouch();
+    const stored = sessionTouch ? Object.assign({}, firstTouch, sessionTouch, {
+      gclid: (sessionTouch.click_ids || {}).gclid || null,
+      gbraid: (sessionTouch.click_ids || {}).gbraid || null,
+      wbraid: (sessionTouch.click_ids || {}).wbraid || null,
+      fbclid: (sessionTouch.click_ids || {}).fbclid || null,
+      landing_page_url: firstTouch.landing_page_url,
+      landing_page_path: firstTouch.landing_page_path,
+    }) : firstTouch;
+    const query = getQuery();
+    const clickIds = Object.assign({}, firstTouch.click_ids || {}, (sessionTouch && sessionTouch.click_ids) || {}, readClickIds(query));
     const landingUrl = stored.landing_page_url || window.location.href;
     const landingPath = stored.landing_page_path || getPagePath();
     return {
@@ -155,6 +219,18 @@
       wbraid: stored.wbraid || query.get('wbraid'),
       fbclid: stored.fbclid || query.get('fbclid'),
       user_agent: navigator.userAgent,
+      metadata: {
+        click_ids: clickIds,
+        phone_channel: document.documentElement.getAttribute('data-ff-phone-channel') || null,
+        first_touch: {
+          utm_source: firstTouch.utm_source || null,
+          utm_medium: firstTouch.utm_medium || null,
+          utm_campaign: firstTouch.utm_campaign || null,
+          landing_page_path: firstTouch.landing_page_path || null,
+          first_touch_at: firstTouch.first_touch_at || null,
+        },
+        session_touch: sessionTouch || null,
+      },
     };
   }
 
@@ -186,6 +262,7 @@
       gbraid: existing.gbraid || query.get('gbraid'),
       wbraid: existing.wbraid || query.get('wbraid'),
       fbclid: existing.fbclid || query.get('fbclid'),
+      click_ids: Object.assign({}, readClickIds(query), existing.click_ids || {}),
       last_seen_at: nowIso(),
     };
     setStoredAttribution(next);
@@ -216,8 +293,10 @@
   }
 
   function eventMetadata(extra) {
+    const clickIds = (buildContext().metadata || {}).click_ids || {};
     return {
       ...extra,
+      click_ids: Object.keys(clickIds).length ? clickIds : undefined,
       viewport_width: window.innerWidth,
       viewport_height: window.innerHeight,
       page_title: document.title,
@@ -251,6 +330,18 @@
 
   function trackLead(payload) {
     const details = (payload && payload.details) || {};
+    // website_leads.details is persisted as-is, so non-column attribution
+    // (oppref, msclkid, first vs session touch) is kept there for reporting.
+    if (payload) {
+      const meta = (payload.context && payload.context.metadata) || buildContext().metadata || {};
+      payload.details = Object.assign({}, details, {
+        click_ids: Object.assign({}, meta.click_ids || {}, details.click_ids || {}),
+        first_touch: details.first_touch || meta.first_touch || null,
+        session_touch: details.session_touch || meta.session_touch || null,
+        phone_channel: details.phone_channel || meta.phone_channel || null,
+        landing_page_type: details.landing_page_type || inferPageType(getPagePath()),
+      });
+    }
     pushDataLayer('website_lead', {
       lead_channel: payload && payload.lead_channel ? payload.lead_channel : 'website',
       cta_type: details.cta_type || undefined,
@@ -301,6 +392,25 @@
       const text = (link.textContent || '').trim().slice(0, 120);
       if (href.startsWith('tel:')) {
         trackEvent('click_to_call', { cta_type: 'phone', value: 1, label: text, href: href });
+        return;
+      }
+      if (href.indexOf('join.frostfirehvacr.com') >= 0) {
+        // Comfort Club / Landlord / Commercial signup lives on the CRM's join site.
+        // Carry this visit's UTMs + website session across so the CRM can attribute
+        // the membership (the join page does not record them yet; see report).
+        const ctx = buildContext();
+        try {
+          const target = new URL(link.href);
+          ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(function (name) {
+            if (ctx[name] && !target.searchParams.get(name)) target.searchParams.set(name, ctx[name]);
+          });
+          if (!target.searchParams.get('ff_session')) target.searchParams.set('ff_session', ctx.session_key);
+          if (!target.searchParams.get('ff_src')) target.searchParams.set('ff_src', ctx.page_path || '');
+          link.href = target.toString();
+        } catch {
+          /* leave the link as-is */
+        }
+        trackEvent('cta_click', { cta_type: 'comfort_club_join', lead_channel: 'membership', label: text, href: href });
         return;
       }
       if (href.indexOf('contact.html') >= 0) {
@@ -373,6 +483,7 @@
   }
 
   persistFirstTouch();
+  persistSessionTouch();
   bootSession();
   installScrollTracking();
   installClickTracking();
