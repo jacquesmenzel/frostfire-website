@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
         details: {
           source_page: window.location.pathname,
           cta_type: 'contact_form',
+          hp: String(formData.get('ff_hp_field') || ''),
         },
       };
 

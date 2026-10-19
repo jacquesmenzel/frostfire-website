@@ -55,6 +55,7 @@
           services.map(function (s) { return '<option' + (s === guess ? ' selected' : '') + '>' + s + '</option>'; }).join('') +
         '</select>' +
         '<input name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="ZIP code" aria-label="ZIP code">' +
+        '<input name="ff_hp_field" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">' +
         '<textarea name="message" placeholder="What’s happening? (optional)" aria-label="What is happening"></textarea>' +
         '<button type="submit">Get my quote</button>' +
       '</form>' +
@@ -85,7 +86,7 @@
       city: null,
       address: String(fd.get('zip') || '').trim() ? 'ZIP ' + String(fd.get('zip')).trim() : null,
       message: String(fd.get('message') || '').trim() || null,
-      details: { source_page: location.pathname, page_topic: pageTopic, cta_type: 'quick_quote' },
+      details: { source_page: location.pathname, page_topic: pageTopic, cta_type: 'quick_quote', hp: String(fd.get('ff_hp_field') || '') },
     };
     var btn = form.querySelector('button');
     btn.disabled = true;
