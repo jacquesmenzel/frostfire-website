@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<!--
+  Microsoft Advertising (Bing) landing page.
+  - data-ff-page-type  -> website_sessions.landing_page_type / website_leads.landing_page_type = "lp_bing_ads"
+  - data-ff-phone-channel -> which number js/phone-numbers.js shows (falls back to the main line until a
+    channel tracking number is set there).
+    The static HTML already shows this page's tracking number (no-JS safe).
+  Ad destination URL (keep the trailing slash so no redirect can drop the query string):
+    https://frostfirehvacr.com/lp/bing/?utm_source=bing&utm_medium=cpc&utm_campaign={CampaignId}&utm_content={AdId}&utm_term={keyword}
+  Microsoft appends its click id (?msclkid=) itself when auto-tagging is on; attribution.js keeps it in lead details.click_ids.
+-->
+<html lang="en" data-ff-page-type="lp_bing_ads" data-ff-phone-channel="bing">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Same-Day HVAC Repair, Same Price 7 Days | Frost Fire Heating & Cooling</title>
+  <meta name="description" content="Heating or AC trouble in Clayton, Raleigh, Durham or the Triangle? Frost Fire Heating & Cooling: licensed and insured, 24/7 emergency service, and the same price on Sundays. Call (984) 205-4933.">
+  <!-- Paid-ads landing page: keep it out of search results (the SEO pages cover organic). -->
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://frostfirehvacr.com/">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" href="/images/favicon-180.png?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--primary:#0f2b4c;--primary-light:#1a3d6e;--accent:#e8531e;--accent-hover:#ff6b35;--ice:#00b4d8;--ice-light:#90e0ef;--ice-dark:#0077b6;--dark:#0a1628;--text:#2d3748;--text-light:#5a6578;--white:#fff;--off-white:#f7fafc;--gray-200:#e2e8f0;--radius:16px;--radius-sm:10px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);line-height:1.6;background:var(--white);padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+    h1,h2,h3{font-family:'Montserrat','Inter',sans-serif;line-height:1.15;color:var(--primary)}
+    a{color:inherit}
+    svg{flex-shrink:0}
+    .wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;border-radius:50px;font-weight:700;font-size:1.05rem;text-decoration:none;border:0;cursor:pointer;font-family:inherit;transition:transform .2s,box-shadow .2s;min-height:52px}
+    .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-hover));color:var(--white);box-shadow:0 4px 20px rgba(232,83,30,.4)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,83,30,.5)}
+    .btn-ghost{background:rgba(255,255,255,.1);color:var(--white);border:2px solid rgba(255,255,255,.35)}
+    /* Header */
+    .top{background:var(--dark);color:rgba(255,255,255,.85);font-size:.82rem;padding:7px 0;padding-top:calc(7px + env(safe-area-inset-top,0px))}
+    .top .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+    .top span{display:inline-flex;align-items:center;gap:6px}
+    .top svg{color:var(--ice)}
+    .head{background:rgba(15,43,76,.98);position:sticky;top:0;z-index:50;box-shadow:0 4px 24px rgba(0,0,0,.15)}
+    .head .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--white);font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.05rem;line-height:1.1}
+    .logo img{width:52px;height:52px}
+    .logo small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:.72rem;color:var(--ice-light);letter-spacing:.02em}
+    .head-call{display:inline-flex;align-items:center;gap:8px;color:var(--white);text-decoration:none;font-weight:700;font-size:1.05rem;white-space:nowrap}
+    .head-call i{width:38px;height:38px;border-radius:50%;background:var(--accent);display:inline-flex;align-items:center;justify-content:center}
+    /* Hero */
+    .hero{background:linear-gradient(135deg,rgba(10,22,40,.97),rgba(15,43,76,.92) 60%,rgba(0,119,182,.85));color:var(--white);padding-block:36px 44px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start}
+    .rating{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:6px 14px;font-size:.9rem;text-decoration:none;color:var(--white);margin-bottom:16px}
+    .stars{color:#fbbc05;letter-spacing:1px}
+    .hero h1{color:var(--white);font-size:clamp(1.9rem,5.5vw,3rem);margin-bottom:14px}
+    .hero h1 em{font-style:normal;color:var(--ice-light)}
+    .lead{font-size:1.1rem;color:rgba(255,255,255,.85);margin-bottom:20px;max-width:34em}
+    .offer{background:rgba(232,83,30,.14);border:1px solid rgba(255,107,53,.55);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:22px}
+    .offer strong{display:block;font-family:'Montserrat',sans-serif;font-size:1.15rem;color:var(--white);margin-bottom:2px}
+    .offer span{color:rgba(255,255,255,.85);font-size:.95rem}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+    .checks{list-style:none;display:grid;gap:8px}
+    .checks li{display:flex;gap:10px;align-items:flex-start;color:rgba(255,255,255,.9)}
+    .checks svg{color:var(--ice);margin-top:3px}
+    /* Form card */
+    .card{background:var(--white);color:var(--text);border-radius:var(--radius);padding:24px;box-shadow:0 25px 70px -20px rgba(0,0,0,.45)}
+    .card h2{font-size:1.35rem;margin-bottom:4px}
+    .card .sub{color:var(--text-light);font-size:.92rem;margin-bottom:16px}
+    .field{margin-bottom:12px}
+    .field label{display:block;font-weight:600;font-size:.88rem;margin-bottom:4px;color:var(--primary)}
+    .field input,.field select,.field textarea{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1.5px solid var(--gray-200);border-radius:var(--radius-sm);background:var(--white);color:var(--text)}
+    .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ice);box-shadow:0 0 0 3px rgba(0,180,216,.2)}
+    .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .card .btn{width:100%;margin-top:4px}
+    .fine{font-size:.8rem;color:var(--text-light);margin-top:10px;text-align:center}
+    .form-msg{border-radius:var(--radius-sm);padding:12px 14px;font-size:.95rem;margin-top:12px}
+    .form-msg.ok{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+    .form-msg.err{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+    .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+    /* Sections */
+    section.block{padding-block:48px}
+    section.alt{background:var(--off-white)}
+    .block h2{font-size:clamp(1.5rem,3.5vw,2.1rem);margin-bottom:8px;text-align:center}
+    .block .intro{text-align:center;color:var(--text-light);max-width:640px;margin:0 auto 28px}
+    .trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .trust div{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px;text-align:center}
+    .trust svg{color:var(--accent);margin-bottom:6px}
+    .trust strong{display:block;color:var(--primary)}
+    .trust span{font-size:.85rem;color:var(--text-light)}
+    .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .review{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px}
+    .review p{font-size:.95rem;margin:8px 0 10px}
+    .review cite{font-style:normal;font-weight:600;color:var(--primary);font-size:.9rem}
+    .review small{color:var(--text-light)}
+    .center{text-align:center;margin-top:18px}
+    .center a{color:var(--ice-dark);font-weight:600}
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;list-style:none}
+    .services li{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:14px 16px;display:flex;gap:10px;align-items:flex-start}
+    .services svg{color:var(--ice-dark);margin-top:3px}
+    .services strong{color:var(--primary);display:block}
+    .services span{font-size:.88rem;color:var(--text-light)}
+    .areas{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;list-style:none;max-width:760px;margin:0 auto}
+    .areas li{background:var(--white);border:1px solid var(--gray-200);border-radius:50px;padding:6px 14px;font-weight:500;font-size:.92rem}
+    .areas li.hq{border-color:var(--accent);color:var(--accent)}
+    .final{background:linear-gradient(135deg,var(--accent),#d4451a,var(--accent-hover));color:var(--white);text-align:center;padding-block:44px}
+    .final h2{color:var(--white);font-size:clamp(1.5rem,4vw,2.2rem);margin-bottom:8px}
+    .final p{color:rgba(255,255,255,.9);margin-bottom:20px}
+    .final .btn{background:var(--white);color:var(--accent)}
+    footer{background:var(--dark);color:rgba(255,255,255,.7);font-size:.85rem;text-align:center;padding-block:28px}
+    footer a{color:var(--ice-light)}
+    .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--accent);box-shadow:0 -4px 20px rgba(0,0,0,.2);padding:10px 16px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));display:none}
+    .callbar a{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--white);text-decoration:none;font-weight:800;font-size:1.1rem;min-height:44px}
+    @media (max-width:860px){
+      .hero-grid{grid-template-columns:1fr}
+      .trust{grid-template-columns:1fr 1fr}
+      .reviews{grid-template-columns:1fr}
+      .services{grid-template-columns:1fr 1fr}
+      .callbar{display:block}
+      .head-call .num{display:none}
+      /* Keep the chat bubble/window above the sticky call bar. */
+      #cw-bubble{bottom:calc(84px + env(safe-area-inset-bottom,0px)) !important}
+      #cw-window{bottom:calc(148px + env(safe-area-inset-bottom,0px)) !important}
+    }
+    @media (min-width:861px){body{padding-bottom:0}}
+    @media (max-width:520px){
+      .services{grid-template-columns:1fr}
+      .row2{grid-template-columns:1fr}
+      .top .hide-sm{display:none}
+      .hero-cta .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.4-5.4 1.4 1.4z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.6-4.6 1.4 1.4z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.6 3.2 3.2-1.4 1.4L11 13.4V6h2z"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><path fill="currentColor" d="M7 2h2v2h6V2h2v2h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3zm12 7H5v10h14zm-8.2 8.2-3-3 1.4-1.4 1.6 1.6 4-4 1.4 1.4z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path fill="currentColor" d="M22.7 19.3 13.6 10.2A6 6 0 0 0 6.1 2.5l3.9 3.9-2.8 2.8L3.3 5.3a6 6 0 0 0 7.7 7.5l9.1 9.1a1 1 0 0 0 1.4 0l1.2-1.2a1 1 0 0 0 0-1.4z"/></symbol>
+  </svg>
+
+  <div class="top">
+    <div class="wrap">
+      <span><svg width="14" height="14"><use href="#i-shield"/></svg> Licensed &amp; Insured</span>
+      <span><svg width="14" height="14"><use href="#i-cal"/></svg> Same Price on Sundays</span>
+      <span class="hide-sm"><svg width="14" height="14"><use href="#i-clock"/></svg> 24/7 Emergency Service</span>
+    </div>
+  </div>
+
+  <header class="head">
+    <div class="wrap">
+      <a class="logo" href="/" aria-label="Frost Fire Heating & Cooling home">
+        <img src="/images/frostfire-logo-160.png" width="52" height="52" alt="">
+        <span>Frost Fire<small>Heating &amp; Cooling · Clayton, NC</small></span>
+      </a>
+      <a class="head-call" href="tel:+19842054933" data-ff-phone aria-label="Call Frost Fire">
+        <i><svg width="18" height="18"><use href="#i-phone"/></svg></i>
+        <span class="num" data-ff-phone-text>(984) 205-4933</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <a class="rating" href="https://g.page/r/CSjVCnRtfVKPEBM/review" target="_blank" rel="noopener">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span><strong>4.9</strong> · 67 Google reviews</span>
+          </a>
+          <h1>Heat or AC acting up? <em>Get it fixed — same price, 7 days a week.</em></h1>
+          <p class="lead">Frost Fire Heating &amp; Cooling is a local, licensed HVAC contractor based in Clayton, serving Raleigh, Durham and the Triangle. Talk to us now, or send the form and we'll call you back.</p>
+
+          <!-- Two standing promises, approved by Jax 10/18. -->
+          <div class="offer">
+            <strong>$59 diagnostic, waived if we do the repair.</strong>
+            <span>No Sunday or weekend surcharge: Saturday and Sunday visits are the same price as weekdays.</span>
+          </div>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="tel:+19842054933" data-ff-phone>
+              <svg width="20" height="20"><use href="#i-phone"/></svg>
+              <span>Call <span data-ff-phone-text>(984) 205-4933</span></span>
+            </a>
+            <a class="btn btn-ghost" href="#book">Request a visit</a>
+          </div>
+
+          <ul class="checks">
+            <li><svg width="18" height="18"><use href="#i-check"/></svg> 24/7 emergency service: no heat, no cooling, leaks</li>
+            <li><svg width="18" height="18"><use href="#i-check"/></svg> Heat pumps, furnaces, AC, mini-splits — all major brands</li>
+            <li><svg width="18" height="18"><use href="#i-check"/></svg> Homes and businesses, including walk-in coolers and freezers</li>
+          </ul>
+        </div>
+
+        <div class="card" id="book">
+          <h2>Request a visit</h2>
+          <p class="sub">Takes 30 seconds. We'll call or text to confirm a time.</p>
+          <form id="lp-lead-form" novalidate>
+            <div class="field">
+              <label for="lp-name">Name</label>
+              <input id="lp-name" name="name" autocomplete="name" required maxlength="120">
+            </div>
+            <div class="field">
+              <label for="lp-phone">Mobile phone</label>
+              <input id="lp-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="919-555-1234" required maxlength="20">
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="lp-service">What do you need?</label>
+                <select id="lp-service" name="service" required>
+                  <option value="">Choose one</option>
+                  <option>AC repair</option>
+                  <option>Heating / furnace repair</option>
+                  <option>Heat pump repair</option>
+                  <option>No heat or no cooling (urgent)</option>
+                  <option>New system / replacement quote</option>
+                  <option>Maintenance / tune-up</option>
+                  <option>Mini-split</option>
+                  <option>Commercial / refrigeration</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="lp-city">City or ZIP</label>
+                <input id="lp-city" name="city" autocomplete="address-level2" maxlength="80" placeholder="e.g. Raleigh">
+              </div>
+            </div>
+            <div class="field">
+              <label for="lp-message">Anything else? <span style="font-weight:400;color:var(--text-light)">(optional)</span></label>
+              <textarea id="lp-message" name="message" rows="2" maxlength="1000" placeholder="What's it doing? Best time to reach you?"></textarea>
+            </div>
+            <div class="hp" aria-hidden="true">
+              <label for="lp-company">Company</label>
+              <input id="lp-company" name="company" tabindex="-1" autocomplete="off">
+            </div>
+            <button class="btn btn-primary" type="submit" id="lp-submit">Request my visit</button>
+            <div id="lp-form-msg" class="form-msg" role="status" aria-live="polite" hidden></div>
+            <p class="fine">Prefer to talk? <a href="tel:+19842054933" data-ff-phone>(984) 205-4933</a> · We never share your info.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <div class="trust">
+          <div><svg width="26" height="26"><use href="#i-shield"/></svg><strong>Licensed &amp; Insured</strong><span>NC licensed HVAC contractor</span></div>
+          <div><svg width="26" height="26"><use href="#i-cal"/></svg><strong>Same Price Sundays</strong><span>No weekend surcharges</span></div>
+          <div><svg width="26" height="26"><use href="#i-clock"/></svg><strong>24/7 Emergency</strong><span>Nights, weekends, holidays</span></div>
+          <div><svg width="26" height="26"><use href="#i-star"/></svg><strong>4.9 on Google</strong><span>67 reviews</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block alt">
+      <div class="wrap">
+        <h2>What Triangle customers say</h2>
+        <p class="intro">Real Google reviews, word for word.</p>
+        <div class="reviews">
+          <figure class="review">
+            <span class="stars" aria-label="5 stars">★★★★★</span>
+            <p>"Jax came in clutch at a literal fraction of the price that the "big guys" quoted! Had us up and running in an hour. We have our new go to HVAC place FOR SURE. Highly recommend!"</p>
+            <cite>Liane W.</cite> <small>· Google · Apr 2026</small>
+          </figure>
+          <figure class="review">
+            <span class="stars" aria-label="5 stars">★★★★★</span>
+            <p>"3-story townhouse and stayed 80+ degrees on the third floor. Jax came out the same day I inquired and diagnosed the problem as a stuck damper. Fixed it immediately. Very professional!"</p>
+            <cite>Chelsea C.</cite> <small>· Google · Jan 2025</small>
+          </figure>
+          <figure class="review">
+            <span class="stars" aria-label="5 stars">★★★★★</span>
+            <p>"Great service — high quality work at a reasonable price. Very responsive, polite, professional, and work is guaranteed. Glad I found Frost Fire. This will be my first call for future HVAC work."</p>
+            <cite>Dennis W.</cite> <small>· Google · Apr 2025</small>
+          </figure>
+        </div>
+        <p class="center"><a href="https://g.page/r/CSjVCnRtfVKPEBM/review" target="_blank" rel="noopener">Read all reviews on Google</a></p>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <h2>What we fix and install</h2>
+        <p class="intro">Residential and commercial heating, cooling and refrigeration.</p>
+        <ul class="services">
+          <li><svg width="18" height="18"><use href="#i-wrench"/></svg><div><strong>AC repair</strong><span>Not cooling, warm air, frozen lines, leaks</span></div></li>
+          <li><svg width="18" height="18"><use href="#i-wrench"/></svg><div><strong>Heating &amp; furnace repair</strong><span>No heat, ignition, blower and safety issues</span></div></li>
+          <li><svg width="18" height="18"><use href="#i-wrench"/></svg><div><strong>Heat pumps</strong><span>Repair, defrost and aux-heat problems, replacement</span></div></li>
+          <li><svg width="18" height="18"><use href="#i-wrench"/></svg><div><strong>New systems</strong><span>AC, furnace and heat pump installation</span></div></li>
+          <li><svg width="18" height="18"><use href="#i-wrench"/></svg><div><strong>Ductless mini-splits</strong><span>Additions, garages, bonus rooms</span></div></li>
+          <li><svg width="18" height="18"><use href="#i-wrench"/></svg><div><strong>Ductwork &amp; air quality</strong><span>Airflow, duct repair, thermostats, IAQ</span></div></li>
+          <li><svg width="18" height="18"><use href="#i-wrench"/></svg><div><strong>Maintenance — Comfort Club</strong><span>$22/mo or $240/yr (plus NC sales tax): spring cleaning + winter heating check</span></div></li>
+          <li><svg width="18" height="18"><use href="#i-wrench"/></svg><div><strong>Commercial HVAC</strong><span>Rooftop units, offices, retail, restaurants</span></div></li>
+          <li><svg width="18" height="18"><use href="#i-wrench"/></svg><div><strong>Commercial refrigeration</strong><span>Walk-in coolers and freezers</span></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block alt">
+      <div class="wrap">
+        <h2>Where we work</h2>
+        <p class="intro">Based in Clayton, NC — serving homes and businesses within about a 45–60 minute drive.</p>
+        <ul class="areas">
+          <li class="hq">Clayton (HQ)</li>
+          <li>Raleigh</li><li>Durham</li><li>Garner</li><li>Cary</li><li>Apex</li>
+          <li>Holly Springs</li><li>Fuquay-Varina</li><li>Smithfield</li><li>Fayetteville</li>
+          <li>Knightdale</li><li>Wake Forest</li><li>Wendell</li><li>Morrisville</li><li>Selma</li><li>Benson</li><li>Angier</li><li>Rolesville</li>
+        </ul>
+        <p class="center">Not on the list? <a href="tel:+19842054933" data-ff-phone="href">Call us</a> — we likely cover you.</p>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap">
+        <h2>Talk to Frost Fire now</h2>
+        <p>Same fair price on Sundays and holidays. 24/7 for emergencies.</p>
+        <a class="btn" href="tel:+19842054933" data-ff-phone>
+          <svg width="20" height="20"><use href="#i-phone"/></svg>
+          <span>Call <span data-ff-phone-text>(984) 205-4933</span></span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>&copy; 2026 Frost Fire Heating and Cooling · Clayton, NC · Licensed &amp; Insured in NC</p>
+      <p style="margin-top:6px"><a href="/">frostfirehvacr.com</a> · <a href="/services/maintenance.html">Maintenance plans</a> · <a href="/contact.html">Contact</a></p>
+    </div>
+  </footer>
+
+  <div class="callbar">
+    <a href="tel:+19842054933" data-ff-phone>
+      <svg width="20" height="20"><use href="#i-phone"/></svg>
+      <span>Tap to call <span data-ff-phone-text>(984) 205-4933</span></span>
+    </a>
+  </div>
+
+  <script>
+    // The hero already shows the Google rating; the pop-up toast would cover the call buttons.
+    window.FF_REVIEWS_TOAST = { enabled: false };
+  </script>
+  <script src="/js/phone-numbers.js"></script>
+  <script src="/js/analytics-config.js"></script>
+  <script src="/js/attribution.js"></script>
+  <script>
+    (function () {
+      var form = document.getElementById('lp-lead-form');
+      var msg = document.getElementById('lp-form-msg');
+      var btn = document.getElementById('lp-submit');
+      function phoneDisplay() {
+        var p = window.FrostFirePhone;
+        return p ? p.numberFor(p.resolveChannel()).display : '(984) 205-4933';
+      }
+      function show(kind, text) {
+        msg.className = 'form-msg ' + kind;
+        msg.textContent = text;
+        msg.hidden = false;
+      }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var fd = new FormData(form);
+        if (String(fd.get('company') || '').trim()) return; // honeypot
+        var name = String(fd.get('name') || '').trim();
+        var phone = String(fd.get('phone') || '').trim();
+        var service = String(fd.get('service') || '').trim();
+        if (!name || phone.replace(/\D/g, '').length < 10 || !service) {
+          show('err', 'Please add your name, a 10-digit phone number, and what you need.');
+          return;
+        }
+        var api = window.FrostFireAttribution;
+        if (!api || typeof api.trackLead !== 'function') {
+          show('err', 'Something went wrong loading the form. Please call ' + phoneDisplay() + '.');
+          return;
+        }
+        var phoneInfo = window.FrostFirePhone ? window.FrostFirePhone.apply() : null;
+        var lead = {
+          context: api.getContext(),
+          lead_channel: 'form',
+          full_name: name,
+          phone: phone,
+          email: null,
+          service_requested: service,
+          city: String(fd.get('city') || '').trim() || null,
+          address: null,
+          message: String(fd.get('message') || '').trim() || null,
+          details: {
+            source_page: window.location.pathname,
+            cta_type: 'lp_bing_ads_form',
+            form_id: 'lp-lead-form',
+            offer: 'same_price_7_days',
+            landing_page_type: 'lp_bing_ads',
+            phone_channel: phoneInfo ? phoneInfo.channel : 'bing',
+            phone_number_shown: phoneInfo ? phoneInfo.number.e164 : '+19842054933',
+          },
+        };
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        api.trackLead(lead)
+          .then(function () {
+            api.trackEvent('form_submit', { lead_channel: 'form', cta_type: 'lp_bing_ads_form' });
+            form.reset();
+            show('ok', "Thanks, " + name.split(' ')[0] + "! We got your request and will call or text you shortly. Need help right now? Call " + phoneDisplay() + ".");
+          })
+          .catch(function () {
+            show('err', "We couldn't send that just now. Please call " + phoneDisplay() + " and we'll help right away.");
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = 'Request my visit';
+          });
+      });
+    })();
+  </script>
+  <script src="/chat-widget.js" defer></script>
+</body>
+</html>
