@@ -1,5 +1,16 @@
 {
   "version": 1,
-  "include": ["/api/*", "/gmb", "/gmb/"],
-  "exclude": []
+  "include": [
+    "/*"
+  ],
+  "exclude": [
+    "/images/*",
+    "/css/*",
+    "/js/*",
+    "/blog/images/*",
+    "/favicon.ico",
+    "/chat-widget.js",
+    "/sitemap.xml",
+    "/robots.txt"
+  ]
 }

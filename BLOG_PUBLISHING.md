@@ -37,3 +37,7 @@ The script will:
 ```
 
 If `body_html` is missing, the script can also build basic article content from `sections`.
+
+## After any publish script
+
+Run `python3 scripts/normalize-urls.py` so canonicals, sitemap entries and internal links use the extensionless URLs Cloudflare serves (no `.html`).

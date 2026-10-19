@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /seo-fix.py
+Disallow: /scripts/
+Disallow: /seo-pages/
+Disallow: /*-mockup
+Disallow: /*-prototype
 
 Sitemap: https://frostfirehvacr.com/sitemap.xml

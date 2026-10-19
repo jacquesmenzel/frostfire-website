@@ -202,9 +202,21 @@ async function handleWebsiteReviewsProxy(request) {
 // ChatGPT ads / short links → Google Business Profile listing (not the website).
 const GMB_LISTING_URL = "https://share.google/tHEvSN05pkMKBOxyx";
 
+const BLOCKED_PATH = /^\/(scripts|seo-pages)\/|\.(md|mjs|py)$|^\/_worker\.js$/i;
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    // One canonical host: www -> apex (SEO: duplicate site on www).
+    if (url.hostname === "www.frostfirehvacr.com") {
+      url.hostname = "frostfirehvacr.com";
+      return Response.redirect(url.toString(), 301);
+    }
+    // Build tooling and notes are in the repo root; never serve them.
+    if (BLOCKED_PATH.test(url.pathname)) {
+      const page = await env.ASSETS.fetch(new Request(new URL("/404", url), request));
+      return new Response(page.body, { status: 404, headers: page.headers });
+    }
     if (url.pathname === "/gmb" || url.pathname === "/gmb/") {
       return Response.redirect(GMB_LISTING_URL, 302);
     }

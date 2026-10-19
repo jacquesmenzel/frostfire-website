@@ -12,30 +12,143 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HVACBusiness",
-    "name": "Frost Fire Heating and Cooling",
-    "alternateName": "Frost Fire HVACR",
-    "url": "https://frostfirehvacr.com",
-    "telephone": "+19192304439",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Clayton",
-      "addressRegion": "NC",
-      "postalCode": "27520",
-      "addressCountry": "US"
+{
+  "@context": "https://schema.org",
+  "@type": "HVACBusiness",
+  "@id": "https://frostfirehvacr.com/#business",
+  "name": "Frost Fire Heating and Cooling",
+  "alternateName": [
+    "Frost Fire HVACR",
+    "Frost Fire Heating And Cooling LLC"
+  ],
+  "url": "https://frostfirehvacr.com/",
+  "telephone": "+19192304439",
+  "logo": "https://frostfirehvacr.com/images/frostfire-logo.png",
+  "image": "https://frostfirehvacr.com/images/frostfire-logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Clayton",
+    "addressRegion": "NC",
+    "postalCode": "27520",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 35.6507,
+    "longitude": -78.4564
+  },
+  "hasMap": "https://maps.google.com/maps?cid=10327454804565742888",
+  "sameAs": [
+    "https://maps.google.com/maps?cid=10327454804565742888"
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Clayton, NC"
     },
-    "areaServed": ["Clayton, NC","Raleigh, NC","Durham, NC","Garner, NC","Fayetteville, NC"],
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
+    {
+      "@type": "City",
+      "name": "Raleigh, NC"
     },
-    "priceRange": "$$"
-  }
-  </script>
+    {
+      "@type": "City",
+      "name": "Garner, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Cary, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Apex, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Durham, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Knightdale, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Wendell, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Zebulon, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Rolesville, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Wake Forest, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Morrisville, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Holly Springs, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Fuquay-Varina, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Willow Spring, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Smithfield, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Selma, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Benson, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Angier, NC"
+    },
+    {
+      "@type": "City",
+      "name": "Wilson's Mills, NC"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Johnston County, NC"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Wake County, NC"
+    }
+  ],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "priceRange": "$$",
+  "paymentAccepted": "Cash, Check, Credit Card, Zelle"
+}
+</script>
   <style>
     /* ============================================
        FROST FIRE HVACR — PREMIUM WEBSITE
@@ -1378,8 +1491,9 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#why-us">Why Us</a></li>
         <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#areas">Service Areas</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="/service-areas">Service Areas</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="contact">Contact</a></li>
       </ul>
       <a href="tel:9192304439" class="nav-phone">
         <i class="fas fa-phone"></i>
@@ -1399,8 +1513,8 @@
     <a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
     <a href="#why-us" onclick="this.parentElement.classList.remove('active')">Why Us</a>
     <a href="#reviews" onclick="this.parentElement.classList.remove('active')">Reviews</a>
-    <a href="#areas" onclick="this.parentElement.classList.remove('active')">Service Areas</a>
-    <a href="contact.html" onclick="this.parentElement.classList.remove('active')">Contact</a>
+    <a href="/service-areas" onclick="this.parentElement.classList.remove('active')">Service Areas</a>
+    <a href="contact" onclick="this.parentElement.classList.remove('active')">Contact</a>
     <a href="tel:9192304439" class="btn btn-primary" style="margin-top:12px">
       <i class="fas fa-phone"></i> Call Now
     </a>
@@ -1438,7 +1552,7 @@
         <a href="tel:9192304439" class="btn btn-primary">
           <i class="fas fa-phone btn-icon"></i> Call (919) 230-4439
         </a>
-        <a href="calculator.html" class="btn btn-secondary">
+        <a href="calculator" class="btn btn-secondary">
           <i class="fas fa-calculator btn-icon"></i> Get Instant Estimate
         </a>
         <a href="#services" class="btn btn-secondary">
@@ -1514,49 +1628,49 @@
           <div class="service-icon"><i class="fas fa-snowflake"></i></div>
           <h3>AC Repair & Service</h3>
           <p>Fast, reliable air conditioning repair for homes and businesses. All brands serviced with same-day availability.</p>
-          <a href="services/ac-repair.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          <a href="services/ac-repair" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card animate animate-delay-2" style="background-image:url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=70')">
           <div class="service-icon"><i class="fas fa-plus-circle"></i></div>
           <h3>AC Installation & Replacement</h3>
           <p>New energy-efficient AC systems from top brands. Expert sizing, installation, and setup for lasting comfort.</p>
-          <a href="services/ac-installation.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          <a href="services/ac-installation" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card animate animate-delay-3" style="background-image:url('https://images.unsplash.com/photo-1545259741-2ea3ebf61fa3?w=600&q=70')">
           <div class="service-icon"><i class="fas fa-fire"></i></div>
           <h3>Heating Repair</h3>
           <p>Furnace not working? We diagnose and repair all heating systems quickly to keep your family warm.</p>
-          <a href="services/heating-repair.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          <a href="services/heating-repair" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card animate animate-delay-1" style="background-image:url('https://images.unsplash.com/photo-1628744876497-eb30460be9f6?w=600&q=70')">
           <div class="service-icon"><i class="fas fa-fire-flame-curved"></i></div>
           <h3>Furnace Installation</h3>
           <p>New furnace installation and replacement. High-efficiency gas and electric furnaces for NC winters.</p>
-          <a href="services/furnace-installation.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          <a href="services/furnace-installation" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card animate animate-delay-2" style="background-image:url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=70')">
           <div class="service-icon"><i class="fas fa-wind"></i></div>
           <h3>Heat Pump Services</h3>
           <p>Energy-efficient year-round comfort. Installation, repair, and maintenance for all heat pump systems.</p>
-          <a href="services/heat-pump.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          <a href="services/heat-pump" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card animate animate-delay-3" style="background-image:url('https://images.unsplash.com/photo-1698479603408-1a66a6d9e80f?w=600&q=70')">
           <div class="service-icon"><i class="fas fa-temperature-arrow-down"></i></div>
           <h3>Mini-Split Installation</h3>
           <p>Ductless solutions for additions, garages, sunrooms, and older homes. Zone control for maximum comfort.</p>
-          <a href="services/mini-split.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          <a href="services/mini-split" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card animate animate-delay-1" style="background-image:url('https://images.unsplash.com/photo-1614447413576-b346c641c128?w=600&q=70')">
           <div class="service-icon"><i class="fas fa-building"></i></div>
           <h3>Commercial HVAC & Refrigeration</h3>
           <p>Rooftop units, walk-in coolers, freezers, restaurant ventilation. Protecting your business 24/7.</p>
-          <a href="services/commercial.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          <a href="services/commercial" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card animate animate-delay-2" style="background-image:url('https://images.unsplash.com/photo-1558358235-a0a93f68a52c?w=600&q=70')">
           <div class="service-icon"><i class="fas fa-truck-medical"></i></div>
           <h3>Emergency Repair</h3>
           <p>HVAC emergency? We're here day and night. Same honest pricing any day of the week — including Sundays.</p>
-          <a href="services/emergency.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          <a href="services/emergency" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card animate animate-delay-3" style="background-image:url('https://images.unsplash.com/photo-1637971821576-f42fa65cd79c?w=600&q=70')">
           <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
@@ -1568,19 +1682,19 @@
           <div class="service-icon"><i class="fas fa-wind"></i></div>
           <h3>Ductwork Services</h3>
           <p>Duct sealing, repair, and installation. Fix leaky ducts to improve airflow, efficiency, and air quality.</p>
-          <a href="services/ductwork.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          <a href="services/ductwork" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card animate animate-delay-2" style="background-image:url('https://images.unsplash.com/photo-1558358235-a0a93f68a52c?w=600&q=70')">
           <div class="service-icon"><i class="fas fa-temperature-half"></i></div>
           <h3>Smart Thermostats</h3>
           <p>Nest, Ecobee, Honeywell installation and setup. WiFi thermostats and zoning controls for smarter comfort.</p>
-          <a href="services/thermostat.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          <a href="services/thermostat" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card animate animate-delay-3" style="background-image:url('https://images.unsplash.com/photo-1642749776312-aa42ce20c9f5?w=600&q=70')">
           <div class="service-icon"><i class="fas fa-lungs"></i></div>
           <h3>Indoor Air Quality</h3>
           <p>UV lights, air purifiers, humidity control, and filtration. Breathe cleaner, healthier air every day.</p>
-          <a href="services/indoor-air-quality.html" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+          <a href="services/indoor-air-quality" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -1835,23 +1949,23 @@
       <div class="map-grid">
         <div class="animate">
           <div class="map-areas">
-            <a href="service-areas/clayton-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Clayton, NC <strong style="color:var(--accent);margin-left:auto;font-size:.75rem">HQ</strong></a>
-            <a href="service-areas/raleigh-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Raleigh, NC</a>
-            <a href="service-areas/durham-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Durham, NC</a>
-            <a href="service-areas/garner-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Garner, NC</a>
-            <a href="service-areas/fayetteville-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Fayetteville, NC</a>
-            <a href="service-areas/smithfield-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Smithfield, NC</a>
-            <a href="service-areas/apex-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Apex, NC</a>
-            <a href="service-areas/cary-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Cary, NC</a>
-            <a href="service-areas/holly-springs-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Holly Springs, NC</a>
-            <a href="service-areas/fuquay-varina-nc.html" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Fuquay-Varina, NC</a>
+            <a href="service-areas/clayton-nc" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Clayton, NC <strong style="color:var(--accent);margin-left:auto;font-size:.75rem">HQ</strong></a>
+            <a href="service-areas/raleigh-nc" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Raleigh, NC</a>
+            <a href="service-areas/durham-nc" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Durham, NC</a>
+            <a href="service-areas/garner-nc" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Garner, NC</a>
+            <a href="service-areas/fayetteville-nc" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Fayetteville, NC</a>
+            <a href="service-areas/smithfield-nc" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Smithfield, NC</a>
+            <a href="service-areas/apex-nc" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Apex, NC</a>
+            <a href="service-areas/cary-nc" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Cary, NC</a>
+            <a href="service-areas/holly-springs-nc" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Holly Springs, NC</a>
+            <a href="service-areas/fuquay-varina-nc" class="area-tag" style="text-decoration:none"><i class="fas fa-map-pin"></i> Fuquay-Varina, NC</a>
           </div>
           <p style="margin-top:24px;color:var(--text-light);font-size:.95rem">
             <i class="fas fa-info-circle" style="color:var(--ice)"></i>
             Don't see your city? Call us — we likely serve your area too!
           </p>
           <p style="margin-top:16px;font-size:.95rem">
-            <a href="areas/index.html" style="color:var(--accent);font-weight:600;text-decoration:none">
+            <a href="areas/" style="color:var(--accent);font-weight:600;text-decoration:none">
               <i class="fas fa-map-marked-alt"></i> 50 neighborhood &amp; town HVAC guides — Barber Mill, Flowers Plantation, Youngsville, Princeton &amp; more →
             </a>
           </p>
@@ -1885,22 +1999,22 @@
         <div class="blog-card">
           <h3>Heat Pump vs. Gas Furnace in NC — Which Is Best?</h3>
           <p>Choosing between a heat pump and gas furnace? We break down costs, efficiency, and which option works best for North Carolina's climate.</p>
-          <a href="blog/heat-pump-vs-gas-furnace.html">Read More →</a>
+          <a href="blog/heat-pump-vs-gas-furnace">Read More →</a>
         </div>
         <div class="blog-card">
           <h3>5 Signs Your Furnace Needs Repair This Winter</h3>
           <p>Strange noises, rising bills, or uneven heating? Here are five warning signs your furnace is telling you it needs professional attention.</p>
-          <a href="blog/5-signs-furnace-needs-repair.html">Read More →</a>
+          <a href="blog/5-signs-furnace-needs-repair">Read More →</a>
         </div>
         <div class="blog-card">
           <h3>10 Ways to Save Money on Energy Bills</h3>
           <p>Simple HVAC adjustments and maintenance habits that can significantly lower your monthly energy costs without sacrificing comfort.</p>
-          <a href="blog/save-money-energy-bills-hvac-tips.html">Read More →</a>
+          <a href="blog/save-money-energy-bills-hvac-tips">Read More →</a>
         </div>
         <div class="blog-card">
           <h3>Spring AC Tune-Up Checklist</h3>
           <p>Get your air conditioner ready for summer with this essential maintenance checklist. Prevent breakdowns before the heat arrives.</p>
-          <a href="blog/spring-ac-tune-up-checklist.html">Read More →</a>
+          <a href="blog/spring-ac-tune-up-checklist">Read More →</a>
         </div>
       </div>
     </div>
@@ -1916,7 +2030,7 @@
           <a href="tel:9192304439" class="btn-white">
             <i class="fas fa-phone"></i> Call (919) 230-4439
           </a>
-          <a href="contact.html" class="btn btn-secondary" style="border-color:rgba(255,255,255,.5)">
+          <a href="contact" class="btn btn-secondary" style="border-color:rgba(255,255,255,.5)">
             <i class="fas fa-calendar-alt"></i> Schedule Online
           </a>
         </div>
@@ -1943,43 +2057,43 @@
         <div>
           <h4>Services</h4>
           <ul>
-            <li><a href="services/ac-repair.html">AC Repair & Service</a></li>
-            <li><a href="services/ac-installation.html">AC Installation</a></li>
-            <li><a href="services/heating-repair.html">Heating Repair</a></li>
-            <li><a href="services/furnace-installation.html">Furnace Installation</a></li>
-            <li><a href="services/heat-pump.html">Heat Pump Services</a></li>
-            <li><a href="services/mini-split.html">Mini-Split Installation</a></li>
-            <li><a href="services/commercial.html">Commercial HVAC</a></li>
-            <li><a href="services/emergency.html">Emergency Repair</a></li>
+            <li><a href="services/ac-repair">AC Repair & Service</a></li>
+            <li><a href="services/ac-installation">AC Installation</a></li>
+            <li><a href="services/heating-repair">Heating Repair</a></li>
+            <li><a href="services/furnace-installation">Furnace Installation</a></li>
+            <li><a href="services/heat-pump">Heat Pump Services</a></li>
+            <li><a href="services/mini-split">Mini-Split Installation</a></li>
+            <li><a href="services/commercial">Commercial HVAC</a></li>
+            <li><a href="services/emergency">Emergency Repair</a></li>
             <li><a href="https://join.frostfirehvacr.com/maintenance-signup">Maintenance Plans</a></li>
-            <li><a href="services/ductwork.html">Ductwork Services</a></li>
-            <li><a href="services/thermostat.html">Smart Thermostats</a></li>
-            <li><a href="services/indoor-air-quality.html">Indoor Air Quality</a></li>
+            <li><a href="services/ductwork">Ductwork Services</a></li>
+            <li><a href="services/thermostat">Smart Thermostats</a></li>
+            <li><a href="services/indoor-air-quality">Indoor Air Quality</a></li>
           </ul>
         </div>
         <div>
           <h4>Service Areas</h4>
           <ul>
-            <li><a href="service-areas/clayton-nc.html">Clayton, NC</a></li>
-            <li><a href="service-areas/raleigh-nc.html">Raleigh, NC</a></li>
-            <li><a href="service-areas/durham-nc.html">Durham, NC</a></li>
-            <li><a href="service-areas/garner-nc.html">Garner, NC</a></li>
-            <li><a href="service-areas/fayetteville-nc.html">Fayetteville, NC</a></li>
-            <li><a href="service-areas/apex-nc.html">Apex, NC</a></li>
-            <li><a href="service-areas/cary-nc.html">Cary, NC</a></li>
-            <li><a href="service-areas/holly-springs-nc.html">Holly Springs, NC</a></li>
-            <li><a href="service-areas/fuquay-varina-nc.html">Fuquay-Varina, NC</a></li>
-            <li><a href="service-areas/smithfield-nc.html">Smithfield, NC</a></li>
+            <li><a href="service-areas/clayton-nc">Clayton, NC</a></li>
+            <li><a href="service-areas/raleigh-nc">Raleigh, NC</a></li>
+            <li><a href="service-areas/durham-nc">Durham, NC</a></li>
+            <li><a href="service-areas/garner-nc">Garner, NC</a></li>
+            <li><a href="service-areas/fayetteville-nc">Fayetteville, NC</a></li>
+            <li><a href="service-areas/apex-nc">Apex, NC</a></li>
+            <li><a href="service-areas/cary-nc">Cary, NC</a></li>
+            <li><a href="service-areas/holly-springs-nc">Holly Springs, NC</a></li>
+            <li><a href="service-areas/fuquay-varina-nc">Fuquay-Varina, NC</a></li>
+            <li><a href="service-areas/smithfield-nc">Smithfield, NC</a></li>
           </ul>
         </div>
         <div>
           <h4>Company</h4>
           <ul>
-            <li><a href="about.html">About Us</a></li>
+            <li><a href="about">About Us</a></li>
             <li><a href="blog/">Blog</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-            <li><a href="calculator.html">HVAC Calculator</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="reviews">Reviews</a></li>
+            <li><a href="calculator">HVAC Calculator</a></li>
+            <li><a href="contact">Contact</a></li>
           </ul>
           <h4>Contact</h4>
           <ul class="footer-contact">
