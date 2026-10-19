@@ -8,7 +8,7 @@
  *   phone_call_click  - a tap on any tel: link
  */
 (function () {
-  var UET_TAG_ID = ''; // TODO(Jax): Microsoft Advertising UET tag ID, e.g. '343xxxxx'
+  var UET_TAG_ID = '187281910'; // Microsoft Advertising UET tag "Frost Fire website" (created via API 10/19)
 
   var queue = [];
   function push(args) {
