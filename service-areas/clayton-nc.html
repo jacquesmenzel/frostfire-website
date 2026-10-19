@@ -329,6 +329,9 @@
   <script>
     const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.animate').forEach(e=>observer.observe(e));
   </script>
+  <script src="/js/analytics-config.js"></script>
+  <script src="/js/attribution.js"></script>
+  <script src="/js/quick-quote.js" defer></script>
   <script src="../chat-widget.js"></script>
 </body>
 </html>
