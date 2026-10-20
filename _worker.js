@@ -8,6 +8,7 @@ const WEBSITE_SESSION_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/session
 const WEBSITE_EVENT_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/event`;
 const WEBSITE_LEAD_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/lead`;
 const WEBSITE_REVIEWS_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/reviews`;
+const WEBSITE_WORK_PHOTOS_UPSTREAM = `${UPSTREAM_BASE}/api/v1/public/website/work-photos`;
 
 function corsHeaders(methods) {
   return {
@@ -161,7 +162,7 @@ async function handleWebsiteGrowthProxy(request, upstreamUrl, allowedMethod) {
   });
 }
 
-async function handleWebsiteReviewsProxy(request) {
+async function handleWebsiteReviewsProxy(request, upstreamBase = WEBSITE_REVIEWS_UPSTREAM) {
   if (request.method === "OPTIONS") {
     return new Response(null, {
       status: 204,
@@ -177,7 +178,7 @@ async function handleWebsiteReviewsProxy(request) {
   }
 
   const url = new URL(request.url);
-  const upstreamUrl = new URL(WEBSITE_REVIEWS_UPSTREAM);
+  const upstreamUrl = new URL(upstreamBase);
   upstreamUrl.search = url.search;
 
   const upstream = await fetch(upstreamUrl.toString(), {
@@ -240,6 +241,9 @@ export default {
     }
     if (url.pathname === "/api/v1/public/website/reviews") {
       return handleWebsiteReviewsProxy(request);
+    }
+    if (url.pathname === "/api/v1/public/website/work-photos") {
+      return handleWebsiteReviewsProxy(request, WEBSITE_WORK_PHOTOS_UPSTREAM);
     }
     return env.ASSETS.fetch(request);
   },

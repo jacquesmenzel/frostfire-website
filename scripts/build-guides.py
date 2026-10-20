@@ -563,19 +563,20 @@ def header() -> str:
     return (
         '<div class="top-bar"><div class="container"><div class="top-bar-badges"><span><i class="fas fa-shield-halved"></i> Licensed &amp; Insured</span><span><i class="fas fa-calendar-check"></i> No weekend surcharge</span><span><i class="fas fa-bolt"></i> Same-day service</span></div><div class="top-bar-right"><a href="tel:' + PHONE_TEL + '"><i class="fas fa-phone"></i> ' + PHONE + '</a></div></div></div>\n'
         '  <header class="header"><nav class="nav"><a href="/" class="logo"><img src="/images/logo.svg" alt="Frost Fire Heating &amp; Cooling" style="height:48px;width:auto;"></a><ul class="nav-links"><li><a href="/#services">Services</a></li><li><a href="/#why-us">Why Us</a></li><li><a href="/#reviews">Reviews</a></li><li><a href="/service-areas">Service Areas</a></li>\n'
-        '        <li><a href="/blog/">Blog</a></li><li><a href="/guides/">Homeowner Guides</a></li><li><a href="/contact">Contact</a></li></ul><a href="tel:' + PHONE_TEL + '" class="nav-phone"><i class="fas fa-phone"></i><span>' + PHONE + '</span></a><button class="mobile-toggle" aria-label="Open menu" onclick="document.getElementById(\'mobileMenu\').classList.add(\'active\')"><i class="fas fa-bars"></i></button></nav></header>\n'
-        '  <div class="mobile-menu" id="mobileMenu"><button class="mobile-menu-close" aria-label="Close menu" onclick="this.parentElement.classList.remove(\'active\')"><i class="fas fa-times"></i></button><a href="/#services">Services</a><a href="/service-areas">Service Areas</a><a href="/guides/">Homeowner Guides</a><a href="/blog/">Blog</a><a href="/contact">Contact</a><a href="tel:' + PHONE_TEL + '" class="btn btn-primary" style="margin-top:12px"><i class="fas fa-phone"></i> Call Now</a></div>\n'
+        '        <li><a href="/blog/">Blog</a></li><li><a href="/guides/">Homeowner Guides</a></li><li><a href="/our-work">Our Work</a></li><li><a href="/contact">Contact</a></li></ul><a href="tel:' + PHONE_TEL + '" class="nav-phone"><i class="fas fa-phone"></i><span>' + PHONE + '</span></a><button class="mobile-toggle" aria-label="Open menu" onclick="document.getElementById(\'mobileMenu\').classList.add(\'active\')"><i class="fas fa-bars"></i></button></nav></header>\n'
+        '  <div class="mobile-menu" id="mobileMenu"><button class="mobile-menu-close" aria-label="Close menu" onclick="this.parentElement.classList.remove(\'active\')"><i class="fas fa-times"></i></button><a href="/#services">Services</a><a href="/service-areas">Service Areas</a><a href="/guides/">Homeowner Guides</a><a href="/our-work">Our Work</a><a href="/blog/">Blog</a><a href="/contact">Contact</a><a href="tel:' + PHONE_TEL + '" class="btn btn-primary" style="margin-top:12px"><i class="fas fa-phone"></i> Call Now</a></div>\n'
     )
 
 
 def footer() -> str:
     return (
-        '  <footer class="footer"><div class="container"><p>&copy; 2026 Frost Fire Heating and Cooling. Licensed &amp; Insured in NC. Serving Raleigh, Durham, the Triangle, Clayton and surrounding areas.</p><p style="margin-top:8px"><a href="/">Home</a> · <a href="/guides/">Homeowner Guides</a> · <a href="tel:' + PHONE_TEL + '">' + PHONE + '</a> · <a href="/contact">Contact</a></p></div></footer>\n'
+        '  <footer class="footer"><div class="container"><p>&copy; 2026 Frost Fire Heating and Cooling. Licensed &amp; Insured in NC. Serving Raleigh, Durham, the Triangle, Clayton and surrounding areas.</p><p style="margin-top:8px"><a href="/">Home</a> · <a href="/guides/">Homeowner Guides</a> · <a href="/our-work">Our Work</a> · <a href="tel:' + PHONE_TEL + '">' + PHONE + '</a> · <a href="/contact">Contact</a></p></div></footer>\n'
         '  <div class="floating-cta"><a href="tel:' + PHONE_TEL + '"><i class="fas fa-phone"></i> Call Now — ' + PHONE + '</a></div>\n'
         '  <script src="/js/analytics-config.js"></script>\n'
         '  <script src="/js/attribution.js"></script>\n'
         '  <script src="/js/quick-quote.js" defer></script>\n'
         '  <script src="/chat-widget.js"></script>\n'
+        '  <script src="/js/work-photos.js" defer></script>\n'
     )
 
 
