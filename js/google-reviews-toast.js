@@ -427,7 +427,7 @@
       phone: raw.phone || CFG.phone,
       phone_display: raw.phone_display || CFG.phoneDisplay,
       schedule_url: raw.schedule_url || CFG.scheduleUrl,
-      average_rating: Number(raw.average_rating) || 4.9,
+      average_rating: Number(raw.average_rating) || 4.8,
       review_count: Number(raw.review_count) || cleaned.length,
       reviews: cleaned,
     };

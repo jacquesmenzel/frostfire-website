@@ -95,7 +95,7 @@
     }
     return {
       google_reviews_url: raw.google_reviews_url || CFG.googleReviewsUrl,
-      average_rating: Number(raw.average_rating) || 4.9,
+      average_rating: Number(raw.average_rating) || 4.8,
       review_count: Number(raw.review_count) || cleaned.length,
       reviews: cleaned,
     };

@@ -5,93 +5,93 @@
   "phone": "9192304439",
   "phone_display": "(919) 230-4439",
   "schedule_url": "/contact.html",
-  "average_rating": 4.9,
-  "review_count": 55,
+  "average_rating": 4.8,
+  "review_count": 67,
   "reviews": [
     {
-      "id": "8cc3fb26-48b8-4293-b5a3-ec6cfbb92612",
-      "reviewer_name": "Arielle H.",
+      "id": "a6f6f4bc-3529-4183-a4b6-c210b49a69bf",
+      "reviewer_name": "Mandy R.",
       "rating": 5,
-      "excerpt": "Frost Fire Heating and Cooling LLC provided outstanding service! They were professional, punctual, and fixed my HVAC system efficiently. Highly recommend!",
-      "review_date": "2025-01-08"
+      "excerpt": "Came out working 8 hours and fixed the A/c preventing another restless night for the kids. If the Avengers ever have an opening, they should apply because they are my heroes!!!",
+      "review_date": "2026-08-02"
     },
     {
-      "id": "20e4cb8a-395d-4024-babd-de4147ac4de2",
+      "id": "552bfb47-34d5-45b8-9d20-3b1ecd88103c",
+      "reviewer_name": "Carmen C.",
+      "rating": 5,
+      "excerpt": "I had a great experience with FrostFire HVAC when the technician repaired my air conditioning system. The technician was professional, knowledgeable, and took the time to explain both the repair and how my…",
+      "review_date": "2026-07-17"
+    },
+    {
+      "id": "1f99dad4-6817-4f84-9199-a56de2f4b63e",
+      "reviewer_name": "Dirssis B.",
+      "rating": 5,
+      "excerpt": "I had a great experience with FrostFire HVAC from start to finish. They installed my new air conditioning system, and the entire process was smooth, professional, and efficient. The team arrived on time…",
+      "review_date": "2026-07-11"
+    },
+    {
+      "id": "72a2df5d-71e1-4a57-8443-7fc0defc7400",
+      "reviewer_name": "Brian L.",
+      "rating": 5,
+      "excerpt": "Great service and always responsive.",
+      "review_date": "2026-07-10"
+    },
+    {
+      "id": "5ce51f21-45b6-4ba0-9998-46ae17b6ab5b",
+      "reviewer_name": "Hayder A.",
+      "rating": 5,
+      "excerpt": "I recently encountered a significant HVAC issue during due to failing compressor in middle of July , leaving my kids sweating and uncomfortable. I reached out to Frost Fire Heating And Cooling, and to my…",
+      "review_date": "2026-07-08"
+    },
+    {
+      "id": "5ab0c634-e277-4af3-b3e5-d28c11400c22",
+      "reviewer_name": "Matt",
+      "rating": 5,
+      "excerpt": "Jax came out at 11:30 at night after our AC had been out all day and having had 5 other appointments to finish within 7 hours before ours. Thankfully, it was a pretty quick fix, and our house was down to a…",
+      "review_date": "2026-06-27"
+    },
+    {
+      "id": "651b86a7-7202-45dc-acb2-db568b9b35bf",
+      "reviewer_name": "Allon R.",
+      "rating": 5,
+      "excerpt": "I had a great experience with Frost Fire Heating and Cooling. Jax came out to assess our HVAC unit and quickly diagnosed the issue as a failed condenser fan motor. What impressed me most was that they had the…",
+      "review_date": "2026-06-15"
+    },
+    {
+      "id": "3db14da2-8827-4860-9302-ff7f2830def4",
       "reviewer_name": "Liane W.",
       "rating": 5,
-      "excerpt": "Jax came in clutch at a literal fraction of the price that the \"big guys\" quoted! Had us up and running in an hour. We have our new go to HVAC place FOR SURE. Highly recommend!",
-      "review_date": "2026-04-18"
+      "excerpt": "Jax came in clutch at a literal fraction of the price that the “big guys” quoted! Had us up and running in an hour. We have our new go to HVAC place FOR SURE. Highly recommend!",
+      "review_date": "2026-04-19"
     },
     {
-      "id": "cf9a6694-6a02-43b4-8403-8b7288218bae",
+      "id": "852590c4-0379-4f26-8f84-a486e507d117",
+      "reviewer_name": "Shiv G.",
+      "rating": 5,
+      "excerpt": "Found very prompt and genuine person, had visited twice to my house without charging any extra money for multiple issues. Explained the problem clearly. Would definitely recommend!",
+      "review_date": "2025-11-08"
+    },
+    {
+      "id": "a40a5387-047d-4e7d-87aa-8babcc7d69a9",
       "reviewer_name": "Jeannette T.",
       "rating": 5,
-      "excerpt": "Jax was great to work with! He sent over his pricing and availability the same day, and showed up promptly for our HVAC emergency. Highly recommend!",
+      "excerpt": "Jax was great to work with! He sent over his pricing and availability the same day, and showed up promptly for our late-night HVAC emergency. He diagnosed and fixed the issue in under 30 minutes and gave us a…",
       "review_date": "2025-05-21"
     },
     {
-      "id": "13850abe-4403-4da4-8411-5cfbcb979b03",
-      "reviewer_name": "Dennis W.",
-      "rating": 5,
-      "excerpt": "Great service \u2014 high quality work at a reasonable price. Very responsive, polite, professional, and work is guaranteed. Glad I found Frost Fire. This will be my first call for future HVAC work.",
-      "review_date": "2025-04-29"
-    },
-    {
-      "id": "ed359060-2086-42bb-9d00-878b0de5a1c4",
-      "reviewer_name": "Jorge M.",
-      "rating": 5,
-      "excerpt": "Very professional and punctual. It was great working with Jax. Will hire for all my heater/hvac needs going forward.",
-      "review_date": "2025-02-18"
-    },
-    {
-      "id": "045eff79-e8dd-4626-9cf5-f800bbd43b51",
-      "reviewer_name": "Chelsea C.",
-      "rating": 5,
-      "excerpt": "3-story townhouse and stayed 80+ degrees on the third floor. Jax came out the same day I inquired and diagnosed the problem as a stuck damper. Fixed it immediately. Very professional!",
-      "review_date": "2025-01-12"
-    },
-    {
-      "id": "cac531a3-77b6-436d-99c4-fa639e40bc6e",
-      "reviewer_name": "Brittney L.",
-      "rating": 5,
-      "excerpt": "Amazing speedy service we needed a new furnace Jax didn't waste any time he came in got the job done and fixed everything that needed to be repaired highly recommend!",
-      "review_date": "2025-03-10"
-    },
-    {
-      "id": "72182056-21bd-4831-9c80-ea89b9f23620",
-      "reviewer_name": "BC",
-      "rating": 5,
-      "excerpt": "I was worried my heating system would need to be replaced, but they managed to repair it and save me so much money. Great service and friendly staff. Highly Recommend!",
-      "review_date": "2025-01-07"
-    },
-    {
-      "id": "00868522-358f-430f-b607-07395be4a7dd",
-      "reviewer_name": "FARINTON M.",
-      "rating": 5,
-      "excerpt": "I'm new to the area and was fortunate to find Frost Fire HVACR. Jax was incredibly polite, knowledgeable, and punctual. Will definitely recommend to family and friends!",
-      "review_date": "2025-01-07"
-    },
-    {
-      "id": "4c908824-35e6-4f28-8999-fa13f5d2bf90",
+      "id": "18fee996-db29-4a8b-9e03-32561d989651",
       "reviewer_name": "Kerry D.",
       "rating": 5,
-      "excerpt": "Highly recommend Frost Heating and cooling. Jax the technician diagnosed the problem and fixed it in record time - they are fast, knowledgeable, and affordable.",
+      "excerpt": "Highly recommend Frost Heating and cooling. Jax the technician diagnosed the problem and fixed it in record time - they were very reasonably priced and their attention to detail was exemplary (he even texted…",
       "review_date": "2025-05-21"
     },
     {
-      "id": "df3e4465-c04d-4009-99b8-b0bee354a78e",
-      "reviewer_name": "Dion L.",
+      "id": "d6174d07-1d58-49a4-8ea5-b7d11313c511",
+      "reviewer_name": "David W.",
       "rating": 5,
-      "excerpt": "Jax from frost fire is top notch at what he does. Our inducer motor went out in our furnace and got the part ordered to come the next day and got it fixed!",
-      "review_date": "2025-01-16"
-    },
-    {
-      "id": "66ca752f-a734-47fb-b447-db8b76076b3b",
-      "reviewer_name": "George B.",
-      "rating": 5,
-      "excerpt": "I had an excellent experience with Jax and his team. He came to my house to handle AC issue, and they did an outstanding job. I was thoroughly impressed with their professionalism!",
-      "review_date": "2025-01-10"
+      "excerpt": "Great work at a fair price. No attempts to upsell on a new system that you don’t need. Definitely will use again!",
+      "review_date": "2025-05-20"
     }
   ],
-  "updated_at": "2026-07-11T13:52:29.847445+00:00"
+  "updated_at": "2026-10-20T12:00:51.271007+00:00"
 }
