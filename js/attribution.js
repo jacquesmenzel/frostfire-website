@@ -37,9 +37,9 @@
     document.head.appendChild(script);
   }
 
-  // Load /js/phone-numbers.js and /js/microsoft-uet.js once on every page that has this file.
+  // Load the phone-number swap, Microsoft UET and ChatGPT pixel once on every page that has this file.
   function ensureSiteScripts() {
-    ['/js/phone-numbers.js', '/js/microsoft-uet.js'].forEach(function (src) {
+    ['/js/phone-numbers.js', '/js/microsoft-uet.js', '/js/openai-pixel.js'].forEach(function (src) {
       const name = src.split('/').pop();
       const have = Array.prototype.some.call(document.scripts, function (s) {
         return String(s.getAttribute('src') || '').split('?')[0].endsWith(name);
@@ -352,6 +352,19 @@
         phone_channel: details.phone_channel || meta.phone_channel || null,
         landing_page_type: details.landing_page_type || inferPageType(getPagePath()),
       });
+      // ChatGPT ads: the same event_id goes to the pixel (below) and to the CRM, which
+      // sends it again server-side; OpenAI keeps one. oppref/obref help it match.
+      const oa = window.FrostFireOpenAI;
+      if (oa) {
+        const refs = oa.refs();
+        payload.details.openai = {
+          event_id: (details.openai && details.openai.event_id) || oa.newEventId('lead'),
+          oppref: refs.oppref || payload.details.click_ids.oppref || null,
+          obref: refs.obref || null,
+          pixel_id: oa.pixelId,
+        };
+        if (refs.oppref && !payload.details.click_ids.oppref) payload.details.click_ids.oppref = refs.oppref;
+      }
     }
     pushDataLayer('website_lead', {
       lead_channel: payload && payload.lead_channel ? payload.lead_channel : 'website',
@@ -366,6 +379,12 @@
       // Microsoft UET conversion (no-op until js/microsoft-uet.js has a tag id).
       try {
         if (window.FrostFireUET) window.FrostFireUET.lead({ cta_type: details.cta_type || undefined });
+      } catch {
+        /* never block the form */
+      }
+      try {
+        const oaInfo = payload && payload.details && payload.details.openai;
+        if (window.FrostFireOpenAI && oaInfo) window.FrostFireOpenAI.lead(oaInfo.event_id);
       } catch {
         /* never block the form */
       }
@@ -411,6 +430,11 @@
       const text = (link.textContent || '').trim().slice(0, 120);
       if (href.startsWith('tel:')) {
         trackEvent('click_to_call', { cta_type: 'phone', value: 1, label: text, href: href });
+        try {
+          if (window.FrostFireOpenAI) window.FrostFireOpenAI.phoneClick();
+        } catch {
+          /* best effort */
+        }
         return;
       }
       if (href.indexOf('join.frostfirehvacr.com') >= 0) {
