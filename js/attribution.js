@@ -84,6 +84,20 @@
       window.gtag('config', ANALYTICS_CONFIG.ga4MeasurementId, { send_page_view: false });
     }
 
+    // Google Ads tag: keeps the ad click (gclid/gbraid/wbraid) in a first-party cookie.
+    // No Ads conversion fires from the page; uploads from the CRM are the source of truth.
+    if (ANALYTICS_CONFIG.googleAdsId) {
+      if (!window.gtag) {
+        loadScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(ANALYTICS_CONFIG.googleAdsId));
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () {
+          window.dataLayer.push(arguments);
+        };
+        window.gtag('js', new Date());
+      }
+      window.gtag('config', ANALYTICS_CONFIG.googleAdsId);
+    }
+
     if (ANALYTICS_CONFIG.clarityProjectId && !window.clarity) {
       (function (c, l, a, r, i, t, y) {
         c[a] =
