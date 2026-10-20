@@ -6,7 +6,7 @@
 (function () {
   if (document.getElementById('ff-quick-quote')) return;
   var path = window.location.pathname.toLowerCase();
-  if (!/^\/(services|service-areas|areas)\//.test(path)) return;
+  if (!/^\/(services|service-areas|areas|guides)\//.test(path)) return;
 
   var h1 = document.querySelector('h1');
   var pageTopic = h1 ? h1.textContent.trim() : document.title.split('|')[0].trim();
