@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<!--
+  Install / replacement landing page (ad test, Jax approved 10/20).
+  Ad URLs: https://frostfirehvacr.com/lp/install/?utm_source=google&utm_medium=cpc&utm_campaign=install
+           https://frostfirehvacr.com/lp/install/?utm_source=bing&utm_medium=cpc&utm_campaign=install
+  No data-ff-phone-channel: phone-numbers.js picks the Google or Bing tracking number from the click id / utm_source,
+  so calls are credited to the right platform. Leads carry details.intent = "install" (CRM install conversions).
+  Prices are typical ranges, not quotes. No federal tax credit (25C ended for installs after 2025).
+-->
+<html lang="en" data-ff-page-type="lp_install">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>New Heat Pump, AC or Furnace: Free Estimate | Frost Fire Heating & Cooling</title>
+  <meta name="description" content="Replacing your heat pump, AC or furnace in Raleigh, Durham or the Triangle? Good, better and best options with upfront pricing, financing and a free in-home estimate from the owner.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://frostfirehvacr.com/services/heat-pump">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" href="/images/favicon-180.png?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--primary:#0f2b4c;--primary-light:#1a3d6e;--accent:#e8531e;--accent-hover:#ff6b35;--ice:#00b4d8;--ice-light:#90e0ef;--ice-dark:#0077b6;--dark:#0a1628;--text:#2d3748;--text-light:#5a6578;--white:#fff;--off-white:#f7fafc;--gray-200:#e2e8f0;--radius:16px;--radius-sm:10px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:var(--text);line-height:1.6;background:var(--white);padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+    h1,h2,h3{font-family:'Montserrat','Inter',sans-serif;line-height:1.15;color:var(--primary)}
+    a{color:inherit}
+    svg{flex-shrink:0}
+    .wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;border-radius:50px;font-weight:700;font-size:1.05rem;text-decoration:none;border:0;cursor:pointer;font-family:inherit;transition:transform .2s,box-shadow .2s;min-height:52px}
+    .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-hover));color:var(--white);box-shadow:0 4px 20px rgba(232,83,30,.4)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,83,30,.5)}
+    .btn-ghost{background:rgba(255,255,255,.1);color:var(--white);border:2px solid rgba(255,255,255,.35)}
+    /* Header */
+    .top{background:var(--dark);color:rgba(255,255,255,.85);font-size:.82rem;padding:7px 0;padding-top:calc(7px + env(safe-area-inset-top,0px))}
+    .top .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+    .top span{display:inline-flex;align-items:center;gap:6px}
+    .top svg{color:var(--ice)}
+    .head{background:rgba(15,43,76,.98);position:sticky;top:0;z-index:50;box-shadow:0 4px 24px rgba(0,0,0,.15)}
+    .head .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--white);font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.05rem;line-height:1.1}
+    .logo img{width:52px;height:52px}
+    .logo small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:.72rem;color:var(--ice-light);letter-spacing:.02em}
+    .head-call{display:inline-flex;align-items:center;gap:8px;color:var(--white);text-decoration:none;font-weight:700;font-size:1.05rem;white-space:nowrap}
+    .head-call i{width:38px;height:38px;border-radius:50%;background:var(--accent);display:inline-flex;align-items:center;justify-content:center}
+    /* Hero */
+    .hero{background:linear-gradient(135deg,rgba(10,22,40,.97),rgba(15,43,76,.92) 60%,rgba(0,119,182,.85));color:var(--white);padding-block:36px 44px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start}
+    .rating{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:6px 14px;font-size:.9rem;text-decoration:none;color:var(--white);margin-bottom:16px}
+    .stars{color:#fbbc05;letter-spacing:1px}
+    .hero h1{color:var(--white);font-size:clamp(1.9rem,5.5vw,3rem);margin-bottom:14px}
+    .hero h1 em{font-style:normal;color:var(--ice-light)}
+    .lead{font-size:1.1rem;color:rgba(255,255,255,.85);margin-bottom:20px;max-width:34em}
+    .offer{background:rgba(232,83,30,.14);border:1px solid rgba(255,107,53,.55);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:22px}
+    .offer strong{display:block;font-family:'Montserrat',sans-serif;font-size:1.15rem;color:var(--white);margin-bottom:2px}
+    .offer span{color:rgba(255,255,255,.85);font-size:.95rem}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+    .checks{list-style:none;display:grid;gap:8px}
+    .checks li{display:flex;gap:10px;align-items:flex-start;color:rgba(255,255,255,.9)}
+    .checks svg{color:var(--ice);margin-top:3px}
+    /* Form card */
+    .card{background:var(--white);color:var(--text);border-radius:var(--radius);padding:24px;box-shadow:0 25px 70px -20px rgba(0,0,0,.45)}
+    .card h2{font-size:1.35rem;margin-bottom:4px}
+    .card .sub{color:var(--text-light);font-size:.92rem;margin-bottom:16px}
+    .field{margin-bottom:12px}
+    .field label{display:block;font-weight:600;font-size:.88rem;margin-bottom:4px;color:var(--primary)}
+    .field input,.field select,.field textarea{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1.5px solid var(--gray-200);border-radius:var(--radius-sm);background:var(--white);color:var(--text)}
+    .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ice);box-shadow:0 0 0 3px rgba(0,180,216,.2)}
+    .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .card .btn{width:100%;margin-top:4px}
+    .fine{font-size:.8rem;color:var(--text-light);margin-top:10px;text-align:center}
+    .form-msg{border-radius:var(--radius-sm);padding:12px 14px;font-size:.95rem;margin-top:12px}
+    .form-msg.ok{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+    .form-msg.err{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+    .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+    /* Sections */
+    section.block{padding-block:48px}
+    section.alt{background:var(--off-white)}
+    .block h2{font-size:clamp(1.5rem,3.5vw,2.1rem);margin-bottom:8px;text-align:center}
+    .block .intro{text-align:center;color:var(--text-light);max-width:640px;margin:0 auto 28px}
+    .trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .trust div{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px;text-align:center}
+    .trust svg{color:var(--accent);margin-bottom:6px}
+    .trust strong{display:block;color:var(--primary)}
+    .trust span{font-size:.85rem;color:var(--text-light)}
+    .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .review{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius);padding:20px}
+    .review p{font-size:.95rem;margin:8px 0 10px}
+    .review cite{font-style:normal;font-weight:600;color:var(--primary);font-size:.9rem}
+    .review small{color:var(--text-light)}
+    .center{text-align:center;margin-top:18px}
+    .center a{color:var(--ice-dark);font-weight:600}
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;list-style:none}
+    .services li{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:14px 16px;display:flex;gap:10px;align-items:flex-start}
+    .services svg{color:var(--ice-dark);margin-top:3px}
+    .services strong{color:var(--primary);display:block}
+    .services span{font-size:.88rem;color:var(--text-light)}
+    .areas{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;list-style:none;max-width:760px;margin:0 auto}
+    .areas li{background:var(--white);border:1px solid var(--gray-200);border-radius:50px;padding:6px 14px;font-weight:500;font-size:.92rem}
+    .areas li.hq{border-color:var(--accent);color:var(--accent)}
+    .final{background:linear-gradient(135deg,var(--accent),#d4451a,var(--accent-hover));color:var(--white);text-align:center;padding-block:44px}
+    .final h2{color:var(--white);font-size:clamp(1.5rem,4vw,2.2rem);margin-bottom:8px}
+    .final p{color:rgba(255,255,255,.9);margin-bottom:20px}
+    .final .btn{background:var(--white);color:var(--accent)}
+    footer{background:var(--dark);color:rgba(255,255,255,.7);font-size:.85rem;text-align:center;padding-block:28px}
+    footer a{color:var(--ice-light)}
+    .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--accent);box-shadow:0 -4px 20px rgba(0,0,0,.2);padding:10px 16px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));display:none}
+    .callbar a{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--white);text-decoration:none;font-weight:800;font-size:1.1rem;min-height:44px}
+    @media (max-width:860px){
+      .hero-grid{grid-template-columns:1fr}
+      .trust{grid-template-columns:1fr 1fr}
+      .reviews{grid-template-columns:1fr}
+      .services{grid-template-columns:1fr 1fr}
+      .callbar{display:block}
+      .head-call .num{display:none}
+      /* Keep the chat bubble/window above the sticky call bar. */
+      #cw-bubble{bottom:calc(84px + env(safe-area-inset-bottom,0px)) !important}
+      #cw-window{bottom:calc(148px + env(safe-area-inset-bottom,0px)) !important}
+    }
+    @media (min-width:861px){body{padding-bottom:0}}
+    @media (max-width:520px){
+      .services{grid-template-columns:1fr}
+      .row2{grid-template-columns:1fr}
+      .top .hide-sm{display:none}
+      .hero-cta .btn{width:100%}
+    }
+  </style>
+  <style>
+    .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .tier{background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:8px}
+    .tier.mid{border-color:var(--ice);box-shadow:0 10px 30px -12px rgba(0,119,182,.35)}
+    .tier h3{font-size:1.2rem}
+    .tier .price{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.6rem;color:var(--primary)}
+    .tier .mo{color:var(--accent);font-weight:700}
+    .tier ul{list-style:none;display:grid;gap:6px;font-size:.93rem;margin-top:4px}
+    .tier li{display:flex;gap:8px}
+    .tier li svg{color:var(--ice-dark);margin-top:3px}
+    .tag{align-self:flex-start;background:var(--ice);color:var(--white);font-size:.75rem;font-weight:700;border-radius:50px;padding:3px 10px}
+    .note{font-size:.82rem;color:var(--text-light);text-align:center;margin-top:14px;max-width:720px;margin-inline:auto}
+    .est-out{background:#f0f9ff;border:1px solid #bae6fd;border-radius:var(--radius-sm);padding:12px 14px;margin:6px 0 12px;font-size:.95rem}
+    .est-out strong{display:block;font-family:'Montserrat',sans-serif;font-size:1.3rem;color:var(--primary)}
+    .perks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .perk{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:16px}
+    .perk strong{display:block;color:var(--primary);margin-bottom:4px}
+    .perk span{font-size:.92rem;color:var(--text-light)}
+    @media (max-width:860px){.tiers,.perks{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1.2 14.2-4-4 1.4-1.4 2.6 2.6 5.4-5.4 1.4 1.4z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5zm-1.2 14.2-3.5-3.5 1.4-1.4 2.1 2.1 4.6-4.6 1.4 1.4z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.6 3.2 3.2-1.4 1.4L11 13.4V6h2z"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><path fill="currentColor" d="M7 2h2v2h6V2h2v2h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3zm12 7H5v10h14zm-8.2 8.2-3-3 1.4-1.4 1.6 1.6 4-4 1.4 1.4z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path fill="currentColor" d="M22.7 19.3 13.6 10.2A6 6 0 0 0 6.1 2.5l3.9 3.9-2.8 2.8L3.3 5.3a6 6 0 0 0 7.7 7.5l9.1 9.1a1 1 0 0 0 1.4 0l1.2-1.2a1 1 0 0 0 0-1.4z"/></symbol>
+  </svg>
+
+  <div class="top">
+    <div class="wrap">
+      <span><svg width="14" height="14"><use href="#i-shield"/></svg> Licensed &amp; Insured</span>
+      <span><svg width="14" height="14"><use href="#i-cal"/></svg> Free in-home estimate</span>
+      <span class="hide-sm"><svg width="14" height="14"><use href="#i-star"/></svg> 4.8 stars on Google</span>
+    </div>
+  </div>
+
+  <header class="head">
+    <div class="wrap">
+      <a class="logo" href="/" aria-label="Frost Fire Heating & Cooling home">
+        <img src="/images/frostfire-logo-160.png" width="52" height="52" alt="">
+        <span>Frost Fire<small>Heating &amp; Cooling · Raleigh &amp; the Triangle</small></span>
+      </a>
+      <a class="head-call" href="tel:+19192304439" data-ff-phone aria-label="Call Frost Fire">
+        <i><svg width="18" height="18"><use href="#i-phone"/></svg></i>
+        <span class="num" data-ff-phone-text>(919) 230-4439</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <a class="rating" href="https://g.page/r/CSjVCnRtfVKPEBM/review" target="_blank" rel="noopener">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <span><strong>4.8</strong> · Google reviews</span>
+          </a>
+          <h1>Time for a new system? <em>Get real prices, not a sales pitch.</em></h1>
+          <p class="lead">Frost Fire Heating &amp; Cooling installs heat pumps, AC and furnaces across Raleigh, Durham, the Triangle, Clayton and surrounding areas. The owner does your estimate himself: no commissioned salesman, no pressure, a written good / better / best quote the same day.</p>
+
+          <div class="offer">
+            <strong>Free in-home estimate. Upfront pricing.</strong>
+            <span>Financing available with approved credit. Ask about the Lennox fall promotion (through Dec 4) and Duke Energy rebates.</span>
+          </div>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="tel:+19192304439" data-ff-phone>
+              <svg width="20" height="20"><use href="#i-phone"/></svg>
+              <span>Call <span data-ff-phone-text>(919) 230-4439</span></span>
+            </a>
+            <a class="btn btn-ghost" href="#estimate">See your price range</a>
+          </div>
+
+          <ul class="checks">
+            <li><svg width="18" height="18"><use href="#i-check"/></svg> Heat pumps, central AC, gas furnaces, dual fuel and mini-splits</li>
+            <li><svg width="18" height="18"><use href="#i-check"/></svg> Text us a photo of your unit's data plate for a quick virtual quote</li>
+            <li><svg width="18" height="18"><use href="#i-check"/></svg> Manufacturer parts warranty plus our own labor warranty, in writing</li>
+          </ul>
+        </div>
+
+        <div class="card" id="estimate">
+          <h2>See your price range</h2>
+          <p class="sub">Three quick questions, then we'll text you the range and set up a free estimate.</p>
+          <form id="lp-install-form" novalidate>
+            <div class="row2">
+              <div class="field">
+                <label for="ins-system">System</label>
+                <select id="ins-system" name="system" required>
+                  <option value="heat_pump">Heat pump</option>
+                  <option value="ac_furnace">AC + gas furnace</option>
+                  <option value="ac_only">AC only</option>
+                  <option value="furnace_only">Furnace only</option>
+                  <option value="mini_split">Ductless mini-split</option>
+                  <option value="not_sure">Not sure</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="ins-size">Home size</label>
+                <select id="ins-size" name="size" required>
+                  <option value="s">Under 1,500 sq ft</option>
+                  <option value="m" selected>1,500 to 2,500 sq ft</option>
+                  <option value="l">Over 2,500 sq ft</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="ins-tier">Which option interests you?</label>
+              <select id="ins-tier" name="tier">
+                <option value="good">Good: reliable, budget-friendly</option>
+                <option value="better" selected>Better: quieter, more efficient</option>
+                <option value="best">Best: variable speed, top comfort</option>
+              </select>
+            </div>
+            <div class="est-out" id="ins-range" aria-live="polite"><strong>$8,000 – $11,000</strong>or about $106–$145/month*</div>
+            <div class="field">
+              <label for="ins-name">Name</label>
+              <input id="ins-name" name="name" autocomplete="name" required maxlength="120">
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="ins-phone">Mobile phone</label>
+                <input id="ins-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="919-555-1234" required maxlength="20">
+              </div>
+              <div class="field">
+                <label for="ins-email">Email <span style="font-weight:400;color:var(--text-light)">(optional)</span></label>
+                <input id="ins-email" name="email" type="email" autocomplete="email" maxlength="160">
+              </div>
+            </div>
+            <div class="field">
+              <label for="ins-city">City or ZIP</label>
+              <input id="ins-city" name="city" autocomplete="address-level2" maxlength="80" placeholder="e.g. Raleigh">
+            </div>
+            <div class="hp" aria-hidden="true">
+              <label for="ins-company">Company</label>
+              <input id="ins-company" name="company" tabindex="-1" autocomplete="off">
+            </div>
+            <button class="btn btn-primary" type="submit" id="ins-submit">Text me my range</button>
+            <div id="ins-form-msg" class="form-msg" role="status" aria-live="polite" hidden></div>
+            <p class="fine">By sending, you agree Frost Fire may call or text you about your estimate, including automated and AI-assisted calls and texts. Reply STOP anytime. We never share your info.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <h2>Good, better, best</h2>
+        <p class="intro">Typical installed prices for a 2–3 ton heat pump system in the Triangle. Your exact price comes in a written quote after a free in-home estimate.</p>
+        <div class="tiers">
+          <div class="tier">
+            <h3>Good</h3>
+            <div class="price">$6,000 – $8,000</div>
+            <div class="mo">or about $79–$106/month*</div>
+            <ul>
+              <li><svg width="16" height="16"><use href="#i-check"/></svg> Reliable single-stage system</li>
+              <li><svg width="16" height="16"><use href="#i-check"/></svg> Matched indoor and outdoor units</li>
+              <li><svg width="16" height="16"><use href="#i-check"/></svg> Install, permit, haul-away of the old unit</li>
+            </ul>
+          </div>
+          <div class="tier mid">
+            <span class="tag">Most popular</span>
+            <h3>Better</h3>
+            <div class="price">$8,000 – $11,000</div>
+            <div class="mo">or about $106–$145/month*</div>
+            <ul>
+              <li><svg width="16" height="16"><use href="#i-check"/></svg> Two-stage, quieter and more efficient</li>
+              <li><svg width="16" height="16"><use href="#i-check"/></svg> Smart thermostat options</li>
+              <li><svg width="16" height="16"><use href="#i-check"/></svg> May qualify for Duke Energy rebates</li>
+            </ul>
+          </div>
+          <div class="tier">
+            <h3>Best</h3>
+            <div class="price">$11,000 – $14,000</div>
+            <div class="mo">or about $145–$185/month*</div>
+            <ul>
+              <li><svg width="16" height="16"><use href="#i-check"/></svg> Variable-speed, top comfort and efficiency</li>
+              <li><svg width="16" height="16"><use href="#i-check"/></svg> Steadier temperatures, better humidity control</li>
+              <li><svg width="16" height="16"><use href="#i-check"/></svg> Highest rebate eligibility</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">*Example monthly payments at 9.99% APR for 120 months with approved credit; your rate and term may differ. Ranges are typical, not quotes: ductwork, electrical, access and equipment choice change the price. Mini-splits and commercial systems are quoted separately.</p>
+      </div>
+    </section>
+
+    <section class="block alt">
+      <div class="wrap">
+        <h2>Why homeowners pick Frost Fire for a new system</h2>
+        <div class="perks">
+          <div class="perk"><strong>The owner, not a salesman</strong><span>Jax measures, explains your options and installs it. No commission, no pressure.</span></div>
+          <div class="perk"><strong>Written quote the same day</strong><span>Good, better and best side by side, so you can compare apples to apples with other quotes.</span></div>
+          <div class="perk"><strong>Rebates handled for you</strong><span>Duke Energy Smart $aver rebates run about $350–$700 on qualifying heat pumps. We'll check what you qualify for.</span></div>
+          <div class="perk"><strong>Financing</strong><span>Monthly payment options with approved credit, shown right on your quote.</span></div>
+          <div class="perk"><strong>Licensed &amp; Insured</strong><span>Permits pulled, code-compliant install, manufacturer warranty registered for you.</span></div>
+          <div class="perk"><strong>Virtual quote option</strong><span>Text a photo of the data plate on your current unit and we'll send a ballpark first.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <h2>What Triangle customers say</h2>
+        <div class="reviews">
+          <figure class="review">
+            <span class="stars" aria-label="5 stars">★★★★★</span>
+            <p>"Jax came in clutch at a literal fraction of the price that the "big guys" quoted! Had us up and running in an hour. We have our new go to HVAC place FOR SURE. Highly recommend!"</p>
+            <cite>Liane W.</cite> <small>· Google · Apr 2026</small>
+          </figure>
+          <figure class="review">
+            <span class="stars" aria-label="5 stars">★★★★★</span>
+            <p>"Great service — high quality work at a reasonable price. Very responsive, polite, professional, and work is guaranteed. Glad I found Frost Fire. This will be my first call for future HVAC work."</p>
+            <cite>Dennis W.</cite> <small>· Google · Apr 2025</small>
+          </figure>
+          <figure class="review">
+            <span class="stars" aria-label="5 stars">★★★★★</span>
+            <p>"3-story townhouse and stayed 80+ degrees on the third floor. Jax came out the same day I inquired and diagnosed the problem. Fixed it immediately. Very professional!"</p>
+            <cite>Chelsea C.</cite> <small>· Google · Jan 2025</small>
+          </figure>
+        </div>
+        <p class="center"><a href="https://g.page/r/CSjVCnRtfVKPEBM/review" target="_blank" rel="noopener">Read all reviews on Google</a></p>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="wrap">
+        <h2>Get your free estimate</h2>
+        <p>Raleigh, Durham, the Triangle, Clayton and surrounding areas.</p>
+        <a class="btn" href="tel:+19192304439" data-ff-phone>
+          <svg width="20" height="20"><use href="#i-phone"/></svg>
+          <span>Call <span data-ff-phone-text>(919) 230-4439</span></span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>&copy; 2026 Frost Fire Heating and Cooling · Raleigh, Durham &amp; the Triangle · Licensed &amp; Insured in NC</p>
+      <p style="margin-top:6px"><a href="/">frostfirehvacr.com</a> · <a href="/services/heat-pump">Heat pumps</a> · <a href="/contact">Contact</a></p>
+    </div>
+  </footer>
+
+  <div class="callbar">
+    <a href="tel:+19192304439" data-ff-phone>
+      <svg width="20" height="20"><use href="#i-phone"/></svg>
+      <span>Tap to call <span data-ff-phone-text>(919) 230-4439</span></span>
+    </a>
+  </div>
+
+  <script>window.FF_REVIEWS_TOAST = { enabled: false };</script>
+  <script src="/js/phone-numbers.js"></script>
+  <script src="/js/analytics-config.js"></script>
+  <script src="/js/attribution.js"></script>
+  <script>
+    (function () {
+      // Typical installed ranges ($), base = 2-3 ton heat pump. Adjusted by system and home size.
+      var BASE = { good: [6000, 8000], better: [8000, 11000], best: [11000, 14000] };
+      var SYS = { heat_pump: 1, ac_furnace: 1.05, ac_only: 0.8, furnace_only: 0.55, mini_split: 0.7, not_sure: 1 };
+      var SIZE = { s: 0.9, m: 1, l: 1.2 };
+      var r = 0.0999 / 12, n = 120;
+      function monthly(p) { return Math.round(p * r / (1 - Math.pow(1 + r, -n))); }
+      function money(v) { return '$' + (Math.round(v / 100) * 100).toLocaleString('en-US'); }
+      var form = document.getElementById('lp-install-form');
+      var out = document.getElementById('ins-range');
+      var msg = document.getElementById('ins-form-msg');
+      var btn = document.getElementById('ins-submit');
+      function range() {
+        var t = BASE[form.tier.value] || BASE.better;
+        var k = (SYS[form.system.value] || 1) * (SIZE[form.size.value] || 1);
+        return [t[0] * k, t[1] * k];
+      }
+      function render() {
+        var x = range();
+        out.innerHTML = '<strong>' + money(x[0]) + ' – ' + money(x[1]) + '</strong>or about $' + monthly(x[0]) + '–$' + monthly(x[1]) + '/month*';
+      }
+      ['system', 'size', 'tier'].forEach(function (k) { form[k].addEventListener('change', render); });
+      render();
+      function phoneDisplay() {
+        var p = window.FrostFirePhone;
+        return p ? p.numberFor(p.resolveChannel()).display : '(919) 230-4439';
+      }
+      function show(kind, text) { msg.className = 'form-msg ' + kind; msg.textContent = text; msg.hidden = false; }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var fd = new FormData(form);
+        if (String(fd.get('company') || '').trim()) return;
+        var name = String(fd.get('name') || '').trim();
+        var phone = String(fd.get('phone') || '').trim();
+        if (!name || phone.replace(/\D/g, '').length < 10) {
+          show('err', 'Please add your name and a 10-digit mobile number.');
+          return;
+        }
+        var api = window.FrostFireAttribution;
+        if (!api || typeof api.trackLead !== 'function') {
+          show('err', 'Something went wrong loading the form. Please call ' + phoneDisplay() + '.');
+          return;
+        }
+        var x = range();
+        var sysLabel = form.system.options[form.system.selectedIndex].text;
+        var tierLabel = form.tier.options[form.tier.selectedIndex].text.split(':')[0];
+        var phoneInfo = window.FrostFirePhone ? window.FrostFirePhone.apply() : null;
+        var lead = {
+          context: api.getContext(),
+          lead_channel: 'form',
+          full_name: name,
+          phone: phone,
+          email: String(fd.get('email') || '').trim() || null,
+          service_requested: 'New system / replacement quote',
+          city: String(fd.get('city') || '').trim() || null,
+          address: null,
+          message: 'Install estimate request: ' + sysLabel + ', ' + form.size.options[form.size.selectedIndex].text + ', ' + tierLabel + ' (shown ' + money(x[0]) + '–' + money(x[1]) + ').',
+          details: {
+            intent: 'install',
+            source_page: window.location.pathname,
+            cta_type: 'lp_install_estimator',
+            form_id: 'lp-install-form',
+            landing_page_type: 'lp_install',
+            install_system: form.system.value,
+            install_home_size: form.size.value,
+            install_tier: form.tier.value,
+            install_range_shown: [Math.round(x[0]), Math.round(x[1])],
+            consent_automated_contact: true,
+            phone_channel: phoneInfo ? phoneInfo.channel : null,
+            phone_number_shown: phoneInfo ? phoneInfo.number.e164 : null,
+          },
+        };
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+        api.trackLead(lead)
+          .then(function () {
+            api.trackEvent('form_submit', { lead_channel: 'form', cta_type: 'lp_install_estimator' });
+            show('ok', 'Thanks, ' + name.split(' ')[0] + '! Your range is ' + money(x[0]) + '–' + money(x[1]) + '. We will text you shortly to set up your free estimate. Want to talk now? Call ' + phoneDisplay() + '.');
+          })
+          .catch(function () {
+            show('err', "We couldn't send that just now. Please call " + phoneDisplay() + ' and we will help right away.');
+          })
+          .finally(function () { btn.disabled = false; btn.textContent = 'Text me my range'; });
+      });
+    })();
+  </script>
+  <script src="/chat-widget.js" defer></script>
+</body>
+</html>
