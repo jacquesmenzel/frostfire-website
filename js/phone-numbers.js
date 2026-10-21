@@ -139,11 +139,29 @@
     apply: apply,
   };
 
+  // Widgets that render later (chat, estimate pop-ups) add their own tel: links; swap those too.
+  function watch() {
+    var first = apply();
+    if (!first.dedicated || !window.MutationObserver) return;
+    var pending = false;
+    new MutationObserver(function (records) {
+      if (pending) return;
+      for (var i = 0; i < records.length; i++) {
+        if (records[i].addedNodes.length) {
+          pending = true;
+          setTimeout(function () {
+            pending = false;
+            apply();
+          }, 50);
+          return;
+        }
+      }
+    }).observe(document.body, { childList: true, subtree: true });
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
-      apply();
-    });
+    document.addEventListener('DOMContentLoaded', watch);
   } else {
-    apply();
+    watch();
   }
 })();
