@@ -217,6 +217,15 @@
     var googleUrl = d.google_reviews_url || CFG.googleReviewsUrl;
     var phone = d.phone || CFG.phone;
     var phoneDisplay = d.phone_display || CFG.phoneDisplay;
+    // Ad visits show that channel's tracking number (js/phone-numbers.js).
+    var fp = window.FrostFirePhone;
+    if (fp) {
+      var num = fp.numberFor(fp.resolveChannel());
+      if (num && num.e164 !== fp.main.e164) {
+        phone = num.e164;
+        phoneDisplay = num.display;
+      }
+    }
 
     return (
       '<section class="ffrt-surface ffrt-card" id="ffrt-panel" role="region" aria-label="Google customer review" aria-live="polite">' +
