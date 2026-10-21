@@ -33,8 +33,11 @@
     }, false);
   }
 
-  // Google Reviews social-proof toast (async; does not block chat).
-  if (!window.FF_REVIEWS_TOAST_LOADED && !(window.FF_REVIEWS_TOAST && window.FF_REVIEWS_TOAST.enabled === false)) {
+  // Phones get a light touch: no review toast, and a small "Hi!! Need help?" tag instead of the big greeting card.
+  const IS_PHONE = window.matchMedia('(max-width: 768px), (hover: none) and (pointer: coarse)').matches;
+
+  // Google Reviews social-proof toast (async; does not block chat). Desktop only.
+  if (!IS_PHONE && !window.FF_REVIEWS_TOAST_LOADED && !(window.FF_REVIEWS_TOAST && window.FF_REVIEWS_TOAST.enabled === false)) {
     window.FF_REVIEWS_TOAST_LOADED = true;
     loadScript(resolveSibling('js/google-reviews-toast.js'), null, true);
   }
@@ -53,6 +56,8 @@
     // Resolve next to chat-widget.js so pages in subfolders (/services/, /lp/...) get the avatar too.
     avatarUrl: resolveSibling('images/sarah-avatar.jpg'),
     proactiveDelay: 30000,
+    phoneNudgeDelay: 15000,
+    phoneNudgeText: 'Hi!! 👋 Need help?',
     // Slow fallback poll — primary updates come via SSE when available.
     // Never re-render the thread unless message content actually changed (avoids 2s flash).
     pollIntervalMs: 12000,
@@ -156,12 +161,32 @@
       position: absolute; top: 8px; right: 10px; background: none; border: none;
       color: #94a3b8; cursor: pointer; font-size: 16px;
     }
+    #cw-nudge {
+      position: fixed; bottom: 30px; right: 82px; z-index: 99998;
+      background: white; color: #1e293b; font-size: 14px; font-weight: 600;
+      padding: 9px 14px; border-radius: 18px 18px 4px 18px; white-space: nowrap;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.18); cursor: pointer;
+      transform: translateY(8px) scale(0.85); transform-origin: bottom right; opacity: 0; pointer-events: none;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s ease;
+    }
+    #cw-nudge.show { transform: none; opacity: 1; pointer-events: auto; }
+    #cw-bubble.cw-shake { animation: cwShake 0.9s ease-in-out 2; }
+    @keyframes cwShake {
+      0%, 100% { transform: rotate(0); }
+      15% { transform: rotate(-14deg) scale(1.06); }
+      30% { transform: rotate(12deg) scale(1.06); }
+      45% { transform: rotate(-9deg); }
+      60% { transform: rotate(6deg); }
+      75% { transform: rotate(-3deg); }
+    }
+    @media (prefers-reduced-motion: reduce) { #cw-bubble.cw-shake { animation: none; } }
     @keyframes cwFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes cwBounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
     @media (max-width: 480px) {
       #cw-window { width: calc(100vw - 16px); right: 8px; bottom: 80px; max-height: 70vh; }
       #cw-proactive { right: 8px; max-width: calc(100vw - 80px); }
       #cw-bubble { bottom: 16px; right: 16px; width: 56px; height: 56px; }
+      #cw-nudge { bottom: 82px; right: 12px; border-radius: 18px 18px 4px 18px; }
     }
     @media (prefers-color-scheme: dark) {
       #cw-window { background: #1e293b; }
@@ -189,6 +214,7 @@
       </div>
       <button id="cw-proactive-close">&times;</button>
     </div>
+    <div id="cw-nudge" role="button" aria-label="Open chat">${CONFIG.phoneNudgeText}</div>
     <div id="cw-bubble">
       <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
       <div id="cw-badge">1</div>
@@ -420,14 +446,45 @@
   proactiveClose.addEventListener('click', (e) => { e.stopPropagation(); proactive.classList.remove('show'); });
   proactive.addEventListener('click', () => { proactive.classList.remove('show'); toggleChat(); });
 
-  // Proactive popup after delay
-  setTimeout(() => {
-    if (!isOpen && !hasProactiveShown) {
+  // Proactive greeting after a delay: the full card on desktop, a small dismissible tag on phones.
+  const nudge = document.getElementById('cw-nudge');
+  function hideNudge() {
+    nudge.classList.remove('show');
+    document.removeEventListener('pointerdown', onOutsideTap, true);
+  }
+  function onOutsideTap(e) {
+    if (nudge.contains(e.target) || bubble.contains(e.target)) return;
+    hideNudge();
+  }
+  nudge.addEventListener('click', () => { hideNudge(); if (!isOpen) toggleChat(); });
+  bubble.addEventListener('click', hideNudge);
+
+  function seenThisVisit() {
+    try { return sessionStorage.getItem('cw_nudged') === '1'; } catch (e) { return false; }
+  }
+  function markSeen() {
+    try { sessionStorage.setItem('cw_nudged', '1'); } catch (e) {}
+  }
+
+  if (IS_PHONE) {
+    setTimeout(() => {
+      if (isOpen || hasProactiveShown || seenThisVisit()) return;
       hasProactiveShown = true;
-      proactive.classList.add('show');
-      unreadCount = 1;
-      badge.textContent = '1';
-      badge.style.display = 'flex';
-    }
-  }, CONFIG.proactiveDelay);
+      markSeen();
+      nudge.classList.add('show');
+      bubble.classList.add('cw-shake');
+      bubble.addEventListener('animationend', () => bubble.classList.remove('cw-shake'), { once: true });
+      setTimeout(() => document.addEventListener('pointerdown', onOutsideTap, true), 0);
+    }, CONFIG.phoneNudgeDelay);
+  } else {
+    setTimeout(() => {
+      if (!isOpen && !hasProactiveShown) {
+        hasProactiveShown = true;
+        proactive.classList.add('show');
+        unreadCount = 1;
+        badge.textContent = '1';
+        badge.style.display = 'flex';
+      }
+    }, CONFIG.proactiveDelay);
+  }
 })();
