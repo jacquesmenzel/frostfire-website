@@ -44,6 +44,13 @@ GUIDE_CSS = """
 .checklist p{margin:0 0 8px}
 .checklist p:last-child{margin-bottom:0}
 .fixed-it{color:#1f7a4d;font-weight:600}
+.answer-box{background:#eef7fb;border-left:5px solid var(--ice);border-radius:var(--radius-sm);padding:18px 20px;margin:0 0 26px}
+.answer-box h2{margin:0 0 6px;font-size:1.15rem;font-family:'Inter',sans-serif;color:var(--primary)}
+.answer-box p{margin:0 0 12px}
+.answer-box .answer-cta{display:flex;flex-wrap:wrap;gap:10px 18px;font-weight:700}
+.answer-box .answer-cta a{color:var(--accent)}
+.sources{font-size:.92rem;color:var(--text-light)}
+.sources a{color:var(--primary)}
 .pro-list{padding-left:20px;display:grid;gap:8px}
 .cta-box{background:linear-gradient(135deg,var(--primary),var(--dark));color:#fff;border-radius:var(--radius);padding:28px;margin:36px 0;display:grid;gap:12px}
 .cta-box h2{color:#fff;margin:0;font-size:1.5rem}
@@ -87,6 +94,22 @@ SERVICE_LINKS = {
     "emergency": ("/services/emergency", "Emergency HVAC service"),
     "thermostat": ("/services/thermostat", "Thermostat service"),
     "iaq": ("/services/indoor-air-quality", "Indoor air quality"),
+}
+
+
+# Answer-first: what someone searching the symptom wants on the first screen.
+ANSWERS = {
+    "heater-not-working": "Most no-heat calls come down to a thermostat setting, dead thermostat batteries, a tripped breaker, the furnace switch turned off, or a clogged filter. Check those first. If a breaker trips again or the furnace starts and then shuts off, stop and call a tech.",
+    "heat-pump-blowing-cold-air": "Heat pump air normally feels cooler than a gas furnace, and it can blow cool for a few minutes during a defrost cycle. If the air stays at room temperature while the house keeps getting colder, the heat pump needs service.",
+    "furnace-turns-on-then-off": "A furnace that starts and shuts off is usually a safety switch doing its job: most often overheating from a dirty filter or closed vents, then a dirty flame sensor or a venting or drain problem. Change the filter, open the vents and read the error light. If it keeps doing it, call a tech.",
+    "heat-pump-frozen-outdoor-unit": "Light frost that comes and goes is normal, because heat pumps defrost themselves. Ice that keeps building, covers the coil or stops the fan is not normal. Never chip the ice. Follow the safe steps below, and call a tech if it doesn't clear after a defrost cycle.",
+    "carbon-monoxide-gas-furnace": "If a CO alarm goes off, get everyone outside into fresh air and call 911. Don't go back in to check the furnace. Have the furnace and its venting inspected before you use it again.",
+    "emergency-heat-aux-heat": "Aux heat on a cold morning or during defrost is normal. Emergency heat is a manual setting that runs only the electric backup heat. Use it only if the heat pump itself has failed, because it costs much more to run.",
+    "ac-running-not-cooling": "When the AC runs but doesn't cool, check the thermostat (Cool, fan on Auto), replace the filter, and make sure the outdoor unit's fan and compressor are running. Ice on the lines, or an outdoor unit that hums with the fan stopped, means turn it off and call.",
+    "furnace-heat-pump-error-codes": "Find the small blinking light on the control board through the lower panel window, count the flashes before you cut the power, and match the pattern to the chart inside the door. Codes differ by brand and board, so your door chart is the final word.",
+    "furnace-blowing-cold-air": "First set the thermostat fan to Auto, since a fan set to On blows room-temperature air between cycles. Then replace the filter: a clogged filter makes the furnace overheat, the limit switch shuts the burners off, and the blower keeps running cold. If it still blows cold, the burners aren't lighting or staying lit, and it needs a tech.",
+    "furnace-blinking-4-times": "On many furnaces, 4 blinks means the high-limit switch opened because the furnace overheated, usually from a clogged filter or blocked vents. Confirm it on the chart inside your furnace door, replace the filter and open the vents. If the code comes back, stop resetting it and call a tech.",
+    "ac-frozen-coil": "Turn the cooling off and set the fan to On to thaw the coil, which usually takes a few hours. Never chip the ice. Replace the filter before you turn cooling back on. If it freezes again within a day or two, it's likely low refrigerant or an airflow problem and needs a tech.",
 }
 
 
@@ -470,7 +493,152 @@ GUIDES = [
         "related": ["heater-not-working", "furnace-turns-on-then-off", "carbon-monoxide-gas-furnace"],
         "services": ["heating", "heatpump", "maintenance"],
     },
+    {
+        "slug": "furnace-blowing-cold-air",
+        "tag": "Heating",
+        "title": "Furnace Blowing Cold Air? Causes and What to Check",
+        "h1": "Furnace blowing cold air? Causes and what to check",
+        "desc": "Gas furnace blowing cold air? The common causes (fan set to On, a clogged filter tripping the limit switch, a dirty flame sensor, gas supply, the drain) and what you can safely check first.",
+        "card": "Fan setting, filter, limit switch, flame sensor, gas supply. Why a gas furnace blows cold and what to check.",
+        "howto": True,
+        "intro": p(
+            "A gas furnace that blows cold air is one of the most common winter calls I get. Sometimes nothing is broken at all. Other times the burners aren't lighting, or a safety switch keeps shutting them off while the blower keeps running. Here's how to tell which, in the order that finds it fastest.",
+            "If you have a heat pump instead of a gas furnace, the air works differently. See <a href=\"/guides/heat-pump-blowing-cold-air\">heat pump blowing cold air</a> instead.",
+        ),
+        "steps": [
+            ("Set the thermostat fan to Auto", p(
+                "If the fan is set to <strong>On</strong>, the blower runs all the time, including between heating cycles, and you'll feel room-temperature air at the vents. Carrier calls this the most common cause of a furnace blowing cold air. Set the fan to <strong>Auto</strong> and the mode to <strong>Heat</strong>, with the temperature a few degrees above the room.",
+                "<span class=\"fixed-it\">If the air is warm on the next cycle, you're done.</span>")),
+            ("Give it a minute after it starts", p(
+                "Many furnaces wait about 30 to 60 seconds after the burners light before the blower comes on, and the first air out of the ducts can be cool. Wait a few minutes before deciding it's not heating.")),
+            ("Replace the air filter", p(
+                "A clogged filter traps heat inside the furnace. When it gets too hot, the high-limit safety switch shuts the burners off, but the blower keeps running to cool things down, so you get cold air. Pull the filter and hold it up to a light. If you can't see through it, replace it, then open any closed vents and clear the return grilles.",
+                "If it still blows cold with a new filter and open vents, something else is restricting airflow and it needs a tech.")),
+            ("Check that gas is reaching the furnace", p(
+                "The handle on the gas valve going into the furnace should run <strong>parallel</strong> with the pipe (open). If your stove or water heater runs on gas, check that they work. If you smell gas, don't touch anything: leave the house and call your gas company or 911 from outside.")),
+            ("Look for a full drain pan (high-efficiency furnaces)", p(
+                "High-efficiency furnaces make water and drain it through a PVC line. If that line clogs, a safety switch keeps the burners from lighting, and the blower may still run. Water in the pan or around the furnace is a sign. A stained ceiling or an overflowing pan means call us.")),
+            ("Read the error light before you reset anything", p(
+                "Through the little window in the lower panel, count the blinks on the control board light and write it down. Turning the power off often clears it. See <a href=\"/guides/furnace-heat-pump-error-codes\">how to read furnace error codes</a> and <a href=\"/guides/furnace-blinking-4-times\">what 4 blinks usually means</a>.")),
+            ("Older furnaces: is the pilot light out?", p(
+                "If your furnace has a standing pilot (a small flame that stays lit), the burners can't light without it. Relight it only by following the instructions printed on the furnace, and never if you smell gas.")),
+        ],
+        "pro": [
+            "You hear the burners light, then shut off after a few seconds (often a dirty flame sensor).",
+            "It still blows cold with a new filter, open vents and the fan on Auto.",
+            "The error light keeps flashing the same code.",
+            "You smell gas, or there's water around the furnace.",
+            "A breaker or the furnace switch trips again after one reset.",
+        ],
+        "faqs": [
+            ("Why does my furnace blow cold air at the start?", "Most furnaces light the burners first and start the blower 30 to 60 seconds later, and the air sitting in the ducts is cool. A short burst of cool air at the start of a cycle is normal."),
+            ("Can a dirty filter make my furnace blow cold air?", "Yes. A clogged filter lets heat build up inside the furnace until the high-limit switch shuts the burners off. The blower keeps running to cool it down, so you feel cold air. Replace the filter and open the vents."),
+            ("What is a flame sensor?", "A small metal rod near the burners that proves the flame lit. When it gets coated, the furnace lights for a few seconds and then shuts the gas off. Cleaning or replacing it is a quick job for a tech."),
+            ("How much is a service call?", "Frost Fire's diagnostic is $59, and it's waived if you go ahead with the repair. Same price on weekends."),
+        ],
+        "related": ["furnace-turns-on-then-off", "furnace-blinking-4-times", "heater-not-working"],
+        "services": ["heating", "emergency", "maintenance"],
+        "sources": [
+            ("Carrier: Why is my furnace blowing cold air?", "https://www.carrier.com/us/en/residential/hvac-resources/furnaces/furnace-blowing-cold-air/"),
+            ("Trane: Furnace not blowing hot air", "https://www.trane.com/residential/en/resources/troubleshooting/gas-furnaces/furnace-not-blowing-not-air/"),
+        ],
+    },
+    {
+        "slug": "furnace-blinking-4-times",
+        "tag": "Error codes",
+        "title": "Furnace Light Blinking 4 Times? What It Usually Means",
+        "h1": "Furnace light blinking 4 times? What it usually means",
+        "desc": "On many furnaces, 4 blinks means the high-limit safety switch opened because the furnace overheated, usually from a clogged filter or blocked airflow. How to confirm it on your model and what to check.",
+        "card": "On many furnaces, 4 blinks means it overheated and the limit switch opened. Here's what to check first.",
+        "howto": True,
+        "intro": p(
+            "That red or green light blinking through the window in your furnace door is a code from the control board. Four blinks is one of the most common codes I see, and on a lot of furnaces it means the same thing: the furnace got too hot and the high-limit safety switch shut the burners off.",
+            "Every brand and board numbers its codes differently, though, so the chart on the inside of your furnace door is the final word. Check it first, then use the steps below.",
+        ),
+        "steps": [
+            ("Count the blinks before you touch the power", p(
+                "Watch the light through the window in the lower door and count the flashes between pauses (for example, 4 flashes, pause, repeat). Take a video. Turning the furnace off and on often clears the code, so read it first.")),
+            ("Match it to the chart on your door", p(
+                "The chart is usually printed on the inside of the blower door or the front panel. On many Goodman, Amana, Rheem and Ruud furnaces, 4 flashes is listed as an open high-limit switch, but some boards use 4 for something else, so trust your chart.",
+                "Carrier and Bryant furnaces use two-digit codes (for example 3 flashes, pause, 3 flashes for code 33). In Carrier's service manual, code 33 is a limit circuit fault: the limit or flame rollout switch is open.")),
+            ("Replace the air filter", p(
+                "An open high limit almost always means the furnace isn't moving enough air, and the most common reason is a clogged filter. If you can't see light through it, replace it.",
+                "<span class=\"fixed-it\">After a new filter, the furnace often runs normally on the next cycle.</span>")),
+            ("Open the vents and clear the returns", p(
+                "Closed supply vents, or furniture and rugs over the return grilles, choke the airflow the same way a dirty filter does. Open them all.")),
+            ("Make sure the blower runs during heat", p(
+                "When the burners are on, you should hear the blower and feel steady air at the vents. If the burners light but the blower never comes on, the furnace will overheat every time. That's a blower motor or capacitor problem and needs a tech.")),
+            ("Don't keep resetting it", p(
+                "If it trips again after you've fixed the filter and vents, stop resetting it. Repeated overheating stresses the heat exchanger, the part that keeps exhaust out of your air. A flame rollout switch trip in particular can point to a venting or heat exchanger problem.")),
+        ],
+        "pro": [
+            "The 4-blink code comes back with a new filter and open vents.",
+            "The burners light but the blower doesn't start.",
+            "Your chart says rollout switch, or the furnace has a manual-reset button that keeps tripping.",
+            "You smell gas or a CO alarm goes off: get out and call 911 from outside.",
+        ],
+        "faqs": [
+            ("What does 4 blinks mean on a Goodman furnace?", "On many Goodman and Amana furnaces, 4 flashes is listed as an open high-limit switch, which usually means overheating from restricted airflow. Confirm it on the chart inside your furnace door, since boards vary."),
+            ("What does code 33 mean on a Carrier furnace?", "In Carrier's service manual, status code 33 is a limit circuit fault: the limit or flame rollout switch is open. If it stays open more than 3 minutes, the furnace locks out with code 13."),
+            ("Is a high-limit trip dangerous?", "The switch is doing its job by shutting the burners off. The problem is the overheating behind it. Fix the airflow, and if it keeps happening, have it checked before it damages the heat exchanger."),
+            ("How much is a service call?", "Frost Fire's diagnostic is $59, and it's waived if you go ahead with the repair. Same price on weekends."),
+        ],
+        "related": ["furnace-heat-pump-error-codes", "furnace-turns-on-then-off", "furnace-blowing-cold-air"],
+        "services": ["heating", "emergency", "maintenance"],
+        "sources": [
+            ("Carrier PG9UAA service manual: status code 33, limit circuit fault", "https://www.manualslib.com/manual/600572/Carrier-Pg9uaa.html?page=22"),
+            ("Carrier: Why is my furnace blowing cold air? (limit switch and filters)", "https://www.carrier.com/us/en/residential/hvac-resources/furnaces/furnace-blowing-cold-air/"),
+        ],
+    },
+    {
+        "slug": "ac-frozen-coil",
+        "tag": "Cooling",
+        "title": "AC Frozen Up? Ice on the Coil or Lines and What to Do",
+        "h1": "AC frozen up? Ice on the coil or lines and what to do",
+        "desc": "Ice on your AC's indoor coil or refrigerant lines? Turn cooling off, let it thaw, never chip the ice, change the filter. The common causes and when it's a refrigerant problem.",
+        "card": "Ice on the AC lines or indoor coil. Turn it off, let it thaw, and find out why it froze.",
+        "howto": True,
+        "intro": p(
+            "If you see ice on the copper line going into your outdoor unit, frost on the indoor coil, or the AC runs but blows warm with water dripping everywhere, the indoor coil has frozen. It sounds backwards, but an AC freezes up when it isn't getting enough warm air across the coil, or when it's low on refrigerant.",
+            "The first steps are free and safe. The important part is not to keep running it frozen.",
+        ),
+        "safety": [
+            "<strong>Don't run the AC while it's frozen.</strong> Trane warns it can cause serious damage to the system. Switch it to Off.",
+            "<strong>Never chip or scrape the ice.</strong> The coil and copper tubing are thin, and puncturing them causes a refrigerant leak.",
+            "<strong>Water near electrical parts or a ceiling stain?</strong> Turn the system off at the switch and call.",
+        ],
+        "steps": [
+            ("Turn cooling off and let it thaw", p(
+                "Set the thermostat from Cool to <strong>Off</strong>. Then set the fan to <strong>On</strong> so the blower pushes warm room air across the coil. Thawing usually takes a few hours. Put towels down near the indoor unit in case the drain can't keep up.")),
+            ("Replace the air filter", p(
+                "A clogged filter is the most common reason a coil freezes. Change it before you turn the cooling back on, and don't restart cooling until the ice is fully gone.")),
+            ("Open vents and clear the returns", p(
+                "Closed supply vents and blocked return grilles reduce airflow over the coil. Open them all and move furniture off the returns.")),
+            ("Check the condensate drain", p(
+                "As the ice melts, the water has to drain. If the pan fills up or a float switch shuts the system off, the drain line is clogged. A shop vac on the outside end of the drain line often clears it.")),
+            ("Watch for it to freeze again", p(
+                "Turn cooling back on after it's thawed and the filter is new. If it freezes again within a day or two, it's usually low refrigerant from a leak, a dirty indoor coil, or a blower problem, and it needs a tech. Leave it off until then.")),
+        ],
+        "pro": [
+            "It freezes again after a new filter and a full thaw.",
+            "You see oily residue or hear hissing near the lines or coil (a possible refrigerant leak).",
+            "Water is overflowing the pan or coming through a ceiling.",
+            "The outdoor unit isn't running while the indoor blower is.",
+        ],
+        "faqs": [
+            ("Why is there ice on my AC line?", "Ice on the larger copper line usually means the indoor coil is too cold: not enough airflow (filter, vents, blower) or low refrigerant. Turn cooling off, let it thaw, change the filter, and call if it comes back."),
+            ("How long does a frozen AC take to thaw?", "Usually a few hours with the cooling off and the fan on. Heavy ice can take longer."),
+            ("Can I add refrigerant myself?", "No. Refrigerant work requires an EPA-certified tech, and if it's low there's a leak that needs to be found and fixed, not just topped off."),
+            ("How much is a service call?", "Frost Fire's diagnostic is $59, and it's waived if you go ahead with the repair. Same price on weekends."),
+        ],
+        "related": ["ac-running-not-cooling", "heat-pump-frozen-outdoor-unit", "heater-not-working"],
+        "services": ["ac", "emergency", "maintenance"],
+        "sources": [
+            ("Trane: Top 5 causes of frozen AC coils and how to fix them", "https://www.trane.com/residential/en/resources/blog/frozen-evaporator-coil-causes/"),
+        ],
+    },
 ]
+
 
 EXTRAS = {
  "heater-not-working": [
@@ -577,6 +745,7 @@ def footer() -> str:
         '  <script src="/js/quick-quote.js" defer></script>\n'
         '  <script src="/chat-widget.js"></script>\n'
         '  <script src="/js/work-photos.js" defer></script>\n'
+        '  <script src="/js/phone-numbers.js" defer></script>\n'
     )
 
 
@@ -587,7 +756,7 @@ def head(title: str, desc: str, url: str, schema: list) -> str:
     return (
         "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n"
         '  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-        f"  <title>{esc(title)} | Frost Fire Heating &amp; Cooling</title>\n"
+        f"  <title>{esc(title)} | Frost Fire HVAC</title>\n"
         f'  <meta name="description" content="{esc(desc)}">\n'
         '  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">\n'
         '  <link rel="preconnect" href="https://fonts.googleapis.com">\n'
@@ -612,7 +781,7 @@ def head(title: str, desc: str, url: str, schema: list) -> str:
 def cta_box() -> str:
     return (
         '<div class="cta-box">'
-        "<h2>Still not working?</h2>"
+        "<h2>Still not working? Same-day repair.</h2>"
         "<p><strong>Frost Fire Heating &amp; Cooling</strong>: $59 diagnostic (waived with repair), same-day service, no weekend surcharge, 4.8-star rated. Licensed &amp; Insured. Serving Raleigh, Durham, the Triangle, Clayton and surrounding areas.</p>"
         '<div class="cta-buttons">'
         f'<a href="tel:{PHONE_TEL}" class="btn-white"><i class="fas fa-phone"></i> Call {PHONE}</a>'
@@ -679,6 +848,14 @@ def build_guide(g: dict) -> str:
             "step": [{"@type": "HowToStep", "position": i + 1, "name": t, "text": strip_tags(b)[:500]} for i, (t, b) in enumerate(g["steps"])],
         })
 
+    answer = ANSWERS.get(g["slug"], "")
+    answer_html = (
+        '<div class="answer-box"><h2>Short answer</h2>'
+        f"<p>{esc(answer)}</p>"
+        f'<div class="answer-cta"><a href="tel:{PHONE_TEL}"><i class="fas fa-phone"></i> Still not working? Same-day repair: {PHONE}</a><a href="#ff-quick-quote">Request a visit</a></div></div>'
+    ) if answer else ""
+    srcs = g.get("sources") or []
+    sources_html = ('<h2>Sources</h2><ul class="sources">' + "".join(f'<li><a href="{u}" rel="nofollow noopener" target="_blank">{esc(t)}</a></li>' for t, u in srcs) + "</ul>") if srcs else ""
     safety_html = "<ul>" + "".join(f"<li>{s}</li>" for s in safety) + "</ul>"
     ex = EXTRAS.get(g["slug"])
     extra_html = (f"<h2>{esc(ex[0])}</h2>" + "".join(f"<p>{esc(x)}</p>" for x in ex[1])) if ex else ""
@@ -695,6 +872,7 @@ def build_guide(g: dict) -> str:
 
   <article class="guide-wrap">
     <div class="guide-meta"><span><i class="fas fa-user"></i> By Jax, owner &amp; HVAC tech</span><span><i class="fas fa-calendar"></i> Updated {UPDATED_LABEL}</span></div>
+    {answer_html}
     {g['intro']}
     <div class="safety-box" role="note"><h2><i class="fas fa-triangle-exclamation"></i> Safety first</h2>{safety_html}</div>
     <h2>What to check</h2>
@@ -709,6 +887,7 @@ def build_guide(g: dict) -> str:
     <div class="related-guides">{related}</div>
     <p style="margin-top:20px"><strong>Services:</strong></p>
     <div class="service-links">{services}</div>
+    {sources_html}
     <div class="author-box"><div class="avatar" aria-hidden="true">J</div><p><strong>Written by Jax, owner of Frost Fire Heating &amp; Cooling, HVAC technician.</strong> I run and work every job myself across Raleigh, Durham, the Triangle, Clayton and surrounding areas. These guides are the same checks I walk customers through on the phone.</p></div>
   </article>
 """
