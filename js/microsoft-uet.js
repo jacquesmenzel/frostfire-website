@@ -73,5 +73,6 @@
   );
 
   window.FrostFireUET = { tagId: UET_TAG_ID, enabled: !!UET_TAG_ID, lead: lead, call: call };
-  load();
+  // bat.js waits until the page has painted (attribution.js); events queue until then.
+  (window.FrostFireAfterPaint || function (f) { f(); })(load);
 })();

@@ -25,11 +25,14 @@
     };
     q.q = [];
     w.oaiq = q;
-    var js = d.createElement(s);
-    js.async = true;
-    js.src = u;
-    var f = d.getElementsByTagName(s)[0];
-    f.parentNode.insertBefore(js, f);
+    // The SDK waits until the page has painted (attribution.js); oaiq queues until then.
+    (w.FrostFireAfterPaint || function (fn) { fn(); })(function () {
+      var js = d.createElement(s);
+      js.async = true;
+      js.src = u;
+      var f = d.getElementsByTagName(s)[0];
+      f.parentNode.insertBefore(js, f);
+    });
   })(window, document, 'script', 'https://bzrcdn.openai.com/sdk/oaiq.min.js');
 
   window.oaiq('init', { pixelId: PIXEL_ID });

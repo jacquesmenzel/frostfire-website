@@ -37,7 +37,36 @@
     document.head.appendChild(script);
   }
 
-  // Load the phone-number swap, Microsoft UET and ChatGPT pixel once on every page that has this file.
+  // Third-party tags start after the page has painted (or on the first tap/scroll), so they
+  // never hold up what the visitor sees: on phones they pushed the hero text out to 8-13 s
+  // in Lighthouse (10/26). Calls made before then queue in dataLayer/gtag/clarity/uetq.
+  let tagsStarted = false;
+  const pendingTags = [];
+  function afterPaint(fn) {
+    if (tagsStarted) fn();
+    else pendingTags.push(fn);
+  }
+  function startTags() {
+    if (tagsStarted) return;
+    tagsStarted = true;
+    pendingTags.splice(0).forEach(function (fn) {
+      try { fn(); } catch (e) { /* ignore */ }
+    });
+  }
+  window.FrostFireAfterPaint = afterPaint;
+  (function scheduleTags() {
+    const idle = window.requestIdleCallback || function (cb) { return setTimeout(cb, 1); };
+    const go = function () { setTimeout(function () { idle(startTags, { timeout: 2000 }); }, 1500); };
+    if (document.readyState === 'complete') go();
+    else window.addEventListener('load', go, { once: true });
+    ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (ev) {
+      window.addEventListener(ev, startTags, { once: true, passive: true });
+    });
+  })();
+
+  // Load the phone-number swap, Microsoft UET and ChatGPT pixel once on every page that has
+  // this file. The UET/pixel wrappers queue events at once and start their vendor scripts
+  // through FrostFireAfterPaint, so an early tap-to-call is still counted.
   function ensureSiteScripts() {
     ['/js/phone-numbers.js', '/js/microsoft-uet.js', '/js/openai-pixel.js'].forEach(function (src) {
       const name = src.split('/').pop();
@@ -65,17 +94,20 @@
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        const f = d.getElementsByTagName(s)[0];
-        const j = d.createElement(s);
-        const dl = l !== 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
+        afterPaint(function () {
+          const f = d.getElementsByTagName(s)[0];
+          const j = d.createElement(s);
+          const dl = l !== 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        });
       })(window, document, 'script', 'dataLayer', ANALYTICS_CONFIG.gtmId);
     }
 
     if (ANALYTICS_CONFIG.ga4MeasurementId && !window.gtag) {
-      loadScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(ANALYTICS_CONFIG.ga4MeasurementId));
+      const ga4Src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(ANALYTICS_CONFIG.ga4MeasurementId);
+      afterPaint(function () { loadScript(ga4Src); });
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () {
         window.dataLayer.push(arguments);
@@ -88,7 +120,8 @@
     // No Ads conversion fires from the page; uploads from the CRM are the source of truth.
     if (ANALYTICS_CONFIG.googleAdsId) {
       if (!window.gtag) {
-        loadScript('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(ANALYTICS_CONFIG.googleAdsId));
+        const adsSrc = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(ANALYTICS_CONFIG.googleAdsId);
+        afterPaint(function () { loadScript(adsSrc); });
         window.dataLayer = window.dataLayer || [];
         window.gtag = function () {
           window.dataLayer.push(arguments);
@@ -105,16 +138,18 @@
           function () {
             (c[a].q = c[a].q || []).push(arguments);
           };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = 'https://www.clarity.ms/tag/' + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
+        afterPaint(function () {
+          t = l.createElement(r);
+          t.async = 1;
+          t.src = 'https://www.clarity.ms/tag/' + i;
+          y = l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t, y);
+        });
       })(window, document, 'clarity', 'script', ANALYTICS_CONFIG.clarityProjectId);
     }
 
     if (ANALYTICS_CONFIG.enableCloudflareWebAnalytics && ANALYTICS_CONFIG.cloudflareBeaconToken) {
-      loadScript('https://static.cloudflareinsights.com/beacon.min.js');
+      afterPaint(function () { loadScript('https://static.cloudflareinsights.com/beacon.min.js'); });
     }
   }
 
