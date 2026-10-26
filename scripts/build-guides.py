@@ -759,9 +759,12 @@ def head(title: str, desc: str, url: str, schema: list) -> str:
         f"  <title>{esc(title)} | Frost Fire HVAC</title>\n"
         f'  <meta name="description" content="{esc(desc)}">\n'
         '  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">\n'
-        '  <link rel="preconnect" href="https://fonts.googleapis.com">\n'
-        '  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">\n'
-        '  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">\n'
+        '\n'
+        '  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>\n'
+        '  <link rel="preload" href="/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>\n'
+        "  <style>@font-face{font-family:'Inter';font-style:normal;font-weight:300 800;font-display:optional;src:url(/fonts/inter-latin.woff2) format('woff2')}"
+        "@font-face{font-family:'Montserrat';font-style:normal;font-weight:700 900;font-display:optional;src:url(/fonts/montserrat-latin.woff2) format('woff2')}</style>\n"
+        '  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media=\'all\'">\n'
         f"{blocks}\n"
         f"  <style>\n    {BASE_CSS}\n{GUIDE_CSS}\n  </style>\n"
         '  <meta property="og:type" content="article">\n'
